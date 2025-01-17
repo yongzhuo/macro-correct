@@ -36,7 +36,7 @@ pip install macro-correct
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple macro-correct
 
 # 如果不行, 则不带依赖安装, 之后缺什么包再补充什么
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple near-synonym --no-dependencies
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple macro-correct --no-dependencies
 ```
 
 
