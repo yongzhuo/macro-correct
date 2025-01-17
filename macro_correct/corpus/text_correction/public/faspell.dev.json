@@ -1,0 +1,8216 @@
+[
+    {
+        "original_text": "你说他像窝瓜吧有身子有眼儿的",
+        "correct_text": "你说他像窝瓜吧有鼻子有眼儿的",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "家长一个一个接孩子都有于读的",
+        "correct_text": "家长一个一个接孩子都有手续的",
+        "wrong_ids": [
+            11,
+            12
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "干脱这样吧，我们落白我，你办个学校",
+        "correct_text": "干脆这样吧，我们凑点钱，你办个学校",
+        "wrong_ids": [
+            1,
+            8,
+            9,
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "鼻子下巴眼睛头发耳杂",
+        "correct_text": "鼻子下巴眼睛头发耳朵",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "麦当茅\"那么大\"系列",
+        "correct_text": "麦当劳\"那么大\"系列",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "两名战土也基本确认",
+        "correct_text": "两名战士也基本确认",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "把这个橘子瓣辨",
+        "correct_text": "把这个橘子瓣瓣",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "冲上舞台给你达花的那个情形啊",
+        "correct_text": "冲上舞台给你送花的那个情形啊",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "娱乐速选",
+        "correct_text": "娱乐速递",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "一说两军阵前三万个马",
+        "correct_text": "一说两军阵前三万人马",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "应该是说我们可以轻轻森松",
+        "correct_text": "应该是说我们可以轻轻松松",
+        "wrong_ids": [
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "没想到的大",
+        "correct_text": "没想到的是",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "势为力敌的情况下",
+        "correct_text": "势均力敌的情况下",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这都是在医生允统的范国之肉",
+        "correct_text": "这都是在医生允许的范围之内",
+        "wrong_ids": [
+            7,
+            10,
+            12
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "生在变团，长在中国",
+        "correct_text": "生在美国，长在中国",
+        "wrong_ids": [
+            2,
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "任何词形容都很苍日",
+        "correct_text": "任何词形容都很苍白",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "七位来自不同空间的宇宙勇土",
+        "correct_text": "七位来自不同空间的宇宙勇士",
+        "wrong_ids": [
+            12
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "（观众）已经全部站立起来了",
+        "correct_text": "（观众）已经全部站立起来了",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这两个人又忙于生计",
+        "correct_text": "他两个人又忙于生计",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "穷乡僻境",
+        "correct_text": "穷乡僻壤",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "有右举足轻平的作用",
+        "correct_text": "有着举足轻重的作用",
+        "wrong_ids": [
+            1,
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "家长一个一个接孩子都有于绒的",
+        "correct_text": "家长一个一个接孩子都有手续的",
+        "wrong_ids": [
+            11,
+            12
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你说你着他时间长了",
+        "correct_text": "你说你看他时间长了",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "陈奕迅，你最欣赏的女艺人是谁？",
+        "correct_text": "陈奕迅，你最欣赏的女艺人是谁？",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "咀嚼，阻嚼",
+        "correct_text": "咀嚼，咀嚼",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "比知造神病患者拿着刀去砍孩子",
+        "correct_text": "比如精神病患者拿着刀去砍孩子",
+        "wrong_ids": [
+            1,
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "当亚铃举来举去的",
+        "correct_text": "当哑铃举来举去的",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "师博的共同帮助下",
+        "correct_text": "师傅的共同帮助下",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "住着你后有了气车，对不对",
+        "correct_text": "住着楼房有了汽车，对不对",
+        "wrong_ids": [
+            2,
+            3,
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "感谢幂龙高清偏光太阳镜",
+        "correct_text": "感谢暴龙高清偏光太阳镜",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "南京交通台苦名主持人",
+        "correct_text": "南京交通台著名主持人",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "听的过程当中小学渼不能闲着",
+        "correct_text": "听的过程当中小学生不能闲着",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "库绊的是夫妻之间的爱与萨伴",
+        "correct_text": "牵绊的是夫妻之间的爱与陪伴",
+        "wrong_ids": [
+            0,
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "很难得把们老师请到这个现场",
+        "correct_text": "很难得把何老师请到这个现场",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "然后真的很谢的所有人给我的旅因",
+        "correct_text": "然后真的很谢谢所有人给我的鼓励",
+        "wrong_ids": [
+            6,
+            13,
+            14
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "一号选手叫作穆雅澜",
+        "correct_text": "一号选手叫作穆雅斓",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你卖来他不会卖",
+        "correct_text": "你卖菜也不会卖",
+        "wrong_ids": [
+            2,
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "不是一直喜欢言承担那种吗",
+        "correct_text": "不是一直喜欢言承旭那种吗",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "电竟魔灵，我在那出生",
+        "correct_text": "电竞魔灵，我在那出生",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "而且女通非常使利",
+        "correct_text": "而且交通非常便利",
+        "wrong_ids": [
+            2,
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "孩子五一出点事怎么力",
+        "correct_text": "孩子万一出点事怎么办",
+        "wrong_ids": [
+            2,
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "因为可能比如说你们的姜束上",
+        "correct_text": "因为可能比如说你们的装束上",
+        "wrong_ids": [
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你要再着见我跟你有一点乐模样",
+        "correct_text": "你要再看见我跟你有一点乐模样",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "十一祝筷子，即将开始",
+        "correct_text": "十一双筷子，即将开始",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "所以我觉得她做到了这个感说",
+        "correct_text": "所以我觉得她做到了这个感觉",
+        "wrong_ids": [
+            12
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "事安上我没有走过这样子的大秀",
+        "correct_text": "事实上我没有走过这样子的大秀",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "《如果爱》登陆湖北见视",
+        "correct_text": "《如果爱》登陆湖北卫视",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "当他出默之后发现",
+        "correct_text": "当他出狱之后发现",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "走过这片芦韩坡",
+        "correct_text": "走过这片芦苇坡",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "走不要走的加强的",
+        "correct_text": "走不要走的歪歪的",
+        "wrong_ids": [
+            5,
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "看谁时机",
+        "correct_text": "看准时机",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "是凤血卫视",
+        "correct_text": "是凤凰卫视",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "第一条胡同，叫水要胡同",
+        "correct_text": "第一条胡同，叫水墨胡同",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "为何历尽拉年没有解决",
+        "correct_text": "为何历尽七年没有解决",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我到那些曾经帮助",
+        "correct_text": "找到那些曾经帮助",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "全国射箭很乐部赛冠孕",
+        "correct_text": "全国射箭俱乐部赛冠军",
+        "wrong_ids": [
+            4,
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "学校都举办活办",
+        "correct_text": "学校都举办活动",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "震盘全城",
+        "correct_text": "震撼全城",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "郭恩霆，番木瓜的果哭位置真的让人很糊粉",
+        "correct_text": "韩恩廷，番木瓜的果实位置真的让人很糊涂",
+        "wrong_ids": [
+            0,
+            2,
+            9,
+            18
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "导师们你们可定会记住我",
+        "correct_text": "导师们你们一定会记住我",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "孩子五一出点事怎么办",
+        "correct_text": "孩子万一出点事怎么办",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "当兄弟们正激烈对拉时",
+        "correct_text": "当兄弟们正激烈对抗时",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "也感谢我们的老奇葩来到见场",
+        "correct_text": "也感谢我们的老奇葩来到现场",
+        "wrong_ids": [
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "不服你咬我呀！",
+        "correct_text": "不服你咬我呀！",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我给你捧呢",
+        "correct_text": "我给你捧哏",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "连能比我更嗨",
+        "correct_text": "谁能比我更嗨",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "欢迎收看献被频道秀场竞技类栏目",
+        "correct_text": "欢迎收看靓妆频道秀场竞技类栏目",
+        "wrong_ids": [
+            4,
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "好多女亮宾来的时候看不见两边",
+        "correct_text": "好多女嘉宾来的时候看不见两边",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "是打在了火蜥螺的顶部装甲",
+        "correct_text": "是打在了火蜥蜴的顶部装甲",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "妈就是刺敫我呢",
+        "correct_text": "妈就是刺激我呢",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我们这个天是大家献爱心的时候了",
+        "correct_text": "我们这个又是大家献爱心的时候了",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "从你炙苦的过程当中一路陪你走来",
+        "correct_text": "从你贫苦的过程当中一路陪你走来",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "欢迎太紧队的对立方",
+        "correct_text": "欢迎大紧队的对立方",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "传承中华传绑文化，裙州学子举行孔庙开等礼",
+        "correct_text": "传承中华传统文化，福州学子举行孔庙开笔礼",
+        "wrong_ids": [
+            5,
+            9,
+            18
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "不同的日子一样的尊伤，台湾幼教感受大陆教师节",
+        "correct_text": "不同的日子一样的尊师，台湾幼教感受大陆教师节",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我觉得她现在很故松",
+        "correct_text": "我觉得她现在很放松",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你愿意做小麦的睛天吗",
+        "correct_text": "你愿意做小麦的晴天吗",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "除非你是破强道",
+        "correct_text": "除非你是被强迫",
+        "wrong_ids": [
+            4,
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "艺坛接力圣人传",
+        "correct_text": "艺坛接力圣火传",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "世界大赛中勇奇首权金牌的",
+        "correct_text": "世界大赛中勇夺首枚金牌的",
+        "wrong_ids": [
+            6,
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "向谁谁也不愿意去",
+        "correct_text": "问谁谁也不愿意去",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "他变身都是交村的，带到城里来了",
+        "correct_text": "他父母都是农村的，带到城里来了",
+        "wrong_ids": [
+            1,
+            2,
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "就者有些家长还外地",
+        "correct_text": "或者有些家长在外地",
+        "wrong_ids": [
+            0,
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "能让人忘记是能的满载的梦想",
+        "correct_text": "能让人忘记晕船的满载的梦想",
+        "wrong_ids": [
+            5,
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "是因为我在网上歌泽了",
+        "correct_text": "是因为我在网上翻译了",
+        "wrong_ids": [
+            7,
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "在节目中存雷的时可只有一小时",
+        "correct_text": "在节目中存活的时间只有一小时",
+        "wrong_ids": [
+            5,
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "有请主持人，盒非，郭德闪",
+        "correct_text": "有请主持人，孟非，郭德纲",
+        "wrong_ids": [
+            6,
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "城跟你说",
+        "correct_text": "我跟你说",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "馨磬，好",
+        "correct_text": "馨馨，好",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "料涂庙，料涂神儿",
+        "correct_text": "糊涂庙，糊涂神儿",
+        "wrong_ids": [
+            0,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "创造一个没有淘太的良性竞手",
+        "correct_text": "创造一个没有淘汰的良性竞争",
+        "wrong_ids": [
+            7,
+            12
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "四大名著只有二本",
+        "correct_text": "四大名著只有三本",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "因为有花卤石板材",
+        "correct_text": "因为有花岗石板材",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "邓超使出\"邓感光波\"",
+        "correct_text": "邓超使出\"邓感光波\"",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "好像从精神病虎逃出来",
+        "correct_text": "好像从精神病院逃出来",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "满嫌的罪名暂定的是",
+        "correct_text": "涉嫌的罪名暂定的是",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你可以利用服装顾鱼的不同啊",
+        "correct_text": "你可以利用服装颜色的不同啊",
+        "wrong_ids": [
+            7,
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "赵立新，毒牙战队将要把这神圣的一票投绍谁",
+        "correct_text": "赵立新，毒牙战队将要把这神圣的一票投给谁",
+        "wrong_ids": [
+            18
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "从我家骑自行车到这也就光个小时",
+        "correct_text": "从我家骑自行车到这也就半个小时",
+        "wrong_ids": [
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你傻小悦悦这样的事",
+        "correct_text": "你像小悦悦这样的事",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "住着慢后有了汽车，对不对",
+        "correct_text": "住着楼房有了汽车，对不对",
+        "wrong_ids": [
+            2,
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我刚谷大白话",
+        "correct_text": "我叫谷大白话",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "李晨，反情票",
+        "correct_text": "李晨，友情票",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "它就是恐龙和拧檬交配",
+        "correct_text": "它就是恐龙和柠檬交配",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "网上有见百首歌",
+        "correct_text": "网上有几百首歌",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "孙时候从知岁开始喜欢唱歌",
+        "correct_text": "小时候从几岁开始喜欢唱歌",
+        "wrong_ids": [
+            0,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你要走到前面第一个松棉口",
+        "correct_text": "你要走到前面第一个楼梯口",
+        "wrong_ids": [
+            9,
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "是的，晓明（黄晓明）",
+        "correct_text": "是的，晓明（黄晓明）",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "就让我坠入滩",
+        "correct_text": "就让我坠入海",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "巧对影暖",
+        "correct_text": "巧对影联",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "其是很多阴星到中国来做宣发",
+        "correct_text": "其实很多明星到中国来做宣发",
+        "wrong_ids": [
+            1,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "再睁大一点！",
+        "correct_text": "再睁大一点！",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我是发自肺脐地那么去爱",
+        "correct_text": "我是发自肺腑地那么去爱",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "疯道的小船说翻就翻",
+        "correct_text": "友谊的小船说翻就翻",
+        "wrong_ids": [
+            0,
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "还是我个人的道能",
+        "correct_text": "还是我个人的道德",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "其实早在店朝的时候就已经非常盛行了",
+        "correct_text": "其实早在唐朝的时候就已经非常盛行了",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "或者是工车压为大的时候",
+        "correct_text": "或者是工作压力大的时候",
+        "wrong_ids": [
+            4,
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这个是大概听怖",
+        "correct_text": "这个是大概咘咘",
+        "wrong_ids": [
+            5,
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "他们长得太正是了",
+        "correct_text": "他们长得太正常了",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我很喜欢吃冰浊淋",
+        "correct_text": "我很喜欢吃冰淇淋",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "所以我还说希望他何预餐着",
+        "correct_text": "所以我还说希望他们预备着",
+        "wrong_ids": [
+            8,
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你们这记性是实在是芯好了",
+        "correct_text": "你们这记性是实在是忒好了",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这个间红当然解决了",
+        "correct_text": "这个问题当然解决了",
+        "wrong_ids": [
+            2,
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "更温暖的情感交肚",
+        "correct_text": "更温暖的情感交融",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "是一种胜胜胧胧的",
+        "correct_text": "是一种朦朦胧胧的",
+        "wrong_ids": [
+            3,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "但是蔡依林现在的皮肤我态",
+        "correct_text": "但是蔡依林现在的皮肤状态",
+        "wrong_ids": [
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "光实困难模式开启啦",
+        "correct_text": "杜江困难模式开启啦",
+        "wrong_ids": [
+            0,
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我们第一季的选手",
+        "correct_text": "我们第二季的选手",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "没事有点钱就服个毒",
+        "correct_text": "没事有点饯就吸个毒",
+        "wrong_ids": [
+            4,
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "孩子小时候忙子幼儿园的问题",
+        "correct_text": "孩子小时候忙乎幼儿园的问题",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我们这个天是大家就爱心的时候了",
+        "correct_text": "我们这个又是大家献爱心的时候了",
+        "wrong_ids": [
+            4,
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "星二代公主变励走",
+        "correct_text": "星二代公主变励志",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我就能把他眼珠子把出来",
+        "correct_text": "我就能把他眼珠子抠出来",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "当梦全社一都很纠结",
+        "correct_text": "当然全社会都很纠结",
+        "wrong_ids": [
+            1,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "心中的四个的玉子",
+        "correct_text": "心中的四个的王子",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "不一宝说是吃火锅",
+        "correct_text": "不一定说是吃火锅",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我冠宋队的成员了",
+        "correct_text": "我冠军队的成员了",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我到那些曾经帮助过你们成长的人",
+        "correct_text": "找到那些曾经帮助过你们成长的人",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你可以利用服装顾龟的不同啊",
+        "correct_text": "你可以利用服装颜色的不同啊",
+        "wrong_ids": [
+            7,
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "所以我觉得是一个很好知见的朋友",
+        "correct_text": "所以我觉得是一个很好知心的朋友",
+        "wrong_ids": [
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "梅花类华诞三十年",
+        "correct_text": "梅花奖华诞三十年",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你是刚出说吗",
+        "correct_text": "你是刚出院吗",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "第一位幸福心愿持有着",
+        "correct_text": "第一位幸福心愿持有者",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "朝气羞勃",
+        "correct_text": "朝气蓬勃",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "剃须刃和电吹风一份",
+        "correct_text": "剃须刀和电吹风一份",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "娃哈哈格巨斯特别赞助播出的",
+        "correct_text": "娃哈哈格瓦斯特别赞助播出的",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "驾照，通过改格的国家者试..。",
+        "correct_text": "驾照，通过严格的国家考试..。",
+        "wrong_ids": [
+            5,
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "江苏徐州雕宁（县）大社村",
+        "correct_text": "江苏徐州睢宁（县）大社村",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "再巩就把你爹见飞了，你信不",
+        "correct_text": "再巩就把你爹巩飞了，你信不",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "甚车还有一些总莫的旁观者",
+        "correct_text": "甚至还有一些冷漠的旁观者",
+        "wrong_ids": [
+            1,
+            6,
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "本来就需要勇气跨出\"单身\"这一步",
+        "correct_text": "本来就需要勇气跨出″单身\"这一步",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "要吃完一辨儿西瓜",
+        "correct_text": "要吃完一瓣儿西瓜",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "为我守里",
+        "correct_text": "为我守望",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "太家准备好餐巾纸",
+        "correct_text": "大家准备好餐巾纸",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "而且白的，确实是享了福了",
+        "correct_text": "而且真的，确实是享了福了",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "最开始我的父日",
+        "correct_text": "最开始我的父母",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "律师案巍参与本次调解",
+        "correct_text": "律师秦巍参与本次调解",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这提的活动，我觉得很载手",
+        "correct_text": "这样的活动，我觉得很荣幸",
+        "wrong_ids": [
+            1,
+            10,
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "本都，你不知道啊",
+        "correct_text": "小邵，你不知道啊",
+        "wrong_ids": [
+            0,
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "郭恩霆，番木呱的果哭位置真的让人很糊病",
+        "correct_text": "韩恩廷，番木瓜的果实位置真的让人很糊涂",
+        "wrong_ids": [
+            0,
+            2,
+            6,
+            9,
+            18
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "四海公荒第一美男也好",
+        "correct_text": "四海八荒第一美男也好",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "然后她们作息又不规建",
+        "correct_text": "然后她们作息又不规律",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "街小八个们的孩子玩弹球，拍三角",
+        "correct_text": "街上几个门的孩子玩弹球，拍三角",
+        "wrong_ids": [
+            1,
+            2,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "一位是我们经常一在电视容种节目",
+        "correct_text": "一位是我们经常会在电视各种节目",
+        "wrong_ids": [
+            7,
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "扔下去，陶三春拿刀把龙袍界了",
+        "correct_text": "扔下去，陶三春拿刀把龙袍剁了",
+        "wrong_ids": [
+            12
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这么意呀",
+        "correct_text": "这么急呀",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "一个是横着的",
+        "correct_text": "一个是横着的",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "还有这么多赵人的里来一起钱加",
+        "correct_text": "还有这么多艺人前辈来一起参加",
+        "wrong_ids": [
+            5,
+            7,
+            8,
+            12
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "欢迎音乐博主碗豆女孩，小潘鼠",
+        "correct_text": "欢迎音乐博主豌豆女孩，小潘鼠",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "他就会脸恿我妈",
+        "correct_text": "他就会怂恿我妈",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "被警方速捕了",
+        "correct_text": "被警方逮捕了",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "一个被思维能力",
+        "correct_text": "一个没思维能力",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "孙时候从卸岁开始喜欢唱歌",
+        "correct_text": "小时候从几岁开始喜欢唱歌",
+        "wrong_ids": [
+            0,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这个水里胡同是个什么错见",
+        "correct_text": "这个水墨胡同是个什么情况",
+        "wrong_ids": [
+            3,
+            10,
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "三个月后女儿甜磬出生",
+        "correct_text": "三个月后女儿甜馨出生",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "翾落仙女半袭裙",
+        "correct_text": "飘落仙女半袭裙",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "大就在喂小燕",
+        "correct_text": "大燕在喂小燕",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "还是比较变婉的呢",
+        "correct_text": "还是比较委婉的呢",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "就是二拥的校车事件",
+        "correct_text": "就是兰州的校车事件",
+        "wrong_ids": [
+            2,
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "两位战士是心头一展",
+        "correct_text": "两位战士是心头一震",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "完了我就去了，她一摔掇我",
+        "correct_text": "完了我就去了，她一撺掇我",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "颜含是对的",
+        "correct_text": "颜色是对的",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "更不是那些讲谤小璐公主",
+        "correct_text": "更不是那些诽谤小璐公主",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "瞬间可以变成莎土比亚",
+        "correct_text": "瞬间可以变成莎士比亚",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "再次欢迎太家",
+        "correct_text": "再次欢迎大家",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "就是《兆园春，长沙》",
+        "correct_text": "就是《沁园春，长沙》",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "去说我那些花心劈题的事情",
+        "correct_text": "去说我那些花心劈腿的事情",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "或者再约上三预个好友",
+        "correct_text": "或者再约上三五个好友",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "已经拿到了这鹏百宝图",
+        "correct_text": "已经拿到了这册百宝图",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "怎么有点像《非诚幻扰》的小孩版",
+        "correct_text": "怎么有点像《非诚勿扰》的小孩版",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "尽管过程艰脸万分",
+        "correct_text": "尽管过程艰险万分",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "是谁世夺不走的因为是心灵之翼",
+        "correct_text": "是谁也夺不走的因为是心灵之翼",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "因为我觉得肥是对我来说",
+        "correct_text": "因为我觉得肥皂对我来说",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "大家好，我是罗派学",
+        "correct_text": "大家好，我是罗振宇",
+        "wrong_ids": [
+            7,
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "不是你说这个话是个什么息",
+        "correct_text": "不是你说这个话是个什么鬼",
+        "wrong_ids": [
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "是行踪暴路",
+        "correct_text": "是行踪暴露",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我觉得爹的这样的一个影视剧",
+        "correct_text": "我觉得参加这样的一个影视剧",
+        "wrong_ids": [
+            3,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "而团里的老弱胖宅就总是被拎出来躁蹦",
+        "correct_text": "而团里的老弱胖宅就总是被拎出来蹂躏",
+        "wrong_ids": [
+            15,
+            16
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "跟大伙再乐呵乐啊",
+        "correct_text": "跟大伙再乐呵乐呵",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "也算很勾称",
+        "correct_text": "也算很匀称",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "潘霜籍拼死一搏发艳照的举动",
+        "correct_text": "潘霜霜拼死一搏发艳照的举动",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我带了顶非常漂竞的帽子",
+        "correct_text": "我带了顶非常漂亮的帽子",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "海拔四干多米的高原",
+        "correct_text": "海拔四千多米的高原",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "看起来更温磬一点",
+        "correct_text": "看起来更温馨一点",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "自从相思河胖见了你",
+        "correct_text": "自从相思河畔见了你",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你可以利用服装顾色的不同啊",
+        "correct_text": "你可以利用服装颜色的不同啊",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这时候我就从刚（开始）",
+        "correct_text": "这时候我就从刚（开始）",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "从今天开始每周五晚八点半",
+        "correct_text": "从今天开始毎周五晚八点半",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我还是希望自己上台那一到还是漂宽一点",
+        "correct_text": "我还是希望自己上台那一刻还是漂亮一点",
+        "wrong_ids": [
+            11,
+            15
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "在人间守望干年",
+        "correct_text": "在人间守望千年",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "他是非常非常\"轴\"的",
+        "correct_text": "他是非常非常\"轴\"的",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "麦咕大电影的首映式的门票哦",
+        "correct_text": "麦咭大电影的首映式的门票哦",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "淇西二十万各族人民",
+        "correct_text": "滇西二十万各族人民",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "现在咱改正开放时代，家里有电视",
+        "correct_text": "现在咱改革开放时代，家里有电视",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "所以我还说希望他何预爸着",
+        "correct_text": "所以我还说希望他们预备着",
+        "wrong_ids": [
+            8,
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "当时我为什么去王府并",
+        "correct_text": "当时我为什么去王府井",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我觉得确实是一个等常好的一个人",
+        "correct_text": "我觉得确实是一个非常好的一个人",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "没有人知道字宙是怎么产生的",
+        "correct_text": "没有人知道宇宙是怎么产生的",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "大为支持",
+        "correct_text": "大力支持",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "层层叠登的小边露出来之后",
+        "correct_text": "层层叠叠的小边露出来之后",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这个古什喜化当中",
+        "correct_text": "这个古代文化当中",
+        "wrong_ids": [
+            3,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "师博不是说他老婆生病了",
+        "correct_text": "师傅不是说他老婆生病了",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "团为网易考拉海购",
+        "correct_text": "因为网易考拉海购",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "派不快对我崇拜",
+        "correct_text": "还不快对我崇拜",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "人家给拾进来不谢吗",
+        "correct_text": "人家给抬进来不谢吗",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "东刚雪铁龙",
+        "correct_text": "东风雪铁龙",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "澳洲的一个洒吧的话",
+        "correct_text": "澳洲的一个酒吧的话",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "有一个差错，都居也能看见管一管",
+        "correct_text": "有一个差错，邻居也能看见管一管",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "现众朋友们，大家好",
+        "correct_text": "观众朋友们，大家好",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "一次重型现代少年的行动",
+        "correct_text": "一次重塑现代少年的行动",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我今年刚多加完高考",
+        "correct_text": "我今年刚参加完高考",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "科尔儿大草原",
+        "correct_text": "科尔沁大草原",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "哎是的，其实到了秋各啊",
+        "correct_text": "哎是的，其实到了秋冬啊",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "是重锤机器人颂域的霸主",
+        "correct_text": "是重锤机器人领域的霸主",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "千妈作为见证和陪伴",
+        "correct_text": "干妈作为见证和陪伴",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "是我穿着《半月传》里面的盔甲",
+        "correct_text": "是我穿着《芈月传》里面的盔甲",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "享顾茅庐",
+        "correct_text": "三顾茅庐",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "让风继续收，不忍远离",
+        "correct_text": "让风继续吹，不忍远离",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "所以装色跟黑色",
+        "correct_text": "所以紫色跟黑色",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "再下一场什么三杯威土忌",
+        "correct_text": "再下一场什么三杯威士忌",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "往往在负穷和患难当中",
+        "correct_text": "往往在贫穷和患难当中",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "准备到夏感表去了",
+        "correct_text": "准备到夏威夷去了",
+        "wrong_ids": [
+            4,
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "终结者队有机会赢取锦囊",
+        "correct_text": "终结者队有机会赢取锦嚢",
+        "wrong_ids": [
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "政府天球了一种果断的措施",
+        "correct_text": "政府采取了一种果断的措施",
+        "wrong_ids": [
+            2,
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "伤佛带点唏嘘",
+        "correct_text": "彷佛带点唏嘘",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "见到了他们朝思喜想的人",
+        "correct_text": "见到了他们朝思暮想的人",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "兼葭苍苍，白露为霜",
+        "correct_text": "蒹葭苍苍，白露为霜",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "林去颖突熟要拿出什么",
+        "correct_text": "林志颖突然要拿出什么",
+        "wrong_ids": [
+            1,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "准备了也是有（一些日子）",
+        "correct_text": "准备了也是有（一些日子）",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "很温磬啊这个地方",
+        "correct_text": "很温馨啊这个地方",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "紫微星象征着天了",
+        "correct_text": "紫微星象征着天子",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "然后再国来",
+        "correct_text": "然后再回来",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我们决定把公司内部培训体系搬上舞合",
+        "correct_text": "我们决定把公司内部培训体系搬上舞台",
+        "wrong_ids": [
+            16
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我对自己的汗价",
+        "correct_text": "我对自己的评价",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我真想把这憍自行车",
+        "correct_text": "我真想把这辆自行车",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "嘉微的晨光中",
+        "correct_text": "熹微的晨光中",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "传承中华传统文化，相粉学子举行孔面升笔孔",
+        "correct_text": "传承中华传统文化，福州学子举行孔庙开笔礼",
+        "wrong_ids": [
+            9,
+            10,
+            16,
+            17,
+            19
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我觉得关钱是搞定马东老师",
+        "correct_text": "我觉得关键是搞定马东老师",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "那今云我们就来说一下",
+        "correct_text": "那今天我们就来说一下",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "加油，我们的音乐合伙人们",
+        "correct_text": "加油，我们的音乐台伙人们",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "就是他根本就不听指爷",
+        "correct_text": "就是他根本就不听指令",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "爱画画，游冰，还有音乐",
+        "correct_text": "爱画画，游泳，还有音乐",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "（姐姐）",
+        "correct_text": "（姐姐）",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "开始送，有的家其穷",
+        "correct_text": "开始送，有的家真穷",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "皇帝还得让认往他头上",
+        "correct_text": "皇帝还得让人往他头上",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我们今天参委的双方选手",
+        "correct_text": "我们今天参赛的双方选手",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "就是开盾多发期",
+        "correct_text": "就是矛盾多发期",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "盛一伦，《超能陆战队》里面那个",
+        "correct_text": "盛一，伦《超能陆战队》里面那个",
+        "wrong_ids": [
+            2,
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "实际上你的脸型是属于比校小",
+        "correct_text": "实际上你的脸型是属于比较小",
+        "wrong_ids": [
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "高凌风呛马阴狼暴君，九把刀评黑暗",
+        "correct_text": "高凌风呛马阴狠暴君，九把刀评黑暗",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "张光远心说，说什么都不示啊",
+        "correct_text": "张光远心说，说什么都不行啊",
+        "wrong_ids": [
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "各国都承受这种社会首理的阵雄",
+        "correct_text": "各国都承受这种社会管理的阵痛",
+        "wrong_ids": [
+            9,
+            13
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "被无情拖下泥湾的郑恺",
+        "correct_text": "被无情拖下泥潭的郑恺",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "大牌位，少牌位",
+        "correct_text": "大牌位，小牌位",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这属于话相理不粗",
+        "correct_text": "这属于话粗理不粗",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "她就是来自我们台湾的李冠燕老师",
+        "correct_text": "她就是来自我们台湾的李冠慧老师",
+        "wrong_ids": [
+            12
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "任风收，任它乱",
+        "correct_text": "任风吹，任它乱",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这个是大概怖俯",
+        "correct_text": "这个是大概咘咘",
+        "wrong_ids": [
+            5,
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "为了开顶鹤",
+        "correct_text": "为了丹顶鹤",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "演唱会造理不出他",
+        "correct_text": "演唱会造型不出位",
+        "wrong_ids": [
+            4,
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "都付笑淡中",
+        "correct_text": "都付笑谈中",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你觉得你国你爸吗",
+        "correct_text": "你觉得你懂你爸吗",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "咱们换一别的吧，好吧",
+        "correct_text": "咱们换一别的吧，好吧",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "张靓颗演唱会欲模仿碧昂斯，疯狂甩头当场星倒",
+        "correct_text": "张靓颖演唱会欲模仿碧昂斯，疯狂甩头当场晕倒",
+        "wrong_ids": [
+            2,
+            19
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "其实作为一个摇寝歌手",
+        "correct_text": "其实作为一个摇滚歌手",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "没事，没事，_票就不错了",
+        "correct_text": "没事，没事，一票就不错了",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "到我们家的媳妇要对勤恳恳",
+        "correct_text": "到我们家的媳妇要勤勤恳恳",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "金民律入园\"金姓男神\"排行游",
+        "correct_text": "金民律入围\"金姓男神\"排行榜",
+        "wrong_ids": [
+            4,
+            13
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "对本茫目的大力支持",
+        "correct_text": "对本栏目的大力支持",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "就是《逃园春，长沙》",
+        "correct_text": "就是《沁园春，长沙》",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "二月春风似期刀",
+        "correct_text": "二月春风似剪刀",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我叫赵振露",
+        "correct_text": "我叫赵振鑫",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "十一砜筷子，即将干始",
+        "correct_text": "十一双筷子，即将开始",
+        "wrong_ids": [
+            2,
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "丛林家族的行动并并有条",
+        "correct_text": "丛林家族的行动井井有条",
+        "wrong_ids": [
+            7,
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你会怎么的",
+        "correct_text": "你会怎么做",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "自从我有了钱，每天都以花钱力乐",
+        "correct_text": "自从我有了钱，每天都以花钱为乐",
+        "wrong_ids": [
+            13
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "但是我特别不需望大家这么对我",
+        "correct_text": "但是我特别不希望大家这么对我",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "事实上我没有走过这样子的认秀",
+        "correct_text": "事实上我没有走过这样子的大秀",
+        "wrong_ids": [
+            12
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "挑战踪目结舌的曲目",
+        "correct_text": "挑战瞠目结舌的曲目",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我们今天，_二三四五六",
+        "correct_text": "我们今天，一二三四五六",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "说呐呐呐呐鸣呐",
+        "correct_text": "说呐呐呐呐呐呐",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "有右举足轻要的作用",
+        "correct_text": "有着举足轻重的作用",
+        "wrong_ids": [
+            1,
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "在国际上走办腿一定要笔直绝直的",
+        "correct_text": "在国际上走秀腿一定要笔直笔直的",
+        "wrong_ids": [
+            5,
+            12
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "荣辱与共，娜有同等机会",
+        "correct_text": "荣辱与共，拥有同等机会",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "更加精彩和剩激的射箭比赛",
+        "correct_text": "更加精彩和刺激的射箭比赛",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "然后真的很请谢所有人给我的战勋",
+        "correct_text": "然后真的很谢谢所有人给我的鼓励",
+        "wrong_ids": [
+            5,
+            13,
+            14
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "那怎么会被你觉弃了呢",
+        "correct_text": "那怎么会被你抛弃了呢",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "呵我乌龟的中文是什么",
+        "correct_text": "问我乌龟的中文是什么",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "论这如何证明我是谁？",
+        "correct_text": "论：如何证明我是谁？",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "首先将要有访的就是",
+        "correct_text": "首先将要有请的就是",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "最重要的是不要轻易判断双颜手术",
+        "correct_text": "最重要的是不要轻易判断双颢手术",
+        "wrong_ids": [
+            12
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "民间美式猪弓高手，那锋",
+        "correct_text": "民间美式猎弓高手，郭锋",
+        "wrong_ids": [
+            4,
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你喜欢你的校服吗？",
+        "correct_text": "你喜欢你的校服吗？",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "咱们就进人中等收入国家门糙了",
+        "correct_text": "咱们就进入中等收入国家门尴了",
+        "wrong_ids": [
+            4,
+            12
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我想我很适台",
+        "correct_text": "我想我很适合",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "度秒如年谁族的离骚",
+        "correct_text": "度秒如年难挨的离骚",
+        "wrong_ids": [
+            4,
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "每花盛开馥郁芳香",
+        "correct_text": "梅花盛开馥郁芳香",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "到时候我费怎么去调整",
+        "correct_text": "到时候我要怎么去调整",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "太极差不多一年前",
+        "correct_text": "大概差不多一年前",
+        "wrong_ids": [
+            0,
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我觉得心可以",
+        "correct_text": "我觉得还可以",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "张靓预演唱会欲模仿碧昂斯，疯狂甩头当场星倒",
+        "correct_text": "张靓颖演唱会欲模仿碧昂斯，疯狂甩头当场晕倒",
+        "wrong_ids": [
+            2,
+            19
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我是在叫合院胡同里长大的孩子",
+        "correct_text": "我是在四合院胡同里长大的孩子",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我们就准储要",
+        "correct_text": "我们就准备要",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "站在岛上甚至可以远跳金门",
+        "correct_text": "站在岛上甚至可以远眺金门",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "横在家中正中央",
+        "correct_text": "横在家中正中央",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "和应来儿",
+        "correct_text": "和应采儿",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "他投就到子的问题或者重孙子的问题",
+        "correct_text": "他操心孙子的问题或者重孙子的问题",
+        "wrong_ids": [
+            1,
+            2,
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "是因为我在呵上翻泽了",
+        "correct_text": "是因为我在网上翻译了",
+        "wrong_ids": [
+            5,
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "呦哟，快快快",
+        "correct_text": "呦呦，快快快",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "所以说，咋天那种事件",
+        "correct_text": "所以说，昨天那种事件",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "龙其是看到我这个样子",
+        "correct_text": "尤其是看到我这个样子",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "公主病横行荧屏",
+        "correct_text": "公主病横行荧屏",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "为了颠蜜既有观念的机锁",
+        "correct_text": "为了颠覆既有观念的枷锁",
+        "wrong_ids": [
+            3,
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你快小院悦这样的事",
+        "correct_text": "你像小悦悦这样的事",
+        "wrong_ids": [
+            1,
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "有良好的幻通，才能让大家一起成长",
+        "correct_text": "有良好的沟通，才能让大家一起成长",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "一大多妻制的时候",
+        "correct_text": "一夫多妻制的时候",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我我，我才不眷你喝呢",
+        "correct_text": "我我，我才不替你喝呢",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "欧巴（哥哥）就是",
+        "correct_text": "欧巴（哥哥）就是",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "连曾说独自莫凭栏",
+        "correct_text": "谁曾说独自莫凭栏",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "妈妈们选择\"不将就\"",
+        "correct_text": "妈妈们选择″不将就\"",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "努力地淘达别人他",
+        "correct_text": "努力地淘汰别人吧",
+        "wrong_ids": [
+            4,
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "爱画画，游泳，还有普乐",
+        "correct_text": "爱画画，游泳，还有音乐",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我们决定把公司内部培训体系被上舞合",
+        "correct_text": "我们决定把公司内部培训体系搬上舞台",
+        "wrong_ids": [
+            13,
+            16
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "故官博物院携手八家国家级重点博物馆",
+        "correct_text": "故宫博物院携手八家国家级重点博物馆",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "晕能，快走吧",
+        "correct_text": "晕船，快走吧",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "就不能管理好白家的道理",
+        "correct_text": "就不能管理好自家的道理",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "吵不卓的歌远天后，爆不完的人卦奇间",
+        "correct_text": "吵不停的歌坛天后，爆不完的八卦奇闻",
+        "wrong_ids": [
+            2,
+            5,
+            13,
+            16
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "张平，念速来水",
+        "correct_text": "张平，急速来水",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "永自绵阳",
+        "correct_text": "来自绵阳",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "盼只盼桃牵第春春色满园",
+        "correct_text": "盼只盼桃李争春春色满园",
+        "wrong_ids": [
+            4,
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "番番：之前有表演篮球吗",
+        "correct_text": "番番：之前有表演篮球吗",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "勤劳肯千",
+        "correct_text": "勤劳肯干",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "兜七脸还干争呢",
+        "correct_text": "兜比脸还干净呢",
+        "wrong_ids": [
+            1,
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这倒麻是怎么回事",
+        "correct_text": "这倒底是怎么回事",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这样的活动，我觉没很来事",
+        "correct_text": "这样的活动，我觉得很荣幸",
+        "wrong_ids": [
+            8,
+            10,
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "那你绍常要到南京来录像",
+        "correct_text": "那你经常要到南京来录像",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "裔葩说的高跷松",
+        "correct_text": "奇葩说的高晓松",
+        "wrong_ids": [
+            0,
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你们仨就吃傣菜",
+        "correct_text": "你们仁就吃傣菜",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这队看起来很器张",
+        "correct_text": "这队看起来很嚣张",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "热血的检察官一_符伟",
+        "correct_text": "热血的检察官__符伟",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "农业科技优势，汪助武\"台湾农业卖到以色列",
+        "correct_text": "农业科技优势，汪勋武：台湾农业卖到以色列",
+        "wrong_ids": [
+            8,
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "不同的人对我有不同的汗价",
+        "correct_text": "不同的人对我有不同的评价",
+        "wrong_ids": [
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "为什么我刚出虎",
+        "correct_text": "为什么我刚出院",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我却束手无茉",
+        "correct_text": "我却束手无策",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我们要举立一个活动",
+        "correct_text": "我们要举办一个活动",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你叫刘兆圆",
+        "correct_text": "你叫刘沁圆",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这那下说",
+        "correct_text": "这私下说",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你要走到前面第一个尴梯口",
+        "correct_text": "你要走到前面第一个楼梯口",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "王吗，你干吗",
+        "correct_text": "干吗，你干吗",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "好像就很融治，很合适",
+        "correct_text": "好像就很融洽，很合适",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我以前学艺术体换的时候",
+        "correct_text": "我以前学艺术体操的时候",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "想不到比平时录的更顺和",
+        "correct_text": "想不到比平时录的更顺利",
+        "wrong_ids": [
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "不刚能，没有",
+        "correct_text": "不可能，没有",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "江苏者射箭队领队",
+        "correct_text": "江苏省射箭队领队",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "目中无火",
+        "correct_text": "目中无人",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "选手们等待人场",
+        "correct_text": "选手们等待入场",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "龙江儿女共视愿",
+        "correct_text": "龙江儿女共祝愿",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "即使在累积了一大拔粉丝的基础上",
+        "correct_text": "即使在累积了一大拨粉丝的基础上",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "打一抢换一个地方",
+        "correct_text": "打一枪换一个地方",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "第一次的座位就可好庆功吗",
+        "correct_text": "第一次的座位就可以成功吗",
+        "wrong_ids": [
+            8,
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "觉得一只够子和一只乌鹏",
+        "correct_text": "觉得一只鸽子和一只乌鸦",
+        "wrong_ids": [
+            4,
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "没有社会眼务机打跟上",
+        "correct_text": "没有社会服务机构跟上",
+        "wrong_ids": [
+            4,
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "没必要再跃想",
+        "correct_text": "没必要再联想",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "中国好红居这个节目太棒了",
+        "correct_text": "中国好邻居这个节目太棒了",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "就是不盾多发期",
+        "correct_text": "就是矛盾多发期",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "请到何暴来帮忙",
+        "correct_text": "请到何炅来帮忙",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "团体冠界，陈玲",
+        "correct_text": "团体冠军，陈玲",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "台下一个种形的身影",
+        "correct_text": "台下一个神秘的身影",
+        "wrong_ids": [
+            4,
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "住着怪房有了汽车，对不对",
+        "correct_text": "住着楼房有了汽车，对不对",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "快速进入工作状态了",
+        "correct_text": "快速进入工作状态！",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "占有他的时何",
+        "correct_text": "占有他的时间",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "往哪现，你还要怎么巩",
+        "correct_text": "往哪巩，你还要怎么巩",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "哎呀，那大个箱子落死边了",
+        "correct_text": "哎呀，那大个箱子落外边了",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "发晨应该有三点多",
+        "correct_text": "凌晨应该有三点多",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "还有江聚京城的各省地道吃食儿",
+        "correct_text": "还有汇聚京城的各省地道吃食儿",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "那么什么是欧巴凡哥哥）呢",
+        "correct_text": "那么什么是欧巴（哥哥）呢",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "给他哥来三爷子弄死了",
+        "correct_text": "给他哥来三斧子弄死了",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "特侦组溢权",
+        "correct_text": "特侦组滥权",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "真的很谢谢大象",
+        "correct_text": "真的很谢谢大家",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你对双预手术感兴趣吗",
+        "correct_text": "你对双颚手术感兴趣吗",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "然后少吃辛辣刺激甜的油作食物",
+        "correct_text": "然后少吃辛辣刺激甜的油炸食物",
+        "wrong_ids": [
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "陌生人就会邻里也不可能管你",
+        "correct_text": "陌生人社会邻里也不可能管你",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "成员必须科目前往生存地",
+        "correct_text": "成员必须独自前往生存地",
+        "wrong_ids": [
+            4,
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "今天白二作来不是就这个问题说",
+        "correct_text": "今天请二位来不是就这个问题说",
+        "wrong_ids": [
+            2,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "当的没有说什么溜催儿这事儿",
+        "correct_text": "当时没有说什么溜缝儿这事儿",
+        "wrong_ids": [
+            1,
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我们家树林不光名学霸气",
+        "correct_text": "我们家树林不光名字霸气",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "啊琼她究竟去哪了",
+        "correct_text": "阿琼她究竟去哪了",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "追风少正王俊凯",
+        "correct_text": "追风少年王俊凯",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "第一个环节的攻播者",
+        "correct_text": "第一个环节的攻擂者",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这个星连估计没有多大的改变了",
+        "correct_text": "这个星途估计没有多大的改变了",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "京润拦珠特约播映",
+        "correct_text": "京润珍珠特约播映",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这是比较难的一件事情",
+        "correct_text": "这是比较难得一见事情",
+        "wrong_ids": [
+            5,
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "和中国超常人才选技的实践经验",
+        "correct_text": "和中国超常人才选拔的实践经验",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "邻美家是上面吗",
+        "correct_text": "邹美家是上面吗",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "哎呀，我还想（睡）",
+        "correct_text": "哎呀，我还想（睡）",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "一位是中国人民大学的教投张鸣先生",
+        "correct_text": "一位是中国人民大学的教授张鸣先生",
+        "wrong_ids": [
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我在道现上很在乎",
+        "correct_text": "我在造型上很在乎",
+        "wrong_ids": [
+            2,
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "逄年过节咋给老师送礼啊",
+        "correct_text": "逢年过节咋给老师送礼啊",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "其是很多明星到中国来战宣发",
+        "correct_text": "其实很多明星到中国来做宣发",
+        "wrong_ids": [
+            1,
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "进行一个排守榜",
+        "correct_text": "进行一个排行榜",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "因为担心无法看炮",
+        "correct_text": "因为担心无法看见",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "十一观筷子，即将开始",
+        "correct_text": "十一双筷子，即将开始",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "他就会脸展我妈",
+        "correct_text": "他就会怂恿我妈",
+        "wrong_ids": [
+            3,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "自费跨越牛球",
+        "correct_text": "自费跨越半球",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "怎么有点像《非诚勾扰》的小孩版",
+        "correct_text": "怎么有点像《非诚勿扰》的小孩版",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "说是为了创作为了工作的需费",
+        "correct_text": "说是为了创作为了工作的需要",
+        "wrong_ids": [
+            12
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "都不要在发型上和农着打粉上",
+        "correct_text": "都不要在发型上和衣着打扮上",
+        "wrong_ids": [
+            8,
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "所以这个事道的很牵动着我们的正",
+        "correct_text": "所以这个事真的很牵动着我们的心",
+        "wrong_ids": [
+            5,
+            14
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "放在你身边你会习愤吗",
+        "correct_text": "放在你身边你会习惯吗",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "不在财啡馆",
+        "correct_text": "不在咖啡馆",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你这样容易制利知道吗",
+        "correct_text": "你这样容易判刑知道吗",
+        "wrong_ids": [
+            5,
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "大家好，我叫徐精荧",
+        "correct_text": "大家好，我叫徐婧荧",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "窦跟我们的冠军们一试高下",
+        "correct_text": "要跟我们的冠军们一试高下",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "就是非常多的那子树",
+        "correct_text": "就是非常多的椰子树",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "今日脱单，_点不难",
+        "correct_text": "今日脱单，一点不难",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "都不要在发迎上和衣着打扮上",
+        "correct_text": "都不要在发型上和衣着打扮上",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我们繁个暑假的时尚搭配",
+        "correct_text": "我们整个暑假的时尚搭配",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "妳脸子里在想有哪些种类",
+        "correct_text": "妳脑子里在想有哪些种类",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "加貉字只是表象，缺乏安全感才是实质",
+        "correct_text": "加名字只是表象，缺乏安全感才是实质",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "影视剧当家花日",
+        "correct_text": "影视剧当家花旦",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "包括跟帮练都有关系",
+        "correct_text": "包括跟锻炼都有关系",
+        "wrong_ids": [
+            3,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "如果周杰伦和子健能",
+        "correct_text": "如果周杰伦和李健能",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "很快就都决了",
+        "correct_text": "很快就解决了",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "现够的签害会我本人有去现够",
+        "correct_text": "现场的签售会我本人有去现场",
+        "wrong_ids": [
+            1,
+            4,
+            12
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "有时候世叫贾斯丁比阳后援会会长",
+        "correct_text": "有时候也叫贾斯丁比伯后援会会长",
+        "wrong_ids": [
+            3,
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我要改呈纪录",
+        "correct_text": "我要改写纪录",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "不需要孩辩了，没有脚边的时间",
+        "correct_text": "不需要狡辩了，没有脚边的时间",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "胡同坚固的样卵结构",
+        "correct_text": "胡同坚固的榫卯结构",
+        "wrong_ids": [
+            5,
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "他像也到子的问题或者重孙子的问题",
+        "correct_text": "他操心孙子的问题或者重孙子的问题",
+        "wrong_ids": [
+            1,
+            2,
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "（新的天地》",
+        "correct_text": "《新的天地》",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "深藏不露是人戒",
+        "correct_text": "深藏不露是八戒",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "想帮助族长参与建设现场",
+        "correct_text": "也帮助族长参与建设现场",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "是打在了火蜥明的顶部装甲",
+        "correct_text": "是打在了火蜥蜴的顶部装甲",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "严重的类风湿柱关节炎患者",
+        "correct_text": "严重的类风湿性关节炎患者",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "是阿宝在里面踢趋子",
+        "correct_text": "是阿宝在里面踢毽子",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "因为还是比较经验不是在这一方面",
+        "correct_text": "因为还是比较经验不足在这一方面",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "有时候我觉得生活像烹任",
+        "correct_text": "有时候我觉得生活像烹饪",
+        "wrong_ids": [
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "就会成为恐龙柠样",
+        "correct_text": "就会成为恐龙柠檬",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "冲上舞台给你送花的那个情严啊",
+        "correct_text": "冲上舞台给你送花的那个情形啊",
+        "wrong_ids": [
+            12
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你们才能更好地奋选",
+        "correct_text": "你们才能更好地奋进",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "收啊吹啊，无所谓勇敢的我",
+        "correct_text": "吹啊吹啊，无所谓勇敢的我",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "民族文化如烂辉煌",
+        "correct_text": "民族文化灿烂辉煌",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "驾照，通过兴洛的国家考试..。",
+        "correct_text": "驾照，通过严格的国家考试..。",
+        "wrong_ids": [
+            5,
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "两个非常他套的问题",
+        "correct_text": "两个非常俗套的问题",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "那好谈开重要会以似的保安来严",
+        "correct_text": "那好像开重要会议似的保安森严",
+        "wrong_ids": [
+            2,
+            7,
+            12
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "有没有人在你扫她的时候觉得你辛苦了",
+        "correct_text": "有没有人在你扫地的时候觉得你辛苦了",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "（第十八届梅花奖获得者）",
+        "correct_text": "（第十八届梅花奖获得者）",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "早冰鞋是和冰刀学的",
+        "correct_text": "旱冰鞋是和冰刀学的",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "而且交通非常使利",
+        "correct_text": "而且交通非常便利",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我给你写后",
+        "correct_text": "我给你写信",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "不是很什感",
+        "correct_text": "不是很性感",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "盛一伦，才就是分标到明白到这一点",
+        "correct_text": "盛一伦，才就是分析到明白到这一点",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "大家可以通过栏耳的微博微信",
+        "correct_text": "大家可以通过栏目的微博微信",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "在真正婆走的时候我就知道",
+        "correct_text": "在真正要走的时候我就知道",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "冬季这样一个盔穿好时机了",
+        "correct_text": "冬季这样一个叠穿好时机了",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "十一砜筷子，即将开始",
+        "correct_text": "十一双筷子，即将开始",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "董子健的辆秘人",
+        "correct_text": "蕫子健的神秘人",
+        "wrong_ids": [
+            0,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "它有一个特别大的禁最就是剧速",
+        "correct_text": "它有一个特别大的禁忌就是剧透",
+        "wrong_ids": [
+            9,
+            13
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "人家上个礼拜在第五太道呢",
+        "correct_text": "人家上个礼拜在第五大道呢",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "但今天又突然\"杀\"出三位新人",
+        "correct_text": "但今天又突然\"杀\"出三位新人",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我呢。喜欢能让我心跳加速的人",
+        "correct_text": "我呢.喜欢能让我心跳加速的人",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "所以搭了一个淡粉包的羊绒围巾",
+        "correct_text": "所以搭了一个淡粉色的羊绒围巾",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "杨伶闲，上海知名女艺人，主持过《东京印象》",
+        "correct_text": "杨伶俐，上海知名女艺人，主持过《东京印象》",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "邻美家在那边",
+        "correct_text": "邹美家在那边",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我间就以现在开始谈这个话题",
+        "correct_text": "我们就从现在开始谈这个话题",
+        "wrong_ids": [
+            1,
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这里却是硝姻弥漫的战场",
+        "correct_text": "这里却是硝烟弥漫的战场",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "就是非常多的哪子树",
+        "correct_text": "就是非常多的椰子树",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "其实我觉得不用给女明星找猎口",
+        "correct_text": "其实我觉得不用给女明星找借口",
+        "wrong_ids": [
+            12
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "有这五个字粒粒背辛苦",
+        "correct_text": "有这五个字粒粒皆辛苦",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "在做上发现的密集的吗吵",
+        "correct_text": "在树上发现的密集的蚂蚁",
+        "wrong_ids": [
+            1,
+            9,
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "咱们位该每多的关注什么",
+        "correct_text": "咱们应该多多的关注什么",
+        "wrong_ids": [
+            2,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "又给我们带来怎样的秋冬扮认小妙招呢",
+        "correct_text": "又给我们带来怎样的秋冬扮靓小妙招呢",
+        "wrong_ids": [
+            12
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "还身怀一甲",
+        "correct_text": "还身怀六甲",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "当骁你是因为胖了吗",
+        "correct_text": "肖骁你是因为胖了吗",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "孩话那么多千什么",
+        "correct_text": "废话那么多干什么",
+        "wrong_ids": [
+            0,
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "生病的完俊和谭",
+        "correct_text": "生病的元俊和谭",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "一你忍忍吧",
+        "correct_text": "-你忍忍吧",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "南马恐龙哥，朱爱",
+        "correct_text": "南马恐龙哥，朱昊",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "那我现在先去买点儿莱吧",
+        "correct_text": "那我现在先去买点儿菜吧",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "好卖实也不会卖",
+        "correct_text": "你卖菜也不会卖",
+        "wrong_ids": [
+            0,
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "很真实很，特别",
+        "correct_text": "很真实，很特别",
+        "wrong_ids": [
+            3,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "土豆片炒士豆片",
+        "correct_text": "土豆片炒土豆片",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "继续为大家有诗到的是",
+        "correct_text": "继续为大家有请到的是",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "温哪打工那个的片",
+        "correct_text": "温州打工那个匪片",
+        "wrong_ids": [
+            1,
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "王小女儿",
+        "correct_text": "王小欠儿",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "四海八荒第一美男候大可",
+        "correct_text": "四海八荒第一美男侯大可",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "感谢量龙高清偏光太阳镜",
+        "correct_text": "感谢暴龙高清偏光太阳镜",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "有的时候我特别羡慕老先生",
+        "correct_text": "有的时候我特别羡慕老先生",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "盼只盼桃车争春春色满园",
+        "correct_text": "盼只盼桃李争春春色满园",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "吃饭叫嘎嗄",
+        "correct_text": "吃饭叫嘎嘎",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "幼儿园脚小学的校园里面交生的",
+        "correct_text": "幼儿园和小学的校园里面发生的",
+        "wrong_ids": [
+            3,
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "一些影视相关的好不的视频",
+        "correct_text": "一些影视相关的好玩的视频",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "今日天注",
+        "correct_text": "今日关注",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "录都《画壁》王题曲拉果非常好",
+        "correct_text": "录制《画壁》主题曲效果非常好",
+        "wrong_ids": [
+            1,
+            6,
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "鹿，晗我好紧张呀",
+        "correct_text": "鹿晗，我好紧张呀",
+        "wrong_ids": [
+            1,
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "所以为什么不务正儿呢",
+        "correct_text": "所以为什么不务正业呢",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "全国室外射箭锦标英",
+        "correct_text": "全国室外射箭锦标赛",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "全国射箭俱乐部爽冠界",
+        "correct_text": "全国射箭俱乐部赛冠军",
+        "wrong_ids": [
+            7,
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "政府来歌了一种果断的措施",
+        "correct_text": "政府采取了一种果断的措施",
+        "wrong_ids": [
+            2,
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我仍决定把公司内部培训体系被上舞合",
+        "correct_text": "我们决定把公司内部培训体系搬上舞台",
+        "wrong_ids": [
+            1,
+            13,
+            16
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "有完，但是不进我们那胡同",
+        "correct_text": "有车，但是不进我们那胡同",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "经才四年的相处",
+        "correct_text": "经过四年的相处",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这倒底是怎么间事",
+        "correct_text": "这倒底是怎么回事",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "民间关式猎弓高手，郭锋",
+        "correct_text": "民间美式猎弓高手，郭锋",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "当他出戏之后发现",
+        "correct_text": "当他出狱之后发现",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "比如《何以笙新默》里边的何以璨",
+        "correct_text": "比如《何以笙箫默》里边的何以琛",
+        "wrong_ids": [
+            6,
+            14
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你们家那个小周周怎么为",
+        "correct_text": "你们家那个小周周怎么办",
+        "wrong_ids": [
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "还能在女性情感专家，苏梦",
+        "correct_text": "还能在女性情感专家，苏芩",
+        "wrong_ids": [
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "绝对是影视圈合金汤匙出生的小公主",
+        "correct_text": "绝对是影视圈含金汤匙出生的小公主",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "风雅顺型公主标杆",
+        "correct_text": "风雅颂型公主标杆",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "姐姐梁女土告诉我们",
+        "correct_text": "姐姐梁女士告诉我们",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "该子以后怎么办",
+        "correct_text": "孩子以后怎么办",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "己贯慷概热心的我",
+        "correct_text": "一贯慷慨热心的我",
+        "wrong_ids": [
+            0,
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "两知搭档",
+        "correct_text": "两人搭档",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "进行考核开给出建议",
+        "correct_text": "进行考核并给出建议",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "大女天我在这儿乘凉",
+        "correct_text": "大冬天我在这儿乘凉",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "其实他比任何一个男子汉都例强",
+        "correct_text": "其实他比任何一个男子汉都刚强",
+        "wrong_ids": [
+            12
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我觉得璃实是一个非带好的一个人",
+        "correct_text": "我觉得确实是一个非常好的一个人",
+        "wrong_ids": [
+            3,
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "而且我觉得我有些动怕",
+        "correct_text": "而且我觉得我有些动作",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "家里边情感间都进不去人了",
+        "correct_text": "家里边储藏间都进不去人了",
+        "wrong_ids": [
+            3,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "是我这几年省吃位用攒下的",
+        "correct_text": "是我这几年省吃俭用攒下的",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "很好的很堵齐的四合匠",
+        "correct_text": "很好的很整齐的四合院",
+        "wrong_ids": [
+            4,
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "不心为欢乐领做最后务力",
+        "correct_text": "齐心为欢乐颂做最后努力",
+        "wrong_ids": [
+            0,
+            5,
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "音拉鲁滋部落",
+        "correct_text": "吾拉鲁滋部落",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "成人痘真的不大好治",
+        "correct_text": "成人痘真的不太好治",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "长城大下开始前四小时",
+        "correct_text": "长城大秀开始前四小时",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我觉得多加这样的一个院恐剧",
+        "correct_text": "我觉得参加这样的一个影视剧",
+        "wrong_ids": [
+            3,
+            10,
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "当兄弟们正激烈对拉咖",
+        "correct_text": "当兄弟们正激烈对抗时",
+        "wrong_ids": [
+            8,
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "争分夺秒问赛道",
+        "correct_text": "争分夺秒闯赛道",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "恩爱小天妻李技弦子",
+        "correct_text": "恩爱小夫妻李茂弦子",
+        "wrong_ids": [
+            3,
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "他是最干净纯辩的",
+        "correct_text": "他是最干净纯粹的",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "在国际委场上",
+        "correct_text": "在国际赛场上",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "着一下你",
+        "correct_text": "看一下你",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "然后我老么人在北京工作",
+        "correct_text": "然后我老公人在北京工作",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "娱乐速递候佩岁结婚三个月至会未要说",
+        "correct_text": "娱乐速递侯佩岑结婚三个月至今未登记",
+        "wrong_ids": [
+            4,
+            6,
+            13,
+            15,
+            16
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "潘箱箱拼死一搏发艳照的举动",
+        "correct_text": "潘霜霜拼死一搏发艳照的举动",
+        "wrong_ids": [
+            1,
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你那时候到哪创土去",
+        "correct_text": "你那时候到哪刨土去",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "各懂都水受这种社会管理的阵演",
+        "correct_text": "各国都承受这种社会管理的阵痛",
+        "wrong_ids": [
+            1,
+            3,
+            13
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "艰难的进的老年打",
+        "correct_text": "艰难前进的老年凯",
+        "wrong_ids": [
+            2,
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这里是韩国的江商",
+        "correct_text": "这里是韩国的江南",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "对活的只有冷气，在为我叹息",
+        "correct_text": "对话的只有冷气，在为我叹息",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "江苏沓射箭队领队",
+        "correct_text": "江苏省射箭队领队",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "那会天带来什么才艺",
+        "correct_text": "那今天带来什么才艺",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "担率的来说",
+        "correct_text": "坦率的来说",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "及各地方电视合的热挥嘉宾",
+        "correct_text": "及各地方电视台的热捧嘉宾",
+        "wrong_ids": [
+            6,
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "看到他们分开的时侯",
+        "correct_text": "看到他们分开的时候",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "让他去微开心屁呢",
+        "correct_text": "让他去敞开心扉呢",
+        "wrong_ids": [
+            3,
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "勃朗专业化拉造型学校",
+        "correct_text": "勃朗专业化妆造型学校",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "能够打开面前的这些记亿宝箱",
+        "correct_text": "能够打开面前的这些记忆宝箱",
+        "wrong_ids": [
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "其实他认为钱是他的表达爱的方量",
+        "correct_text": "其实他认为钱是他的表达爱的方式",
+        "wrong_ids": [
+            14
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "传承中华传犹文化，调别学子举行孔庙开笔礼",
+        "correct_text": "传承中华传统文化，福州学子举行孔庙开笔礼",
+        "wrong_ids": [
+            5,
+            9,
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这么大制作的一个电呢",
+        "correct_text": "这么大制作的一个电影",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我们的高肤秘老师，蔡康永老师",
+        "correct_text": "我们的高晓松老师，蔡康永老师",
+        "wrong_ids": [
+            4,
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "因为当初在闷上有很多热议",
+        "correct_text": "因为当初在网上有很多热议",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "诶，哪个晓得",
+        "correct_text": "诶，啷个晓得",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "一号到底踏不踏实？",
+        "correct_text": "三号到底踏不踏实？",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这个日都来我家四五回了",
+        "correct_text": "这个月都来我家四五回了",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "雷要一段时间去近应",
+        "correct_text": "需要一段时间去适应",
+        "wrong_ids": [
+            0,
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "人家要用自己并不深遂的眼睛",
+        "correct_text": "人家要用自己并不深邃的眼睛",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我的心痛竞是",
+        "correct_text": "我的心痛竟是",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "在北京脾明群雄",
+        "correct_text": "在北京睥睨群雄",
+        "wrong_ids": [
+            3,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "最夸张应该是一天五次到大次吧",
+        "correct_text": "最夸张应该是一天五次到六次吧",
+        "wrong_ids": [
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这都是在医生允统的范国之内",
+        "correct_text": "这都是在医生允许的范围之内",
+        "wrong_ids": [
+            7,
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "可是我们那时挥一受的是一种安全",
+        "correct_text": "可是我们那时候享受的是一种安全",
+        "wrong_ids": [
+            6,
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "更健担，更好的成长",
+        "correct_text": "更健康，更好的成长",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "他也演不起请保姆的钱",
+        "correct_text": "他也掏不起请保姆的钱",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我们的这个淇越路",
+        "correct_text": "我们的这个滇越路",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "几十年苦追求无梅无怨",
+        "correct_text": "几十年苦追求无悔无怨",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "全国射箭俱乐部逐冠孕",
+        "correct_text": "全国射箭俱乐部赛冠军",
+        "wrong_ids": [
+            7,
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "后来马老师有一句活打动了我",
+        "correct_text": "后来马老师有一句话打动了我",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "见到了他们朝思薯想的人",
+        "correct_text": "见到了他们朝思暮想的人",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "温外打工那个的片",
+        "correct_text": "温州打工那个匪片",
+        "wrong_ids": [
+            1,
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "熟巴来了",
+        "correct_text": "热巴来了",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "还是比较零游的呢",
+        "correct_text": "还是比较委婉的呢",
+        "wrong_ids": [
+            4,
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "总是能头到非常多的东西",
+        "correct_text": "总是能买到非常多的东西",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "一位是我们爱常会在电机各种节目",
+        "correct_text": "一位是我们经常会在电视各种节目",
+        "wrong_ids": [
+            5,
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "贵州最佳少数民族服坑",
+        "correct_text": "贵州最佳少数民族服饰",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "韩恩强，不吃也很饱",
+        "correct_text": "韩恩廷，不吃也很饱",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "左正享青春的年纪",
+        "correct_text": "在正享青春的年纪",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "有点那种挺摸的感觉",
+        "correct_text": "有点那种抚摸的感觉",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "不会像有一些辣到候咙不舒服",
+        "correct_text": "不会像有一些辣到喉咙不舒服",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "已到达马上确认材科状态",
+        "correct_text": "已到达马上确认材料状态",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "可以因了这个愿望",
+        "correct_text": "可以圆了这个愿望",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我落下这个枋根了",
+        "correct_text": "我落下这个病根了",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这个古什文化当中",
+        "correct_text": "这个古代文化当中",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "裤花盛开馥都芳香",
+        "correct_text": "梅花盛开馥郁芳香",
+        "wrong_ids": [
+            0,
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "就在这个不船",
+        "correct_text": "就在这个小船",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你知道就算大雨让整应城前颠倒",
+        "correct_text": "你知道就算大雨让整座城市颠倒",
+        "wrong_ids": [
+            9,
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "对于妻子提到的这种\"调虎离山\"的传俩",
+        "correct_text": "对于妻子提到的这种\"调虎离山\"的伎俩",
+        "wrong_ids": [
+            16
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "为了颠覆既有观念的机锁",
+        "correct_text": "为了颠覆既有观念的枷锁",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "兼度苍苍，白露为霜",
+        "correct_text": "蒹葭苍苍，白露为霜",
+        "wrong_ids": [
+            0,
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "在艺术上的\"靳爸\"",
+        "correct_text": "在艺术上的\"靳爸\"",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "但是可以共苦都不能同甘的夫妻",
+        "correct_text": "但是可以共苦却不能同甘的夫妻",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "虫子，我以为是把粑",
+        "correct_text": "虫子，我以为是粑粑",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "然后我就只好马上跟他团说",
+        "correct_text": "然后我就只好马上跟他回说",
+        "wrong_ids": [
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我们已经尽力境救她的生命了",
+        "correct_text": "我们已经尽力挽救她的生命了",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "恩是，看来这样的时尚元表啊",
+        "correct_text": "恩是，看来这样的时尚元素啊",
+        "wrong_ids": [
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "把拿声送给我们各位",
+        "correct_text": "把掌声送给我们各位",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "让我们等声欢迎这位设计师",
+        "correct_text": "让我们掌声欢迎这位设计师",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "她中间也会天意的激我一些东酒",
+        "correct_text": "她中间也会无意的教我一些东西",
+        "wrong_ids": [
+            5,
+            8,
+            13
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我们来的是蟒蛇品",
+        "correct_text": "我们来的是蟒蛇岛",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你们各的为战",
+        "correct_text": "你们各自为战",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "父女俩帮要骑行一个小时",
+        "correct_text": "父女俩需要骑行一个小时",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "家长一个一个接孩子都有于续的",
+        "correct_text": "家长一个一个接孩子都有手续的",
+        "wrong_ids": [
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "大客天我在这儿来凉",
+        "correct_text": "大冬天我在这儿乘凉",
+        "wrong_ids": [
+            1,
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "好像欢精神病说逃出来",
+        "correct_text": "好像从精神病院逃出来",
+        "wrong_ids": [
+            2,
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "好人不见",
+        "correct_text": "好久不见",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "谭警官我想跟你台影可以不",
+        "correct_text": "谭警官我想跟你合影可以不",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "所有的音乐台伙人",
+        "correct_text": "所有的音乐合伙人",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "等到结束以后再给能打电话",
+        "correct_text": "等到结束以后再给他打电话",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "童存瑞的童，智慧的慧",
+        "correct_text": "董存瑞的董，智慧的慧",
+        "wrong_ids": [
+            0,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "让我们举声欢迎这位设计师",
+        "correct_text": "让我们掌声欢迎这位设计师",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "直播的时候我还是天业呢",
+        "correct_text": "直播的时候我还是天仙呢",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "是凤且卫视",
+        "correct_text": "是凤凰卫视",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "解说，全新升级版的火蜥螺",
+        "correct_text": "解说，全新升级版的火蜥蜴",
+        "wrong_ids": [
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "全国室外射箭锦标变",
+        "correct_text": "全国室外射箭锦标赛",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "那怎么会被你趟弃了呢",
+        "correct_text": "那怎么会被你抛弃了呢",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这个间题当然解决了",
+        "correct_text": "这个问题当然解决了",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "杨伦闲，上海知名女艺人，主持过《东京印象》",
+        "correct_text": "杨伶俐，上海知名女艺人，主持过《东京印象》",
+        "wrong_ids": [
+            1,
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "咱们这该特多的关注什么",
+        "correct_text": "咱们应该多多的关注什么",
+        "wrong_ids": [
+            2,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "一提到孩子都很到造",
+        "correct_text": "一提到孩子都很纠结",
+        "wrong_ids": [
+            7,
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "它有一个特别大的票忌就是剧逛",
+        "correct_text": "它有一个特别大的禁忌就是剧透",
+        "wrong_ids": [
+            8,
+            13
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "沙糖桔真诚愿切地敬上",
+        "correct_text": "沙糖桔真诚恳切地敬上",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "他投世到子的问题或者重孙子的问题",
+        "correct_text": "他操心孙子的问题或者重孙子的问题",
+        "wrong_ids": [
+            1,
+            2,
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "皇帝还得让人住他头上",
+        "correct_text": "皇帝还得让人往他头上",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "料涂宙，糊涂神儿",
+        "correct_text": "糊涂庙，糊涂神儿",
+        "wrong_ids": [
+            0,
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你知道就算大雨让整应城而颠倒",
+        "correct_text": "你知道就算大雨让整座城市颠倒",
+        "wrong_ids": [
+            9,
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "幼儿国和小学的校园里面发生的",
+        "correct_text": "幼儿园和小学的校园里面发生的",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "世纪佳缘的高级副总载",
+        "correct_text": "世纪佳缘的高级副总裁",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "有春韩国的北京南锣鼓巷之称",
+        "correct_text": "有着韩国的北京南锣鼓巷之称",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你又会说女人太员心了",
+        "correct_text": "你又会说女人太贪心了",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "今日精彩预告",
+        "correct_text": "今日精彩预告",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "跑过来做英语视烦的翻泽",
+        "correct_text": "跑过来做英语视频的翻译",
+        "wrong_ids": [
+            7,
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "取而优之的是一场致敬",
+        "correct_text": "取而代之的是一场致敬",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "因为你现在更到各个校国去",
+        "correct_text": "因为你现在再到各个校园去",
+        "wrong_ids": [
+            5,
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "坚守原向，记录真实",
+        "correct_text": "坚守原创，记录真实",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "说跑到什么红甸",
+        "correct_text": "说跑到什么缅甸",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我是故宫博物院的看门人单雾翔",
+        "correct_text": "我是故宫博物院的看门人单霁翔",
+        "wrong_ids": [
+            12
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我来喂你喝适",
+        "correct_text": "我来喂你喝酒",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "是人生的火修课",
+        "correct_text": "是人生的必修课",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "《秘园春，长沙》",
+        "correct_text": "《沁园春，长沙》",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "各位现众好",
+        "correct_text": "各位观众好",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "金牌调解员金洪",
+        "correct_text": "金牌调解员徐洪",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "去望向更加深速的远方",
+        "correct_text": "去望向更加深邃的远方",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "哪怕遇见再大的风险",
+        "correct_text": "哪怕遇见再大的风脸",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "是夏威亮的沙",
+        "correct_text": "是夏威夷的沙",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "去望向更加深遮的远方",
+        "correct_text": "去望向更加深邃的远方",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "陪你耗到走",
+        "correct_text": "陪你耗到老",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "至场疯狂，跳起来",
+        "correct_text": "全场疯狂，跳起来",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "定王过节咋给老师送礼啊",
+        "correct_text": "逢年过节咋给老师送礼啊",
+        "wrong_ids": [
+            0,
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "设计出不尖国际范儿",
+        "correct_text": "设计出不失国际范儿",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "再加上一个永远不让主持人说活的嘉宾",
+        "correct_text": "再加上一个永远不让主持人说话的嘉宾",
+        "wrong_ids": [
+            13
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "此时缓缓驶人一架神秘的马车",
+        "correct_text": "此时缓缓驶入一架神秘的马车",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "已是悬崖百丈水",
+        "correct_text": "已是悬崖百丈冰",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "钱麟今天有个非常平要的任务",
+        "correct_text": "钱麟今天有个非常重要的任务",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你们这记性是实在是式好了",
+        "correct_text": "你们这记性是实在是忒好了",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我们爱的是你的眼笨",
+        "correct_text": "我们爱的是你的眼袋",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "竞然跟自己老婆的男友",
+        "correct_text": "竟然跟自己老婆的男友",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "抓往一种东西叫亲情",
+        "correct_text": "抓住一种东西叫亲情",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "恩是，看来这样的时尚元泰啊",
+        "correct_text": "恩是，看来这样的时尚元素啊",
+        "wrong_ids": [
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "金辆万，虽然还在密腹张态",
+        "correct_text": "金炳万，虽然还在空腹状态",
+        "wrong_ids": [
+            1,
+            8,
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "麦门用来对付张大大的",
+        "correct_text": "专门用来对付张大大的",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "咱们真该势多的关注什么",
+        "correct_text": "咱们应该多多的关注什么",
+        "wrong_ids": [
+            2,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "帮朋友推销活",
+        "correct_text": "帮朋友推销酒",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "那么在正武比赛之前",
+        "correct_text": "那么在正式比赛之前",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "用她的（吴君如）名言",
+        "correct_text": "用她的（吴君如）名言",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "妈说了，这叫多子多称",
+        "correct_text": "妈说了，这叫多子多孙",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "加住一种东西叫亲情",
+        "correct_text": "抓住一种东西叫亲情",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "好来，你的梦想我们知道了",
+        "correct_text": "好，来你的梦想我们知道了",
+        "wrong_ids": [
+            1,
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "会去公司里面再练一下台悲",
+        "correct_text": "会去公司里面再练一下台步",
+        "wrong_ids": [
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我要向东北大棉沃王德顺学习",
+        "correct_text": "我要向东北大棉袄王德顺学习",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "拿钱恋死我吧",
+        "correct_text": "拿钱砸死我吧",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "套开你呀",
+        "correct_text": "离开你呀",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我真想把这拓自行车",
+        "correct_text": "我真想把这辆自行车",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "所以是一个千古之迷",
+        "correct_text": "所以是一个千古之谜",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "犹有花校俏",
+        "correct_text": "犹有花枝俏",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "创造了很多故点规矩的图案",
+        "correct_text": "创造了很多散点规矩的图案",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "曾参与中史电视台",
+        "correct_text": "曾参与中央电视台",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "小我的小镇经过",
+        "correct_text": "叫我的小镇经过",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "例如像这个葵形格啊棋盘格啊等等等等",
+        "correct_text": "例如像这个菱形格啊棋盘格啊等等等等",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "从小熏肉一下中国传统文化",
+        "correct_text": "从小熏陶一下中国传统文化",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "一定会是一头零水",
+        "correct_text": "一定会是一头雾水",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "欧巴（哥哥）",
+        "correct_text": "欧巴（哥哥）",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "快速进入工作状态上",
+        "correct_text": "快速进入工作状态！",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "因为靠脸的饭",
+        "correct_text": "因为靠脸吃饭",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "穿就这样每引谁",
+        "correct_text": "穿成这样勾引谁",
+        "wrong_ids": [
+            1,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我对于各个地万那种风士人情",
+        "correct_text": "我对于各个地方那种风土人情",
+        "wrong_ids": [
+            6,
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "用你的手指拯一下",
+        "correct_text": "用你的手指抠一下",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你也知道我这个人就是话膀",
+        "correct_text": "你也知道我这个人就是话痨",
+        "wrong_ids": [
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "所以这个事道的很牵为着我们的心",
+        "correct_text": "所以这个事真的很牵动着我们的心",
+        "wrong_ids": [
+            5,
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "第一陌生世界，而厦车又这么多",
+        "correct_text": "第一陌生世界，而且车又这么多",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "受跟我们的冠军们一试高下",
+        "correct_text": "要跟我们的冠军们一试高下",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "去年有一个实鹿肉的到我们林场",
+        "correct_text": "去年有一个卖鹿肉的到我们林场",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "雅典娜就一（直没出现）",
+        "correct_text": "雅典娜就一（直没出现）",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "街上儿个门的孩子玩弹球，拍三角",
+        "correct_text": "街上几个门的孩子玩弹球，拍三角",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "竞猜播主",
+        "correct_text": "竞猜擂主",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你看我跟刘小今天穿的",
+        "correct_text": "你看我跟刘冰今天穿的",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "一起在踢想子的那个感觉",
+        "correct_text": "一起在踢毽子的那个感觉",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "气候宣人，温度宜人",
+        "correct_text": "气候宜人，温度宜人",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "游森拍摄遭众人嫌弃",
+        "correct_text": "游淼拍摄遭众人嫌弃",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这冠界的分量就够足的",
+        "correct_text": "这冠军的分量就够足的",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "传承中华传统文化，福州学子举行孔庙升笔礼",
+        "correct_text": "传承中华传统文化，福州学子举行孔庙开笔礼",
+        "wrong_ids": [
+            17
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "董存瑞的董，智意的慧",
+        "correct_text": "董存瑞的董，智慧的慧",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "所以为什么不务正心呢",
+        "correct_text": "所以为什么不务正业呢",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你刚从医完让出来的",
+        "correct_text": "你刚从医院逃出来的",
+        "wrong_ids": [
+            4,
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "纽约对我的吸引力一定会很人",
+        "correct_text": "纽约对我的吸引力一定会很大",
+        "wrong_ids": [
+            12
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "现够的签害会我本人有去现场",
+        "correct_text": "现场的签售会我本人有去现场",
+        "wrong_ids": [
+            1,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "麦咕大电影就要上映了",
+        "correct_text": "麦咭大电影就要上映了",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "需要去医院兰断一下",
+        "correct_text": "需要去医院诊断一下",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "没有身你",
+        "correct_text": "没有骗你",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "李晨，我相信可能瞬了我以外",
+        "correct_text": "李晨，我相信可能除了我以外",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "因为我觉得我还是一个特别正常的正第人",
+        "correct_text": "因为我觉得我还是一个特别正常的正常人",
+        "wrong_ids": [
+            16
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "一什么呀，现在才来你跑还有什么用",
+        "correct_text": "-什么呀，现在才来你跑还有什么用",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "妈妈们选择\"不将就″",
+        "correct_text": "妈妈们选择″不将就\"",
+        "wrong_ids": [
+            5,
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "因为双领手术是针对一些凸嘴啊",
+        "correct_text": "因为双颚手术是针对一些凸嘴啊",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "梅花盛开万里春先",
+        "correct_text": "梅花盛开万里春光",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "能让人忘记晕的的蔚载的梦想",
+        "correct_text": "能让人忘记晕船的满载的梦想",
+        "wrong_ids": [
+            6,
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "全新的登穿的新形象",
+        "correct_text": "全新的叠穿的新形象",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我现在干杯不醉",
+        "correct_text": "我现在千杯不醉",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "沉默他沉没在深海里",
+        "correct_text": "沉默地沉没在深海里",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "都不要在发型上和农着打扔上",
+        "correct_text": "都不要在发型上和衣着打扮上",
+        "wrong_ids": [
+            8,
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "散落苔案又吹过泪眼",
+        "correct_text": "散落答案又吹过泪眼",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "几十年苦追来无悔无怨",
+        "correct_text": "几十年苦追求无悔无怨",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "接近于一个成年人脚拿的大小",
+        "correct_text": "接近于一个成年人脚掌的大小",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "（第二十四届梅花奖获得者）",
+        "correct_text": "（第二十四届梅花奖获得者）",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "有请主持人，盛非，郭德纲",
+        "correct_text": "有请主持人，孟非，郭德纲",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "被无情拖下混湾的郑恺",
+        "correct_text": "被无情拖下泥潭的郑恺",
+        "wrong_ids": [
+            5,
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "有的时候那个衣歌跟那个发型预在那",
+        "correct_text": "有的时候那个衣服跟那个发型顶在那",
+        "wrong_ids": [
+            7,
+            13
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "永会服务机构也跟不上",
+        "correct_text": "社会服务机构也跟不上",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "郭萌，黄落，欢迎二位",
+        "correct_text": "郭靖，黄蓉，欢迎二位",
+        "wrong_ids": [
+            1,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "丽道元的郦",
+        "correct_text": "郦道元的郦",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我骗在大街上",
+        "correct_text": "我躺在大街上",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "皮鞋很潇酒",
+        "correct_text": "皮鞋很潇洒",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "女生是做服装销害的",
+        "correct_text": "女生是做服装销售的",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "所以没有想到我会在这里《走办）",
+        "correct_text": "所以没有想到我会在这里（走秀）",
+        "wrong_ids": [
+            11,
+            13
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "一位是我们经常一在电视名种节目",
+        "correct_text": "一位是我们经常会在电视各种节目",
+        "wrong_ids": [
+            7,
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "对啊，它一个是坚着的",
+        "correct_text": "对啊，它一个是竖着的",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "有一个二",
+        "correct_text": "有一个一",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "那么说到合天了",
+        "correct_text": "那么说到今天了",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我觉得两实是一个非常好的一个人",
+        "correct_text": "我觉得确实是一个非常好的一个人",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "让我们学声欢迎这位设计师",
+        "correct_text": "让我们掌声欢迎这位设计师",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "等于他的父母欢亡",
+        "correct_text": "等于他的父母双亡",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我他老北京车站",
+        "correct_text": "我住老北京车站",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "总多了都是泪",
+        "correct_text": "说多了都是泪",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我这个痘现在起来越赖人了",
+        "correct_text": "我这个痘现在越来越赖人了",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "长得环环的男生",
+        "correct_text": "长得坏坏的男生",
+        "wrong_ids": [
+            2,
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "您正在收右到的是",
+        "correct_text": "您正在收看到的是",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "工很上面也是很认真的",
+        "correct_text": "工作上面也是很认真的",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "齐心为欢乐领做最后努力",
+        "correct_text": "齐心为欢乐颂做最后努力",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "能让人感受到白然的穿搭那便是时尚了",
+        "correct_text": "能让人感受到自然的穿搭那便是时尚了",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "阿宝再次回到了太家的视线当中",
+        "correct_text": "阿宝再次回到了大家的视线当中",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "洁瀚星海中",
+        "correct_text": "浩瀚星海中",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "是给子期待和眷恋的",
+        "correct_text": "是给予期待和眷恋的",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "怎么你就这么糟踢",
+        "correct_text": "怎么你就这么糟蹋",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我觉得会加这#的一个影视剧",
+        "correct_text": "我觉得参加这样的一个影视剧",
+        "wrong_ids": [
+            3,
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "八表准备出招",
+        "correct_text": "代表准备出招",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "很快就解史了",
+        "correct_text": "很快就解决了",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "大家尤其是从后面可以看剑",
+        "correct_text": "大家尤其是从后面可以看到",
+        "wrong_ids": [
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "浅哈低唱出口成诗，文思漫天飞舞",
+        "correct_text": "浅吟低唱出口成诗，文思漫天飞舞",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "作为哭励",
+        "correct_text": "作为奖励",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "今日精彩福告",
+        "correct_text": "今日精彩预告",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "全国室外射箭的标爽",
+        "correct_text": "全国室外射箭锦标赛",
+        "wrong_ids": [
+            6,
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "那位朋友极下巴非常严重",
+        "correct_text": "那位朋友撅下巴非常严重",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我们夹定把公司内部培训体系搬上舞合",
+        "correct_text": "我们决定把公司内部培训体系搬上舞台",
+        "wrong_ids": [
+            2,
+            16
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "看时马送的信物就一目了然了",
+        "correct_text": "看驸马送的信物就一目了然了",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "赶紧真起电话",
+        "correct_text": "赶紧拿起电话",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我得想鞠啊",
+        "correct_text": "我得想辙啊",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "本来就很爵单",
+        "correct_text": "本来就很简单",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "然后所以我请了一企",
+        "correct_text": "然后所以我请了一个",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "所有东西全都是我女朋友多下",
+        "correct_text": "所有东西全都是我女朋友名下",
+        "wrong_ids": [
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "背骁你是因为胖了吗",
+        "correct_text": "肖骁你是因为胖了吗",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "今无培二位来不是就这个问题说",
+        "correct_text": "今天请二位来不是就这个问题说",
+        "wrong_ids": [
+            1,
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "那诗说中的痘痘是真的吗",
+        "correct_text": "那传说中的痘痘是真的吗",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "就是那么长的漠缅公路",
+        "correct_text": "就是那么长的滇缅公路",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我觉得我很喜欢她的每概片子",
+        "correct_text": "我觉得我很喜欢她的每部片子",
+        "wrong_ids": [
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "很多交实糕",
+        "correct_text": "很多芡实糕",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "都会遇到痘痘的困忧",
+        "correct_text": "都会遇到痘痘的困扰",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "也是其梦的终结者",
+        "correct_text": "也是美梦的终结者",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我准各好了",
+        "correct_text": "我准备好了",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "对你笑呵啊",
+        "correct_text": "对你笑呵呵",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "又摘第了一个",
+        "correct_text": "又摘掉了一个",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "当梦全社会都很纠结",
+        "correct_text": "当然全社会都很纠洁",
+        "wrong_ids": [
+            1,
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我还诸到了一位设计师",
+        "correct_text": "我还请到了一位设计师",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "叫板冠不冲上前",
+        "correct_text": "叫板冠军冲上前",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "青浦分局徐经派出所的",
+        "correct_text": "青浦分局徐泾派出所的",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "五道口男子技校（清华大学）",
+        "correct_text": "五道口男子技校〈清华大学）",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "再巩就把你爹现飞了，你信不",
+        "correct_text": "再巩就把你爹巩飞了，你信不",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我会把你们握起来的",
+        "correct_text": "我会把你们攉起来的",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "码年全家提桶鸡",
+        "correct_text": "鸡年全家提桶鸡",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "也是你衣姆里必备的单品啦",
+        "correct_text": "也是你衣橱里必备的单品啦",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "张海很就是一个普普通通的清洁工",
+        "correct_text": "张海根就是一个普普通通的清洁工",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "当然同时我们会在每期的排乔榜当中",
+        "correct_text": "当然同时我们会在每期的排行榜当中",
+        "wrong_ids": [
+            12
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "第一拳胡同，叫水要胡园",
+        "correct_text": "第一条胡同，叫水墨胡同",
+        "wrong_ids": [
+            2,
+            8,
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你们准各好了吗",
+        "correct_text": "你们准备好了吗",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "冠哥播出",
+        "correct_text": "冠名播出",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "其实动完双额手术后",
+        "correct_text": "其实动完双颚手术后",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "然后她演绎整个故事的能力很赋",
+        "correct_text": "然后她演绎整个故事的能力很强",
+        "wrong_ids": [
+            13
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "全明星医美家小水小",
+        "correct_text": "全明星医美家小冰冰",
+        "wrong_ids": [
+            7,
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "才能够驾歌",
+        "correct_text": "才能够驾驭",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "或者再约上三福个好友",
+        "correct_text": "或者再约上三五个好友",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "星二什公主变励志",
+        "correct_text": "星二代公主变励志",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "大型励志宽技真人秀",
+        "correct_text": "大型励志竞技真人秀",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "故而天子居往的宫殿被称为紫禁城",
+        "correct_text": "故而天子居住的宫殿被称为紫禁城",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "因为当初在闷上有很多热认",
+        "correct_text": "因为当初在网上有很多热议",
+        "wrong_ids": [
+            5,
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "跑男团的成员开始了他们\"肝″各种游戏的征程",
+        "correct_text": "跑男团的成员开始了他们\"肝\"各种游戏的征程",
+        "wrong_ids": [
+            13
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "从你冤苦的过程当中一路陪你走来",
+        "correct_text": "从你贫苦的过程当中一路陪你走来",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "说口秀节国《女魔头驾到》",
+        "correct_text": "脱口秀节目《女魔头驾到》",
+        "wrong_ids": [
+            0,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "遇到了宗月大师（刚大叔）",
+        "correct_text": "遇到了宗月大师（刘大叔）",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "正在进发出新的活力",
+        "correct_text": "正在迸发出新的活力",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "江苏体有休闲频道",
+        "correct_text": "江苏体育休闲频道",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我们来聊个入卦",
+        "correct_text": "我们来聊个八卦",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "见财忘火",
+        "correct_text": "见财忘义",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "工伊上面也是很认赛的",
+        "correct_text": "工作上面也是很认真的",
+        "wrong_ids": [
+            1,
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "咱们道该身多的关注什么",
+        "correct_text": "咱们应该多多的关注什么",
+        "wrong_ids": [
+            2,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我期望是昊亦凡",
+        "correct_text": "我期望是吴亦凡",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "荣辱与共，朔有同等机会",
+        "correct_text": "荣辱与共，拥有同等机会",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "垮着小包的刘女士也显得很优雅",
+        "correct_text": "挎着小包的刘女士也显得很优雅",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "及各地方电视台的热岸嘉宾",
+        "correct_text": "及各地方电视台的热捧嘉宾",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "梦来以求的",
+        "correct_text": "梦寐以求的",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "她（刚才）挂掉电话了",
+        "correct_text": "她（刚才）挂掉电话了",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "要么我出去力道儿去",
+        "correct_text": "要么我出去劫道儿去",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "大家着划一下球什么",
+        "correct_text": "大家策划一下缺什么",
+        "wrong_ids": [
+            2,
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "帮我解决（问题）",
+        "correct_text": "帮我解决（问题）",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "李晨，孙持一些",
+        "correct_text": "李晨，矜持一些",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "第一陌生世界，而且车不这么多",
+        "correct_text": "第一陌生世界，而且车又这么多",
+        "wrong_ids": [
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "充满父爱的沉闰甸的饺子",
+        "correct_text": "充满父爱的沉甸甸的饺子",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "故而人子居住的宫殿被称为紫禁城",
+        "correct_text": "故而天子居住的宫殿被称为紫禁城",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "不是很件感",
+        "correct_text": "不是很性感",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "潘粤明：尽自己所能展现摇滚魅力",
+        "correct_text": "潘粤明：尽自己所能展现摇滚魅力",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "谢谢大家棒场",
+        "correct_text": "谢谢大家捧场",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "万众期待的电影要上快了",
+        "correct_text": "万众期待的电影要上映了",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "磨期子嘞",
+        "correct_text": "磨剪子嘞",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "朱学恒喻：马是瘫正，王好似甀娘",
+        "correct_text": "朱学恒喻：马是雍正，王好似甄嬛",
+        "wrong_ids": [
+            7,
+            13,
+            14
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "喜之喜青出于蓝胜手蓝",
+        "correct_text": "喜之喜青出于蓝胜于蓝",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "优我经纪公司的顽备艺人们",
+        "correct_text": "优我经纪公司的预备艺人们",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "叫呵楚的姑娘",
+        "correct_text": "叫阿楚的姑娘",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "包括材质的一些碰掩啊",
+        "correct_text": "包括材质的一些碰撞啊",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "然后人此以后我嫁入豪门",
+        "correct_text": "然后从此以后我嫁入豪门",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "说呐呐呐的呐呐",
+        "correct_text": "说呐呐呐呐呐呐",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我还是希望自己上台那一郑还是漂究一鼠",
+        "correct_text": "我还是希望自己上台那一刻还是漂亮一点",
+        "wrong_ids": [
+            11,
+            15,
+            17
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "有人不大给钱",
+        "correct_text": "有人不太给钱",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "忍不住化身一条团执的鱼",
+        "correct_text": "忍不住化身一条固执的鱼",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "任务：送给老公最窄福一天当做礼物",
+        "correct_text": "任务！送给老公最幸福一天当做礼物",
+        "wrong_ids": [
+            2,
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "很好的，很整齐的四合匠",
+        "correct_text": "很好的，很整齐的四合院",
+        "wrong_ids": [
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "全国射箭俱乐部委亚识",
+        "correct_text": "全国射箭俱乐部赛亚军",
+        "wrong_ids": [
+            7,
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "两眼一摸蹿",
+        "correct_text": "两眼一摸瞎",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "大位首发的跨界歌手",
+        "correct_text": "六位首发的跨界歌手",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "卡罗潘，谜入钩袜之前，要牢记几个规则",
+        "correct_text": "卡罗潘，进入树林之前，要牢记几个规则",
+        "wrong_ids": [
+            4,
+            6,
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "创造一个没有淘大的良性竞争",
+        "correct_text": "创造一个没有淘汰的良性竞争",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "翔须刃和电吹风一份",
+        "correct_text": "剃须刀和电吹风一份",
+        "wrong_ids": [
+            0,
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "往往在冤穷和患难当中",
+        "correct_text": "往往在贫穷和患难当中",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我的心不再庆倦",
+        "correct_text": "我的心不再厌倦",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "梁女土告诉我们",
+        "correct_text": "梁女士告诉我们",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "金民律入围\"金姓男神\"排行诺",
+        "correct_text": "金民律入围\"金姓男神\"排行榜",
+        "wrong_ids": [
+            13
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "拜业，对",
+        "correct_text": "肄业，对",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "四海八荒第一美男娱大可",
+        "correct_text": "四海八荒第一美男侯大可",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "干呼万唤始出来",
+        "correct_text": "千呼万唤始出来",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "生在复团，长在中国",
+        "correct_text": "生在美国，长在中国",
+        "wrong_ids": [
+            2,
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "解，说，但是由于前铲的坡度太料",
+        "correct_text": "解，说，但是由于前铲的坡度太斜",
+        "wrong_ids": [
+            14
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "下来就论一下",
+        "correct_text": "下来辩论一下",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "历生人社一邻里也不可能管你",
+        "correct_text": "陌生人社会邻里也不可能管你",
+        "wrong_ids": [
+            0,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "来，妈妈给揉操",
+        "correct_text": "来，妈妈给揉揉",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "脸庞已经千干净净",
+        "correct_text": "脸庞已经干干净净",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "除非你是被强加",
+        "correct_text": "除非你是被强迫",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "娱乐团里边的一个断体",
+        "correct_text": "娱乐圈里边的一个群体",
+        "wrong_ids": [
+            2,
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我们赶贤来介绍一下",
+        "correct_text": "我们赶紧来介绍一下",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "真的是追了好多场导",
+        "correct_text": "真的是追了好多场景",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "那因为我们的减一人",
+        "correct_text": "那因为我们的臧一人",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "巨相都拧巴",
+        "correct_text": "互相都拧巴",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "来待奉自己的伴侣",
+        "correct_text": "来侍奉自己的伴侣",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "心不在马",
+        "correct_text": "心不在焉",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "今天跆二位来不是就这个问题说",
+        "correct_text": "今天请二位来不是就这个问题说",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "其实我心里刚才有点周长",
+        "correct_text": "其实我心里刚才有点惆怅",
+        "wrong_ids": [
+            9,
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "唱的这个（歌）唱得不错",
+        "correct_text": "唱的这个（歌）唱得不错",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你怎么样去平窗",
+        "correct_text": "你怎么样去平衡",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你八一座",
+        "correct_text": "你从一座",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这也是我第一次多加上海时装周",
+        "correct_text": "这也是我第一次参加上海时装周",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "动物是可以最近人羞的",
+        "correct_text": "动物是可以亲近人类的",
+        "wrong_ids": [
+            5,
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "幸福心愿持有吉上场之前",
+        "correct_text": "幸福心愿持有者上场之前",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "麦当旁\"那么大\"系到",
+        "correct_text": "麦当劳\"那么大\"系列",
+        "wrong_ids": [
+            2,
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "笑傲江机人气选子",
+        "correct_text": "笑傲江湖人气选手",
+        "wrong_ids": [
+            3,
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "不同的日子一样的尊师，台湾幼数感受大陆教师节",
+        "correct_text": "不同的日子一样的尊师，台湾幼教感受大陆教师节",
+        "wrong_ids": [
+            14
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "那些钱进去都是自给医院的",
+        "correct_text": "那些钱进去都是白给医院的",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "然后呢他（前夫）就找他拼命嘛",
+        "correct_text": "然后呢他（前夫）就找他拼命嘛",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "民族文化和烂辉煌",
+        "correct_text": "民族文化灿烂辉煌",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "大家好，我是本期房主的朋友邵恰",
+        "correct_text": "大家好，我是本期房主的朋友邵怡",
+        "wrong_ids": [
+            14
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "下法这两个字是什么意思啊",
+        "correct_text": "下去这两个字是什么意思啊",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "读完之后你就觉得它谈谈的",
+        "correct_text": "读完之后你就觉得它淡淡的",
+        "wrong_ids": [
+            9,
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "因为我作为观会的时候我是",
+        "correct_text": "因为我作为观众的时候我是",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "番番：是第一次来北京吗",
+        "correct_text": "番番：是第一次来北京吗",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "咱们位设持多的关注什么",
+        "correct_text": "咱们应该多多的关注什么",
+        "wrong_ids": [
+            2,
+            3,
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "有的的候那个农歌跟那介发型顶在那",
+        "correct_text": "有的时候那个衣服跟那个发型顶在那",
+        "wrong_ids": [
+            2,
+            6,
+            7,
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "当然全让会都很纠结",
+        "correct_text": "当然全社会都很纠结",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这也是我第一次会加上海时表周",
+        "correct_text": "这也是我第一次参加上海时装周",
+        "wrong_ids": [
+            7,
+            12
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "是美丽不涂人，要有温底又要有风度",
+        "correct_text": "是美丽不冻人，要有温度又要有风度",
+        "wrong_ids": [
+            4,
+            10
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "他想自不起请保姆的钱",
+        "correct_text": "他也掏不起请保姆的钱",
+        "wrong_ids": [
+            1,
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "寄回到我们麦咕先锋的编辑部",
+        "correct_text": "寄回到我们麦咭先锋的编辑部",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "当然，如果你们都排了",
+        "correct_text": "当然，如果你们都挂了",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "鸡年全家提橱鸡",
+        "correct_text": "鸡年全家提桶鸡",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "叫陶三春，带着只返朝把皇城围了",
+        "correct_text": "叫陶三春，带着兵返朝把皇城围了",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "但相比于门褴的问题来说",
+        "correct_text": "但相比于门槛的问题来说",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "有的时候那介衣服跟那个发型顶在那",
+        "correct_text": "有的时候那个衣服跟那个发型顶在那",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "不莱就不来",
+        "correct_text": "不来就不来",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "樊梨花的樊，玲球的玲",
+        "correct_text": "樊梨花的樊，玲珑的玲",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "谭警宫挺好难得见",
+        "correct_text": "谭警官挺好难得见",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这俩人就是吃货界的谁雄双煞",
+        "correct_text": "这俩人就是吃货界的雌雄双煞",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "这样的活动，我觉得很来牵",
+        "correct_text": "这样的活动，我觉得很荣幸",
+        "wrong_ids": [
+            10,
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我们今天节自当中也请到了我们",
+        "correct_text": "我们今天节目当中也请到了我们",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "《真的即兴说唱你知道我怎么做的）",
+        "correct_text": "（真的即兴说唱你知道我怎么做的）",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "而且成为本场的播主了",
+        "correct_text": "而且成为本场的擂主了",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "首先感谢真心椒滴福品牌",
+        "correct_text": "首先感谢真心椒滴滴品牌",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "就是兰拥的校车事件",
+        "correct_text": "就是兰州的校车事件",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "况呐呐呐呐呐呐",
+        "correct_text": "说呐呐呐呐呐呐",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "为了生符才吃，为了吃而生存",
+        "correct_text": "为了生存才吃，为了吃而生存",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "冬李这样一个登穿好时机了",
+        "correct_text": "冬季这样一个叠穿好时机了",
+        "wrong_ids": [
+            1,
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你是我们经常会在电视各种节目",
+        "correct_text": "但是我们经常会在电视各种节目",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "争夺热血街舞团的菜耀",
+        "correct_text": "争夺热血街舞团的荣耀",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "包话接送，现在已经不算什么事了",
+        "correct_text": "包括接送，现在已经不算什么事了",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "短神到这儿",
+        "correct_text": "短袖到这儿",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "然后今吃辛辣刺激甜的油怕食物",
+        "correct_text": "然后少吃辛辣刺激甜的油炸食物",
+        "wrong_ids": [
+            2,
+            11
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "一个慷概又热血的角色",
+        "correct_text": "一个慷慨又热血的角色",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "谢谢孩子们，谢谢\"高妈\"",
+        "correct_text": "谢谢孩子们，谢谢\"高妈\"",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我到那坐曾经帮助",
+        "correct_text": "找到那些曾经帮助",
+        "wrong_ids": [
+            0,
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "国家级裁判，那力平先生",
+        "correct_text": "国家级裁判，邵力平先生",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "它也不是诗词朗诉会",
+        "correct_text": "它也不是诗词朗诵会",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "浙江抗州",
+        "correct_text": "浙江杭州",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "接下来我们奠有请的是",
+        "correct_text": "接下来我们要有请的是",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你们这记性是实在是迷好了",
+        "correct_text": "你们这记性是实在是忒好了",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我又看了看我的脏子",
+        "correct_text": "我又看了看我的肚子",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "他似是自己孩子的问题",
+        "correct_text": "他也是自己孩子的问题",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "忙醒的工作开始了小",
+        "correct_text": "忙碌的工作开始了！",
+        "wrong_ids": [
+            1,
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "旅行的，第一张后影",
+        "correct_text": "旅行的，第一张合影",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你说我拣脚的是兰蔻",
+        "correct_text": "你说我搽脚的是兰蔻",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你们准备好了吗",
+        "correct_text": "你们准各好了吗",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我们已经尽力晚救她的生命了",
+        "correct_text": "我们已经尽力挽救她的生命了",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "在拍的过星中",
+        "correct_text": "在拍的过程中",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "首先用嗅觉登看水果",
+        "correct_text": "首先用嗅觉查看水果",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "有的赞方是大家出点钱",
+        "correct_text": "有的地方是大家出点钱",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "当他出然之后发现",
+        "correct_text": "当他出狱之后发现",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "射箭女子团体亚不，张云录",
+        "correct_text": "射箭女子团体亚军，张云录",
+        "wrong_ids": [
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "但是同时地见证了",
+        "correct_text": "但是同时也见证了",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我三欢有什么话想表达",
+        "correct_text": "我喜欢有什么话想表达",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "想要挑战的天颖唱将",
+        "correct_text": "想要挑战的天籁唱将",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "犹有花枝伯",
+        "correct_text": "犹有花枝俏",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "应该不是你这欢啊",
+        "correct_text": "应该不是你这款啊",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我出老北京车站",
+        "correct_text": "我住老北京车站",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "温轨打工那个的片",
+        "correct_text": "温州打工那个照片",
+        "wrong_ids": [
+            1,
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "冠名播出的同超大调查",
+        "correct_text": "冠名播出的同趣大调查",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "就是动成身很了可以",
+        "correct_text": "就是功成身退了可以",
+        "wrong_ids": [
+            2,
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "工作上厨也是很认真的",
+        "correct_text": "工作上面也是很认真的",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我的妈妈是老太，我的姨是老二",
+        "correct_text": "我的妈妈是老大，我的姨是老二",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我也不会奋跑",
+        "correct_text": "我也不会奔跑",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "也会自己",
+        "correct_text": "他会自己",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "陌生人过会邻里也不可能管你",
+        "correct_text": "陌生人社会邻里也不可能管你",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "以前（在网络上模仿）假唱，现在真唱了",
+        "correct_text": "以前（在网络上模仿）假唱，现在真唱了",
+        "wrong_ids": [],
+        "from": "faspell"
+    },
+    {
+        "original_text": "应该是说我们可以整轻松松",
+        "correct_text": "应该是说我们可以轻轻松松",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "是人生的必悠课",
+        "correct_text": "是人生的必修课",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "孩话那么多不什么",
+        "correct_text": "废话那么多干什么",
+        "wrong_ids": [
+            0,
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "姜奸姐姐",
+        "correct_text": "姜妍姐姐",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "真有人给我发和信",
+        "correct_text": "真有人给我发私信",
+        "wrong_ids": [
+            6
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "在香侈品",
+        "correct_text": "在奢侈品",
+        "wrong_ids": [
+            1
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "_号门四号门请出票",
+        "correct_text": "一号门四号门请出票",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "大岁半都跳了一年了",
+        "correct_text": "六岁半都跳了一年了",
+        "wrong_ids": [
+            0
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "所以这个事道的很牵动着我们的吃",
+        "correct_text": "所以这个事真的很牵动着我们的心",
+        "wrong_ids": [
+            5,
+            14
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "他跟你剧透了第二李",
+        "correct_text": "他跟你剧透了第二季",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "是有点奢修了，那个一般都是捺脸的",
+        "correct_text": "是有点奢侈了，那个一般都是搽脸的",
+        "wrong_ids": [
+            4,
+            13
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "喜怒京乐的一个什么故事",
+        "correct_text": "喜怒哀乐的一个什么故事",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "那我们的比赛马上就窦开始",
+        "correct_text": "那我们的比赛马上就要开始",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "乱人\"金姓男神″排行榜的",
+        "correct_text": "乱入\"金姓男神\"排行榜的",
+        "wrong_ids": [
+            1,
+            7
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "本来就需要勇气跨出\"单身″这一步",
+        "correct_text": "本来就需要勇气跨出″单身\"这一步",
+        "wrong_ids": [
+            9,
+            12
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "你叫芯奸啊",
+        "correct_text": "你叫芯妍啊",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "第一条胡同，叫水里组同",
+        "correct_text": "第一条胡同，叫水墨胡同",
+        "wrong_ids": [
+            8,
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "事实上我没有走过这样子的人方",
+        "correct_text": "事实上我没有走过这样子的人秀",
+        "wrong_ids": [
+            13
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "就是他根本就不听指分",
+        "correct_text": "就是他根本就不听指令",
+        "wrong_ids": [
+            9
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "来，这位男土上来",
+        "correct_text": "来，这位男士上来",
+        "wrong_ids": [
+            5
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "第一欣的座位就可以成功吗",
+        "correct_text": "第一次的座位就可以成功吗",
+        "wrong_ids": [
+            2
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "朗读依旧，初心不以",
+        "correct_text": "朗读依旧，初心不改",
+        "wrong_ids": [
+            8
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "为了颠震既有观念的枷锁",
+        "correct_text": "为了颠覆既有观念的枷锁",
+        "wrong_ids": [
+            3
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "我觉得这祥的话我就心里特别逆反",
+        "correct_text": "我觉得这样的话我就心里特别逆反",
+        "wrong_ids": [
+            4
+        ],
+        "from": "faspell"
+    },
+    {
+        "original_text": "咱们航进人中等收入国家们指了",
+        "correct_text": "咱们就进入中等收入国家门槛了",
+        "wrong_ids": [
+            2,
+            4,
+            11,
+            12
+        ],
+        "from": "faspell"
+    }
+]
