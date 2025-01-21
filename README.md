@@ -157,7 +157,7 @@ print(result)
 ## 3.调用-标点纠错
 ```python
 import os
-os.environ["MACRO_CORRECT_FLAG_CSC_TOKEN"] = "1"
+os.environ["MACRO_CORRECT_FLAG_CSC_PUNCT"] = "1"
 from macro_correct import correct_punct
 
 
