@@ -56,7 +56,7 @@ class TextCorrectPredict:
         self.config.model_save_path = model_save_path_real
         # path_log_dir = os.path.join(model_save_path_real, "log")
         # self.logger = get_logger(path_log_dir)
-        self.l2i, self.i2l = self.config.l2i, self.config.i2l
+        # self.l2i, self.i2l = self.config.l2i, self.config.i2l
         # 数据预处理类
         self.tc_dataset = TextCorrectionDataset(path="", config=self.config, flag_shuffle=False)
         self.tc_collator = TextCorrectionDataCollator(config=self.config)
@@ -71,8 +71,7 @@ class TextCorrectPredict:
                 path_model = os.path.join(self.office.config.model_save_path, self.office.config.model_name)
                 # model_dict_std = self.model.state_dict()
                 model_dict_new = torch.load(path_model, map_location=torch.device(self.office.device))
-                model_dict_new = {"pretrain_model." + k if not k.startswith("pretrain_model.") else k: v
-                                  for k, v in model_dict_new.items()}
+                model_dict_new = {"bert." + k if not k.startswith("bert.bert.") else k: v for k, v in model_dict_new.items()}
                 self.office.model.load_state_dict(model_dict_new, strict=False)
                 self.office.model.to(self.office.device)
                 self.office.logger.info("****** Load BertForMaskedLM Std Success ******")
@@ -204,12 +203,18 @@ class TextCorrectPredict:
 
 if __name__ == "__main__":
     # BERT-base = 8109M
+    # path_config = "../output/text_correction/BERT4csc_csc_sighanall_det3_nomft_lr-3e-05_bs-16_epoch-50/csc.config"
     path_config = "../output/text_correction/macbert4mdcspell_v1/csc.config"
     # path_config = "../output/text_correction/macbert4csc_v1/csc.config"
     # path_config = "../output/text_correction/macbert4csc_v2/csc.config"
     # path_config = "../output/text_correction/bert4csc_v1/csc.config"
     # path_config = "shibing624/macbert4csc-base-chinese"  # 将csc.config放入即可
-    tcp = TextCorrectPredict(path_config)
+
+    ### 日志
+    logger = get_logger(log_dir=os.path.join(path_config.replace("/csc.config", ""), "log"),
+                        logger_name="predict")
+
+    tcp = TextCorrectPredict(path_config, logger=logger)
     texts = [{"original_text": "真麻烦你了。希望你们好好的跳无"},
              {"original_text": "少先队员因该为老人让坐"},
              {"original_text": "机七学习是人工智能领遇最能体现智能的一个分知"},

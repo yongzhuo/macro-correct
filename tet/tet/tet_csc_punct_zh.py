@@ -6,7 +6,7 @@
 
 
 import os
-os.environ["FLAG_CSC_PUNCT"] = "1"
+os.environ["MACRO_CORRECT_FLAG_CSC_PUNCT"] = "1"
 
 from macro_correct.pytorch_sequencelabeling.slTools import cut_sent_by_stay
 from macro_correct import correct_punct_basic

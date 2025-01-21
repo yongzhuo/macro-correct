@@ -1,9 +1,5 @@
 # !/usr/bin/python
 # -*- coding: utf-8 -*-
-# @time    : 2021/3/14 21:39
+# @time    : 2021/2/29 21:41
 # @author  : Mo
 # @function:
-
-
-__version__ = "0.0.2"
-

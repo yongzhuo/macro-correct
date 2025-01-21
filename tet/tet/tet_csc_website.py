@@ -5,6 +5,9 @@
 # @function: tet csc of token, 简体中文拼写纠错(支持各领域纠错, 泛化性强, 包括古文)
 
 
+import os
+os.environ["MACRO_CORRECT_FLAG_CSC_TOKEN"] = "1"
+
 from macro_correct import correct
 ### 默认纠错(list输入)
 text_list = ["真麻烦你了。希望你们好好的跳无",

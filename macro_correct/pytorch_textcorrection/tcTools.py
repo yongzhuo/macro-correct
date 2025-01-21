@@ -704,7 +704,7 @@ def txt_write(lines: List[str], path: str, model: str = "w", encoding: str = "ut
         logging.info(str(e))
 
 
-def get_logger(log_dir: str, back_count: int=32, logger_name: str="pytorch_nlp_tc"):
+def get_logger(log_dir, back_count=32, logger_name="macro_correct_csc_token"):
     """
     get_current_time from time
     Args:
@@ -721,13 +721,10 @@ def get_logger(log_dir: str, back_count: int=32, logger_name: str="pytorch_nlp_t
     log_file_name = time.strftime("{}-%Y-%m-%d".format(logger_name), time.localtime(time.time())) + ".log"
     log_name_day = os.path.join(log_dir, log_file_name)
     logger_level = logging.INFO
-    # log目录地址
-    if not os.path.exists(log_dir):
-        os.mkdir(log_dir)
     # 全局日志格式
     logging.basicConfig(format="%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s", level=logger_level)
     # 定义一个日志记录器
-    logger = logging.getLogger("pytorch-textclassification")
+    logger = logging.getLogger("macro_correct_csc_token")
     # 文件输出, 定义一个RotatingFileHandler，最多备份32个日志文件，每个日志文件最大32K
     fHandler = RotatingFileHandler(log_name_day, maxBytes=back_count * 1024 * 1024, backupCount=back_count, encoding="utf-8")
     fHandler.setLevel(logger_level)
@@ -1254,3 +1251,6 @@ if __name__ == '__main__':
     metrics, report = mertics_report(y_true, y_pred)
     print(report)
 
+
+    logger = get_logger("./log")
+    logger.info("12306")

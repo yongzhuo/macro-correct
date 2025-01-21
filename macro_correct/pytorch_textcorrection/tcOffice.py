@@ -132,7 +132,8 @@ class Office:
 
         loss = eval_loss / eval_steps
 
-        print("#" * 128)
+        self.logger.info("#" * 128)
+        # print("#" * 128)
         common_det_acc, common_det_precision, common_det_recall, common_det_f1 = sent_mertic_det(
             all_inputs, all_predictions, all_labels, self.logger)
         common_cor_acc, common_cor_precision, common_cor_recall, common_cor_f1 = sent_mertic_cor(
@@ -140,14 +141,15 @@ class Office:
 
         common_det_mertics = f'common Sentence Level detection: acc:{common_det_acc:.4f}, precision:{common_det_precision:.4f}, recall:{common_det_recall:.4f}, f1:{common_det_f1:.4f}'
         common_cor_mertics = f'common Sentence Level correction: acc:{common_cor_acc:.4f}, precision:{common_cor_precision:.4f}, recall:{common_cor_recall:.4f}, f1:{common_cor_f1:.4f}'
-        print("#" * 128)
-        logger.info(f'flag_eval: common')
-        print(f'flag_eval: common')
-        logger.info(common_det_mertics)
-        print(common_det_mertics)
-        logger.info(common_cor_mertics)
-        print(common_cor_mertics)
-        print("#" * 128)
+        # print("#" * 128)
+        self.logger.info(f'flag_eval: common')
+        # print(f'flag_eval: common')
+        self.logger.info(common_det_mertics)
+        # print(common_det_mertics)
+        self.logger.info(common_cor_mertics)
+        # print(common_cor_mertics)
+        self.logger.info("#" * 128)
+        # print("#" * 128)
 
         strict_det_acc, strict_det_precision, strict_det_recall, strict_det_f1 = sent_mertic_det(
             all_inputs, all_predictions, all_labels, self.logger, flag_eval="strict")
@@ -156,14 +158,16 @@ class Office:
 
         strict_det_mertics = f'strict Sentence Level detection: acc:{strict_det_acc:.4f}, precision:{strict_det_precision:.4f}, recall:{strict_det_recall:.4f}, f1:{strict_det_f1:.4f}'
         strict_cor_mertics = f'strict Sentence Level correction: acc:{strict_cor_acc:.4f}, precision:{strict_cor_precision:.4f}, recall:{strict_cor_recall:.4f}, f1:{strict_cor_f1:.4f}'
-        print("#" * 128)
-        logger.info(f'flag_eval: strict')
-        print(f'flag_eval: strict')
-        logger.info(strict_det_mertics)
-        print(strict_det_mertics)
-        logger.info(strict_cor_mertics)
-        print(strict_cor_mertics)
-        print("#" * 128)
+        self.logger.info("#" * 128)
+        # print("#" * 128)
+        self.logger.info(f'flag_eval: strict')
+        # print(f'flag_eval: strict')
+        self.logger.info(strict_det_mertics)
+        # print(strict_det_mertics)
+        self.logger.info(strict_cor_mertics)
+        # print(strict_cor_mertics)
+        self.logger.info("#" * 128)
+        # print("#" * 128)
 
         sent_mertics = {
             "eval_loss": eval_loss,
@@ -197,14 +201,16 @@ class Office:
 
         token_det_mertics = f'common Token Level correction: precision:{detection_precision:.4f}, recall:{detection_recall:.4f}, f1:{detection_f1:.4f}'
         token_cor_mertics = f'common TOken Level correction: precision:{correction_precision:.4f}, recall:{correction_recall:.4f}, f1:{correction_f1:.4f}'
-        print("#" * 128)
-        logger.info(f'flag_eval: token')
-        print(f'flag_eval: token')
-        logger.info(token_det_mertics)
-        print(token_det_mertics)
-        logger.info(token_cor_mertics)
-        print(token_cor_mertics)
-        print("#" * 128)
+        self.logger.info("#" * 128)
+        # print("#" * 128)
+        self.logger.info(f'flag_eval: token')
+        # print(f'flag_eval: token')
+        self.logger.info(token_det_mertics)
+        # print(token_det_mertics)
+        self.logger.info(token_cor_mertics)
+        # print(token_cor_mertics)
+        self.logger.info("#" * 128)
+        # print("#" * 128)
 
         dev_result = {"det_loss": float(outputs[0].detach().cpu().numpy()),
                       "mlm_loss": float(outputs[1].detach().cpu().numpy()),
@@ -324,7 +330,10 @@ class Office:
                           "input_ids": batch_data[0],
                           }
                 ### 最后一个epoch不MASK
-                if self.config.flag_mft and epochs_i != self.config.epochs-1:
+                # if self.config.flag_mft and epochs_i != self.config.epochs-1:
+                ### 50%的几率MASK(避免过度纠错)
+                float_mft = random.random()
+                if self.config.flag_mft and float_mft < 0.5:
                     sources_copy = copy.deepcopy(inputs["input_ids"])
 
                     input_ids_dynamic_mask = self.dynamic_mask_token(sources_copy, inputs["text_labels"], self.tokenizer,
@@ -368,8 +377,8 @@ class Office:
                 if (self.config.evaluate_steps > -1 and global_steps % self.config.evaluate_steps == 0) or (idx == times_batch_size-1) \
                         or (epochs_i+1 == self.config.epochs and idx+1 == len(d1)):
                     self.model.eval()
-                    logger.info("epoch: " + str(epochs_i))
-                    logger.info("global_steps: " + str(global_steps))
+                    self.logger.info("epoch: " + str(epochs_i))
+                    self.logger.info("global_steps: " + str(global_steps))
                     res, report = self.evaluate(d2)
                     res["total"] = {"epochs": epochs_i, "global_steps": global_steps, "step_current": idx}
                     self.logger.info("best_report\n" + best_report)
@@ -379,7 +388,8 @@ class Office:
                     for k, v in res.items():  # tensorboard日志, 其中抽取中文、数字和英文, 避免一些不支持的符号, 比如说 /\|等特殊字符
                         if type(v) == dict:  # 空格和一些特殊字符tensorboardx.add_scalar不支持
                             k = chinese_extract_extend(k)
-                            k = k.replace(" ", "")
+                            k = str(k.replace(" ", ""))
+                            k = k if k else "empty"
                             for k_2, v_2 in v.items():
                                 tensorboardx_witer.add_scalar(k + "/" + k_2, v_2, global_steps)
                             # tensorboardx_witer.add_scalar(k + "/train_loss", loss, global_steps)
@@ -399,7 +409,8 @@ class Office:
                         epochs_store.append((epochs_i, idx))
                         best_mertics = copy.deepcopy(res)
                         best_report = copy.deepcopy(report)
-                        self.save_model_state(mertics=best_mertics)
+                        self.save_model_state(mertics=best_mertics)  # bert权重
+                        self.save_model(mertics=best_mertics)        # 完整模型权重
                     # 重置is_train为True
                     # self.model.train()  # train-type
                     # 早停, 连续stop_epochs轮指标不增长则自动停止
@@ -442,8 +453,8 @@ class Office:
             model_dict_new = torch.load(path_model, map_location=torch.device(self.device))
             # model_dict_new = {k:v for k,v in model_dict_new.items()}
             # self.model.load_state_dict(model_dict_new)
-            model_dict_new = {"pretrain_model." + k if not k.startswith("pretrain_model.")
-                              else k: v for k, v in model_dict_new.items()}
+            # model_dict_new = {"bert." + k if not k.startswith("bert.") else k: v for k, v in model_dict_new.items()}
+            model_dict_new = {"bert." + k if not k.startswith("bert.bert.") else k: v for k, v in model_dict_new.items()}
             self.model.load_state_dict(model_dict_new, strict=False)
             self.model.to(self.device)
             self.logger.info("******model loaded success******")
@@ -463,7 +474,7 @@ class Office:
         # save mertics
         path_mertics = os.path.join(self.config.model_save_path, "train_mertics_best.json")
         save_json(mertics, path_mertics)
-        # save pretrain_model.config
+        # save bert.config
         self.model.pretrained_config.save_pretrained(save_directory=self.config.model_save_path)
         # save tokenizer
         self.tokenizer.save_pretrained(save_directory=self.config.model_save_path)
@@ -479,7 +490,7 @@ class Office:
         # path_model = os.path.join(self.config.model_save_path, self.config.model_name)
         # torch.save(self.model.state_dict(), path_model)
         ### 只存储bert模型等
-        self.model.pretrain_model.save_pretrained(self.config.model_save_path)
+        self.model.bert.save_pretrained(self.config.model_save_path, safe_serialization=False)
         self.logger.info("****** model_save_path is {}******".format(self.config.model_save_path))
 
     def save_onnx(self, path_onnx_dir=""):
@@ -523,13 +534,14 @@ class Office:
             if path_dir:
                 path_model = path_dir
             else:
-                path_model = os.path.join(self.config.model_save_path, self.config.model_name)
-            # ### load csc.model
-            # self.model = torch.load(path_model, map_location=torch.device(self.device))
-            model_dict_new = torch.load(path_model, map_location=torch.device(self.device))
-            model_dict_new = {"pretrain_model." + k if not k.startswith("pretrain_model.")
-                              else k: v for k, v in model_dict_new.items()}
-            self.model.load_state_dict(model_dict_new, strict=False)
+                # path_model = os.path.join(self.config.model_save_path, self.config.model_name)
+                path_model = os.path.join(self.config.model_save_path, "csc.model")
+            # ### load pytorch_model.bin
+            self.model = torch.load(path_model, map_location=torch.device(self.device))
+            # model_dict_new = torch.load(path_model, map_location=torch.device(self.device))
+            # model_dict_new = {"bert." + k if not k.startswith("bert.bert.")
+            #                   else k: v for k, v in model_dict_new.items()}
+            # self.model.load_state_dict(model_dict_new, strict=False)
             self.model.to(self.device)
             self.logger.info("******model loaded success******")
         except Exception as e:
@@ -545,7 +557,7 @@ class Office:
         # save mertics
         path_mertics = os.path.join(self.config.model_save_path, "train_mertics_best.json")
         save_json(mertics, path_mertics)
-        # save pretrain_model.config
+        # save bert.config
         self.model.pretrained_config.save_pretrained(save_directory=self.config.model_save_path)
         # save tokenizer
         self.tokenizer.save_pretrained(save_directory=self.config.model_save_path)
@@ -557,9 +569,10 @@ class Office:
             self.config.num_workers = 0
             json.dump(vars(self.config), fc, indent=4, ensure_ascii=False)
             fc.close()
-        # ### save csc.model
+        ### save csc.model
         # path_model = os.path.join(self.config.model_save_path, self.config.model_name)
-        # torch.save(self.model, path_model)
+        path_model = os.path.join(self.config.model_save_path, "csc.model")
+        torch.save(self.model, path_model)
         ### 只存储bert模型等
-        self.model.pretrain_model.save_pretrained(self.config.model_save_path)
+        # self.model.bert.save_pretrained(self.config.model_save_path, safe_serialization=False)
         self.logger.info("****** model_save_path is {}******".format(self.config.model_save_path))

@@ -105,6 +105,7 @@ class Office:
             else:
                 path_model = os.path.join(self.config.model_save_path, self.config.model_name)
             model_params = torch.load(path_model, map_location=torch.device(self.device))
+            model_params = {k.replace("pretrain_model.", "bert."): v for k, v in model_params.items()}
             self.model.load_state_dict(model_params, strict=False)
             self.model.to(self.device)
             self.logger.info("******model loaded success******")
@@ -122,7 +123,7 @@ class Office:
             model_save_path = self.config.model_save_path
         if not os.path.exists(model_save_path):
             os.makedirs(model_save_path)
-        # save pretrain_model.config
+        # save bert.config
         self.model.pretrained_config.save_pretrained(save_directory=self.config.model_save_path)
         # save tokenizer
         self.tokenizer.save_pretrained(save_directory=self.config.model_save_path)
@@ -161,7 +162,7 @@ class Office:
             self.config.model_save_path = path_dir
         if not os.path.exists(self.config.model_save_path):
             os.makedirs(self.config.model_save_path)
-        # save pretrain_model.config
+        # save bert.config
         self.model.pretrained_config.save_pretrained(save_directory=self.config.model_save_path)
         # save tokenizer
         self.tokenizer.save_pretrained(save_directory=self.config.model_save_path)
@@ -173,7 +174,7 @@ class Office:
             self.config.num_workers = 0
             json.dump(vars(self.config), fc, indent=4, ensure_ascii=False)
             fc.close()
-        # save sl.model
+        # save pytorch_model.bin
         path_model = os.path.join(self.config.model_save_path, self.config.model_name)
         torch.save(self.model, path_model)
         self.logger.info("******model_save_path is {}******".format(path_model))
@@ -556,7 +557,7 @@ class Office:
 
         #  配置好优化器与训练工作计划(主要是学习率预热warm-up与衰减weight-decay, 以及不作用的层超参)
         no_decay = ["LayerNorm.weight", "bias"]
-        pretrain_params = list(self.model.pretrain_model.named_parameters())
+        pretrain_params = list(self.model.bert.named_parameters())
         if self.config.task_type.upper() in [_SL_MODEL_SPAN]:
             fc_params = list(self.model.fc_span_start.named_parameters()) + list(self.model.fc_span_end.named_parameters())
         elif self.config.task_type.upper() in [_SL_MODEL_SOFTMAX]:
@@ -648,12 +649,13 @@ class Office:
                     res, report = self.evaluate(d2)
                     self.logger.info("epoch_global: {}, step_global: {}, step: {}".format(epochs_i, global_steps, idx))
                     self.logger.info("best_report:\n" + best_report)
-                    # self.logger.info("current_mertics:\n {}".format(res))
+                    self.logger.info("current_mertics:\n {}".format(res))
                     # idx_score = res.get("micro", {}).get("f1", 0)  # "macro", "micro", "weighted"
                     for k,v in res.items():  # tensorboard日志, 其中抽取中文、数字和英文, 避免一些不支持的符号, 比如说 /\|等特殊字符
                         if type(v) == dict:  # 空格和一些特殊字符tensorboardx.add_scalar不支持
                             k = chinese_extract_extend(k)
-                            k = k.replace(" ", "")
+                            k = str(k.replace(" ", ""))
+                            k = k if k else "empty"
                             for k_2, v_2 in v.items():
                                 tensorboardx_witer.add_scalar(k + "/" + k_2, v_2, global_steps)
                         elif type(v) == float:

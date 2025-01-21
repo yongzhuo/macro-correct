@@ -85,8 +85,8 @@ model_config = {
     "len_corpus": None,  # 训练语料长度
     "prior_count": None,  # 每个类别样本频次
     "prior": None,  # 类别先验分布, 自动设置, 为一个label_num类别数个元素的list, json无法保存np.array
-    "l2i": None,
-    "i2l": None,
+    # "l2i": None,
+    # "i2l": None,
 }
 
 

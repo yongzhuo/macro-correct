@@ -33,12 +33,12 @@ class Graph(BertPreTrainedModel):
         # self.tokenizer = tokenizer
         super(Graph, self).__init__(self.pretrained_config)
         if self.graph_config.flag_train:
-            self.pretrain_model = pretrained_model.from_pretrained(graph_config.pretrained_model_name_or_path, config=self.pretrained_config)
+            self.bert = pretrained_model.from_pretrained(graph_config.pretrained_model_name_or_path, config=self.pretrained_config)
         else:
-            self.pretrain_model = pretrained_model(config=self.pretrained_config)
-            # self.pretrain_model.init_weights()
+            self.bert = pretrained_model(config=self.pretrained_config)
+            # self.bert.init_weights()
             # logger.info("pretrained_model(config=self.pretrained_config) success!")
-        self.pretrain_model.resize_token_embeddings(len(tokenizer))  # if tokenizer mod
+        self.bert.resize_token_embeddings(len(tokenizer))  # if tokenizer mod
         # self.tokenizer.model_max_length = self.model.config.max_position_embeddings
         # 是否软化输出的logits, 否则用label
         if self.graph_config.flag_soft_label:
@@ -90,7 +90,7 @@ class Graph(BertPreTrainedModel):
         self.dropout = torch.nn.Dropout
 
     def forward(self, input_ids, attention_mask, token_type_ids, labels=None, labels_start=None, labels_end=None):
-        output = self.pretrain_model(input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids)
+        output = self.bert(input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids)
         # BERT输出多层拼接
         if self.graph_config.output_hidden_states:
             x = output[2]

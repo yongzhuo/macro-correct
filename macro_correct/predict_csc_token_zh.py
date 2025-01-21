@@ -22,17 +22,19 @@ if platform.system().lower() == "windows":
 from macro_correct.pytorch_textcorrection.tcTools import transfor_bert_unk_pun_to_know, tradition_to_simple
 from macro_correct.pytorch_textcorrection.tcTools import transfor_english_symbol_to_chinese, string_q2b
 from macro_correct.pytorch_textcorrection.tcTools import cut_sent_by_stay, count_flag_zh
-from macro_correct.pytorch_textcorrection.tcTools import string_q2b, load_json
+from macro_correct.pytorch_textcorrection.tcTools import string_q2b, get_logger
 from macro_correct.task.correct.predict_mlm_csc import CscPredict
 
 
-def download_model_from_huggface_with_url(repo_id="Macropodus/macbert4mdcspell_v1", hf_endpoint="https://hf-mirror.com"):
+def download_model_from_huggface_with_url(repo_id="Macropodus/macbert4mdcspell_v1",
+                                          hf_endpoint="https://hf-mirror.com",
+                                          logger=logger):
     """
         下载模型等数据文件, 从huggface下载, 可指定repo_id/url
     """
     os.environ["HF_ENDPOINT"] = hf_endpoint or os.environ.get("HF_ENDPOINT", hf_endpoint)
     from huggingface_hub import snapshot_download
-    logger.basicConfig(level=logger.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+    # logger.basicConfig(level=logger.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
     os.environ["PATH_MACRO_CORRECT_MODEL"] = os.environ.get("PATH_MACRO_CORRECT_MODEL",
                                                            os.path.join(path_root, "macro_correct"))
     local_dir = os.path.join(os.environ["PATH_MACRO_CORRECT_MODEL"], "output", "text_correction", repo_id.split("/")[-1])
@@ -52,23 +54,23 @@ def download_model_from_huggface_with_url(repo_id="Macropodus/macbert4mdcspell_v
     logger.info("download " + repo_id + " from huggface, end!")
 
 
-def download_model_from_huggface(repo_id="Macropodus/macbert4mdcspell_v1"):
+def download_model_from_huggface(repo_id="Macropodus/macbert4mdcspell_v1", logger=logger):
     """
         下载模型等数据文件, 从huggface
     """
     try:
-        download_model_from_huggface_with_url(hf_endpoint="https://hf-mirror.com", repo_id=repo_id)
+        download_model_from_huggface_with_url(hf_endpoint="https://hf-mirror.com", repo_id=repo_id, logger=logger)
     except Exception as e:
         logger.info(traceback.print_exc())
-        download_model_from_huggface_with_url(hf_endpoint="https://huggingface.co/models", repo_id=repo_id)
+        download_model_from_huggface_with_url(hf_endpoint="https://huggingface.co/models", repo_id=repo_id, logger=logger)
 
 
 class MacroCSC4Token:
     def __init__(self, path_config=None, logger=logger):
+        self.logger = logger
         self.path_config = path_config or os.path.join(path_root, "macro_correct/output/text_correction/macbert4mdcspell_v1/csc.config")
         self.check_or_download_hf_model(path_config=path_config)
         self.load_trained_model()
-        self.logger = logger
 
     def check_or_download_hf_model(self, path_config=None):
         """  从hf国内镜像加载数据   """
@@ -82,9 +84,9 @@ class MacroCSC4Token:
             if os.path.exists(path_config_select) and os.path.exists(path_model_select):
                 pass
             else:
-                # self.logger.info("download_model_from_huggface " + path_config + " start!")
-                download_model_from_huggface(repo_id=path_config)
-                # self.logger.info("download_model_from_huggface " + path_config + " success!")
+                self.logger.info("download_model_from_huggface " + path_config + " start!")
+                download_model_from_huggface(repo_id=path_config, logger=self.logger)
+                self.logger.info("download_model_from_huggface " + path_config + " success!")
             ### 更改模型路径
             self.model_csc.model.office.config.model_save_path = os.path.split(path_model_select)[0]
             self.path_config = path_config_select
@@ -96,7 +98,10 @@ class MacroCSC4Token:
                 pass
             else:
                 # dowload model from hf
-                download_model_from_huggface(repo_id="Macropodus/macbert4mdcspell_v1")
+                repo_id = "Macropodus/macbert4mdcspell_v1"
+                self.logger.info("download_model_from_huggface " + repo_id + " start!")
+                download_model_from_huggface(repo_id=repo_id, logger=self.logger)
+                self.logger.info("download_model_from_huggface " + repo_id + " success!")
         return True
 
     def load_trained_model(self, path_config=None):
@@ -107,7 +112,7 @@ class MacroCSC4Token:
     def func_csc_token_long(self, content, threshold=0.6, max_len=128, batch_size=16, rounded=4,
                             flag_confusion=True, flag_prob=True, **kwargs):
         """   对句子进行文本纠错, 字词级别   """
-        time_start = time.time()
+        # time_start = time.time()
         params = {
             "flag_confusion": flag_confusion,  # 是否使用默认的混淆词典
             "flag_prob": flag_prob,  # 是否返回纠错token处的概率
@@ -167,18 +172,18 @@ class MacroCSC4Token:
                             output.append(line_correct)
         except Exception as e:
             output = []
-            logger.info("fail of func_csc_token_long")
-            logger.info(traceback.format_exc())
+            self.logger.info("fail of func_csc_token_long")
+            self.logger.info(traceback.format_exc())
         # 再次校验不饿能超过threshold
-        time_end = time.time()
-        time_cost = round(time_end - time_start, rounded)
-        self.logger.info(time_cost)
+        # time_end = time.time()
+        # time_cost = round(time_end - time_start, rounded)
+        # self.logger.info(time_cost)
         return output
 
     def func_csc_token_batch(self, texts, threshold=0.6, max_len=128, batch_size=16, rounded=4,
                             flag_confusion=True, flag_prob=True, **kwargs):
         """   对句子进行文本纠错, 字词级别   """
-        time_start = time.time()
+        # time_start = time.time()
         params = {
             "flag_confusion": flag_confusion,  # 是否使用默认的混淆词典
             "flag_prob": flag_prob,  # 是否返回纠错token处的概率
@@ -195,9 +200,9 @@ class MacroCSC4Token:
             for jdx, texts_filter_csc_j in enumerate(texts_filter_csc):
                 errors = texts_filter_csc_j.get("errors", {})
                 target = texts_filter_csc_j.get("target", "")
+                line_correct = {"index": jdx, "source": texts[jdx], "target": target, "errors": []}
                 ### 错误字词
                 if errors and len(errors) <= limit_nums_errors:
-                    line_correct = {"index": jdx, "source": texts[jdx], "target": target, "errors": []}
                     for k, errors_i in enumerate(errors):
                         pos_start = errors_i[2]
                         token_wrong = errors_i[0]
@@ -217,26 +222,41 @@ class MacroCSC4Token:
                                 line_correct["errors"].append(line_error)
                         else:
                             line_correct["errors"].append(line_error)
-                    if line_correct.get("errors", []):
-                        output.append(line_correct)
+                output.append(line_correct)
         except Exception as e:
             output = []
-            logger.info("fail of func_csc_token_batch")
-            logger.info(traceback.format_exc())
+            self.logger.info("fail of func_csc_token_batch")
+            self.logger.info(traceback.format_exc())
         # 再次校验不饿能超过threshold
-        time_end = time.time()
-        time_cost = round(time_end - time_start, rounded)
-        self.logger.info(time_cost)
+        # time_end = time.time()
+        # time_cost = round(time_end - time_start, rounded)
+        # self.logger.info(time_cost)
         return output
-
-
-MODEL_CSC_TOKEN = MacroCSC4Token()
-func_csc_token_batch = MODEL_CSC_TOKEN.func_csc_token_batch
-func_csc_token_long = MODEL_CSC_TOKEN.func_csc_token_long
 
 
 if __name__ == '__main__':
     yz = 0
+
+    """
+    ### 加载和使用其他模型权重
+    import os
+    os.environ["MACRO_CORRECT_FLAG_CSC_TOKEN"] = "1"
+    from macro_correct import MODEL_CSC_TOKEN
+    repo_id = "Macropodus/macbert4csc_v2"
+    MODEL_CSC_TOKEN.__init__(path_config=repo_id)
+    res = MODEL_CSC_TOKEN.func_csc_token_batch(texts, threshold=0.0)
+    print("#####   " + repo_id)
+    for res_i in res:
+        print(res_i)
+    print("#" * 128)
+    """
+
+    ### init model
+    logger = get_logger("./")
+    MODEL_CSC_TOKEN = MacroCSC4Token(logger=logger)
+    predict_batch = MODEL_CSC_TOKEN.model_csc.predict_batch  # 基础方法预测, 没有后处理
+    func_csc_token_long = MODEL_CSC_TOKEN.func_csc_token_long  # 处理单一篇的文本
+    func_csc_token_batch = MODEL_CSC_TOKEN.func_csc_token_batch  # 批处理小于max_len的句子
 
     ### sample
     texts = ["一个分知,陌光回聚,莪受打去,祢爱带馀",
@@ -245,7 +265,14 @@ if __name__ == '__main__':
              '真麻烦你了。希望你们好好的跳无',
              '少先队员因该为老人让坐',
              '机七学习是人工智能领遇最能体现智能的一个分知',
-             '一只小鱼船浮在平净的河面上'
+             '一只小鱼船浮在平净的河面上',
+             '我每天六天半起床。',
+             '教帅是一个高尚的职业。',
+             '街上青一色地全是小汽车。',
+             '不属于拼写检查错误',
+             '明天陪你们出站',
+             '明天排你们出战',
+             '刚刚出道的明星通过各种渠道不断的刷脸，提高在众多明星中的知名度。',
              ]
     content = "。".join(texts)
     res = func_csc_token_batch(texts, threshold=0.0)
@@ -257,17 +284,6 @@ if __name__ == '__main__':
     res = func_csc_token_long(content, threshold=0.0)
     print(res)
     print("#" * 128)
-
-    # ### 加载和使用其他模型权重
-    # from macro_correct import MODEL_CSC_TOKEN
-    # repo_id = "Macropodus/macbert4csc_v2"
-    # MODEL_CSC_TOKEN.__init__(path_config=repo_id)
-    # res = MODEL_CSC_TOKEN.func_csc_token_batch(texts, threshold=0.0)
-    # print("#####   " + repo_id)
-    # for res_i in res:
-    #     print(res_i)
-    # print("#" * 128)
-
     while True:
         try:
             print("请输入:")

@@ -35,7 +35,7 @@ def download_model_from_huggface_with_url(repo_id="Macropodus/bert4sl_punct_zh_p
     """   下载模型等数据文件, 从huggface下载, 可指定repo_id/url   """
     os.environ["HF_ENDPOINT"] = hf_endpoint or os.environ.get("HF_ENDPOINT", hf_endpoint)
     from huggingface_hub import snapshot_download
-    logger.basicConfig(level=logger.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+    # logger.basicConfig(level=logger.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
     os.environ["PATH_MACRO_CORRECT_MODEL"] = os.environ.get("PATH_MACRO_CORRECT_MODEL",
                                                            os.path.join(path_sys, "macro_correct"))
     local_dir = os.path.join(os.environ["PATH_MACRO_CORRECT_MODEL"], "output", "sequence_labeling", repo_id.split("/")[-1])
@@ -66,10 +66,10 @@ def download_model_from_huggface(repo_id="Macropodus/bert4sl_punct_zh_public"):
 
 class MacroCSC4Punct:
     def __init__(self, logger=logger):
+        self.logger = logger
         self.path_config = os.path.join(path_sys, "macro_correct/output/sequence_labeling/bert4sl_punct_zh_public/sl.config")
         self.check_or_download_hf_model()
         self.load_trained_model()
-        self.logger = logger
 
     def check_or_download_hf_model(self, path_config=None):
         """  从hf国内镜像加载数据   """
@@ -289,7 +289,6 @@ class MacroCSC4Punct:
                                 line_error = [org_pun, pred_pun, pred_pos, pred_score]
                             else:
                                 line_error = [org_pun, pred_pun, pred_pos]
-                            ### "标点符号错误,建议'”。'修改为'。'"
                             ### todo, 高到低剔除, 原因是后边的标点训练样本太少, 不太准
                             if len(org_pun) > 1 and len(pred_pun) < 2:
                                 continue
@@ -330,13 +329,13 @@ class MacroCSC4Punct:
         return output
 
 
-MODEL_CSC_PUNCT = MacroCSC4Punct()
-func_csc_punct_batch = MODEL_CSC_PUNCT.func_csc_punct_batch
-func_csc_punct_long = MODEL_CSC_PUNCT.func_csc_punct_long
-
-
 if __name__ == '__main__':
-    ee = 0
+    yz = 0
+
+    MODEL_CSC_PUNCT = MacroCSC4Punct()
+    func_csc_punct_batch = MODEL_CSC_PUNCT.func_csc_punct_batch
+    func_csc_punct_long = MODEL_CSC_PUNCT.func_csc_punct_long
+
     ### sample
     content = "山不在高，有仙则名。水不在深，有龙则灵。斯是陋室，惟吾德馨。苔痕上阶绿，草色入帘青。" \
               "谈笑有鸿儒，往来无白丁。可以调素琴，阅金经。无丝竹之乱耳，无案牍之劳形。" \

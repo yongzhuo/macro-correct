@@ -77,6 +77,7 @@ class TextCorrectionDataset(Dataset):
         len_data = len(len_xs) - 1
         len_xs_rate_list = []
         len_ys_rate_list = []
+        self.logger.info("path_data: {}".format(path))
         for _, ent in enumerate(rate_len_xs_list):
             len_xs_num = int((len_data+1) * ent) - 1
             len_xs_rate = len_xs[min(max(len_xs_num, 0), len_data)]  # 最大为len_data, 最小为len_xs
@@ -396,9 +397,9 @@ def tet_dataset_and_dataconllator():
               "flag_shuffle": True,
               "flag_train": True,
 
-              "l2i_conll": {},
-              "l2i": {},
-              "i2l": {},
+              # "l2i_conll": {},
+              # "l2i": {},
+              # "i2l": {},
               }
 
     for path in [path_train, path_dev]:

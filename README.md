@@ -55,6 +55,8 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple macro-correct --no-depen
 # @function: 文本纠错, 使用macro-correct
 
 
+import os
+os.environ["MACRO_CORRECT_FLAG_CSC_TOKEN"] = "1"
 from macro_correct import correct
 ### 默认纠错(list输入)
 text_list = ["真麻烦你了。希望你们好好的跳无",
@@ -155,7 +157,7 @@ print(result)
 ## 3.调用-标点纠错
 ```python
 import os
-os.environ["FLAG_CSC_PUNCT"] = "1"
+os.environ["MACRO_CORRECT_FLAG_CSC_TOKEN"] = "1"
 from macro_correct import correct_punct
 
 
@@ -287,7 +289,7 @@ This library is inspired by and references following frameworks and papers.
 
 # 论文
 ## 中文拼写纠错(CSC, Chinese Spelling Correction)
-* 共收录34篇论文, 写了一个简短的综述. 详见[README.csc_survey.md](https://github.com/yongzhuo/macro-correct/README.csc_survey.md)
+* 共收录34篇论文, 写了一个简短的综述. 详见[README.csc_survey.md](https://github.com/yongzhuo/macro-correct/blob/master/README.csc_survey.md)
 
 
 # Cite

@@ -8,6 +8,7 @@
 from collections import OrderedDict, defaultdict
 from logging.handlers import RotatingFileHandler
 from typing import Union, Dict, List, Any
+import traceback
 import logging
 import copy
 import time
@@ -459,7 +460,8 @@ def get_pos_from_span(logits_start: List, logits_end: List, i2l: Dict, flag_inde
         for j, pe in enumerate(pos_end[i:]):
             pe = int(pe)
             if ps == pe:
-                pos.append((i2l[str(ps)], i, i + j))
+                score = (max(logits_start[i]) + max(logits_end[i+j])) / 2
+                pos.append((i2l[str(ps)], i, i + j, score))
                 # if i==j:
                 #     pos.append((i2l[str(ps)], i, i+j))
                 # for ij in range(i, j):
@@ -638,7 +640,7 @@ def get_pos_from_common(words0: str, tag1: list, sep="-") -> List:
     return result
 
 
-def get_logger(log_dir: str, back_count: int = 32, logger_name: str = "pytorch-nlp"):
+def get_logger(log_dir, back_count=32, logger_name="macro_correct_csc_punct"):
     """
     get_current_time from time
     Args:
@@ -662,13 +664,16 @@ def get_logger(log_dir: str, back_count: int = 32, logger_name: str = "pytorch-n
     logging.basicConfig(format="%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s",
                         level=logger_level)
     # 定义一个日志记录器
-    logger = logging.getLogger("pytorch-nlp")
+    logger = logging.getLogger("macro_correct_csc_punct")
     # 文件输出, 定义一个RotatingFileHandler，最多备份32个日志文件，每个日志文件最大32K
-    fHandler = RotatingFileHandler(log_name_day, maxBytes=back_count * 1024 * 1024, backupCount=back_count,
-                                   encoding="utf-8")
+    fHandler = RotatingFileHandler(log_name_day, maxBytes=back_count * 1024 * 1024,
+                                   backupCount=back_count, encoding="utf-8")
     fHandler.setLevel(logger_level)
     logger.addHandler(fHandler)
-
+    # 控制台输出
+    console = logging.StreamHandler()
+    console.setLevel(logger_level)
+    logger.addHandler(console)
     return logger
 
 

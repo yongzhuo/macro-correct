@@ -1,6 +1,7 @@
+huggingface_hub>=0.25.1
 transformers>=4.30.2
 tensorboardX>=2.4
 numpy>=1.18.1
-torch>=1.4.0
+torch>=1.10.0
 opencc>=1.1.1
 pypinyin

@@ -15,7 +15,7 @@ import copy
 import json
 import sys
 import os
-path_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+path_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.append(path_root)
 if platform.system().lower() == "windows":
     print(path_root)
@@ -66,7 +66,7 @@ if __name__ == '__main__':
 
     task_version = "ner_chinese_symbol"
 
-    path_corpus_dir_data = os.path.join(os.path.split(path_root)[0], "corpus", "sequence_labeling")
+    path_corpus_dir_data = os.path.join(os.path.split(path_root)[0], "macro_correct", "corpus", "sequence_labeling")
     # path_train = os.path.join(path_corpus_dir_data, "chinese_symbol/chinese_symbol.train.conll")
     # path_train = os.path.join(path_corpus_dir_data, "chinese_symbol/chinese_symbol.dev.conll")
     # path_train = os.path.join(path_corpus_dir_data, "chinese_symbol/chinese_symbol.tet.conll")
@@ -83,8 +83,8 @@ if __name__ == '__main__':
     # 一种格式 文件以.conll结尾, 或者corpus_type=="DATA-CONLL"
     # 另一种格式 文件以.span结尾, 或者corpus_type=="DATA-SPAN"
     # 任务类型, "SL-SOFTMAX", "SL-CRF", "SL-SPAN", "SL-GRID", "sequence_labeling"
-    # model_config["task_type"] = "SL-CRF"
-    model_config["task_type"] = "SL-SPAN"
+    model_config["task_type"] = "SL-CRF"
+    # model_config["task_type"] = "SL-SPAN"
     # model_config["task_type"] = "SL-GRID"
     # model_config["task_type"] = "SL-SOFTMAX"
     # model_config["corpus_type"] = "DATA-SPAN"  # 语料数据格式, "DATA-CONLL", "DATA-SPAN", 如果有.conll/.span格式就不需要指定, 否则需要指定
@@ -110,8 +110,8 @@ if __name__ == '__main__':
     idx = 1  # 0   # 选择的预训练模型类型---model_type, 0为BERT,
     model_config["pretrained_model_name_or_path"] = pretrained_model_name_or_path[model_type[idx]]
     # model_config["model_save_path"] = "../output/sequence_labeling/model_{}".format(model_type[idx] + "_" + str(get_current_time()))
-    model_config["model_save_path"] = "../output/sequence_labeling/model_{}_{}_lr-{}_bs-{}_epoch-{}"\
-        .format(task_version, model_type[idx], model_config["lr"],
+    model_config["model_save_path"] = "../output/sequence_labeling/{}4sl_punct_zh_{}_lr-{}_bs-{}_epoch-{}"\
+        .format(model_type[idx], task_version, model_config["lr"],
                 model_config["batch_size"], model_config["epochs"])
     model_config["model_type"] = model_type[idx]
     logger = get_logger(os.path.join(model_config["model_save_path"], "log"))

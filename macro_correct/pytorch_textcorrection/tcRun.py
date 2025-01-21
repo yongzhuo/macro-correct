@@ -40,7 +40,7 @@ else:
     path_corpus_dir = os.path.join(path_root, "macro_correct", "corpus", "text_correction")
     evaluate_steps = 3000  # 评估步数
     save_steps = 3000  # 存储步数
-    ee = 0
+    yz = 0
 
 # 预训练模型适配的class
 model_type = ["BERT", "ERNIE", "BERT_WWM", "ALBERT", "ROBERTA", "XLNET", "ELECTRA"]
@@ -63,8 +63,8 @@ pretrained_model_name_or_path = {
 if __name__ == '__main__':
 
 
-    # task_version = "csc_sighanall_det3_nomft"
-    task_version = "csc_sighanall_det3_mft_v2"
+    task_version = "csc_sighanall_det3_nomft"
+    # task_version = "csc_sighanall_det3_mft_v2"
     # task_version = "csc_sighanall_det3_mft"
     # task_version = "csc_sighanall_det15_mft"
 
@@ -112,8 +112,8 @@ if __name__ == '__main__':
     idx = 0  # 1  # 0   # 选择的预训练模型类型---model_type, 0为BERT,
     model_config["pretrained_model_name_or_path"] = pretrained_model_name_or_path[model_type[idx]]
     # model_config["model_save_path"] = "../output/text_correction/model_{}".format(model_type[idx] + "_" + str(get_current_time()))
-    model_config["model_save_path"] = "../output/text_correction/model_public_{}_{}_lr-{}_bs-{}_epoch-{}"\
-        .format(task_version, model_type[idx], model_config["lr"],
+    model_config["model_save_path"] = "../output/text_correction/{}4csc_{}_lr-{}_bs-{}_epoch-{}"\
+        .format(model_type[idx], task_version, model_config["lr"],
                 model_config["batch_size"], model_config["epochs"])
     model_config["model_type"] = model_type[idx]
     logger = get_logger(os.path.join(model_config["model_save_path"], "log"))

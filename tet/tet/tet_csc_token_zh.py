@@ -6,6 +6,7 @@
 
 
 import os
+os.environ["MACRO_CORRECT_FLAG_CSC_TOKEN"] = "1"
 
 from macro_correct.pytorch_textcorrection.tcTools import cut_sent_by_stay
 from macro_correct import correct_basic

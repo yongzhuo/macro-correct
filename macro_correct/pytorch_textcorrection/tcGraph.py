@@ -31,11 +31,11 @@ class Graph(BertPreTrainedModel):
         self.pretrained_config.update({"gradient_checkpointing": True})
         super(Graph, self).__init__(self.pretrained_config)
         if self.graph_config.flag_train:
-            self.pretrain_model = pretrained_model.from_pretrained(graph_config.pretrained_model_name_or_path, config=self.pretrained_config)
-            self.pretrain_model.resize_token_embeddings(len(tokenizer))
+            self.bert = pretrained_model.from_pretrained(graph_config.pretrained_model_name_or_path, config=self.pretrained_config)
+            self.bert.resize_token_embeddings(len(tokenizer))
         else:
-            self.pretrain_model = pretrained_model(self.pretrained_config)  # 推理时候只需要加载超参数, 不需要预训练模型的权重
-            self.pretrain_model.resize_token_embeddings(len(tokenizer))
+            self.bert = pretrained_model(self.pretrained_config)  # 推理时候只需要加载超参数, 不需要预训练模型的权重
+            self.bert.resize_token_embeddings(len(tokenizer))
 
         self.dense = FCLayer(self.pretrained_config.hidden_size, self.graph_config.num_labels, flag_dropout=self.graph_config.flag_dropout,
                              flag_active=self.graph_config.flag_active, active_type=self.graph_config.active_type)
@@ -65,11 +65,11 @@ class Graph(BertPreTrainedModel):
 
     def forward(self, input_ids, attention_mask=None, token_type_ids=None,
                 text_labels=None, det_labels=None):
-        bert_outputs = self.pretrain_model(input_ids=input_ids, attention_mask=attention_mask,
-                                     token_type_ids=token_type_ids, labels=text_labels,
-                                     output_hidden_states=True,
-                                     return_dict=True,
-                                     )
+        bert_outputs = self.bert(input_ids=input_ids, attention_mask=attention_mask,
+                                 token_type_ids=token_type_ids, labels=text_labels,
+                                 output_hidden_states=True,
+                                 return_dict=True,
+                                 )
         prob = None
         if text_labels is None:
             # 检错输出，纠错输出
