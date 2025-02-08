@@ -6,6 +6,7 @@
 
 
 import logging as logger
+import traceback
 import difflib
 import json
 import os
@@ -107,8 +108,11 @@ if __name__ == '__main__':
     # files_filter = [file for file in files if "eval_result_mertics_total.json" in file]
     # files_filter = [file for file in files if "eval_result_mertics_total.json" in file
     #                 and "v1_eval_result_mertics_total.json" not in file]
-    files_filter = [file for file in files if "v1_eval_result_mertics_total.json" in file]
+    # files_filter = [file for file in files if "v0.75_eval_std.pred_mertics.json" in file]
+    files_filter = [file for file in files if "v1_eval_std.pred_mertics.json" in file]
+    # files_filter = [file for file in files if "v1_eval_result_mertics_total.json" in file]
     # files_filter = [file for file in files if "v0.75_eval_result_mertics_total.json" in file]
+    # files_filter = [file for file in files if "v1_eval_std.pred_mertics.json" in file]
 
     data_dict_filter = load_json(files_filter[0])
     k1k2_list = []

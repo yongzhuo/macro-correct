@@ -2,12 +2,11 @@
 # -*- coding: utf-8 -*-
 # @time    : 2021/1/18 21:34
 # @author  : Mo
-# @function: Dataset Read
-# @paper   : [Chinese Spelling Correction as Rephrasing Language Model](https://arxiv.org/abs/2308.08796).
-# @code    : most code copy from https://github.com/Claude-Liu/ReLM
-# @code    : mertics code copy from https://github.com/wangwang110/CSC, small modfix
+# @function: csc config
+# @paper   : [MDCSpell: A Multi-task Detector-Corrector Framework for Chinese Spelling Correction](https://aclanthology.org/2022.findings-acl.98/).
 
 
+import logging as logger
 import traceback
 import random
 import json
@@ -26,7 +25,7 @@ context = converter.convert("汉字")  # 漢字
 print(context)
 
 
-def sent_mertic_det(all_srcs, all_pres, all_trgs, logger, flag_eval="common"):
+def sent_mertic_det(all_srcs, all_pres, all_trgs, logger=logger, flag_eval="common"):
     """
     句子级别检测指标：所有位置都检测对才算对
     :param all_pres:
@@ -85,7 +84,7 @@ def sent_mertic_det(all_srcs, all_pres, all_trgs, logger, flag_eval="common"):
     return acc, precision, recall, f1
 
 
-def sent_mertic_cor(all_srcs, all_pres, all_trgs, logger, flag_eval="common"):
+def sent_mertic_cor(all_srcs, all_pres, all_trgs, logger=logger, flag_eval="common"):
     """
     句子级别纠正指标：所有位置纠正对才算对
     :param all_pres:
@@ -140,7 +139,7 @@ def sent_mertic_cor(all_srcs, all_pres, all_trgs, logger, flag_eval="common"):
     return acc, precision, recall, f1
 
 
-def compute_sentence_level_prf_paper(results, logger):
+def compute_sentence_level_prf_paper(results, logger=logger):
     """
     自定义的句级prf，设定需要纠错为正样本，无需纠错为负样本
     :param results:
@@ -158,6 +157,93 @@ def compute_sentence_level_prf_paper(results, logger):
     sent_mertic_det(all_srcs, all_pres, all_trgs, logger)
     sent_mertic_cor(all_srcs, all_pres, all_trgs, logger)
     logger.info("#"*128)
+
+
+def char_mertic_det_cor(all_srcs, all_pres, all_trgs, logger=None):
+    """
+    copy from https://github.com/sunnyqiny/Confusionset-guided-Pointer-Networks-for-Chinese-Spelling-Check/blob/master/utils/evaluation_metrics.py
+    """
+    TP = 0
+    FP = 0
+    FN = 0
+    all_predict_true_index = []
+    all_gold_index = []
+    # for item in results:
+    # for _ in range(len(src)):
+        # src, tgt, predict = item
+    for src, tgt, predict in zip(all_srcs, all_trgs, all_pres):
+        gold_index = []
+        each_true_index = []
+        for i in range(len(list(src))):
+            if src[i] == tgt[i]:
+                continue
+            else:
+                gold_index.append(i)
+        all_gold_index.append(gold_index)
+        predict_index = []
+        for i in range(len(list(src))):
+            if src[i] == predict[i]:
+                continue
+            else:
+                predict_index.append(i)
+
+        for i in predict_index:
+            if i in gold_index:
+                TP += 1
+                each_true_index.append(i)
+            else:
+                FP += 1
+        for i in gold_index:
+            if i in predict_index:
+                continue
+            else:
+                FN += 1
+        all_predict_true_index.append(each_true_index)
+
+    # For the detection Precision, Recall and F1
+    detection_precision = TP / (TP + FP) if (TP + FP) > 0 else 0
+    detection_recall = TP / (TP + FN) if (TP + FN) > 0 else 0
+    if detection_precision + detection_recall == 0:
+        detection_f1 = 0
+    else:
+        detection_f1 = 2 * (detection_precision * detection_recall) / (detection_precision + detection_recall)
+    # logger.info(
+    #     "The detection result is precision={}, recall={} and F1={}".format(detection_precision, detection_recall,
+    #                                                                        detection_f1))
+
+    TP = 0
+    FP = 0
+    FN = 0
+
+    for i in range(len(all_predict_true_index)):
+        # we only detect those correctly detected location, which is a different from the common metrics since
+        # we want to see the precision improve by using the confusionset
+        if len(all_predict_true_index[i]) > 0:
+            predict_words = []
+            for j in all_predict_true_index[i]:
+                predict_words.append(all_pres[i][j])
+                if all_trgs[i][j] == all_pres[i][j]:  # 0,24  # 0-23/0-23
+                    TP += 1
+                else:
+                    FP += 1
+            for j in all_gold_index[i]:
+                if all_trgs[i][j] in predict_words:
+                    continue
+                else:
+                    FN += 1
+    # src, tgt, predict
+    # For the correction Precision, Recall and F1
+    correction_precision = TP / (TP + FP) if (TP + FP) > 0 else 0
+    correction_recall = TP / (TP + FN) if (TP + FN) > 0 else 0
+    if correction_precision + correction_recall == 0:
+        correction_f1 = 0
+    else:
+        correction_f1 = 2 * (correction_precision * correction_recall) / (correction_precision + correction_recall)
+    # logger.info("The correction result is precision={}, recall={} and F1={}".format(correction_precision,
+    #                                                                                 correction_recall,
+    #                                                                                 correction_f1))
+    return detection_precision, detection_recall, detection_f1, \
+           correction_precision, correction_recall, correction_f1
 
 
 PUN_EN2ZH_DICT = {",": "，", ";": "；", "!": "！", "?": "？", ":": "：",

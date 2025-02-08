@@ -46,6 +46,7 @@ class CscPredict:
         errors_merge = errors_confusion + errors_model
         # res_dict = {"source": text, "target": "", "errors": errors_merge}
         target = copy.deepcopy(text)
+        target_list = list(target)
         errors_merge_new = []
         pos_es = set()
         for errors_i in errors_merge:
@@ -53,15 +54,12 @@ class CscPredict:
             idx = errors_i[2]
             err = errors_i[0]
             if idx not in pos_es:
-                try:
-                    target = target[:idx] + truth + target[idx + len(err):]
-                    errors_merge_new.append(errors_i)
-                    pos_es.add(idx)
-                except Exception as e:
-                    print(traceback.print_exc())
+                target_list = target_list[:idx] + [truth] + target_list[idx + len(err):]
+                errors_merge_new.append(errors_i)
+                pos_es.add(idx)
         errors_merge_new = list(sorted(iter(errors_merge_new), key=lambda x: x[2], reverse=False))
         errors_dict["errors"] = errors_merge_new
-        errors_dict["target"] = target
+        errors_dict["target"] = "".join(target_list)
         return errors_dict
 
     def predict_batch_score(self, texts, flag_confusion=True, flag_prob=True, **kwargs):
@@ -139,6 +137,7 @@ if __name__ == '__main__':
         ]
     params = {
         "threshold": 0.382,      # token阈值过滤
+        "num_rethink": 3,        # re-predict, like think-twice
         "batch_size": 32,        # 批大小
         "max_len": 128,          # 自定义的长度, 如果截断了, 则截断部分不参与纠错, 后续直接一模一样的补回来
         "rounded": 4,            # 保存4位小数

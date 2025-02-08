@@ -31,7 +31,7 @@ import numpy as np
 import torch
 
 from macro_correct.pytorch_user_models.csc.relm.dataset import transfor_english_symbol_to_chinese, transfor_bert_unk_pun_to_know, tradition_to_simple, string_q2b
-from macro_correct.pytorch_user_models.csc.relm.dataset import DataSetProcessor, sent_mertic_det, sent_mertic_cor
+from macro_correct.pytorch_user_models.csc.relm.dataset import DataSetProcessor, sent_mertic_det, sent_mertic_cor, char_mertic_det_cor
 from macro_correct.pytorch_user_models.csc.relm.dataset import save_json, load_json, txt_write
 from macro_correct.pytorch_user_models.csc.relm.config import csc_config as args
 from macro_correct.pytorch_user_models.csc.relm.graph import RELM as Graph
@@ -478,8 +478,19 @@ def eval_std_list(path_tet=None, path_model_dir=None, threshold=0.5, args=None):
         path_model_best = os.path.join(args.model_save_path, "pytorch_model.bin")
         model = Graph(config=args)
         # model = PTuningWrapper(model, args.prompt_length)
+        # model.load_state_dict(torch.load(path_model_best))
+        # ### relm-m0.3.bin
+        # state_dict = torch.load("E:/DATA/bert-model/00_pytorch/CSC/relm-m0.3.bin")
+        # state_dict = {"bert." + k: v for k, v in state_dict.items()}
+        # model.load_state_dict(state_dict, strict=False)
+        ### train_model
+        state_dict = torch.load(path_model_best)
+        if "pretrain_model.bert." in state_dict:
+            state_dict = {k.replace("pretrain_model.", "bert."): v for k, v in state_dict.items()}
+        elif "bert.bert." not in state_dict:
+            state_dict = {"bert." + k: v for k, v in state_dict.items()}
+        model.load_state_dict(state_dict, strict=False)
         model.to(device)
-        model.load_state_dict(torch.load(path_model_best))
         model.eval()
         # model = BertForMaskedLM.from_pretrained(args.load_model_path,
         #                                         return_dict=True,
@@ -496,6 +507,7 @@ def eval_std_list(path_tet=None, path_model_dir=None, threshold=0.5, args=None):
         logger.info("  Batch size = %d", args.eval_batch_size)
 
         def decode(input_ids):
+            # input_tokens = tokenizer.convert_ids_to_tokens(input_ids, skip_special_tokens=False)
             input_tokens = tokenizer.convert_ids_to_tokens(input_ids, skip_special_tokens=True)
             # return [t.lower() for t in input_tokens]
             return input_tokens
@@ -552,9 +564,35 @@ def eval_std_list(path_tet=None, path_model_dir=None, threshold=0.5, args=None):
                     del mapped_trg[:anchor_length]
                     del mapped_prd[:anchor_length]
                 ## we skip special tokens including '[UNK]'
-                all_inputs += [decode(mapped_src)]
-                all_labels += [decode(mapped_trg)]
-                all_predictions += [decode(mapped_prd)]
+
+                # all_inputs += [decode(mapped_src)]
+                # all_labels += [decode(mapped_trg)]
+                # all_predictions += [decode(mapped_prd)]
+
+                ### 长度约束, 必须等长
+                mapped_src_d = decode(mapped_src)[1:]
+                mapped_trg_d = decode(mapped_trg)[1:]
+                mapped_prd_d = decode(mapped_prd)[1:]
+                len_mapped_src_d = len(mapped_src_d)
+                len_mapped_trg_d = len(mapped_trg_d)
+                len_mapped_prd_d = len(mapped_prd_d)
+                len_min = min(len_mapped_src_d, len_mapped_trg_d)
+                mapped_src_d = mapped_src_d[:len_min]
+                mapped_trg_d = mapped_trg_d[:len_min]
+                mapped_prd_d = mapped_prd_d[:len_min]
+                len_mapped_src_d = len(mapped_src_d)
+                len_mapped_trg_d = len(mapped_trg_d)
+                len_mapped_prd_d = len(mapped_prd_d)
+                ### 如果预测截断了, 则会补全
+                len_mid = len_mapped_src_d - len_mapped_prd_d
+                if len_mid <= 0:
+                    mapped_prd_d = mapped_prd_d[:len_mapped_src_d]
+                else:
+                    # mapped_prd_d += "".join(list(mapped_prd_d)[-len_mid:])
+                    mapped_prd_d += mapped_src_d[-len_mid:]
+                all_inputs += [mapped_src_d]
+                all_labels += [mapped_trg_d]
+                all_predictions += [mapped_prd_d]
 
                 # print("".join(all_inputs[-1]))
                 # print("".join(all_labels[-1]))
@@ -570,46 +608,35 @@ def eval_std_list(path_tet=None, path_model_dir=None, threshold=0.5, args=None):
 
         eval_loss = eval_loss / eval_steps
 
+        srcs, preds, tgts = all_inputs, all_predictions, all_labels
         print("#" * 128)
         common_det_acc, common_det_precision, common_det_recall, common_det_f1 = sent_mertic_det(
-            all_inputs, all_predictions, all_labels, logger)
+            srcs, preds, tgts)
         common_cor_acc, common_cor_precision, common_cor_recall, common_cor_f1 = sent_mertic_cor(
-            all_inputs, all_predictions, all_labels, logger)
+            srcs, preds, tgts)
 
         common_det_mertics = f'common Sentence Level detection: acc:{common_det_acc:.4f}, precision:{common_det_precision:.4f}, recall:{common_det_recall:.4f}, f1:{common_det_f1:.4f}'
         common_cor_mertics = f'common Sentence Level correction: acc:{common_cor_acc:.4f}, precision:{common_cor_precision:.4f}, recall:{common_cor_recall:.4f}, f1:{common_cor_f1:.4f}'
         print("#" * 128)
-        logger.info(f'flag_eval: common')
         print(f'flag_eval: common')
-        logger.info("path_tet: " + str(processor.path_tet))
-        print("path_tet: " + str(processor.path_tet))
-        logger.info(common_det_mertics)
         print(common_det_mertics)
-        logger.info(common_cor_mertics)
         print(common_cor_mertics)
         print("#" * 128)
 
         strict_det_acc, strict_det_precision, strict_det_recall, strict_det_f1 = sent_mertic_det(
-            all_inputs, all_predictions, all_labels, logger, flag_eval="strict")
+            srcs, preds, tgts, flag_eval="strict")
         strict_cor_acc, strict_cor_precision, strict_cor_recall, strict_cor_f1 = sent_mertic_cor(
-            all_inputs, all_predictions, all_labels, logger, flag_eval="strict")
+            srcs, preds, tgts, flag_eval="strict")
 
         strict_det_mertics = f'strict Sentence Level detection: acc:{strict_det_acc:.4f}, precision:{strict_det_precision:.4f}, recall:{strict_det_recall:.4f}, f1:{strict_det_f1:.4f}'
         strict_cor_mertics = f'strict Sentence Level correction: acc:{strict_cor_acc:.4f}, precision:{strict_cor_precision:.4f}, recall:{strict_cor_recall:.4f}, f1:{strict_cor_f1:.4f}'
         print("#" * 128)
-        logger.info(f'flag_eval: strict')
         print(f'flag_eval: strict')
-        logger.info("path_tet: " + str(processor.path_tet))
-        print("path_tet: " + str(processor.path_tet))
-        logger.info(strict_det_mertics)
         print(strict_det_mertics)
-        logger.info(strict_cor_mertics)
         print(strict_cor_mertics)
         print("#" * 128)
 
-        result_mertics = {
-            "eval_loss": eval_loss,
-
+        sent_mertics = {
             "common_det_acc": common_det_acc,
             "common_det_precision": common_det_precision,
             "common_det_recall": common_det_recall,
@@ -629,16 +656,23 @@ def eval_std_list(path_tet=None, path_model_dir=None, threshold=0.5, args=None):
             "strict_cor_precision": strict_cor_precision,
             "strict_cor_recall": strict_cor_recall,
             "strict_cor_f1": strict_cor_f1,
-            "task_name": os.path.split(path_tet)[-1]
         }
 
-        output_eval_file = os.path.join(args.model_save_path, "eval_std.results.txt")
-        text_log_list = ["#"*128 + "\n", "path_tet: " + path_tet.strip() + "\n"]
-        for key in sorted(result_mertics.keys()):
-            text_log = "Global step: %s,  %s = %s\n" % (str(-1), key, str(result_mertics[key]))
-            # logger.info(text_log)
-            text_log_list.append(text_log)
-        txt_write(text_log_list, output_eval_file, mode="a+")
+        detection_precision, detection_recall, detection_f1, \
+        correction_precision, correction_recall, correction_f1 = char_mertic_det_cor(srcs, preds, tgts)
+        token_result = {"det_precision": detection_precision, "det_recall": detection_recall, "det_f1": detection_f1,
+                        "cor_precision": correction_precision, "cor_recall": correction_recall, "cor_f1": correction_f1,
+                        }
+
+        token_det_mertics = f'common Token Level correction: precision:{detection_precision:.4f}, recall:{detection_recall:.4f}, f1:{detection_f1:.4f}'
+        token_cor_mertics = f'common TOken Level correction: precision:{correction_precision:.4f}, recall:{correction_recall:.4f}, f1:{correction_f1:.4f}'
+        print("#" * 128)
+        print(f'flag_eval: token')
+        print(token_det_mertics)
+        print(token_cor_mertics)
+        print("#" * 128)
+
+        result_mertics = {"task": os.path.split(path_tet)[-1], "sent": sent_mertics, "token": token_result}
 
     return common_det_mertics, common_cor_mertics, strict_det_mertics, strict_cor_mertics, result_mertics
 
@@ -674,7 +708,8 @@ def tet_test_dataset(path_model_dir):
 
     string_mertics_list = [path_model_dir + "\n"]
     res_mertics = {}  # 最终结果
-    threshold = 0  # 阈值
+    # threshold = 0  # 阈值
+    threshold = 0.75  # 阈值
     for path_tet_i in tqdm(path_tet_list, desc="path_tet_list"):
         common_det_mertics, common_cor_mertics, strict_det_mertics, strict_cor_mertics, result_mertics \
             = eval_std_list(path_tet=path_tet_i, path_model_dir=path_model_dir, threshold=threshold, args=args)
@@ -696,33 +731,34 @@ if __name__ == "__main__":
 
 
     ### 一次性全量测试
-    path_model_dir = "../../../output/text_correction/espell_law_of_relm"
+    # path_model_dir = "../../../output/text_correction/espell_law_of_relm"
+    path_model_dir = "../../../output/text_correction/relm_v1"
     tet_test_dataset(path_model_dir=path_model_dir)
 
 
-    ### 单个测试集的测试
-    path_model_dir = "../../../output/text_correction/espell_law_of_relm"
-    path_corpus_dir = os.path.join(path_root, "macro_correct", "corpus", "text_correction")
-    path_tet1 = os.path.join(path_corpus_dir, "public/gen_de3.json")
-    path_tet2 = os.path.join(path_corpus_dir, "public/lemon_v2.tet.json")
-    path_tet3 = os.path.join(path_corpus_dir, "public/acc_rmrb.tet.json")
-    path_tet4 = os.path.join(path_corpus_dir, "public/acc_xxqg.tet.json")
-
-    path_tet5 = os.path.join(path_corpus_dir, "public/gen_passage.tet.json")
-    path_tet6 = os.path.join(path_corpus_dir, "public/textproof.tet.json")
-    path_tet7 = os.path.join(path_corpus_dir, "public/gen_xxqg.tet.json")
-
-    path_tet8 = os.path.join(path_corpus_dir, "public/faspell.dev.json")
-    path_tet9 = os.path.join(path_corpus_dir, "public/lomo_tet.json")
-    path_tet10 = os.path.join(path_corpus_dir, "public/mcsc_tet_5k.json")
-    path_tet11 = os.path.join(path_corpus_dir, "public/ecspell.dev.json")
-    path_tet12 = os.path.join(path_corpus_dir, "public/sighan2013.dev.json")
-    path_tet13 = os.path.join(path_corpus_dir, "public/sighan2014.dev.json")
-    path_tet14 = os.path.join(path_corpus_dir, "public/sighan2015.dev.json")
-    path_tet15 = os.path.join(path_corpus_dir, "public/mcsc_tet.json")
-    threshold = 0.0
-    eval_std(path_tet=path_tet1, path_model_dir=path_model_dir, threshold=threshold, args=args)
-    print(path_tet1)
+    # ### 单个测试集的测试
+    # path_model_dir = "../../../output/text_correction/espell_law_of_relm"
+    # path_corpus_dir = os.path.join(path_root, "macro_correct", "corpus", "text_correction")
+    # path_tet1 = os.path.join(path_corpus_dir, "public/gen_de3.json")
+    # path_tet2 = os.path.join(path_corpus_dir, "public/lemon_v2.tet.json")
+    # path_tet3 = os.path.join(path_corpus_dir, "public/acc_rmrb.tet.json")
+    # path_tet4 = os.path.join(path_corpus_dir, "public/acc_xxqg.tet.json")
+    #
+    # path_tet5 = os.path.join(path_corpus_dir, "public/gen_passage.tet.json")
+    # path_tet6 = os.path.join(path_corpus_dir, "public/textproof.tet.json")
+    # path_tet7 = os.path.join(path_corpus_dir, "public/gen_xxqg.tet.json")
+    #
+    # path_tet8 = os.path.join(path_corpus_dir, "public/faspell.dev.json")
+    # path_tet9 = os.path.join(path_corpus_dir, "public/lomo_tet.json")
+    # path_tet10 = os.path.join(path_corpus_dir, "public/mcsc_tet_5k.json")
+    # path_tet11 = os.path.join(path_corpus_dir, "public/ecspell.dev.json")
+    # path_tet12 = os.path.join(path_corpus_dir, "public/sighan2013.dev.json")
+    # path_tet13 = os.path.join(path_corpus_dir, "public/sighan2014.dev.json")
+    # path_tet14 = os.path.join(path_corpus_dir, "public/sighan2015.dev.json")
+    # path_tet15 = os.path.join(path_corpus_dir, "public/mcsc_tet.json")
+    # threshold = 0.0
+    # eval_std(path_tet=path_tet1, path_model_dir=path_model_dir, threshold=threshold, args=args)
+    # print(path_tet1)
 
 
 

@@ -378,6 +378,7 @@ def eval_std_list(path_tet=None, model_name_or_path=None, threshold=0.0):
              ]
 
     res = model_macbert.predict_batch(texts, flag_logits=False, threshold=0.01)
+    # model_macbert.office.save_model_state("./macbert4mdcspell_extend")
     # print(res)
     for r in res:
         print(r)
@@ -564,10 +565,11 @@ if __name__ == '__main__':
     # path_model_dir = "E:/DATA/bert-model/00_pytorch/MacBERT-chinese_finetuned_correction/csc.config"
     # path_model_dir = "../output/text_correction/macbert4csc_v1/csc.config"  # own-correct
     # path_model_dir = "../output/text_correction/macbert4csc_v2/csc.config"  # own-correct
-    path_model_dir = "../output/text_correction/macbert4mdcspell_v1/csc.config"  # own-correct
+    # path_model_dir = "../output/text_correction/macbert4mdcspell_v1/csc.config"  # own-correct
     # path_model_dir = "../output/text_correction/bert4csc_v1/csc.config"  # own-correct
-    # threshold = 0.75
-    threshold = 0.0
+    path_model_dir = "../output/text_correction/macbert4mdcspell_extend/csc.config"  # own-correct
+    threshold = 0.75
+    # threshold = 0.0
 
     ### 数据集(只用了.train训练(大概1000w数据集), dev/test都没有参与训练)
     path_corpus_dir = os.path.join(path_sys, "macro_correct", "corpus", "text_correction")
@@ -593,7 +595,7 @@ if __name__ == '__main__':
 
     path_tet_list = [path_tet1, path_tet2, path_tet3, path_tet4, path_tet5,
                      path_tet6, path_tet7, path_tet8, path_tet9, path_tet10,
-                     path_tet11, path_tet12, path_tet13, path_tet14, path_tet15,
+                     path_tet11, path_tet12, path_tet13, path_tet14, # path_tet15,
                      ]
 
     for path in path_tet_list:
@@ -626,8 +628,10 @@ if __name__ == '__main__':
     # save_json(result_mertics_total, model_name + "_result_mertics_total.json")
     path_model_dir_save = os.path.split(path_model_dir)[0]
 
-    txt_write(string_mertics_list, os.path.join(path_model_dir_save, "eval_pred_mertics.txt"))
-    save_json(result_mertics_total, os.path.join(path_model_dir_save, "eval_result_mertics_total.json"))
+    # txt_write(string_mertics_list, os.path.join(path_model_dir_save, "eval_pred_mertics.txt"))
+    # save_json(result_mertics_total, os.path.join(path_model_dir_save, "eval_result_mertics_total.json"))
+    txt_write(string_mertics_list, os.path.join(path_model_dir_save, "eval_std.pred_mertics.txt"))
+    save_json(result_mertics_total, os.path.join(path_model_dir_save, "eval_std.pred_mertics.json"))
 
     yz = 0
 

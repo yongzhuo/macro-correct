@@ -168,7 +168,11 @@ class RelmPredict:
         self.processor = DataSetProcessor()
         self.model = Graph(config=self.csc_config)
         state_dict = torch.load(os.path.join(self.path_trained_model_dir, "pytorch_model.bin"))
-        self.model.load_state_dict(state_dict)
+        if "pretrain_model.bert." in state_dict:
+            state_dict = {k.replace("pretrain_model.", "bert."): v for k, v in state_dict.items()}
+        elif "bert.bert." not in state_dict:
+            state_dict = {"bert." + k: v for k, v in state_dict.items()}
+        self.model.load_state_dict(state_dict, strict=False)
         self.model.to(self.device)
         self.model.eval()
 
@@ -262,7 +266,8 @@ class RelmPredict:
 if __name__ == "__main__":
     yz = 0
 
-    path_model_dir = "../../../output/text_correction/espell_law_of_relm"
+    # path_model_dir = "../../../output/text_correction/espell_law_of_relm"
+    path_model_dir = "../../../output/text_correction/relm_v1"
 
     model = RelmPredict(path_model_dir, path_model_dir)
     texts = [
@@ -271,7 +276,6 @@ if __name__ == "__main__":
              {"source": "机七学习是人工智能领遇最能体现智能的一个分知"},
              {"source": "一只小鱼船浮在平净的河面上"},
              {"source": "我的家乡是有明的渔米之乡"},
-             {"source": "chuxī到了,兰兰和妈妈一起包jiǎo子,兰兰包的jiǎo子十分可爱,\n今天,兰兰和妈妈dù过了一个&快乐的chúxī。"},
              {"source": "哪里有上大学，不想念书的道理？"},
              {"source": "从那里，我们可以走到纳福境的新光三钺百货公司逛一逛"},
              {"source": "他主动拉了姑娘的手，心里很高心，嘴上故作生气"},
@@ -294,6 +298,7 @@ if __name__ == "__main__":
     res = model.predict(texts)
     for r in res:
         print(r)
+    # model.model.bert.save_pretrained("relm_csc", safe_serialization=False)
 
     while 1:
         try:

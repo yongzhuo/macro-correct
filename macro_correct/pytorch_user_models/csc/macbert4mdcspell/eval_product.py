@@ -161,7 +161,12 @@ class MdcspellPredict:
         self.processor = DataSetProcessor()
         self.model = Graph(config=self.csc_config)
         state_dict = torch.load(os.path.join(self.path_trained_model_dir, "pytorch_model.bin"))
-        self.model.load_state_dict(state_dict)
+        # self.model.load_state_dict(state_dict)
+        if "pretrain_model.bert." in state_dict:
+            state_dict = {k.replace("pretrain_model.", "bert."): v for k, v in state_dict.items()}
+        elif "bert.bert." not in state_dict:
+            state_dict = {"bert." + k: v for k, v in state_dict.items()}
+        self.model.model.load_state_dict(state_dict, strict=False)
         self.model.to(self.device)
         self.model.eval()
 

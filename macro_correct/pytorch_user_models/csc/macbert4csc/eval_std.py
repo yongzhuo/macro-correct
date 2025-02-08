@@ -30,7 +30,7 @@ from tqdm import tqdm
 import numpy as np
 import torch
 
-from macro_correct.pytorch_user_models.csc.macbert4csc.dataset import DataSetProcessor, sent_mertic_det, sent_mertic_cor
+from macro_correct.pytorch_user_models.csc.macbert4csc.dataset import DataSetProcessor, sent_mertic_det, sent_mertic_cor, char_mertic_det_cor
 from macro_correct.pytorch_user_models.csc.macbert4csc.dataset import save_json, load_json, txt_write
 from macro_correct.pytorch_user_models.csc.macbert4csc.config import csc_config as args
 from macro_correct.pytorch_user_models.csc.macbert4csc.graph import Macbert4CSC as Graph
@@ -259,8 +259,15 @@ def eval_std(path_tet=None, path_model_dir=None, threshold=0.5, args=None):
         path_model_best = os.path.join(args.model_save_path, "pytorch_model.bin")
         model = Graph(config=args)
         # model = PTuningWrapper(model, args.prompt_length)
+        # model.to(device)
+        # model.load_state_dict(torch.load(path_model_best))
+        state_dict = torch.load(path_model_best)
+        if "pretrain_model.bert." in state_dict:
+            state_dict = {k.replace("pretrain_model.", "bert."): v for k, v in state_dict.items()}
+        elif "bert.bert." not in state_dict:
+            state_dict = {"bert." + k: v for k, v in state_dict.items()}
+        model.load_state_dict(state_dict, strict=False)
         model.to(device)
-        model.load_state_dict(torch.load(path_model_best))
         model.eval()
         # model = BertForMaskedLM.from_pretrained(args.load_model_path,
         #                                         return_dict=True,
@@ -572,75 +579,72 @@ def eval_std_list(path_tet=None, path_model_dir=None, threshold=0.5, args=None):
 
         eval_loss = eval_loss / eval_steps
 
-        print("#" * 128)
-        common_det_acc, common_det_precision, common_det_recall, common_det_f1 = sent_mertic_det(
-            all_inputs, all_predictions, all_labels, logger)
-        common_cor_acc, common_cor_precision, common_cor_recall, common_cor_f1 = sent_mertic_cor(
-            all_inputs, all_predictions, all_labels, logger)
 
-        common_det_mertics = f'common Sentence Level detection: acc:{common_det_acc:.4f}, precision:{common_det_precision:.4f}, recall:{common_det_recall:.4f}, f1:{common_det_f1:.4f}'
-        common_cor_mertics = f'common Sentence Level correction: acc:{common_cor_acc:.4f}, precision:{common_cor_precision:.4f}, recall:{common_cor_recall:.4f}, f1:{common_cor_f1:.4f}'
-        print("#" * 128)
-        logger.info(f'flag_eval: common')
-        print(f'flag_eval: common')
-        logger.info("path_tet: " + str(processor.path_tet))
-        print("path_tet: " + str(processor.path_tet))
-        logger.info(common_det_mertics)
-        print(common_det_mertics)
-        logger.info(common_cor_mertics)
-        print(common_cor_mertics)
-        print("#" * 128)
+        # srcs, preds, tgts = all_inputs, all_predictions, all_labels
+        # print("#" * 128)
+        # common_det_acc, common_det_precision, common_det_recall, common_det_f1 = sent_mertic_det(
+        #     srcs, preds, tgts)
+        # common_cor_acc, common_cor_precision, common_cor_recall, common_cor_f1 = sent_mertic_cor(
+        #     srcs, preds, tgts)
+        #
+        # common_det_mertics = f'common Sentence Level detection: acc:{common_det_acc:.4f}, precision:{common_det_precision:.4f}, recall:{common_det_recall:.4f}, f1:{common_det_f1:.4f}'
+        # common_cor_mertics = f'common Sentence Level correction: acc:{common_cor_acc:.4f}, precision:{common_cor_precision:.4f}, recall:{common_cor_recall:.4f}, f1:{common_cor_f1:.4f}'
+        # print("#" * 128)
+        # print(f'flag_eval: common')
+        # print(common_det_mertics)
+        # print(common_cor_mertics)
+        # print("#" * 128)
 
-        strict_det_acc, strict_det_precision, strict_det_recall, strict_det_f1 = sent_mertic_det(
-            all_inputs, all_predictions, all_labels, logger, flag_eval="strict")
-        strict_cor_acc, strict_cor_precision, strict_cor_recall, strict_cor_f1 = sent_mertic_cor(
-            all_inputs, all_predictions, all_labels, logger, flag_eval="strict")
+        # strict_det_acc, strict_det_precision, strict_det_recall, strict_det_f1 = sent_mertic_det(
+        #     srcs, preds, tgts, flag_eval="strict")
+        # strict_cor_acc, strict_cor_precision, strict_cor_recall, strict_cor_f1 = sent_mertic_cor(
+        #     srcs, preds, tgts, flag_eval="strict")
+        #
+        # strict_det_mertics = f'strict Sentence Level detection: acc:{strict_det_acc:.4f}, precision:{strict_det_precision:.4f}, recall:{strict_det_recall:.4f}, f1:{strict_det_f1:.4f}'
+        # strict_cor_mertics = f'strict Sentence Level correction: acc:{strict_cor_acc:.4f}, precision:{strict_cor_precision:.4f}, recall:{strict_cor_recall:.4f}, f1:{strict_cor_f1:.4f}'
+        # print("#" * 128)
+        # print(f'flag_eval: strict')
+        # print(strict_det_mertics)
+        # print(strict_cor_mertics)
+        # print("#" * 128)
 
-        strict_det_mertics = f'strict Sentence Level detection: acc:{strict_det_acc:.4f}, precision:{strict_det_precision:.4f}, recall:{strict_det_recall:.4f}, f1:{strict_det_f1:.4f}'
-        strict_cor_mertics = f'strict Sentence Level correction: acc:{strict_cor_acc:.4f}, precision:{strict_cor_precision:.4f}, recall:{strict_cor_recall:.4f}, f1:{strict_cor_f1:.4f}'
-        print("#" * 128)
-        logger.info(f'flag_eval: strict')
-        print(f'flag_eval: strict')
-        logger.info("path_tet: " + str(processor.path_tet))
-        print("path_tet: " + str(processor.path_tet))
-        logger.info(strict_det_mertics)
-        print(strict_det_mertics)
-        logger.info(strict_cor_mertics)
-        print(strict_cor_mertics)
-        print("#" * 128)
-
-        result_mertics = {
-            "eval_loss": eval_loss,
-
-            "common_det_acc": common_det_acc,
-            "common_det_precision": common_det_precision,
-            "common_det_recall": common_det_recall,
-            "common_det_f1": common_det_f1,
-
-            "common_cor_acc": common_cor_acc,
-            "common_cor_precision": common_cor_precision,
-            "common_cor_recall": common_cor_recall,
-            "common_cor_f1": common_cor_f1,
-
-            "strict_det_acc": strict_det_acc,
-            "strict_det_precision": strict_det_precision,
-            "strict_det_recall": strict_det_recall,
-            "strict_det_f1": strict_det_f1,
-
-            "strict_cor_acc": strict_cor_acc,
-            "strict_cor_precision": strict_cor_precision,
-            "strict_cor_recall": strict_cor_recall,
-            "strict_cor_f1": strict_cor_f1,
-            "task_name": os.path.split(path_tet)[-1]
-        }
-
-        output_eval_file = os.path.join(args.model_save_path, "eval_std.results.txt")
-        text_log_list = ["#" * 128 + "\n", "path_tet: " + path_tet.strip() + "\n"]
-        for key in sorted(result_mertics.keys()):
-            text_log = "Global step: %s,  %s = %s\n" % (str(-1), key, str(result_mertics[key]))
-            # logger.info(text_log)
-            text_log_list.append(text_log)
-        txt_write(text_log_list, output_eval_file, mode="a+")
+        # sent_mertics = {
+        #     "common_det_acc": common_det_acc,
+        #     "common_det_precision": common_det_precision,
+        #     "common_det_recall": common_det_recall,
+        #     "common_det_f1": common_det_f1,
+        #
+        #     "common_cor_acc": common_cor_acc,
+        #     "common_cor_precision": common_cor_precision,
+        #     "common_cor_recall": common_cor_recall,
+        #     "common_cor_f1": common_cor_f1,
+        #
+        #     "strict_det_acc": strict_det_acc,
+        #     "strict_det_precision": strict_det_precision,
+        #     "strict_det_recall": strict_det_recall,
+        #     "strict_det_f1": strict_det_f1,
+        #
+        #     "strict_cor_acc": strict_cor_acc,
+        #     "strict_cor_precision": strict_cor_precision,
+        #     "strict_cor_recall": strict_cor_recall,
+        #     "strict_cor_f1": strict_cor_f1,
+        # }
+        #
+        # detection_precision, detection_recall, detection_f1, \
+        # correction_precision, correction_recall, correction_f1 = char_mertic_det_cor(srcs, preds, tgts)
+        # token_result = {"det_precision": detection_precision, "det_recall": detection_recall, "det_f1": detection_f1,
+        #                 "cor_precision": correction_precision, "cor_recall": correction_recall, "cor_f1": correction_f1,
+        #                 }
+        #
+        # token_det_mertics = f'common Token Level correction: precision:{detection_precision:.4f}, recall:{detection_recall:.4f}, f1:{detection_f1:.4f}'
+        # token_cor_mertics = f'common TOken Level correction: precision:{correction_precision:.4f}, recall:{correction_recall:.4f}, f1:{correction_f1:.4f}'
+        # print("#" * 128)
+        # print(f'flag_eval: token')
+        # print(token_det_mertics)
+        # print(token_cor_mertics)
+        # print("#" * 128)
+        #
+        # result_mertics = {"task": os.path.split(path_tet)[-1], "sent": sent_mertics, "token": token_result}
 
     return common_det_mertics, common_cor_mertics, strict_det_mertics, strict_cor_mertics, result_mertics
 

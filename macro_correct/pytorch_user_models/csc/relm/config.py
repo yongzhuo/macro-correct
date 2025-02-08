@@ -2,9 +2,10 @@
 # -*- coding: utf-8 -*-
 # @time    : 2021/1/18 21:34
 # @author  : Mo
-# @function: Macbert4CSC
-# @github   : [Macbert4CSC](https://github.com/shibing624/pycorrector/tree/master/examples/macbert)
-# @paper   :  [SoftMaskedBert4CSC](https://arxiv.org/abs/2004.13922)
+# @function: relm
+# @paper   : [Chinese Spelling Correction as Rephrasing Language Model](https://arxiv.org/abs/2308.08796).
+# @code    : most code copy from https://github.com/Claude-Liu/ReLM, small modfix
+# @modfiy  : remove the Network Architecture of P-tuning(BiLSTM)
 
 
 from argparse import Namespace

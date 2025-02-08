@@ -71,7 +71,7 @@ class TextCorrectPredict:
                 path_model = os.path.join(self.office.config.model_save_path, self.office.config.model_name)
                 # model_dict_std = self.model.state_dict()
                 model_dict_new = torch.load(path_model, map_location=torch.device(self.office.device))
-                model_dict_new = {"bert." + k if not k.startswith("bert.bert.") else k: v for k, v in model_dict_new.items()}
+                model_dict_new = {"bert." + k.replace("pretrain_model.", "") if not k.startswith("bert.bert.") else k: v for k, v in model_dict_new.items()}
                 self.office.model.load_state_dict(model_dict_new, strict=False)
                 self.office.model.to(self.office.device)
                 self.office.logger.info("****** Load BertForMaskedLM Std Success ******")
@@ -125,7 +125,7 @@ class TextCorrectPredict:
         outputs = self.predict_batch([text], **kwargs)
         return outputs[0] if outputs else []
 
-    def predict_batch(self, texts, threshold=0.6, batch_size=32, max_len=128, rounded=4,
+    def predict_single(self, texts, threshold=0.6, batch_size=32, max_len=128, rounded=4,
                       flag_prob=True, flag_logits=False, flag_print=False, **kwargs):
         """  分类模型预测
         config:
@@ -181,7 +181,7 @@ class TextCorrectPredict:
             corrected_details.append(sub_details)
         outputs = []
         for s, c, e in zip(texts, new_corrected_sentences, corrected_details):
-            original_text = s.get("original_text", "")
+            original_text = s.get("original_text", "") or s.get("source", "")
             correct_text = copy.deepcopy(c)
             len_correct_text = len(correct_text)
             len_original_text = len(original_text)
@@ -199,6 +199,126 @@ class TextCorrectPredict:
             line_dict = {"source": original_text, "target": correct_text, "errors":  e}
             outputs.append(line_dict)
         return outputs
+
+    def predict_rethink(self, texts, threshold=0.6, batch_size=32, max_len=128, rounded=4, num_rethink=3,
+                        flag_prob=True, flag_logits=False, flag_print=False, **kwargs):
+        """  分类模型预测
+        config:
+            texts      : list<dict>, inputs of text, eg. ["你是谁"], [{"source":"你是谁"}], [{"original_text":"你是谁"}]
+            threshold  : float, threshold of token prob, eg. 0.75, 0.6
+            flag_prob  : bool, output prob or not, eg. True, False
+            rounded    : int, rounded of float, eg. 3, 4, 6
+            flag_logits: bool, reture logits or softmax, eg. True
+            flag_print : bool, print sentence(org/tgt/prd) or not, eg. False
+        Returns:
+            res        : list<dict>, output of label-score, eg. [{}]
+        """
+
+        def flag_errors(outputs):
+            """   判断 outputs 里边的 errors 是否有值   """
+            flag = False
+            for out in outputs:
+                out_errors = out.get("errors", [])
+                if out_errors:
+                    flag = True
+                    break
+            return flag
+
+        ### 数据预处理为需要的格式
+        texts_new = []
+        if texts and type(texts[0]) == str:
+            for data_i in texts:
+                data_i_dict = {}
+                data_i_dict[self.config.xy_keys_predict[0]] = data_i
+                data_i_dict[self.config.xy_keys_predict[1]] = ""
+                data_i_dict[self.config.xy_keys_predict[2]] = []
+                texts_new.append(data_i_dict)
+            texts = texts_new
+        elif texts and type(texts[0]) == dict and "source" in texts[0]:  # {"source":"", "target":""}
+            for data_i in texts:
+                data_i_dict = {}
+                data_i_dict[self.config.xy_keys_predict[0]] = data_i.get("source", "")
+                data_i_dict[self.config.xy_keys_predict[1]] = ""
+                data_i_dict[self.config.xy_keys_predict[2]] = []
+                texts_new.append(data_i_dict)
+            texts = texts_new
+        ### 推理
+        outputs_std_list = []
+        outputs_std = self.predict_single(texts=texts, threshold=threshold, batch_size=batch_size, max_len=max_len,
+                                        rounded=rounded, num_rethink=num_rethink, flag_prob=flag_prob,
+                                        flag_logits=flag_logits, flag_print=flag_print, **kwargs)
+        outputs_std_list.append(copy.deepcopy(outputs_std))
+        num_rethink = max(num_rethink, 0)
+        for nk in range(num_rethink):
+            # print("num_rethink: ", nk)
+            if flag_errors(outputs_std):
+                ### 替换然后重新预测
+                for odx in range(len(outputs_std)):
+                    outputs_std[odx]["source"] = outputs_std[odx]["target"]
+                    outputs_std[odx]["target"] = ""
+                    outputs_std[odx]["errors"] = []
+                outputs_std = self.predict_single(texts=outputs_std, threshold=threshold, batch_size=batch_size, max_len=max_len,
+                                                rounded=rounded, num_rethink=num_rethink, flag_prob=flag_prob,
+                                                flag_logits=flag_logits, flag_print=flag_print, **kwargs)
+                outputs_std_list.append(copy.deepcopy(outputs_std))
+                # print(outputs_std)
+                # print("#" * 128)
+            else:
+                break
+        outputs_rethink = []
+        for idx, text_dict in enumerate(texts):
+            text = text_dict.get("source", "") or text_dict.get("original_text", "")
+            line_dict = {"source": text, "target": "", "errors":  []}
+            ### 需要从前往后遍历, 需要prob的时候
+            for jdx, outputs_std_jdx in enumerate(outputs_std_list):
+                target = outputs_std_jdx[idx].get("target", "")
+                errors = outputs_std_jdx[idx].get("errors", [])
+                errors_before = line_dict.get("errors", [])
+                if jdx == 0:
+                    ### 第一轮全取
+                    line_dict["target"] = target
+                    line_dict["errors"] = errors
+                else:
+                    ### 其他轮次则筛选
+                    if errors and errors_before:
+                        ### [str_char, pred_char, pos, score]
+                        pos_set_before = set([e[2] for e in errors_before])
+                        pos_set_now = set([e[2] for e in errors])
+                        pos_set_in = pos_set_before & pos_set_now
+                        errors_new = []
+                        ### old-errors非位置交集
+                        for e in errors_before:
+                            pos = e[2]
+                            if pos not in pos_set_in:
+                                errors_new.append(e)
+                                # errors_new.append([text[pos], target[pos], pos])
+                        ### new-errors全加上
+                        for e in errors:
+                            pos = e[2]
+                            char_pos = [text[pos], target[pos]]
+                            char_pos_last = e[2:]
+                            errors_new.append(char_pos + char_pos_last)
+                        line_dict["errors"] = errors_new
+                        line_dict["target"] = target
+                    elif errors_before:
+                        line_dict["errors"] = errors_before
+            if line_dict["errors"]:
+                errors_sorted = list(sorted(iter(line_dict["errors"]), key=lambda x: x[2], reverse=False))
+                line_dict["errors"] = errors_sorted
+            outputs_rethink.append(line_dict)
+        return outputs_rethink
+
+    def predict_batch(self, texts, threshold=0.6, batch_size=32, max_len=128, rounded=4, num_rethink=0,
+                      flag_prob=True, flag_logits=False, flag_print=False, **kwargs):
+        if num_rethink and num_rethink > 0:
+            output = self.predict_rethink(texts=texts, threshold=threshold, batch_size=batch_size, max_len=max_len,
+                                          rounded=rounded, num_rethink=num_rethink, flag_prob=flag_prob,
+                                          flag_logits=flag_logits, flag_print=flag_print, **kwargs)
+        else:
+            output = self.predict_single(texts=texts, threshold=threshold, batch_size=batch_size, max_len=max_len,
+                                         rounded=rounded, flag_prob=flag_prob, flag_logits=flag_logits,
+                                         flag_print=flag_print, **kwargs)
+        return output
 
 
 if __name__ == "__main__":
@@ -222,19 +342,31 @@ if __name__ == "__main__":
              {"original_text": "我的家乡是有明的渔米之乡"},
              ]
 
-    res = tcp.predict_batch(texts, flag_logits=False, threshold=0.01, max_len=128)
-    # print(res)
+    res = tcp.predict_single(texts, flag_logits=False, threshold=0.01, max_len=128)
     for r in res:
         print(r)
     # tcp.office.config.model_save_path = tcp.office.config.model_save_path + "_state"
     # tcp.office.save_model_state()
+    print("#"*128)
+    res = tcp.predict_rethink(texts, flag_logits=False, threshold=0.01, max_len=128)
+    for r in res:
+        print(r)
+
+    print("#"*128)
+    res = tcp.predict_batch(texts, flag_logits=False, threshold=0.01, max_len=128)
+    for r in res:
+        print(r)
 
     while True:
         print("请输入:")
         question = input()
         res = tcp.predict_batch([{"source": question}], flag_logits=False, threshold=0.01)
-        # print(res)
-        print(res)
+        for r in res:
+            print(r)
+        print("#" * 128)
+        res = tcp.predict_rethink([{"source": question}], flag_logits=False, threshold=0.01, max_len=128)
+        for r in res:
+            print(r)
 
 """
 今天我写这张信球球妳帮我买一间房子。
