@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @time    : 2021/2/29 21:41
 # @author  : Mo
-# @function: tet csc of punct, 标点符号纠错(支持新增/修改, 不支持删除)
+# @function: tet csc of relm_v1, 纠错
 
 
 import traceback
@@ -40,6 +40,12 @@ texts = [
     {"source": "他主动拉了姑娘的手，心里很高心，嘴上故作生气"},
 ]
 
+# texts = ["真麻烦你了。希望你们好好的跳无",
+#          "少先队员因该为老人让坐",
+#          "机七学习是人工智能领遇最能体现智能的一个分知",
+#          "一只小鱼船浮在平净的河面上"
+#          ]
+# texts = [{"source": t} for t in texts]
 res = model.predict(texts)
 for r in res:
     print(r)
