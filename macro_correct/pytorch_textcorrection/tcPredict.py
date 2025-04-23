@@ -163,8 +163,10 @@ class TextCorrectPredict:
             # y_orginal = list(texts[idx].get(self.config.xy_keys_predict[0], ""))
             y_orginal = texts[idx].get(self.config.xy_keys_predict[0], "")
             y_decode = self.tc_collator.tokenizer.convert_ids_to_tokens(y, skip_special_tokens=False)
-            y_decode = y_decode[1: len(y_orginal)+1]
-            y_prob = probs_pred_id[idx][1: len(y_orginal)+1]
+            # y_decode = y_decode[1: len(y_orginal)]
+            # y_prob = probs_pred_id[idx][1: len(y_orginal)]
+            y_decode = y_decode[1: -1]
+            y_prob = probs_pred_id[idx][1: -1]
             y_new = ""
             for yo, yd, yp in zip(y_orginal, y_decode, y_prob):
                 if yd in self.tc_collator.special_tokens:
@@ -176,7 +178,7 @@ class TextCorrectPredict:
             new_corrected_sent, sub_details = get_errors_for_same_length(y_new, y_orginal)
             # new_corrected_sent, sub_details = get_errors_for_difflib(y_new, y_orginal)
             if flag_prob and sub_details:
-               sub_details = [s+[round(y_prob[s[-1]], rounded)] for s in sub_details]
+                sub_details = [s+[round(y_prob[s[-1]], rounded)] for s in sub_details if s[-1] < len(y_prob)]
             new_corrected_sentences.append(new_corrected_sent)
             corrected_details.append(sub_details)
         outputs = []

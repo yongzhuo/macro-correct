@@ -8,7 +8,7 @@
 这不，即便是大模型LLM时代的2024，“传统”的端到端的类BERT模型依旧是中文拼写错误任务的中流砥柱，大语言模型依旧无法替代这类细粒度的基础NLP任务。
 
 
-![csc_sample.png](./test/images/csc_sample.png "csc样例")
+![csc_sample.png](./tet/images/csc_sample.png "csc样例")
 
 ReLM, C-LLM, MacBERT4CSC, MaskCorrect, BERT-MFT, ECOPO, SoftMask-BERT, Bi-DCSpell, ChineseBERT, SpellBERT, SCOPE, DCN,
 FASPell, Hybrid(Wang271k), CSCD-IME(+NS), MCSCSet, ChunkCSC, ThinkTwice
@@ -50,7 +50,7 @@ C-LLM, Eval-GCSC
 ## 三、经典CSC模型汇总分类(主要是BERT类)
 ### 3.1 引入拼音字形信息
 
-![csc_embedding.png](./test/images/csc_embedding.png)
+![csc_embedding.png](./tet/images/csc_embedding.png)
 
 #### a1.引入拼音字形信息(embedding层)
 ```
@@ -83,7 +83,7 @@ C-LLM, Eval-GCSC
 
 ### 3.2 检测错误和纠错一体化融合
 
-![csc_method.png](./test/images/csc_method.png)
+![csc_method.png](./tet/images/csc_method.png)
 
 ```
 1.SoftMask-BERT: 字节跳动, 提出的检测识别一体化模型, 使用bert-embedding+BiGRU用于检测(有det-loss), 然后使用det-label进行遮挡embedding+原始embedding; 以目前的视角来看, BiGRU用来检测可能效果和泛化性不佳; 检测和识别只使用embedding交互可能也太浅了;
@@ -96,7 +96,7 @@ C-LLM, Eval-GCSC
 
 ### 3.3 prompt对齐预训练
 
-![csc_prompt.png](./test/images/csc_prompt.png)
+![csc_prompt.png](./tet/images/csc_prompt.png)
 
 ```
 1.ReLM: 上海交大, 提出的一种把CSC任务转化为RLM(Rephrasing Language Model)的模型; prompt构建方式为 source + target(MASK) -->> source + target; 注意他们重新再预训练了句对任务的BERT;
@@ -106,7 +106,7 @@ C-LLM, Eval-GCSC
 
 ### 3.4 训练+微调方式的调整
 
-![csc_ft.png](./test/images/csc_ft.png)
+![csc_ft.png](./tet/images/csc_ft.png)
 
 ```
 1.MaskCorrect: 浙江大学, [mask]正确的char能提点(15-25%); 其中sighan/wang271k数据集等是20%最佳, ASR数据集是15%最佳;(PS, 这么看的话, 数据量大最好是mask20%, 数据量少就mask25%)
@@ -121,7 +121,7 @@ C-LLM, Eval-GCSC
 
 ### 3.5 前处理+后处理(混淆集的使用, 数据增强);
 
-![csc_post.webp](./test/images/csc_post.webp)
+![csc_post.webp](./tet/images/csc_post.webp)
 
 ```
 1.FASPell: 百度, 爱奇艺构建的CSC训练集, 由视频字幕通过OCR后获取的数据集; 训练集为3575条, 测试集为1000条; 使用BERT的MLM, 同时融合混淆集解码(CSD, Confidence-Similarity Decoder), 具体为0.8*字符概率 + 0.2 * 相似度(拼音字形);
@@ -138,7 +138,7 @@ C-LLM, Eval-GCSC
 
 ### 3.6 大模型;
 
-![csc_LLM.png](./test/images/csc_LLM.png)
+![csc_LLM.png](./tet/images/csc_LLM.png)
 
 ```
 1.C-LLM: 清华大学, 修改并初始化tokenizer使得大模型编码char而不是word(剪切word); 继续预训练大模型, 然后SFT, 效果在全领域上还可以, 感觉更多是的大模型规模以及训练数据量带来的;

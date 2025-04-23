@@ -1083,7 +1083,7 @@ def get_errors_for_same_length(corrected_text, origin_text, unk_tokens=[]):
             continue
         if ori_char in unk_tokens:
             # deal with unk word
-            corrected_text = corrected_text[:i] + ori_char + corrected_text[i:]
+            corrected_text = corrected_text[:i] + ori_char + corrected_text[i + 1:]
             continue
         if ori_char != corrected_text[i]:
             if not flag_total_chinese(ori_char):

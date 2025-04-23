@@ -595,7 +595,7 @@ if __name__ == '__main__':
 
     path_tet_list = [path_tet1, path_tet2, path_tet3, path_tet4, path_tet5,
                      path_tet6, path_tet7, path_tet8, path_tet9, path_tet10,
-                     path_tet11, path_tet12, path_tet13, path_tet14, # path_tet15,
+                     path_tet11, path_tet12, path_tet13, path_tet14,  # path_tet15,
                      ]
 
     for path in path_tet_list:

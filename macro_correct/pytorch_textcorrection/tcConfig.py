@@ -95,7 +95,7 @@ import os
 os.environ["USE_TORCH"] = model_config.get("USE_TORCH", "1")
 from transformers import BertTokenizer, RobertaTokenizer, AlbertTokenizer, XLNetTokenizer, ElectraTokenizer, XLMTokenizer, AutoTokenizer
 from transformers import ErnieConfig, BertConfig, RobertaConfig, AlbertConfig, XLNetConfig, ElectraConfig, XLMConfig, AutoConfig
-from transformers import ErnieForMaskedLM, BertForMaskedLM, RobertaForMaskedLM, AlbertModel, XLNetModel, ElectraModel, XLMModel, AutoModel
+from transformers import ErnieForMaskedLM, BertForMaskedLM, RobertaForMaskedLM, AlbertModel, XLNetModel, ElectraModel, XLMModel, AutoModel, AutoModelForMaskedLM
 # from transformers import LongformerTokenizer, LongformerConfig, LongformerModel
 from transformers import DebertaTokenizer, DebertaConfig, DebertaModel
 from transformers import GPT2Tokenizer, GPT2Config, GPT2Model
@@ -111,5 +111,6 @@ PRETRAINED_MODEL_CLASSES = {
     "ERNIE": (BertConfig, BertTokenizer, BertForMaskedLM),
     "NEZHA": (BertConfig, BertTokenizer, BertForMaskedLM),
     "BERT": (BertConfig, BertTokenizer, BertForMaskedLM),
+    "AUTO": (AutoConfig, AutoTokenizer, AutoModel),
 }
 

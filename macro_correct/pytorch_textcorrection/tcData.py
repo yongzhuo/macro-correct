@@ -274,7 +274,7 @@ class TextCorrectionDataCollator:
         if config.flag_tokenizer_char:  # 使用char-to-char, 不用bpe的词根模式
             tokenizer = PretrainedTokenizer.from_pretrained(config.pretrained_model_name_or_path)
         else:
-            tokenizer = PRETRAINED_MODEL_CLASSES[config.model_type][1].from_pretrained(config.pretrained_model_name_or_path)
+            tokenizer = PRETRAINED_MODEL_CLASSES[config.model_type][1].from_pretrained(config.pretrained_model_name_or_path, trust_remote_code=True)
         if config.additional_special_tokens:  # 新增字符串
             tokenizer.add_special_tokens({"additional_special_tokens": config.additional_special_tokens})
         tokenizer.padding_side == config.padding_side.lower()
