@@ -891,6 +891,66 @@ def softmax(x):
     return s
 
 
+def cut_sent_by_stay_and_maxlen(text, max_len=126, return_length=True):
+    """
+    分句但是保存原标点符号, 如果长度还是太长的话就切为固定长度的句子
+    Args:
+        text: str, sentence of input text;
+        max_len: int, max_len of traing texts;
+        return_length: bool, wether return length or not
+    Returns:
+        res: List<tuple>
+    """
+    ### text_sp = re.split(r"！”|？”|。”|……”|”！|”？|”。|”……|》。|）。|！|？|。|…|\!|\?", text)
+    text_sp = re.split(r"[》）！？。…”；;!?]+", text)
+    conn_symbol = "！？。…”；;!?》）\n"
+    text_length_s = []
+    text_cut = []
+    len_text = len(text) - 1
+    # signal_symbol = "—”>；？…）‘《’（·》“~，、！。：<"
+    len_global = 0
+    for idx, text_sp_i in enumerate(text_sp):
+        text_cut_idx = text_sp[idx]
+        len_global_before = copy.deepcopy(len_global)
+        len_global += len(text_sp_i)
+        while True:
+            if len_global <= len_text and text[len_global] in conn_symbol:
+                text_cut_idx += text[len_global]
+            else:
+                # len_global += 1
+                if text_cut_idx:
+                    ### 如果标点符号依旧切分不了, 就强行切
+                    if len(text_cut_idx) > max_len:
+                        text_cut_i, text_length_s_i = cut_sent_by_maxlen(
+                            text=text, max_len=max_len, return_length=True)
+                        text_length_s.extend(text_length_s_i)
+                        text_cut.extend(text_cut_i)
+                    else:
+                        text_length_s.append([len_global_before, len_global])
+                        text_cut.append(text_cut_idx)
+                break
+            len_global += 1
+    if return_length:
+        return text_cut, text_length_s
+    return text_cut
+def cut_sent_by_maxlen(text, max_len=126, return_length=True):
+    """
+    分句但是切为固定长度的句子
+    Args:
+        text: str, sentence of input text;
+        max_len: int, max_len of traing texts;
+        return_length: bool, wether return length or not
+    Returns:
+        res: List<tuple>
+    """
+    text_length_s = []
+    text_cut = []
+    for i in range(0, len(text), max_len):
+        text_cut.append(text[i:i + max_len])
+        text_length_s.append([i, len(text[i:i + max_len])])
+    if return_length:
+        return text_cut, text_length_s
+    return text_cut
 def cut_sent_by_stay(text, return_length=True):
     """  分句但是保存原标点符号  """
     text_sp = re.split(r"！”|？”|。”|……”|”！|”？|”。|”……|》。|）。|！|？|。|…|\!|\?", text)
@@ -1254,3 +1314,7 @@ if __name__ == '__main__':
 
     logger = get_logger("./log")
     logger.info("12306")
+
+    text = '不论戎装在身与否，他们本瑟不变，早已将个人梦想融入国家事业，将人生意义定位于谋求人民福祉 雪域高原的养路工人次军、为牺牲战友守墓三十四载的陈俊贵、带领村民奔小康的书记范振喜、践行科技强国战略的孔金珠、投身实业报国的李世江、致力志愿服务的史光柱……他们来自各行各业，却有一个共同的名字：最美退役军人。'
+    text_cut, text_length_s = cut_sent_by_stay_and_maxlen(text=text, max_len=126, return_length=True)
+    print(text_cut)

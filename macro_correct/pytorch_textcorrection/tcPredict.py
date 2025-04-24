@@ -18,6 +18,7 @@ if platform.system().lower() == "windows":
     print(path_root)
 # os.environ["CUDA_VISIBLE_DEVICES"] = model_config.get("CUDA_VISIBLE_DEVICES", "0")
 from macro_correct.pytorch_textcorrection.tcTools import get_errors_for_same_length, get_errors_for_difflib
+from macro_correct.pytorch_textcorrection.tcTools import cut_sent_by_stay_and_maxlen
 from macro_correct.pytorch_textcorrection.tcData import TextCorrectionDataCollator
 from macro_correct.pytorch_textcorrection.tcData import TextCorrectionDataset
 from macro_correct.pytorch_textcorrection.tcConfig import model_config
@@ -139,6 +140,7 @@ class TextCorrectPredict:
             res        : list<dict>, output of label-score, eg. [{}]
         """
         texts_new = []
+        ### 标准化, 可list<str>输入, 或者是list<dict>(key为'source', 'original_text')
         if texts and type(texts[0]) == str:
             for data_i in texts:
                 data_i_dict = {}
@@ -155,8 +157,41 @@ class TextCorrectPredict:
                 data_i_dict[self.config.xy_keys_predict[2]] = []
                 texts_new.append(data_i_dict)
             texts = texts_new
-        dataset = self.process(texts, max_len=max_len, batch_size=batch_size)
-        ys_pred_id, probs_pred_id = self.office.predict(dataset, flag_logits=flag_logits, **kwargs)
+
+        ### 先按标点符号切分, 如果还是长了就按照max_len切分
+        sent_inputs = []
+        sent_map = []
+        for idx, text_dict in enumerate(texts):
+            text = text_dict.get(self.config.xy_keys_predict[0], "")
+            text_cut, text_length_s = cut_sent_by_stay_and_maxlen(
+                text=text, max_len=126, return_length=True)
+            sent_inputs_idx = [{self.config.xy_keys_predict[0]: t} for t in text_cut]
+            sent_map.extend([idx] * len(sent_inputs_idx))
+            sent_inputs.extend(sent_inputs_idx)
+
+        ### 推理-预测
+        dataset = self.process(sent_inputs, max_len=max_len, batch_size=batch_size)
+        ys_pred_id_cut, probs_pred_id_cut = self.office.predict(dataset, flag_logits=flag_logits, **kwargs)
+
+        ### 还原为原来的句子
+        probs_pred_id_dict = {}
+        ys_pred_id_dict = {}
+        for idx, (sm, ypi, ppi) in enumerate(zip(sent_map, ys_pred_id_cut, probs_pred_id_cut)):
+            ppi_cut = ppi[1:len(sent_inputs[idx].get("original_text", "")) + 1]
+            ypi_cut = ypi[1:len(sent_inputs[idx].get("original_text", "")) + 1]
+            sm_str = str(sm)
+            if sm_str not in probs_pred_id_dict:
+                probs_pred_id_dict[sm_str] = [0] + ppi_cut
+            else:
+                probs_pred_id_dict[sm_str] += ppi_cut
+            if sm_str not in ys_pred_id_dict:
+                ys_pred_id_dict[sm_str] = [0] + ypi_cut
+            else:
+                ys_pred_id_dict[sm_str] += ypi_cut
+        probs_pred_id = [probs_pred_id_dict.get(str(idx)) for idx in range(len(probs_pred_id_dict))]
+        ys_pred_id = [ys_pred_id_dict.get(str(idx)) for idx in range(len(ys_pred_id_dict))]
+
+        ### 后处理
         new_corrected_sentences = []
         corrected_details = []
         for idx, y in enumerate(ys_pred_id):
@@ -181,6 +216,8 @@ class TextCorrectPredict:
                 sub_details = [s+[round(y_prob[s[-1]], rounded)] for s in sub_details if s[-1] < len(y_prob)]
             new_corrected_sentences.append(new_corrected_sent)
             corrected_details.append(sub_details)
+
+        ### 句子太长就还原补足
         outputs = []
         for s, c, e in zip(texts, new_corrected_sentences, corrected_details):
             original_text = s.get("original_text", "") or s.get("source", "")

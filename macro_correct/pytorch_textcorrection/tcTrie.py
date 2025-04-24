@@ -19,10 +19,21 @@ if platform.system().lower() == "windows":
 
 
 class ConfusionCorrect:
-    def __init__(self, path="", confusion_dict={}):
-        self.load_confusion_dict(path)
+    def __init__(self, path="", path_user="", confusion_dict={}, user_dict={}):
+        self.confusion_dict = {}
+        ### 默认词典(基础), 全覆盖(path什么都不传的情况, 或者传了任意值)
+        if path or (not path and not path_user):
+            self.confusion_dict = self.load_confusion_dict(path=path)
+        ### 用户混淆词典地址, 更新
+        if path_user and os.path.exists(path_user):
+            user_dict = self.load_user_dict(path_user)
+            self.confusion_dict.update(user_dict)
+        ### 默认全量混淆词典, 全覆盖
         if confusion_dict:
-            self.confusion_dict.update(confusion_dict)
+            self.confusion_dict = confusion_dict
+        ### 用户混淆词典, 更新
+        if user_dict:
+            self.confusion_dict.update(user_dict)
         # 构建前缀树
         self.trietree = self.create_trie_tree(list(self.confusion_dict.keys()))
 
@@ -58,17 +69,28 @@ class ConfusionCorrect:
                         details_new.append([err_i, truth_i, pos_start+idx])
         return {"source": text, "target": text_cor, "errors": details_new}
 
-    def load_confusion_dict(self, path=""):
+    def load_confusion_dict(self, path):
+        """
+            加载默认混淆词典, 只加载一个
+        :param path:
+        :return: dict, {variant: origin}, eg: {"交通先行": "交通限行"}
+        """
+        path = os.path.join(path_root, "macro_correct", "output", "confusion_dict.json")
+        with open(path, "r", encoding="utf-8") as fj:
+            confusion_dict = json.load(fj)
+            fj.close()
+        return confusion_dict
+
+    def load_user_dict(self, path=""):
         """
             加载自定义困惑集, 只加载一个
         :param path:
         :return: dict, {variant: origin}, eg: {"交通先行": "交通限行"}
         """
-        path = path or os.path.join(path_root, "macro_correct", "output", "confusion_dict.json")
         with open(path, "r", encoding="utf-8") as fj:
-            self.confusion_dict = json.load(fj)
+            user_dict = json.load(fj)
             fj.close()
-        # return self.confusion_dict
+        return user_dict
 
     def create_trie_tree(self, keywords):
         """

@@ -271,7 +271,7 @@ class Office:
         # 只返回logits形式
         if flag_logits:
             return logits_pred_id, probs_pred_id
-        return ys_pred_id, probs_pred_id
+        return ys_pred_id.tolist(), probs_pred_id.tolist()
 
     def train(self, d1, d2):
         """  训练迭代epoch
