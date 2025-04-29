@@ -100,19 +100,19 @@ def get_all_dirs_files(path_dir):
     return res
 
 
-if __name__ == '__main__':
-    myz = 0
-
+def tet_std_common_cor_acc():
+    """  标准化统计各模型的F1等  """
     path = "../../macro_correct/output/text_correction"
     files = get_all_dirs_files(path)
     # files_filter = [file for file in files if "eval_result_mertics_total.json" in file]
     # files_filter = [file for file in files if "eval_result_mertics_total.json" in file
     #                 and "v1_eval_result_mertics_total.json" not in file]
     # files_filter = [file for file in files if "v0.75_eval_std.pred_mertics.json" in file]
-    files_filter = [file for file in files if "v1_eval_std.pred_mertics.json" in file]
+    # files_filter = [file for file in files if "v1_eval_std.pred_mertics.json" in file]
     # files_filter = [file for file in files if "v1_eval_result_mertics_total.json" in file]
     # files_filter = [file for file in files if "v0.75_eval_result_mertics_total.json" in file]
     # files_filter = [file for file in files if "v1_eval_std.pred_mertics.json" in file]
+    files_filter = [file for file in files if "eval_std.pred_mertics.json" in file and "acc_" in file]
 
     data_dict_filter = load_json(files_filter[0])
     k1k2_list = []
@@ -167,6 +167,7 @@ if __name__ == '__main__':
         data_dict = load_json(file)
         data_line = []
         for jdx, (k, v) in enumerate(data_dict.items()):
+            yz = 0
             ### 测试过度纠错的不计数
             if k in ["acc_rmrb.tet.json", "acc_xxqg.tet.json"]:
                 sent_mertics = v.get("sent", {})
@@ -175,6 +176,11 @@ if __name__ == '__main__':
                 data_line.append(common_det_acc_round)
                 print(common_det_acc_round)
                 print(k.replace(".json", ""))
+            # common_det_acc = v.get('common_cor_acc', 0)
+            # common_det_acc_round = round(common_det_acc * 100, 2)
+            # data_line.append(common_det_acc_round)
+            # print(common_det_acc_round)
+            # print(k.replace(".json", ""))
         data_line_all = [task_name, round(sum(data_line) / len(data_line), 2)] + data_line
         data_line_all = [str(d) for d in data_line_all]
         text_line = "| " + "| ".join(data_line_all) + " |"
@@ -184,6 +190,66 @@ if __name__ == '__main__':
     txt_write(text_list, "eval_mertics.md", mode="a+")
 
 
+def tet_std_correct_acc():
+    """  标准化统计各模型的acc等  """
+    path = "../../macro_correct/output/text_correction"
+    files = get_all_dirs_files(path)
+    # files_filter = [file for file in files if "eval_result_mertics_total.json" in file]
+    # files_filter = [file for file in files if "eval_result_mertics_total.json" in file
+    #                 and "v1_eval_result_mertics_total.json" not in file]
+    # files_filter = [file for file in files if "v0.75_eval_std.pred_mertics.json" in file]
+    # files_filter = [file for file in files if "v1_eval_std.pred_mertics.json" in file]
+    # files_filter = [file for file in files if "v1_eval_result_mertics_total.json" in file]
+    # files_filter = [file for file in files if "v0.75_eval_result_mertics_total.json" in file]
+    # files_filter = [file for file in files if "v1_eval_std.pred_mertics.json" in file]
+    files_filter = [file for file in files if "eval_std.pred_mertics.json" in file and "acc_" in file]
+
+    data_dict_filter = load_json(files_filter[0])
+    k1k2_list = []
+    for k, v in data_dict_filter.items():
+        k1k2_list.append([os.path.split(k)[-1], "acc_overfit"])
+
+    # k1k2 = ["sent", "common_det_acc"]
+    for k1k2 in k1k2_list[:1]:
+        # md_keys = ["model", "avg"] + [k.split(".")[0]+"_5k" if k=="mcsc_tet.5000.json" else k.split(".")[0] for k in data_dict_filter.keys()]
+        md_keys = ["model/"+k1k2[-1], "avg"] + [k[0] for k in k1k2_list]
+        text_1 = "| " + "| ".join(md_keys) + " |"
+        text_2 = "|" + ":-----------------|" * len(md_keys)
+        print(text_1)
+        print(text_2)
+        text = f"""\n### {k1k2[-1]}\n{text_1}\n{text_2}"""
+        for file in files_filter:
+            path_dir = os.path.split(file)[0]
+            task_name = os.path.split(path_dir)[-1]
+            data_dict = load_json(file)
+            data_line = []
+            for jdx, (k, v) in enumerate(data_dict.items()):
+                ### 测试过度纠错的不计数
+                common_cor_acc = v.get("common_cor_acc", "")
+                common_cor_acc_round = round(common_cor_acc*100, 2)
+                data_line.append(common_cor_acc_round)
+                print(common_cor_acc_round)
+                print(k.replace(".json", ""))
+            data_line_all = [task_name, round(sum(data_line) / len(data_line), 2)] + data_line
+            data_line_all = [str(d) for d in data_line_all]
+            text_line = "| " + "| ".join(data_line_all) + " |"
+            text += "\n" + text_line
+        text = text.replace("MacBERT-chinese_finetuned_correction", "macbert4csc_shibing624").replace("csc_TextProofreadingCompetition", "text_proof")
+        # txt_write([t+"\n" for t in text.split("\n")], "_".join(k1k2) + ".md")
+        text_list = [t.strip() + "\n" for t in text.split("\n")]
+        txt_write(text_list, "eval_mertics_acc_overfit.md", mode="a+")
+
+
+
+if __name__ == '__main__':
+    myz = 0
+
+    ### 各测评数据集的F1
+    tet_std_common_cor_acc()
+
+
+    ### 过度纠错的测试
+    tet_std_correct_acc()
 
 """
 将eval-mertics结果转化为readme.md

@@ -1,0 +1,4002 @@
+[
+    {
+        "original_text": "滴滴打人",
+        "correct_text": "滴滴打车"
+    },
+    {
+        "original_text": "域市消费卷",
+        "correct_text": "域市消费券"
+    },
+    {
+        "original_text": "标普500微贷冂",
+        "correct_text": "标普500微贷网"
+    },
+    {
+        "original_text": "美团外上",
+        "correct_text": "美团外卖"
+    },
+    {
+        "original_text": "令消费券",
+        "correct_text": "领消费券"
+    },
+    {
+        "original_text": "湖北人舍",
+        "correct_text": "湖北人社"
+    },
+    {
+        "original_text": "中正招商500",
+        "correct_text": "中证招商500"
+    },
+    {
+        "original_text": "湖北?消费卷",
+        "correct_text": "湖北?消费券"
+    },
+    {
+        "original_text": "公交杳词",
+        "correct_text": "公交查询"
+    },
+    {
+        "original_text": "微纵银行",
+        "correct_text": "微众银行"
+    },
+    {
+        "original_text": "海底涝优惠券",
+        "correct_text": "海底捞优惠券"
+    },
+    {
+        "original_text": "全民消防家",
+        "correct_text": "全民消防学"
+    },
+    {
+        "original_text": "国家医保评台",
+        "correct_text": "国家医保平台"
+    },
+    {
+        "original_text": "紫燕百味鸡消费卷",
+        "correct_text": "紫燕百味鸡消费券"
+    },
+    {
+        "original_text": "健康静太",
+        "correct_text": "健康静态"
+    },
+    {
+        "original_text": "医疗保了",
+        "correct_text": "医疗保险"
+    },
+    {
+        "original_text": "铜陵消费卷",
+        "correct_text": "铜陵消费券"
+    },
+    {
+        "original_text": "招生白酒",
+        "correct_text": "招商白酒"
+    },
+    {
+        "original_text": "四川省核万",
+        "correct_text": "四川省核酸"
+    },
+    {
+        "original_text": "花贝买高铁票",
+        "correct_text": "花呗买高铁票"
+    },
+    {
+        "original_text": "新能源板快",
+        "correct_text": "新能源板块"
+    },
+    {
+        "original_text": "抢璧山消费卷",
+        "correct_text": "抢璧山消费券"
+    },
+    {
+        "original_text": "南陵县领消费劵",
+        "correct_text": "南陵县领消费券"
+    },
+    {
+        "original_text": "进京健康宝",
+        "correct_text": "北京健康宝"
+    },
+    {
+        "original_text": "花唄分期淘寶額度卷",
+        "correct_text": "花呗分期淘宝额度券"
+    },
+    {
+        "original_text": "湖北抗元检测",
+        "correct_text": "湖北抗原检测"
+    },
+    {
+        "original_text": "生活缴了",
+        "correct_text": "生活缴费"
+    },
+    {
+        "original_text": "电孑营业执照",
+        "correct_text": "电子营业执照"
+    },
+    {
+        "original_text": "校园交贯",
+        "correct_text": "校园交费"
+    },
+    {
+        "original_text": "凡高一脸同",
+        "correct_text": "凡高一脸通"
+    },
+    {
+        "original_text": "滴滴出灯",
+        "correct_text": "滴滴出行"
+    },
+    {
+        "original_text": "三三消费劵",
+        "correct_text": "三三消费券"
+    },
+    {
+        "original_text": "掌上贏业厅",
+        "correct_text": "掌上营业厅"
+    },
+    {
+        "original_text": "核酸检测电",
+        "correct_text": "核酸检测点"
+    },
+    {
+        "original_text": "招联金高",
+        "correct_text": "招联金融"
+    },
+    {
+        "original_text": "苹果专享额度劵",
+        "correct_text": "苹果专享额度券"
+    },
+    {
+        "original_text": "加兴大病无忧",
+        "correct_text": "嘉兴大病无忧"
+    },
+    {
+        "original_text": "忻州市社亡",
+        "correct_text": "忻州市社区"
+    },
+    {
+        "original_text": "南陵政府消费卷",
+        "correct_text": "南陵政府消费券"
+    },
+    {
+        "original_text": "还花被呗",
+        "correct_text": "还花呗呗"
+    },
+    {
+        "original_text": "成都市社保个人查讯",
+        "correct_text": "成都市社保个人查询"
+    },
+    {
+        "original_text": "青桥第二课堂",
+        "correct_text": "青骄第二课堂"
+    },
+    {
+        "original_text": "易方达蓝筹金选",
+        "correct_text": "易方达蓝筹精选"
+    },
+    {
+        "original_text": "杭州本地包",
+        "correct_text": "杭州本地宝"
+    },
+    {
+        "original_text": "江西财证",
+        "correct_text": "江西财政"
+    },
+    {
+        "original_text": "哈啰岀行",
+        "correct_text": "哈啰出行"
+    },
+    {
+        "original_text": "察看消费记录",
+        "correct_text": "查看消费记录"
+    },
+    {
+        "original_text": "社保查丶",
+        "correct_text": "社保查询"
+    },
+    {
+        "original_text": "芯片版块",
+        "correct_text": "芯片板块"
+    },
+    {
+        "original_text": "微信收款码审请",
+        "correct_text": "微信收款码申请"
+    },
+    {
+        "original_text": "慰来汽车",
+        "correct_text": "蔚来汽车"
+    },
+    {
+        "original_text": "饿了吗外卖优惠券红包",
+        "correct_text": "饿了么外卖优惠券红包"
+    },
+    {
+        "original_text": "建信养老飞跃29",
+        "correct_text": "建信养老飞越29"
+    },
+    {
+        "original_text": "健设银行信用卡",
+        "correct_text": "建设银行信用卡"
+    },
+    {
+        "original_text": "帐单开厂办",
+        "correct_text": "账单开厂办"
+    },
+    {
+        "original_text": "宝贝青年体验金",
+        "correct_text": "宝呗青年体验金"
+    },
+    {
+        "original_text": "生育经贴",
+        "correct_text": "生育津贴"
+    },
+    {
+        "original_text": "万美校园",
+        "correct_text": "完美校园"
+    },
+    {
+        "original_text": "湖北健序",
+        "correct_text": "湖北健康"
+    },
+    {
+        "original_text": "懒人一健理财",
+        "correct_text": "懒人一键理财"
+    },
+    {
+        "original_text": "招商中正白酒c",
+        "correct_text": "招商中证白酒c"
+    },
+    {
+        "original_text": "信达奥银星奕混合c",
+        "correct_text": "信达澳银星奕混合c"
+    },
+    {
+        "original_text": "北京健康吗",
+        "correct_text": "北京健康码"
+    },
+    {
+        "original_text": "电里设备",
+        "correct_text": "电力设备"
+    },
+    {
+        "original_text": "武汉人少",
+        "correct_text": "武汉人社"
+    },
+    {
+        "original_text": "线上准河路",
+        "correct_text": "线上淮河路"
+    },
+    {
+        "original_text": "少然说财径",
+        "correct_text": "少然说财经"
+    },
+    {
+        "original_text": "健康禹杭",
+        "correct_text": "健康余杭"
+    },
+    {
+        "original_text": "国务政务服务平台",
+        "correct_text": "国家政务服务平台"
+    },
+    {
+        "original_text": "共想汽车",
+        "correct_text": "共享汽车"
+    },
+    {
+        "original_text": "河南稳旅通",
+        "correct_text": "河南文旅通"
+    },
+    {
+        "original_text": "无优保一",
+        "correct_text": "无忧保一"
+    },
+    {
+        "original_text": "液金电视",
+        "correct_text": "液晶电视"
+    },
+    {
+        "original_text": "电子证日",
+        "correct_text": "电子证照"
+    },
+    {
+        "original_text": "上海黄埔区",
+        "correct_text": "上海黄浦区"
+    },
+    {
+        "original_text": "市值社保服务",
+        "correct_text": "市直社保服务"
+    },
+    {
+        "original_text": "新馆疫苗接种",
+        "correct_text": "新冠疫苗接种"
+    },
+    {
+        "original_text": "高德打一",
+        "correct_text": "高德打车"
+    },
+    {
+        "original_text": "常州市笫一人民",
+        "correct_text": "常州市第一人民"
+    },
+    {
+        "original_text": "手机技架",
+        "correct_text": "手机支架"
+    },
+    {
+        "original_text": "医保缴费查一",
+        "correct_text": "医保缴费查询"
+    },
+    {
+        "original_text": "财遍资管财富号",
+        "correct_text": "财通资管财富号"
+    },
+    {
+        "original_text": "武汉新增",
+        "correct_text": "武汉疫情"
+    },
+    {
+        "original_text": "赚账红包",
+        "correct_text": "赚钱红包"
+    },
+    {
+        "original_text": "青枯单车",
+        "correct_text": "青桔单车"
+    },
+    {
+        "original_text": "招联好死",
+        "correct_text": "招联好期"
+    },
+    {
+        "original_text": "电子驾驶空",
+        "correct_text": "电子驾驶证"
+    },
+    {
+        "original_text": "重庆电弓",
+        "correct_text": "重庆电工"
+    },
+    {
+        "original_text": "医保缴费查讯",
+        "correct_text": "医保缴费查询"
+    },
+    {
+        "original_text": "厨房帖纸",
+        "correct_text": "厨房贴纸"
+    },
+    {
+        "original_text": "京东快弟",
+        "correct_text": "京东快递"
+    },
+    {
+        "original_text": "我核算检测二维码",
+        "correct_text": "我核酸检测二维码"
+    },
+    {
+        "original_text": "积分夺字",
+        "correct_text": "积分夺宝"
+    },
+    {
+        "original_text": "转码深请",
+        "correct_text": "转码申请"
+    },
+    {
+        "original_text": "同城风险人员自木",
+        "correct_text": "同城风险人员自查"
+    },
+    {
+        "original_text": "12345健康吗查询",
+        "correct_text": "12345健康码查询"
+    },
+    {
+        "original_text": "投鸡小师妹",
+        "correct_text": "投基小师妹"
+    },
+    {
+        "original_text": "社保缴费查了",
+        "correct_text": "社保缴费查询"
+    },
+    {
+        "original_text": "退出相互空",
+        "correct_text": "退出相互宝"
+    },
+    {
+        "original_text": "社保交汇",
+        "correct_text": "社保交费"
+    },
+    {
+        "original_text": "浙讧献血",
+        "correct_text": "浙江献血"
+    },
+    {
+        "original_text": "按增益31天",
+        "correct_text": "安增益31天"
+    },
+    {
+        "original_text": "核算检查",
+        "correct_text": "核酸检查"
+    },
+    {
+        "original_text": "饿了么外面",
+        "correct_text": "饿了么外卖"
+    },
+    {
+        "original_text": "红河供四",
+        "correct_text": "红河公司"
+    },
+    {
+        "original_text": "电阻医保卡",
+        "correct_text": "电子医保卡"
+    },
+    {
+        "original_text": "青洁单车",
+        "correct_text": "青桔单车"
+    },
+    {
+        "original_text": "路桥健康吗",
+        "correct_text": "路桥健康码"
+    },
+    {
+        "original_text": "国家政乡",
+        "correct_text": "国家政务"
+    },
+    {
+        "original_text": "安全备沁",
+        "correct_text": "安全备忘"
+    },
+    {
+        "original_text": "浙江健康吗代领",
+        "correct_text": "浙江健康码代领"
+    },
+    {
+        "original_text": "诚市服务",
+        "correct_text": "城市服务"
+    },
+    {
+        "original_text": "滴滴找车",
+        "correct_text": "滴滴打车"
+    },
+    {
+        "original_text": "核算结果",
+        "correct_text": "核酸结果"
+    },
+    {
+        "original_text": "核酸检测登计",
+        "correct_text": "核酸检测登记"
+    },
+    {
+        "original_text": "积分对话费",
+        "correct_text": "积分兑话费"
+    },
+    {
+        "original_text": "马上消费金荣",
+        "correct_text": "马上消费金融"
+    },
+    {
+        "original_text": "永赢创业扳",
+        "correct_text": "永赢创业板"
+    },
+    {
+        "original_text": "蚂蚁星缘",
+        "correct_text": "蚂蚁星愿"
+    },
+    {
+        "original_text": "好医保长其",
+        "correct_text": "好医保长期"
+    },
+    {
+        "original_text": "自动徼费",
+        "correct_text": "自动缴费"
+    },
+    {
+        "original_text": "电信流量卡申办健康吗",
+        "correct_text": "电信流量卡申办健康码"
+    },
+    {
+        "original_text": "哇哈哈到家",
+        "correct_text": "娃哈哈到家"
+    },
+    {
+        "original_text": "青岛公正云选房",
+        "correct_text": "青岛公证云选房"
+    },
+    {
+        "original_text": "顺风同城",
+        "correct_text": "顺丰同城"
+    },
+    {
+        "original_text": "湖南建康码",
+        "correct_text": "湖南健康码"
+    },
+    {
+        "original_text": "逝运安全码",
+        "correct_text": "浙运安全码"
+    },
+    {
+        "original_text": "证件照回打",
+        "correct_text": "证件照回执"
+    },
+    {
+        "original_text": "猪猪旅行",
+        "correct_text": "飞猪旅行"
+    },
+    {
+        "original_text": "杭州健康玛",
+        "correct_text": "杭州健康码"
+    },
+    {
+        "original_text": "社保合单",
+        "correct_text": "社保核单"
+    },
+    {
+        "original_text": "忻州市检马",
+        "correct_text": "忻州市检验"
+    },
+    {
+        "original_text": "咳酸检测",
+        "correct_text": "核酸检测"
+    },
+    {
+        "original_text": "通行行程卡",
+        "correct_text": "通信行程卡"
+    },
+    {
+        "original_text": "哈啰顺丰车",
+        "correct_text": "哈啰顺风车"
+    },
+    {
+        "original_text": "退出相互一",
+        "correct_text": "退出相互宝"
+    },
+    {
+        "original_text": "健康码扫码等级",
+        "correct_text": "健康码扫码登记"
+    },
+    {
+        "original_text": "中小学教育缴苏",
+        "correct_text": "中小学教育缴费"
+    },
+    {
+        "original_text": "燃气新奥",
+        "correct_text": "新奥燃气"
+    },
+    {
+        "original_text": "滴滴出分",
+        "correct_text": "滴滴出行"
+    },
+    {
+        "original_text": "理财直扩",
+        "correct_text": "理财直播"
+    },
+    {
+        "original_text": "招商国政",
+        "correct_text": "招商国证"
+    },
+    {
+        "original_text": "生曰蛋糕全国配送",
+        "correct_text": "生日蛋糕全国配送"
+    },
+    {
+        "original_text": "中正生物",
+        "correct_text": "中证生物"
+    },
+    {
+        "original_text": "神舟租车",
+        "correct_text": "神州租车"
+    },
+    {
+        "original_text": "中中石化",
+        "correct_text": "中国石化"
+    },
+    {
+        "original_text": "美团外直",
+        "correct_text": "美团外卖"
+    },
+    {
+        "original_text": "浙里就业人设专区",
+        "correct_text": "浙里就业人社专区"
+    },
+    {
+        "original_text": "女土包包",
+        "correct_text": "女士包包"
+    },
+    {
+        "original_text": "防癌抗一",
+        "correct_text": "防癌抗癌"
+    },
+    {
+        "original_text": "小猪旅行",
+        "correct_text": "飞猪旅行"
+    },
+    {
+        "original_text": "中国信通验",
+        "correct_text": "中国信通院"
+    },
+    {
+        "original_text": "高考入取",
+        "correct_text": "高考录取"
+    },
+    {
+        "original_text": "招联好欺贷",
+        "correct_text": "招联好期贷"
+    },
+    {
+        "original_text": "沈阳公丿",
+        "correct_text": "沈阳公交"
+    },
+    {
+        "original_text": "预定酒店宾馆",
+        "correct_text": "预订酒店宾馆"
+    },
+    {
+        "original_text": "充足中心",
+        "correct_text": "充值中心"
+    },
+    {
+        "original_text": "鉴约助手",
+        "correct_text": "签约助手"
+    },
+    {
+        "original_text": "优惠办上",
+        "correct_text": "优惠办卡"
+    },
+    {
+        "original_text": "东宁工交",
+        "correct_text": "东宁公交"
+    },
+    {
+        "original_text": "北京烧鸭",
+        "correct_text": "北京烤鸭"
+    },
+    {
+        "original_text": "个人养老保险个人帐户查询",
+        "correct_text": "个人养老保险个人账户查询"
+    },
+    {
+        "original_text": "电费月帐单查询",
+        "correct_text": "电费月账单查询"
+    },
+    {
+        "original_text": "证件照待会只",
+        "correct_text": "证件照带回执"
+    },
+    {
+        "original_text": "自动收货机",
+        "correct_text": "自动售货机"
+    },
+    {
+        "original_text": "日试搬家",
+        "correct_text": "日式搬家"
+    },
+    {
+        "original_text": "招联好期货",
+        "correct_text": "招联好期贷"
+    },
+    {
+        "original_text": "疾情防控",
+        "correct_text": "疫情防控"
+    },
+    {
+        "original_text": "收款名细",
+        "correct_text": "收款明细"
+    },
+    {
+        "original_text": "峨眉点子公交",
+        "correct_text": "峨眉电子公交"
+    },
+    {
+        "original_text": "真开心商城",
+        "correct_text": "真快乐商城"
+    },
+    {
+        "original_text": "南京理工大乀",
+        "correct_text": "南京理工大学"
+    },
+    {
+        "original_text": "知情报上",
+        "correct_text": "知情报告"
+    },
+    {
+        "original_text": "电子驾使",
+        "correct_text": "电子驾驶"
+    },
+    {
+        "original_text": "点点滳滴",
+        "correct_text": "点点滴滴"
+    },
+    {
+        "original_text": "银华基含",
+        "correct_text": "银华基金"
+    },
+    {
+        "original_text": "核酸结日",
+        "correct_text": "核酸结果"
+    },
+    {
+        "original_text": "悦悦生氵",
+        "correct_text": "悦悦生活"
+    },
+    {
+        "original_text": "体现额度",
+        "correct_text": "提现额度"
+    },
+    {
+        "original_text": "深圳交敬",
+        "correct_text": "深圳交警"
+    },
+    {
+        "original_text": "成都双沛",
+        "correct_text": "成都双流"
+    },
+    {
+        "original_text": "电话交费",
+        "correct_text": "电话缴费"
+    },
+    {
+        "original_text": "红期智慧超市",
+        "correct_text": "红旗智慧超市"
+    },
+    {
+        "original_text": "河北电子建康码",
+        "correct_text": "河北电子健康码"
+    },
+    {
+        "original_text": "菜鸟菜鸟果果",
+        "correct_text": "菜鸟菜鸟裹裹"
+    },
+    {
+        "original_text": "新冠疫卅",
+        "correct_text": "新冠疫苗"
+    },
+    {
+        "original_text": "核算检测二维码",
+        "correct_text": "核酸检测二维码"
+    },
+    {
+        "original_text": "医保加肥",
+        "correct_text": "医保缴费"
+    },
+    {
+        "original_text": "氵智慧人社",
+        "correct_text": "湖智慧人社"
+    },
+    {
+        "original_text": "证件中的",
+        "correct_text": "证件中心"
+    },
+    {
+        "original_text": "蚂蚁与客服",
+        "correct_text": "蚂蚁云客服"
+    },
+    {
+        "original_text": "世界联华",
+        "correct_text": "世纪联华"
+    },
+    {
+        "original_text": "嘀嗒代架",
+        "correct_text": "嘀嗒代驾"
+    },
+    {
+        "original_text": "中石化一建加油",
+        "correct_text": "中石化一键加油"
+    },
+    {
+        "original_text": "人脸识別",
+        "correct_text": "人脸识别"
+    },
+    {
+        "original_text": "专账红包",
+        "correct_text": "转账红包"
+    },
+    {
+        "original_text": "福建交通法没",
+        "correct_text": "福建交通罚没"
+    },
+    {
+        "original_text": "伽实物流",
+        "correct_text": "嘉实物流"
+    },
+    {
+        "original_text": "报险服务",
+        "correct_text": "保险服务"
+    },
+    {
+        "original_text": "滴滴打叉",
+        "correct_text": "滴滴打车"
+    },
+    {
+        "original_text": "邮储银行信用狗",
+        "correct_text": "邮储银行信用购"
+    },
+    {
+        "original_text": "消防自助管理",
+        "correct_text": "消防自主管理"
+    },
+    {
+        "original_text": "五台山兵官",
+        "correct_text": "五台山宾馆"
+    },
+    {
+        "original_text": "湖北抗源检查",
+        "correct_text": "湖北抗原检测"
+    },
+    {
+        "original_text": "生日快樂",
+        "correct_text": "生日快乐"
+    },
+    {
+        "original_text": "大城2020",
+        "correct_text": "大成2020"
+    },
+    {
+        "original_text": "全明消防平台",
+        "correct_text": "全民消防平台"
+    },
+    {
+        "original_text": "医保儿童",
+        "correct_text": "儿童医保"
+    },
+    {
+        "original_text": "钉钉启典",
+        "correct_text": "钉钉企典"
+    },
+    {
+        "original_text": "合作医疗交费",
+        "correct_text": "合作医疗缴费"
+    },
+    {
+        "original_text": "招联好期行",
+        "correct_text": "招联好期待"
+    },
+    {
+        "original_text": "浦东新区人名医院",
+        "correct_text": "浦东新区人民医院"
+    },
+    {
+        "original_text": "核酸检沁",
+        "correct_text": "核酸检测"
+    },
+    {
+        "original_text": "新余恒大城",
+        "correct_text": "新余恒太城"
+    },
+    {
+        "original_text": "老人养丧",
+        "correct_text": "老人养老"
+    },
+    {
+        "original_text": "沈阳市公交车地铁乖车",
+        "correct_text": "沈阳市公交车地铁乘车"
+    },
+    {
+        "original_text": "夫津3健康码",
+        "correct_text": "天津3健康码"
+    },
+    {
+        "original_text": "万能摇空",
+        "correct_text": "万能遥控"
+    },
+    {
+        "original_text": "天夫签到领积分",
+        "correct_text": "天天签到领积分"
+    },
+    {
+        "original_text": "棉达机械加工场晋",
+        "correct_text": "棉达机械加工场景"
+    },
+    {
+        "original_text": "全名门卡",
+        "correct_text": "全民门卡"
+    },
+    {
+        "original_text": "红旗连踏",
+        "correct_text": "红旗连锁"
+    },
+    {
+        "original_text": "上海公共交通乘车议码服务",
+        "correct_text": "上海公共交通乘车一码服务"
+    },
+    {
+        "original_text": "螺狮饭店",
+        "correct_text": "螺蛳饭店"
+    },
+    {
+        "original_text": "中小学缴",
+        "correct_text": "中小学籍"
+    },
+    {
+        "original_text": "饿了吗红包",
+        "correct_text": "饿了么红包"
+    },
+    {
+        "original_text": "事实公交",
+        "correct_text": "实时公交"
+    },
+    {
+        "original_text": "宠物年检",
+        "correct_text": "宠物体检"
+    },
+    {
+        "original_text": "新冠疫苗潮汛",
+        "correct_text": "新冠疫苗查询"
+    },
+    {
+        "original_text": "杭州肖费",
+        "correct_text": "杭州消费"
+    },
+    {
+        "original_text": "交通违法奖罚",
+        "correct_text": "交通违法缴罚"
+    },
+    {
+        "original_text": "天弥基金",
+        "correct_text": "天弘基金"
+    },
+    {
+        "original_text": "我的快弟",
+        "correct_text": "我的快递"
+    },
+    {
+        "original_text": "电子健康通信码",
+        "correct_text": "电子健康通行码"
+    },
+    {
+        "original_text": "泰格顺递便利店",
+        "correct_text": "泰格瞬递便利店"
+    },
+    {
+        "original_text": "滴滴代表",
+        "correct_text": "滴滴代驾"
+    },
+    {
+        "original_text": "电子税务尸",
+        "correct_text": "电子税务局"
+    },
+    {
+        "original_text": "中欧古寨黄金比例",
+        "correct_text": "中欧股债黄金比例"
+    },
+    {
+        "original_text": "合医疗保险",
+        "correct_text": "买医疗保险"
+    },
+    {
+        "original_text": "湖北抗源",
+        "correct_text": "湖北抗原"
+    },
+    {
+        "original_text": "我的愉康码",
+        "correct_text": "我的健康码"
+    },
+    {
+        "original_text": "宝鸡公丶",
+        "correct_text": "宝鸡公交"
+    },
+    {
+        "original_text": "广西人设",
+        "correct_text": "广西人社"
+    },
+    {
+        "original_text": "电子医保十",
+        "correct_text": "电子医保卡"
+    },
+    {
+        "original_text": "海底涝生日",
+        "correct_text": "海底捞生日"
+    },
+    {
+        "original_text": "我的生份证号",
+        "correct_text": "我的身份证号"
+    },
+    {
+        "original_text": "荟铭知能",
+        "correct_text": "荟铭智能"
+    },
+    {
+        "original_text": "无放罪证明",
+        "correct_text": "无犯罪证明"
+    },
+    {
+        "original_text": "饿了吗外卖",
+        "correct_text": "饿了么外卖"
+    },
+    {
+        "original_text": "修冼衣机",
+        "correct_text": "修洗衣机"
+    },
+    {
+        "original_text": "龙江惠民宝",
+        "correct_text": "龙江惠民保"
+    },
+    {
+        "original_text": "安全备纟",
+        "correct_text": "安全备忘"
+    },
+    {
+        "original_text": "医苗查询",
+        "correct_text": "疫苗查询"
+    },
+    {
+        "original_text": "成都市第七人名医院",
+        "correct_text": "成都市第七人民医院"
+    },
+    {
+        "original_text": "天和光能",
+        "correct_text": "天合光能"
+    },
+    {
+        "original_text": "上海人公共卫生临床中心",
+        "correct_text": "上海市公共卫生临床中心"
+    },
+    {
+        "original_text": "滴滴打别",
+        "correct_text": "滴滴打车"
+    },
+    {
+        "original_text": "公积金合肥",
+        "correct_text": "合肥公积金"
+    },
+    {
+        "original_text": "建信基金菅理有限公司",
+        "correct_text": "建信基金管理有限公司"
+    },
+    {
+        "original_text": "红衫资本",
+        "correct_text": "红杉资本"
+    },
+    {
+        "original_text": "信锒理财",
+        "correct_text": "信银理财"
+    },
+    {
+        "original_text": "核酸检沏",
+        "correct_text": "核酸检测"
+    },
+    {
+        "original_text": "浙里办要",
+        "correct_text": "浙里办票"
+    },
+    {
+        "original_text": "淘宝票电影",
+        "correct_text": "淘票票电影"
+    },
+    {
+        "original_text": "健康余抗",
+        "correct_text": "健康余杭"
+    },
+    {
+        "original_text": "飞行官家",
+        "correct_text": "飞行管家"
+    },
+    {
+        "original_text": "公基金识别人脸",
+        "correct_text": "公积金识别人脸"
+    },
+    {
+        "original_text": "莱鸟云贷",
+        "correct_text": "菜鸟云贷"
+    },
+    {
+        "original_text": "法士面包",
+        "correct_text": "法式面包"
+    },
+    {
+        "original_text": "京顺长城",
+        "correct_text": "景顺长城"
+    },
+    {
+        "original_text": "夏门公积金",
+        "correct_text": "厦门公积金"
+    },
+    {
+        "original_text": "城市服岛",
+        "correct_text": "城市服务"
+    },
+    {
+        "original_text": "几养抽奖",
+        "correct_text": "几羊抽奖"
+    },
+    {
+        "original_text": "友好来了",
+        "correct_text": "友活来了"
+    },
+    {
+        "original_text": "工交优惠券",
+        "correct_text": "公交优惠券"
+    },
+    {
+        "original_text": "滴滴出兵",
+        "correct_text": "滴滴出行"
+    },
+    {
+        "original_text": "浙大医院小程序",
+        "correct_text": "浙大一院小程序"
+    },
+    {
+        "original_text": "如何借画呗",
+        "correct_text": "如何借花呗"
+    },
+    {
+        "original_text": "社保公基金",
+        "correct_text": "社保公积金"
+    },
+    {
+        "original_text": "疫苖接种记录",
+        "correct_text": "疫苗接种记录"
+    },
+    {
+        "original_text": "安全备之",
+        "correct_text": "安全备忘"
+    },
+    {
+        "original_text": "中國電信",
+        "correct_text": "中国电信"
+    },
+    {
+        "original_text": "中囯疫情",
+        "correct_text": "中国疫情"
+    },
+    {
+        "original_text": "智慧人丶",
+        "correct_text": "智慧人社"
+    },
+    {
+        "original_text": "安全备丿",
+        "correct_text": "安全备忘"
+    },
+    {
+        "original_text": "灵活就业洋老保险",
+        "correct_text": "灵活就业养老保险"
+    },
+    {
+        "original_text": "基民养老保险",
+        "correct_text": "居民养老保险"
+    },
+    {
+        "original_text": "这里人才之家",
+        "correct_text": "浙里人才之家"
+    },
+    {
+        "original_text": "通信大数打",
+        "correct_text": "通信大数据"
+    },
+    {
+        "original_text": "医疗保俭",
+        "correct_text": "医疗保险"
+    },
+    {
+        "original_text": "国家国网",
+        "correct_text": "国家电网"
+    },
+    {
+        "original_text": "防御健康信息码",
+        "correct_text": "防疫健康信息码"
+    },
+    {
+        "original_text": "城市服务务",
+        "correct_text": "城市服务网"
+    },
+    {
+        "original_text": "上海肠海医院",
+        "correct_text": "上海长海医院"
+    },
+    {
+        "original_text": "批量转转",
+        "correct_text": "批量转帐"
+    },
+    {
+        "original_text": "新兄疫苗接种查询",
+        "correct_text": "新冠疫苗接种查询"
+    },
+    {
+        "original_text": "快递物流查询建康码",
+        "correct_text": "快递物流查询健康码"
+    },
+    {
+        "original_text": "创金合信碳中合",
+        "correct_text": "创金合信碳中和"
+    },
+    {
+        "original_text": "江西省终生学习卡",
+        "correct_text": "江西省终身学习卡"
+    },
+    {
+        "original_text": "国家平四",
+        "correct_text": "国家平台"
+    },
+    {
+        "original_text": "湖北谊化",
+        "correct_text": "湖北宜化"
+    },
+    {
+        "original_text": "远费险月卡",
+        "correct_text": "运费险月卡"
+    },
+    {
+        "original_text": "2o19年帐单",
+        "correct_text": "2o19年账单"
+    },
+    {
+        "original_text": "我的订悦",
+        "correct_text": "我的订阅"
+    },
+    {
+        "original_text": "嘉时中证光伏",
+        "correct_text": "嘉实中证光伏"
+    },
+    {
+        "original_text": "猛码充电",
+        "correct_text": "猛犸充电"
+    },
+    {
+        "original_text": "疫苗接厶",
+        "correct_text": "疫苗接种"
+    },
+    {
+        "original_text": "苏康码审请",
+        "correct_text": "苏康码申请"
+    },
+    {
+        "original_text": "芜湖市不动产登机",
+        "correct_text": "芜湖市不动产登记"
+    },
+    {
+        "original_text": "每日优先超市",
+        "correct_text": "每日优选超市"
+    },
+    {
+        "original_text": "开公大吉",
+        "correct_text": "开工大吉"
+    },
+    {
+        "original_text": "各人中心",
+        "correct_text": "个人中心"
+    },
+    {
+        "original_text": "少儿医亻",
+        "correct_text": "少儿医保"
+    },
+    {
+        "original_text": "北京住房工积金",
+        "correct_text": "北京住房公积金"
+    },
+    {
+        "original_text": "天天攒另钱",
+        "correct_text": "天天攒零钱"
+    },
+    {
+        "original_text": "财富管珏",
+        "correct_text": "财富管理"
+    },
+    {
+        "original_text": "电子票卜",
+        "correct_text": "电子票据"
+    },
+    {
+        "original_text": "中泰开洋",
+        "correct_text": "中泰开阳"
+    },
+    {
+        "original_text": "哈儿滨公交",
+        "correct_text": "哈尔滨公交"
+    },
+    {
+        "original_text": "天弘基金管理有跟公司",
+        "correct_text": "天弘基金管理有限公司"
+    },
+    {
+        "original_text": "这大医院",
+        "correct_text": "浙大医院"
+    },
+    {
+        "original_text": "是鸟驿站",
+        "correct_text": "菜鸟驿站"
+    },
+    {
+        "original_text": "国家平八",
+        "correct_text": "国家平台"
+    },
+    {
+        "original_text": "我的杭州巿民保",
+        "correct_text": "我的杭州市民保"
+    },
+    {
+        "original_text": "宁波建康码",
+        "correct_text": "宁波健康码"
+    },
+    {
+        "original_text": "小猪查里",
+        "correct_text": "小猪查理"
+    },
+    {
+        "original_text": "城市服务合",
+        "correct_text": "城市服务网"
+    },
+    {
+        "original_text": "租魔法跑",
+        "correct_text": "租魔法袍"
+    },
+    {
+        "original_text": "杭州庙票",
+        "correct_text": "杭州寺庙"
+    },
+    {
+        "original_text": "核酸检测豫登记",
+        "correct_text": "核酸检测预登记"
+    },
+    {
+        "original_text": "哈尔滨一大二院",
+        "correct_text": "哈尔滨医大二院"
+    },
+    {
+        "original_text": "电信身份证",
+        "correct_text": "电子身份证"
+    },
+    {
+        "original_text": "哈罗出竹",
+        "correct_text": "哈啰出行"
+    },
+    {
+        "original_text": "同城块送",
+        "correct_text": "同城快送"
+    },
+    {
+        "original_text": "湖北智彗人社",
+        "correct_text": "湖北智慧人社"
+    },
+    {
+        "original_text": "教骄第二课堂",
+        "correct_text": "青骄第二课堂"
+    },
+    {
+        "original_text": "走步赚钱",
+        "correct_text": "走路赚钱"
+    },
+    {
+        "original_text": "大通燃汽",
+        "correct_text": "大通燃气"
+    },
+    {
+        "original_text": "浙里办温州正务办",
+        "correct_text": "浙里办温州政务办"
+    },
+    {
+        "original_text": "广发信诚混合",
+        "correct_text": "广发兴诚混合"
+    },
+    {
+        "original_text": "我的快遞",
+        "correct_text": "我的快递"
+    },
+    {
+        "original_text": "已定业务",
+        "correct_text": "已订业务"
+    },
+    {
+        "original_text": "电子版块",
+        "correct_text": "电子板块"
+    },
+    {
+        "original_text": "湖北特惠劵",
+        "correct_text": "湖北消费券"
+    },
+    {
+        "original_text": "浙汇省互联网医院平台",
+        "correct_text": "浙江省互联网医院平台"
+    },
+    {
+        "original_text": "地铁乖车",
+        "correct_text": "地铁乘车"
+    },
+    {
+        "original_text": "饿了吗免单",
+        "correct_text": "饿了么免单"
+    },
+    {
+        "original_text": "予事办社保资格认",
+        "correct_text": "豫事办社保资格认"
+    },
+    {
+        "original_text": "租葛亮免押租凭",
+        "correct_text": "租葛亮免押租赁"
+    },
+    {
+        "original_text": "驾驶证电子信",
+        "correct_text": "驾驶证电子照"
+    },
+    {
+        "original_text": "上海交敬",
+        "correct_text": "上海交警"
+    },
+    {
+        "original_text": "哈喽顺风车",
+        "correct_text": "哈啰顺风车"
+    },
+    {
+        "original_text": "拼多多帐单",
+        "correct_text": "拼多多账单"
+    },
+    {
+        "original_text": "红旗连气",
+        "correct_text": "红旗连锁"
+    },
+    {
+        "original_text": "事业单位考试招",
+        "correct_text": "事业单位考试照"
+    },
+    {
+        "original_text": "公交车乘车8-8拆",
+        "correct_text": "公交车乘车8-8折"
+    },
+    {
+        "original_text": "浙大一下",
+        "correct_text": "浙大一院"
+    },
+    {
+        "original_text": "笆笆农场",
+        "correct_text": "芭芭农场"
+    },
+    {
+        "original_text": "社保医宝",
+        "correct_text": "社保医保"
+    },
+    {
+        "original_text": "桂林医学院笫二附属医院",
+        "correct_text": "桂林医学院第二附属医院"
+    },
+    {
+        "original_text": "温州医禾",
+        "correct_text": "温州医科"
+    },
+    {
+        "original_text": "囯家正务服务平台",
+        "correct_text": "囯家政务服务平台"
+    },
+    {
+        "original_text": "订期收益",
+        "correct_text": "定期收益"
+    },
+    {
+        "original_text": "19服务听",
+        "correct_text": "19服务厅"
+    },
+    {
+        "original_text": "汇天福中证",
+        "correct_text": "汇添富中证"
+    },
+    {
+        "original_text": "公积金提前",
+        "correct_text": "公积金提取"
+    },
+    {
+        "original_text": "在鸟驿站",
+        "correct_text": "菜鸟驿站"
+    },
+    {
+        "original_text": "收款花呗",
+        "correct_text": "花呗收款"
+    },
+    {
+        "original_text": "城市服务公",
+        "correct_text": "城市服务网"
+    },
+    {
+        "original_text": "一件解绑",
+        "correct_text": "一键解绑"
+    },
+    {
+        "original_text": "美团大车",
+        "correct_text": "美团打车"
+    },
+    {
+        "original_text": "前海开漂",
+        "correct_text": "前海开源"
+    },
+    {
+        "original_text": "连华清瘟",
+        "correct_text": "连花清瘟"
+    },
+    {
+        "original_text": "浙一医隊",
+        "correct_text": "浙一医院"
+    },
+    {
+        "original_text": "医学保险",
+        "correct_text": "医疗保险"
+    },
+    {
+        "original_text": "吉羊抽奖",
+        "correct_text": "几羊抽奖"
+    },
+    {
+        "original_text": "益和堂手机点单",
+        "correct_text": "益禾堂手机点单"
+    },
+    {
+        "original_text": "闲鱼二之",
+        "correct_text": "闲鱼二手"
+    },
+    {
+        "original_text": "数学人民币",
+        "correct_text": "数字人民币"
+    },
+    {
+        "original_text": "交关12123",
+        "correct_text": "交管12123"
+    },
+    {
+        "original_text": "电子医保今",
+        "correct_text": "电子医保金"
+    },
+    {
+        "original_text": "医保电子平证",
+        "correct_text": "医保电子凭证"
+    },
+    {
+        "original_text": "城市服乡",
+        "correct_text": "城市服务"
+    },
+    {
+        "original_text": "予事办社保资格认证",
+        "correct_text": "豫事办社保资格认证"
+    },
+    {
+        "original_text": "花呗收素",
+        "correct_text": "花呗收款"
+    },
+    {
+        "original_text": "政务办一",
+        "correct_text": "政务办事"
+    },
+    {
+        "original_text": "哈啰顺丰",
+        "correct_text": "哈啰顺风"
+    },
+    {
+        "original_text": "社保径缴交",
+        "correct_text": "社保金缴交"
+    },
+    {
+        "original_text": "密城之恋",
+        "correct_text": "蜜城之恋"
+    },
+    {
+        "original_text": "我的顺风快递",
+        "correct_text": "我的顺丰快递"
+    },
+    {
+        "original_text": "招联金一",
+        "correct_text": "招联金融"
+    },
+    {
+        "original_text": "语音播放弃",
+        "correct_text": "语音播放器"
+    },
+    {
+        "original_text": "西部利德基金",
+        "correct_text": "西部利得基金"
+    },
+    {
+        "original_text": "泓徳睿泽",
+        "correct_text": "泓德睿泽"
+    },
+    {
+        "original_text": "健康石码",
+        "correct_text": "健康快码"
+    },
+    {
+        "original_text": "杭州肖费卷",
+        "correct_text": "杭州消费券"
+    },
+    {
+        "original_text": "涌滴出行",
+        "correct_text": "滴滴出行"
+    },
+    {
+        "original_text": "居民医你",
+        "correct_text": "居民医保"
+    },
+    {
+        "original_text": "花呗还一",
+        "correct_text": "花呗还款"
+    },
+    {
+        "original_text": "付近小吃",
+        "correct_text": "附近小吃"
+    },
+    {
+        "original_text": "童心大数据",
+        "correct_text": "通信大数据"
+    },
+    {
+        "original_text": "懒人一脚理财",
+        "correct_text": "懒人一键理财"
+    },
+    {
+        "original_text": "住房公积厂",
+        "correct_text": "住房公积金"
+    },
+    {
+        "original_text": "城市生三",
+        "correct_text": "城市生活"
+    },
+    {
+        "original_text": "身育保险",
+        "correct_text": "生育保险"
+    },
+    {
+        "original_text": "核酸几句",
+        "correct_text": "核酸记录"
+    },
+    {
+        "original_text": "社保资格识证",
+        "correct_text": "社保资格认证"
+    },
+    {
+        "original_text": "哈罗换电",
+        "correct_text": "哈啰换电"
+    },
+    {
+        "original_text": "孩子医保卡怎么帮",
+        "correct_text": "孩子医保卡怎么办"
+    },
+    {
+        "original_text": "清海春天",
+        "correct_text": "青海春天"
+    },
+    {
+        "original_text": "百万医片",
+        "correct_text": "百万医疗"
+    },
+    {
+        "original_text": "国家医保服夕",
+        "correct_text": "国家医保服务"
+    },
+    {
+        "original_text": "水洋潮装",
+        "correct_text": "水羊潮妆"
+    },
+    {
+        "original_text": "重庆无炸",
+        "correct_text": "重庆无诈"
+    },
+    {
+        "original_text": "招联好期待",
+        "correct_text": "招联好期贷"
+    },
+    {
+        "original_text": "北京科兴疫廿",
+        "correct_text": "北京科兴疫苗"
+    },
+    {
+        "original_text": "智慧入社",
+        "correct_text": "智慧人社"
+    },
+    {
+        "original_text": "核酸检测愉悦",
+        "correct_text": "核酸检测预约"
+    },
+    {
+        "original_text": "发票台头",
+        "correct_text": "发票抬头"
+    },
+    {
+        "original_text": "哈更达斯兼职",
+        "correct_text": "哈根达斯兼职"
+    },
+    {
+        "original_text": "爱赞油加油站",
+        "correct_text": "爱攒油加油站"
+    },
+    {
+        "original_text": "退体工资查询",
+        "correct_text": "退休工资查询"
+    },
+    {
+        "original_text": "待育认证",
+        "correct_text": "待遇认证"
+    },
+    {
+        "original_text": "自行服务",
+        "correct_text": "自助服务"
+    },
+    {
+        "original_text": "天地壹号公职金",
+        "correct_text": "天地壹号公积金"
+    },
+    {
+        "original_text": "城乡君民",
+        "correct_text": "城乡居民"
+    },
+    {
+        "original_text": "予防接种",
+        "correct_text": "预防接种"
+    },
+    {
+        "original_text": "银泰把货",
+        "correct_text": "银泰百货"
+    },
+    {
+        "original_text": "花呗还预",
+        "correct_text": "花呗还款"
+    },
+    {
+        "original_text": "租扫地机其仁",
+        "correct_text": "租扫地机器人"
+    },
+    {
+        "original_text": "嘀嗒出行顺丰车",
+        "correct_text": "嘀嗒出行顺风车"
+    },
+    {
+        "original_text": "全民保终生养老金",
+        "correct_text": "全民保终身养老金"
+    },
+    {
+        "original_text": "徐彙區中心醫院",
+        "correct_text": "徐汇区中心医院"
+    },
+    {
+        "original_text": "蚂蚁花园",
+        "correct_text": "蚂蚁庄园"
+    },
+    {
+        "original_text": "意外运动险",
+        "correct_text": "运动意外险"
+    },
+    {
+        "original_text": "时实乘车",
+        "correct_text": "实时乘车"
+    },
+    {
+        "original_text": "蚂蚁星源",
+        "correct_text": "蚂蚁星愿"
+    },
+    {
+        "original_text": "湖洲公交",
+        "correct_text": "湖州公交"
+    },
+    {
+        "original_text": "叮哒出行",
+        "correct_text": "叮嗒出行"
+    },
+    {
+        "original_text": "邮储银行信用够",
+        "correct_text": "邮储银行信用购"
+    },
+    {
+        "original_text": "湖北医院学院",
+        "correct_text": "湖北医药学院"
+    },
+    {
+        "original_text": "执业年金",
+        "correct_text": "职业年金"
+    },
+    {
+        "original_text": "第四轮爱购上氵",
+        "correct_text": "第四轮爱购上海"
+    },
+    {
+        "original_text": "低扣红包",
+        "correct_text": "抵扣红包"
+    },
+    {
+        "original_text": "温州乖车",
+        "correct_text": "温州乘车"
+    },
+    {
+        "original_text": "招商中证蓄牧养殖",
+        "correct_text": "招商中证畜牧养殖"
+    },
+    {
+        "original_text": "金华交敬",
+        "correct_text": "金华交警"
+    },
+    {
+        "original_text": "平安信用卡办己",
+        "correct_text": "平安信用卡办理"
+    },
+    {
+        "original_text": "钻饰世家香水礼",
+        "correct_text": "钻石世家香水礼"
+    },
+    {
+        "original_text": "放孔开通",
+        "correct_text": "方孔开通"
+    },
+    {
+        "original_text": "卡塔尔世界木",
+        "correct_text": "卡塔尔世界杯"
+    },
+    {
+        "original_text": "支付宝客陌",
+        "correct_text": "支付宝客服"
+    },
+    {
+        "original_text": "核酸监测预约",
+        "correct_text": "核酸检测预约"
+    },
+    {
+        "original_text": "岀行申报之盐之无疫",
+        "correct_text": "出行申报之盐之无疫"
+    },
+    {
+        "original_text": "反乡政策",
+        "correct_text": "返乡政策"
+    },
+    {
+        "original_text": "腾旭会员",
+        "correct_text": "腾讯会员"
+    },
+    {
+        "original_text": "核酸检测预门",
+        "correct_text": "核酸检测预约"
+    },
+    {
+        "original_text": "全省心冠预苗",
+        "correct_text": "全省新冠预苗"
+    },
+    {
+        "original_text": "12123预约年捡",
+        "correct_text": "12123预约年检"
+    },
+    {
+        "original_text": "小朋汽车",
+        "correct_text": "小鹏汽车"
+    },
+    {
+        "original_text": "到账付款赞现金",
+        "correct_text": "到账付款攒现金"
+    },
+    {
+        "original_text": "支愿浙江",
+        "correct_text": "志愿浙江"
+    },
+    {
+        "original_text": "核酸检丶",
+        "correct_text": "核酸检测"
+    },
+    {
+        "original_text": "友帮保险",
+        "correct_text": "友邦保险"
+    },
+    {
+        "original_text": "求职筒历表格",
+        "correct_text": "求职简历表格"
+    },
+    {
+        "original_text": "上海入社",
+        "correct_text": "上海人社"
+    },
+    {
+        "original_text": "合作医厉",
+        "correct_text": "合作医疗"
+    },
+    {
+        "original_text": "菜鸟西站",
+        "correct_text": "菜鸟驿站"
+    },
+    {
+        "original_text": "浙江大学医学院附属笫一医院",
+        "correct_text": "浙江大学医学院附属第一医院"
+    },
+    {
+        "original_text": "东京快递",
+        "correct_text": "京东快递"
+    },
+    {
+        "original_text": "支付宝客股",
+        "correct_text": "支付宝客服"
+    },
+    {
+        "original_text": "每年大健康",
+        "correct_text": "美年大健康"
+    },
+    {
+        "original_text": "非纳缴费",
+        "correct_text": "非税缴费"
+    },
+    {
+        "original_text": "水笼头配件",
+        "correct_text": "水龙头配件"
+    },
+    {
+        "original_text": "咯罗顺风车",
+        "correct_text": "哈罗顺风车"
+    },
+    {
+        "original_text": "医疗饭还",
+        "correct_text": "医疗返还"
+    },
+    {
+        "original_text": "城镇职工养老保险年捡",
+        "correct_text": "城镇职工养老保险年检"
+    },
+    {
+        "original_text": "然气充值",
+        "correct_text": "燃气充值"
+    },
+    {
+        "original_text": "淮北反乡",
+        "correct_text": "淮北返乡"
+    },
+    {
+        "original_text": "最底还款",
+        "correct_text": "最低还款"
+    },
+    {
+        "original_text": "乐派克汗堡",
+        "correct_text": "乐派克汉堡"
+    },
+    {
+        "original_text": "玩嫌支付宝",
+        "correct_text": "玩转支付宝"
+    },
+    {
+        "original_text": "青峰第二课堂",
+        "correct_text": "青骄第二课堂"
+    },
+    {
+        "original_text": "上面寄件",
+        "correct_text": "上门寄件"
+    },
+    {
+        "original_text": "超节吃货卡",
+        "correct_text": "超级吃货卡"
+    },
+    {
+        "original_text": "刺客五六七",
+        "correct_text": "刺客伍六七"
+    },
+    {
+        "original_text": "二微码吊牌",
+        "correct_text": "二维码吊牌"
+    },
+    {
+        "original_text": "忆捷加油",
+        "correct_text": "易捷加油"
+    },
+    {
+        "original_text": "重庆是公积金提取",
+        "correct_text": "重庆市公积金提取"
+    },
+    {
+        "original_text": "路上阿姨",
+        "correct_text": "沪上阿姨"
+    },
+    {
+        "original_text": "滴哒出行",
+        "correct_text": "嘀嗒出行"
+    },
+    {
+        "original_text": "合肥入社",
+        "correct_text": "合肥人社"
+    },
+    {
+        "original_text": "米雪冰城",
+        "correct_text": "蜜雪冰城"
+    },
+    {
+        "original_text": "带状泡诊",
+        "correct_text": "带状疱疹"
+    },
+    {
+        "original_text": "百草喂旗舰店",
+        "correct_text": "百草味旗舰店"
+    },
+    {
+        "original_text": "银行卡优会活动",
+        "correct_text": "银行卡优惠活动"
+    },
+    {
+        "original_text": "我的基金收益明系",
+        "correct_text": "我的基金收益明细"
+    },
+    {
+        "original_text": "溪濮阳高钱",
+        "correct_text": "溪濮阳高铁"
+    },
+    {
+        "original_text": "滴滴代架",
+        "correct_text": "滴滴代驾"
+    },
+    {
+        "original_text": "浙江碳普車",
+        "correct_text": "浙江碳普惠"
+    },
+    {
+        "original_text": "星程石家庄东二环槐中路酒店酒店预订",
+        "correct_text": "星程石家庄东二环槐中路酒店酒店预订"
+    },
+    {
+        "original_text": "济南槐荫腊山南苑",
+        "correct_text": "济南槐荫腊山南苑"
+    },
+    {
+        "original_text": "售后记录",
+        "correct_text": "售后记录"
+    },
+    {
+        "original_text": "盒马邻里上海嘉定汇旺东路店",
+        "correct_text": "盒马邻里上海嘉定汇旺东路店"
+    },
+    {
+        "original_text": "金生丽水温泉汗蒸会馆门票预约",
+        "correct_text": "金生丽水温泉汗蒸会馆门票预约"
+    },
+    {
+        "original_text": "国华人寿",
+        "correct_text": "国华人寿"
+    },
+    {
+        "original_text": "江苏智慧人社",
+        "correct_text": "江苏智慧人社"
+    },
+    {
+        "original_text": "信阳公积金",
+        "correct_text": "信阳公积金"
+    },
+    {
+        "original_text": "河南省直第三人民医院",
+        "correct_text": "河南省直第三人民医院"
+    },
+    {
+        "original_text": "有税贷更多",
+        "correct_text": "有税贷更多"
+    },
+    {
+        "original_text": "专家解答",
+        "correct_text": "专家解答"
+    },
+    {
+        "original_text": "中国移动营业厅",
+        "correct_text": "中国移动营业厅"
+    },
+    {
+        "original_text": "汉庭嵊州酒店酒店预订",
+        "correct_text": "汉庭嵊州酒店酒店预订"
+    },
+    {
+        "original_text": "母婴摄影",
+        "correct_text": "母婴摄影"
+    },
+    {
+        "original_text": "华安保险",
+        "correct_text": "华安保险"
+    },
+    {
+        "original_text": "手机分期免息",
+        "correct_text": "手机分期免息"
+    },
+    {
+        "original_text": "中国石油共青加油站不下车加油",
+        "correct_text": "中国石油共青加油站不下车加油"
+    },
+    {
+        "original_text": "道达尔武汉江大路交通服务站不下车加油",
+        "correct_text": "道达尔武汉江大路交通服务站不下车加油"
+    },
+    {
+        "original_text": "国家电网",
+        "correct_text": "国家电网"
+    },
+    {
+        "original_text": "云脑速度",
+        "correct_text": "云脑速度"
+    },
+    {
+        "original_text": "天津荣安街店外送点单",
+        "correct_text": "天津荣安街店外送点单"
+    },
+    {
+        "original_text": "汉阳马鹦路送车点",
+        "correct_text": "汉阳马鹦路送车点"
+    },
+    {
+        "original_text": "曲靖住房公积金",
+        "correct_text": "曲靖住房公积金"
+    },
+    {
+        "original_text": "壳牌永川双石加油站不下车加油",
+        "correct_text": "壳牌永川双石加油站不下车加油"
+    },
+    {
+        "original_text": "中国石油双丰加油站不下车加油",
+        "correct_text": "中国石油双丰加油站不下车加油"
+    },
+    {
+        "original_text": "温州鹿城东门步行街店门店自取",
+        "correct_text": "温州鹿城东门步行街店门店自取"
+    },
+    {
+        "original_text": "江门市第三人民医院",
+        "correct_text": "江门市第三人民医院"
+    },
+    {
+        "original_text": "太仓万达店门店自取",
+        "correct_text": "太仓万达店门店自取"
+    },
+    {
+        "original_text": "安庆绿地店门店自取",
+        "correct_text": "安庆绿地店门店自取"
+    },
+    {
+        "original_text": "正新鸡排",
+        "correct_text": "正新鸡排"
+    },
+    {
+        "original_text": "蔡濠社区店",
+        "correct_text": "蔡濠社区店"
+    },
+    {
+        "original_text": "交通银行信用卡",
+        "correct_text": "交通银行信用卡"
+    },
+    {
+        "original_text": "音乐耳机",
+        "correct_text": "音乐耳机"
+    },
+    {
+        "original_text": "疫苗接种预约",
+        "correct_text": "疫苗接种预约"
+    },
+    {
+        "original_text": "社保卡业务",
+        "correct_text": "社保卡业务"
+    },
+    {
+        "original_text": "澜沧江江景民宿酒店预订",
+        "correct_text": "澜沧江江景民宿酒店预订"
+    },
+    {
+        "original_text": "杭州消防",
+        "correct_text": "杭州消防"
+    },
+    {
+        "original_text": "绿园区温馨家庭温馨一居室酒店预订",
+        "correct_text": "绿园区温馨家庭温馨一居室酒店预订"
+    },
+    {
+        "original_text": "全国违章查询",
+        "correct_text": "全国违章查询"
+    },
+    {
+        "original_text": "蚂蚁小镇",
+        "correct_text": "蚂蚁小镇"
+    },
+    {
+        "original_text": "挖机地盘件",
+        "correct_text": "挖机地盘件"
+    },
+    {
+        "original_text": "中国国际能源岳池白塔加油站不下车加油",
+        "correct_text": "中国国际能源岳池白塔加油站不下车加油"
+    },
+    {
+        "original_text": "大连医科大学附属第一医院",
+        "correct_text": "大连医科大学附属第一医院"
+    },
+    {
+        "original_text": "墓地墓碑",
+        "correct_text": "墓地墓碑"
+    },
+    {
+        "original_text": "千灯大润发店门店自取",
+        "correct_text": "千灯大润发店门店自取"
+    },
+    {
+        "original_text": "重庆酸辣粉",
+        "correct_text": "重庆酸辣粉"
+    },
+    {
+        "original_text": "大庆政务",
+        "correct_text": "大庆政务"
+    },
+    {
+        "original_text": "中国石油法库南加油站不下车加油",
+        "correct_text": "中国石油法库南加油站不下车加油"
+    },
+    {
+        "original_text": "中国漕运博物馆语音讲解",
+        "correct_text": "中国漕运博物馆语音讲解"
+    },
+    {
+        "original_text": "滨江月明路店门店自取",
+        "correct_text": "滨江月明路店门店自取"
+    },
+    {
+        "original_text": "上海移动",
+        "correct_text": "上海移动"
+    },
+    {
+        "original_text": "济南影山花园店",
+        "correct_text": "济南影山花园店"
+    },
+    {
+        "original_text": "约会指导",
+        "correct_text": "约会指导"
+    },
+    {
+        "original_text": "巨蟹座今日运势",
+        "correct_text": "巨蟹座今日运势"
+    },
+    {
+        "original_text": "大富绿洲店",
+        "correct_text": "大富绿洲店"
+    },
+    {
+        "original_text": "闵行锦梅路店门店自取",
+        "correct_text": "闵行锦梅路店门店自取"
+    },
+    {
+        "original_text": "水果超市",
+        "correct_text": "水果超市"
+    },
+    {
+        "original_text": "北京镇岗加油站快捷加油",
+        "correct_text": "北京镇岗加油站快捷加油"
+    },
+    {
+        "original_text": "机动车违章查询",
+        "correct_text": "机动车违章查询"
+    },
+    {
+        "original_text": "点餐自取海燕楼",
+        "correct_text": "点餐自取海燕楼"
+    },
+    {
+        "original_text": "花漾纹绣海天广场店在线预约",
+        "correct_text": "花漾纹绣海天广场店在线预约"
+    },
+    {
+        "original_text": "武汉京汉大道金地明郡店测试通过",
+        "correct_text": "武汉京汉大道金地明郡店测试通过"
+    },
+    {
+        "original_text": "安庆宜城路店",
+        "correct_text": "安庆宜城路店"
+    },
+    {
+        "original_text": "社保卡信息查询",
+        "correct_text": "社保卡信息查询"
+    },
+    {
+        "original_text": "萧山城市广场二店外送点单",
+        "correct_text": "萧山城市广场二店外送点单"
+    },
+    {
+        "original_text": "香瓜系列",
+        "correct_text": "香瓜系列"
+    },
+    {
+        "original_text": "春晓私厨小程序外卖",
+        "correct_text": "春晓私厨小程序外卖"
+    },
+    {
+        "original_text": "平安银行",
+        "correct_text": "平安银行"
+    },
+    {
+        "original_text": "北京通州靓景明居店",
+        "correct_text": "北京通州靓景明居店"
+    },
+    {
+        "original_text": "积分落户",
+        "correct_text": "积分落户"
+    },
+    {
+        "original_text": "中国石油安格里格加油站不下车加油",
+        "correct_text": "中国石油安格里格加油站不下车加油"
+    },
+    {
+        "original_text": "便携零食",
+        "correct_text": "便携零食"
+    },
+    {
+        "original_text": "郑州住房公积金",
+        "correct_text": "郑州住房公积金"
+    },
+    {
+        "original_text": "用品玩具",
+        "correct_text": "用品玩具"
+    },
+    {
+        "original_text": "关爱健康",
+        "correct_text": "关爱健康"
+    },
+    {
+        "original_text": "美高梅附近温馨家园套房酒店预订",
+        "correct_text": "美高梅附近温馨家园套房酒店预订"
+    },
+    {
+        "original_text": "超级学生码",
+        "correct_text": "超级学生码"
+    },
+    {
+        "original_text": "联合国儿童基金会",
+        "correct_text": "联合国儿童基金会"
+    },
+    {
+        "original_text": "洛颜美容美肤中心在线预约",
+        "correct_text": "洛颜美容美肤中心在线预约"
+    },
+    {
+        "original_text": "居然之家附近特色主题大床房酒店预订",
+        "correct_text": "居然之家附近特色主题大床房酒店预订"
+    },
+    {
+        "original_text": "浙江大学医学院附属第一医院",
+        "correct_text": "浙江大学医学院附属第一医院"
+    },
+    {
+        "original_text": "新时沏泰顺三魁店门店自取",
+        "correct_text": "新时沏泰顺三魁店门店自取"
+    },
+    {
+        "original_text": "港澳台再次签注",
+        "correct_text": "港澳台再次签注"
+    },
+    {
+        "original_text": "中山泉林欢乐世界门票预约",
+        "correct_text": "中山泉林欢乐世界门票预约"
+    },
+    {
+        "original_text": "浦发银行",
+        "correct_text": "浦发银行"
+    },
+    {
+        "original_text": "君王东不下车加油",
+        "correct_text": "君王东不下车加油"
+    },
+    {
+        "original_text": "花鸟岛性冷淡风房间酒店预订",
+        "correct_text": "花鸟岛性冷淡风房间酒店预订"
+    },
+    {
+        "original_text": "南京复地新都店",
+        "correct_text": "南京复地新都店"
+    },
+    {
+        "original_text": "宿州新都市华庭店门店自取",
+        "correct_text": "宿州新都市华庭店门店自取"
+    },
+    {
+        "original_text": "美式风情屋酒店预订",
+        "correct_text": "美式风情屋酒店预订"
+    },
+    {
+        "original_text": "城乡居民养老保险查询",
+        "correct_text": "城乡居民养老保险查询"
+    },
+    {
+        "original_text": "租美的烘干机",
+        "correct_text": "租美的烘干机"
+    },
+    {
+        "original_text": "金溪碧浪汤泉预约购票",
+        "correct_text": "金溪碧浪汤泉预约购票"
+    },
+    {
+        "original_text": "营口北海海景双床房酒店预订",
+        "correct_text": "营口北海海景双床房酒店预订"
+    },
+    {
+        "original_text": "居民医保缴费",
+        "correct_text": "居民医保缴费"
+    },
+    {
+        "original_text": "滴眼液服务",
+        "correct_text": "滴眼液服务"
+    },
+    {
+        "original_text": "中石化漳州本部塔尾站不下车加油",
+        "correct_text": "中石化漳州本部塔尾站不下车加油"
+    },
+    {
+        "original_text": "花呗收款",
+        "correct_text": "花呗收款"
+    },
+    {
+        "original_text": "长治市人民医院",
+        "correct_text": "长治市人民医院"
+    },
+    {
+        "original_text": "绍兴越城合成景园店门店自取",
+        "correct_text": "绍兴越城合成景园店门店自取"
+    },
+    {
+        "original_text": "地中海装饰风格",
+        "correct_text": "地中海装饰风格"
+    },
+    {
+        "original_text": "樊营社区度假公寓酒店预订",
+        "correct_text": "樊营社区度假公寓酒店预订"
+    },
+    {
+        "original_text": "申滨路店外送点单",
+        "correct_text": "申滨路店外送点单"
+    },
+    {
+        "original_text": "同行自查",
+        "correct_text": "同行自查"
+    },
+    {
+        "original_text": "轻工辅料",
+        "correct_text": "轻工辅料"
+    },
+    {
+        "original_text": "校园一卡通",
+        "correct_text": "校园一卡通"
+    },
+    {
+        "original_text": "藏在理发店的美甲在线预约",
+        "correct_text": "藏在理发店的美甲在线预约"
+    },
+    {
+        "original_text": "聚湖雅苑送车点",
+        "correct_text": "聚湖雅苑送车点"
+    },
+    {
+        "original_text": "公积金服务咨询",
+        "correct_text": "公积金服务咨询"
+    },
+    {
+        "original_text": "枞阳店门店自取",
+        "correct_text": "枞阳店门店自取"
+    },
+    {
+        "original_text": "天弘基金日赚1元挑战",
+        "correct_text": "天弘基金日赚1元挑战"
+    },
+    {
+        "original_text": "不动产权属证明-绍兴市",
+        "correct_text": "不动产权属证明-绍兴市"
+    },
+    {
+        "original_text": "成都华宇锦城名都店",
+        "correct_text": "成都华宇锦城名都店"
+    },
+    {
+        "original_text": "精品花茶",
+        "correct_text": "精品花茶"
+    },
+    {
+        "original_text": "同城急送",
+        "correct_text": "同城急送"
+    },
+    {
+        "original_text": "闽东日报登报",
+        "correct_text": "闽东日报登报"
+    },
+    {
+        "original_text": "成都市新华加油站快捷加油",
+        "correct_text": "成都市新华加油站快捷加油"
+    },
+    {
+        "original_text": "双月湾三期高层蔚雅公寓海景房酒店预订",
+        "correct_text": "双月湾三期高层蔚雅公寓海景房酒店预订"
+    },
+    {
+        "original_text": "口碑找好店",
+        "correct_text": "口碑找好店"
+    },
+    {
+        "original_text": "上海万航店门店自取",
+        "correct_text": "上海万航店门店自取"
+    },
+    {
+        "original_text": "成都云景豪庭店",
+        "correct_text": "成都云景豪庭店"
+    },
+    {
+        "original_text": "中国石油民丰加油站不下车加油",
+        "correct_text": "中国石油民丰加油站不下车加油"
+    },
+    {
+        "original_text": "衡水公积金",
+        "correct_text": "衡水公积金"
+    },
+    {
+        "original_text": "电子医保",
+        "correct_text": "电子医保"
+    },
+    {
+        "original_text": "中山大学附属第六医院",
+        "correct_text": "中山大学附属第六医院"
+    },
+    {
+        "original_text": "菜鸟驿站",
+        "correct_text": "菜鸟驿站"
+    },
+    {
+        "original_text": "泉州石狮泰禾店外送点单",
+        "correct_text": "泉州石狮泰禾店外送点单"
+    },
+    {
+        "original_text": "节点验收",
+        "correct_text": "节点验收"
+    },
+    {
+        "original_text": "快递超市",
+        "correct_text": "快递超市"
+    },
+    {
+        "original_text": "分期计算器",
+        "correct_text": "分期计算器"
+    },
+    {
+        "original_text": "重庆医保",
+        "correct_text": "重庆医保"
+    },
+    {
+        "original_text": "肥城市正大门店自取",
+        "correct_text": "肥城市正大门店自取"
+    },
+    {
+        "original_text": "广东佛山风雅新区二路九号店到店自提服务",
+        "correct_text": "广东佛山风雅新区二路九号店到店自提服务"
+    },
+    {
+        "original_text": "安全中心",
+        "correct_text": "安全中心"
+    },
+    {
+        "original_text": "浙江供销超市",
+        "correct_text": "浙江供销超市"
+    },
+    {
+        "original_text": "郴州苏仙桥店门店自取",
+        "correct_text": "郴州苏仙桥店门店自取"
+    },
+    {
+        "original_text": "全国公积金查询",
+        "correct_text": "全国公积金查询"
+    },
+    {
+        "original_text": "淄博市图书馆送车点",
+        "correct_text": "淄博市图书馆送车点"
+    },
+    {
+        "original_text": "长阳清江画中画温馨家园酒店预订",
+        "correct_text": "长阳清江画中画温馨家园酒店预订"
+    },
+    {
+        "original_text": "备用金提额度",
+        "correct_text": "备用金提额度"
+    },
+    {
+        "original_text": "升金湖西不下车加油",
+        "correct_text": "升金湖西不下车加油"
+    },
+    {
+        "original_text": "东莞石碣科技东路",
+        "correct_text": "东莞石碣科技东路"
+    },
+    {
+        "original_text": "太原和平店外送点单",
+        "correct_text": "太原和平店外送点单"
+    },
+    {
+        "original_text": "新时沏丽水职业技术学院店门店自取",
+        "correct_text": "新时沏丽水职业技术学院店门店自取"
+    },
+    {
+        "original_text": "哈萨克毡房婚庆包酒店预订",
+        "correct_text": "哈萨克毡房婚庆包酒店预订"
+    },
+    {
+        "original_text": "梁山公明大道龙城广场店门店自取",
+        "correct_text": "梁山公明大道龙城广场店门店自取"
+    },
+    {
+        "original_text": "疫苗证明",
+        "correct_text": "疫苗证明"
+    },
+    {
+        "original_text": "东莞长安宵边大润发店门店自取",
+        "correct_text": "东莞长安宵边大润发店门店自取"
+    },
+    {
+        "original_text": "糖果美甲在线预约",
+        "correct_text": "糖果美甲在线预约"
+    },
+    {
+        "original_text": "旧衣物回收水利局家属院",
+        "correct_text": "旧衣物回收水利局家属院"
+    },
+    {
+        "original_text": "森马获嘉民主路三店全渠道商城",
+        "correct_text": "森马获嘉民主路三店全渠道商城"
+    },
+    {
+        "original_text": "伟伟精品民宿温馨大床房一酒店预订",
+        "correct_text": "伟伟精品民宿温馨大床房一酒店预订"
+    },
+    {
+        "original_text": "新街口地铁站二店门店自取",
+        "correct_text": "新街口地铁站二店门店自取"
+    },
+    {
+        "original_text": "校园公益",
+        "correct_text": "校园公益"
+    },
+    {
+        "original_text": "图文问诊",
+        "correct_text": "图文问诊"
+    },
+    {
+        "original_text": "长海县广鹿岛桂君农家乐标准间酒店预订",
+        "correct_text": "长海县广鹿岛桂君农家乐标准间酒店预订"
+    },
+    {
+        "original_text": "中国移动",
+        "correct_text": "中国移动"
+    },
+    {
+        "original_text": "蚂蚁森林",
+        "correct_text": "蚂蚁森林"
+    },
+    {
+        "original_text": "社保卡证件照",
+        "correct_text": "社保卡证件照"
+    },
+    {
+        "original_text": "巩义市安乐街安东苑区店",
+        "correct_text": "巩义市安乐街安东苑区店"
+    },
+    {
+        "original_text": "蚂蚁金服",
+        "correct_text": "蚂蚁金服"
+    },
+    {
+        "original_text": "旧衣物回收凤凰台三街",
+        "correct_text": "旧衣物回收凤凰台三街"
+    },
+    {
+        "original_text": "国金基金财富号",
+        "correct_text": "国金基金财富号"
+    },
+    {
+        "original_text": "中信证券",
+        "correct_text": "中信证券"
+    },
+    {
+        "original_text": "潼南百川油联加油站快捷加油",
+        "correct_text": "潼南百川油联加油站快捷加油"
+    },
+    {
+        "original_text": "实木系列",
+        "correct_text": "实木系列"
+    },
+    {
+        "original_text": "宜必思齐齐哈尔中环酒店酒店预订",
+        "correct_text": "宜必思齐齐哈尔中环酒店酒店预订"
+    },
+    {
+        "original_text": "公司注销",
+        "correct_text": "公司注销"
+    },
+    {
+        "original_text": "中原消费金融",
+        "correct_text": "中原消费金融"
+    },
+    {
+        "original_text": "延长壳牌成都彭州蒙阳加油站不下车加油",
+        "correct_text": "延长壳牌成都彭州蒙阳加油站不下车加油"
+    },
+    {
+        "original_text": "飞来湖公园景点游玩",
+        "correct_text": "飞来湖公园景点游玩"
+    },
+    {
+        "original_text": "金沙滩精装海景三居室酒店预订",
+        "correct_text": "金沙滩精装海景三居室酒店预订"
+    },
+    {
+        "original_text": "南通启东寅阳店",
+        "correct_text": "南通启东寅阳店"
+    },
+    {
+        "original_text": "体检中心",
+        "correct_text": "体检中心"
+    },
+    {
+        "original_text": "苹果手机12",
+        "correct_text": "苹果手机12"
+    },
+    {
+        "original_text": "安石路分部",
+        "correct_text": "安石路分部"
+    },
+    {
+        "original_text": "越王山风景区预约购票",
+        "correct_text": "越王山风景区预约购票"
+    },
+    {
+        "original_text": "浙大一院总部严冬",
+        "correct_text": "浙大一院总部严冬"
+    },
+    {
+        "original_text": "网红景点",
+        "correct_text": "网红景点"
+    },
+    {
+        "original_text": "核酸预约",
+        "correct_text": "核酸预约"
+    },
+    {
+        "original_text": "长安进步加油站快捷加油",
+        "correct_text": "长安进步加油站快捷加油"
+    },
+    {
+        "original_text": "高招直播",
+        "correct_text": "高招直播"
+    },
+    {
+        "original_text": "中国石油恒通加油站不下车加油",
+        "correct_text": "中国石油恒通加油站不下车加油"
+    },
+    {
+        "original_text": "余姚市人民医院",
+        "correct_text": "余姚市人民医院"
+    },
+    {
+        "original_text": "全季大连青泥洼桥酒店酒店预订",
+        "correct_text": "全季大连青泥洼桥酒店酒店预订"
+    },
+    {
+        "original_text": "蓬莱阁风景区宝龙广场公寓民宿酒店预订",
+        "correct_text": "蓬莱阁风景区宝龙广场公寓民宿酒店预订"
+    },
+    {
+        "original_text": "雪纺涤纶舒适",
+        "correct_text": "雪纺涤纶舒适"
+    },
+    {
+        "original_text": "金华东华家园南区店",
+        "correct_text": "金华东华家园南区店"
+    },
+    {
+        "original_text": "医保凭证",
+        "correct_text": "医保凭证"
+    },
+    {
+        "original_text": "海底捞高校学生专享",
+        "correct_text": "海底捞高校学生专享"
+    },
+    {
+        "original_text": "滁州天长东路二店外送点单",
+        "correct_text": "滁州天长东路二店外送点单"
+    },
+    {
+        "original_text": "信用卡查询",
+        "correct_text": "信用卡查询"
+    },
+    {
+        "original_text": "缙云县人民医院送车点",
+        "correct_text": "缙云县人民医院送车点"
+    },
+    {
+        "original_text": "扬州江都爱它宠物",
+        "correct_text": "扬州江都爱它宠物"
+    },
+    {
+        "original_text": "哈鹿定州东方加油站快捷加油",
+        "correct_text": "哈鹿定州东方加油站快捷加油"
+    },
+    {
+        "original_text": "中国石油来宾里兰加油站不下车加油",
+        "correct_text": "中国石油来宾里兰加油站不下车加油"
+    },
+    {
+        "original_text": "上海瑞轩宠物诊所",
+        "correct_text": "上海瑞轩宠物诊所"
+    },
+    {
+        "original_text": "好医保长期医疗",
+        "correct_text": "好医保长期医疗"
+    },
+    {
+        "original_text": "春天美甲美睫青浦万达茂店",
+        "correct_text": "春天美甲美睫青浦万达茂店"
+    },
+    {
+        "original_text": "君达石化爱民站快捷加油",
+        "correct_text": "君达石化爱民站快捷加油"
+    },
+    {
+        "original_text": "紫金山探险公园预约购票",
+        "correct_text": "紫金山探险公园预约购票"
+    },
+    {
+        "original_text": "西安大兴东路店外送点单",
+        "correct_text": "西安大兴东路店外送点单"
+    },
+    {
+        "original_text": "证件照拍摄",
+        "correct_text": "证件照拍摄"
+    },
+    {
+        "original_text": "新卡上市",
+        "correct_text": "新卡上市"
+    },
+    {
+        "original_text": "镇江御龙湾店外送点单",
+        "correct_text": "镇江御龙湾店外送点单"
+    },
+    {
+        "original_text": "旅游学院费城时代门面店",
+        "correct_text": "旅游学院费城时代门面店"
+    },
+    {
+        "original_text": "水电地暖",
+        "correct_text": "水电地暖"
+    },
+    {
+        "original_text": "中国石油南阳第六十五加油站不下车加油",
+        "correct_text": "中国石油南阳第六十五加油站不下车加油"
+    },
+    {
+        "original_text": "大观天地店门店自取",
+        "correct_text": "大观天地店门店自取"
+    },
+    {
+        "original_text": "亚孚掇刀雅雀铺加油站快捷加油",
+        "correct_text": "亚孚掇刀雅雀铺加油站快捷加油"
+    },
+    {
+        "original_text": "电话卡办理",
+        "correct_text": "电话卡办理"
+    },
+    {
+        "original_text": "亿度造型在线预约",
+        "correct_text": "亿度造型在线预约"
+    },
+    {
+        "original_text": "东华街店",
+        "correct_text": "东华街店"
+    },
+    {
+        "original_text": "门面招牌清洗",
+        "correct_text": "门面招牌清洗"
+    },
+    {
+        "original_text": "金通大道餐厅门店自取",
+        "correct_text": "金通大道餐厅门店自取"
+    },
+    {
+        "original_text": "汉庭优佳上海莘庄商务中心酒店酒店预订",
+        "correct_text": "汉庭优佳上海莘庄商务中心酒店酒店预订"
+    },
+    {
+        "original_text": "宁波鄞州荣安星空里店",
+        "correct_text": "宁波鄞州荣安星空里店"
+    },
+    {
+        "original_text": "开通借呗",
+        "correct_text": "开通借呗"
+    },
+    {
+        "original_text": "泉州东海文园店自提服务",
+        "correct_text": "泉州东海文园店自提服务"
+    },
+    {
+        "original_text": "雾漫小东江栖居民族风情双床房酒店预订",
+        "correct_text": "雾漫小东江栖居民族风情双床房酒店预订"
+    },
+    {
+        "original_text": "河北大学医学部店门店自取",
+        "correct_text": "河北大学医学部店门店自取"
+    },
+    {
+        "original_text": "还信用卡",
+        "correct_text": "还信用卡"
+    },
+    {
+        "original_text": "南通床上用品批发",
+        "correct_text": "南通床上用品批发"
+    },
+    {
+        "original_text": "简约时尚主题大床房酒店预订",
+        "correct_text": "简约时尚主题大床房酒店预订"
+    },
+    {
+        "original_text": "杭州天然气",
+        "correct_text": "杭州天然气"
+    },
+    {
+        "original_text": "森马德清乾元一店全渠道商城",
+        "correct_text": "森马德清乾元一店全渠道商城"
+    },
+    {
+        "original_text": "南平街店",
+        "correct_text": "南平街店"
+    },
+    {
+        "original_text": "伊人时光私人定制在线预约",
+        "correct_text": "伊人时光私人定制在线预约"
+    },
+    {
+        "original_text": "中国石油北环路西加油站不下车加油",
+        "correct_text": "中国石油北环路西加油站不下车加油"
+    },
+    {
+        "original_text": "辅助材料产品",
+        "correct_text": "辅助材料产品"
+    },
+    {
+        "original_text": "南戴河豪华五居室酒店预订",
+        "correct_text": "南戴河豪华五居室酒店预订"
+    },
+    {
+        "original_text": "太平人寿保险",
+        "correct_text": "太平人寿保险"
+    },
+    {
+        "original_text": "海运运输",
+        "correct_text": "海运运输"
+    },
+    {
+        "original_text": "常州一院",
+        "correct_text": "常州一院"
+    },
+    {
+        "original_text": "森马叙州凯悦金沙店全渠道商城",
+        "correct_text": "森马叙州凯悦金沙店全渠道商城"
+    },
+    {
+        "original_text": "汉庭眉山赤壁中路酒店酒店预订",
+        "correct_text": "汉庭眉山赤壁中路酒店酒店预订"
+    },
+    {
+        "original_text": "原始部落日租别墅轰趴馆酒店预订",
+        "correct_text": "原始部落日租别墅轰趴馆酒店预订"
+    },
+    {
+        "original_text": "景东锦屏路店门店自取",
+        "correct_text": "景东锦屏路店门店自取"
+    },
+    {
+        "original_text": "隐沫酒店成都春熙路太古里店酒店预订",
+        "correct_text": "隐沫酒店成都春熙路太古里店酒店预订"
+    },
+    {
+        "original_text": "潮州潮安庵埠文里文西路",
+        "correct_text": "潮州潮安庵埠文里文西路"
+    },
+    {
+        "original_text": "芳草路店",
+        "correct_text": "芳草路店"
+    },
+    {
+        "original_text": "居民养老查询",
+        "correct_text": "居民养老查询"
+    },
+    {
+        "original_text": "精华花店同城配送",
+        "correct_text": "精华花店同城配送"
+    },
+    {
+        "original_text": "星空街景房酒店预订",
+        "correct_text": "星空街景房酒店预订"
+    },
+    {
+        "original_text": "二室二厅酒店预订",
+        "correct_text": "二室二厅酒店预订"
+    },
+    {
+        "original_text": "天津利顺德大饭店预约购票",
+        "correct_text": "天津利顺德大饭店预约购票"
+    },
+    {
+        "original_text": "花呗账单在哪",
+        "correct_text": "花呗账单在哪"
+    },
+    {
+        "original_text": "东站附近特色复式民宿酒店预订",
+        "correct_text": "东站附近特色复式民宿酒店预订"
+    },
+    {
+        "original_text": "河南洛阳关圣街九号店到店自提服务",
+        "correct_text": "河南洛阳关圣街九号店到店自提服务"
+    },
+    {
+        "original_text": "中国石油南宫北环加油站不下车加油",
+        "correct_text": "中国石油南宫北环加油站不下车加油"
+    },
+    {
+        "original_text": "滴滴顺风车",
+        "correct_text": "滴滴顺风车"
+    },
+    {
+        "original_text": "南昌南大医学院住宅小区店",
+        "correct_text": "南昌南大医学院住宅小区店"
+    },
+    {
+        "original_text": "亚孚新兴加油站快捷加油",
+        "correct_text": "亚孚新兴加油站快捷加油"
+    },
+    {
+        "original_text": "茶百道宜春樟树小香港店门店自取",
+        "correct_text": "茶百道宜春樟树小香港店门店自取"
+    },
+    {
+        "original_text": "提现免费",
+        "correct_text": "提现免费"
+    },
+    {
+        "original_text": "复圣云谷到店自提",
+        "correct_text": "复圣云谷到店自提"
+    },
+    {
+        "original_text": "京东物流",
+        "correct_text": "京东物流"
+    },
+    {
+        "original_text": "宣城繁华店外送点单",
+        "correct_text": "宣城繁华店外送点单"
+    },
+    {
+        "original_text": "叮咚买菜",
+        "correct_text": "叮咚买菜"
+    },
+    {
+        "original_text": "南昌景泰花园八栋店",
+        "correct_text": "南昌景泰花园八栋店"
+    },
+    {
+        "original_text": "三亚瑰丽时光海景豪华尊享套房酒店预订",
+        "correct_text": "三亚瑰丽时光海景豪华尊享套房酒店预订"
+    },
+    {
+        "original_text": "茶百道福州罗源东大路店门店自取",
+        "correct_text": "茶百道福州罗源东大路店门店自取"
+    },
+    {
+        "original_text": "小径湾梵高的海度假海景房酒店预订",
+        "correct_text": "小径湾梵高的海度假海景房酒店预订"
+    },
+    {
+        "original_text": "钢琴仓库",
+        "correct_text": "钢琴仓库"
+    },
+    {
+        "original_text": "小象出行",
+        "correct_text": "小象出行"
+    },
+    {
+        "original_text": "安全守护",
+        "correct_text": "安全守护"
+    },
+    {
+        "original_text": "清新公寓大床房酒店预订",
+        "correct_text": "清新公寓大床房酒店预订"
+    },
+    {
+        "original_text": "周洛龙潭风景区预约购票",
+        "correct_text": "周洛龙潭风景区预约购票"
+    },
+    {
+        "original_text": "地铁购票",
+        "correct_text": "地铁购票"
+    },
+    {
+        "original_text": "卡布奇诺",
+        "correct_text": "卡布奇诺"
+    },
+    {
+        "original_text": "优质养生方案",
+        "correct_text": "优质养生方案"
+    },
+    {
+        "original_text": "北方石油坝墙站不下车加油",
+        "correct_text": "北方石油坝墙站不下车加油"
+    },
+    {
+        "original_text": "海边独栋别墅价格优惠酒店预订",
+        "correct_text": "海边独栋别墅价格优惠酒店预订"
+    },
+    {
+        "original_text": "临渭区伟发加油站快捷加油",
+        "correct_text": "临渭区伟发加油站快捷加油"
+    },
+    {
+        "original_text": "美食佳酿",
+        "correct_text": "美食佳酿"
+    },
+    {
+        "original_text": "艾尚美甲在线预约",
+        "correct_text": "艾尚美甲在线预约"
+    },
+    {
+        "original_text": "中国石化舟山连岛金塘服务区下快捷加油",
+        "correct_text": "中国石化舟山连岛金塘服务区下快捷加油"
+    },
+    {
+        "original_text": "佛山桂城叠北新约村",
+        "correct_text": "佛山桂城叠北新约村"
+    },
+    {
+        "original_text": "双空调可以看海上日出酒店预订",
+        "correct_text": "双空调可以看海上日出酒店预订"
+    },
+    {
+        "original_text": "阅江广场送车点",
+        "correct_text": "阅江广场送车点"
+    },
+    {
+        "original_text": "杭州电子健康证",
+        "correct_text": "杭州电子健康证"
+    },
+    {
+        "original_text": "成都中铁西城店外送点单",
+        "correct_text": "成都中铁西城店外送点单"
+    },
+    {
+        "original_text": "南河福龙湾北门娟子超市店",
+        "correct_text": "南河福龙湾北门娟子超市店"
+    },
+    {
+        "original_text": "涞源龙家庄加油站快捷加油",
+        "correct_text": "涞源龙家庄加油站快捷加油"
+    },
+    {
+        "original_text": "买绿柠品牌油污净",
+        "correct_text": "买绿柠品牌油污净"
+    },
+    {
+        "original_text": "大宝短租公寓酒店预订",
+        "correct_text": "大宝短租公寓酒店预订"
+    },
+    {
+        "original_text": "国防军工",
+        "correct_text": "国防军工"
+    },
+    {
+        "original_text": "绿林好汉中环店",
+        "correct_text": "绿林好汉中环店"
+    },
+    {
+        "original_text": "哈喽打车",
+        "correct_text": "哈喽打车"
+    },
+    {
+        "original_text": "天平山风景区预约购票",
+        "correct_text": "天平山风景区预约购票"
+    },
+    {
+        "original_text": "名创优品",
+        "correct_text": "名创优品"
+    },
+    {
+        "original_text": "西联汇款",
+        "correct_text": "西联汇款"
+    },
+    {
+        "original_text": "中国石油八角加油站不下车加油",
+        "correct_text": "中国石油八角加油站不下车加油"
+    },
+    {
+        "original_text": "倾城王妃在线预约",
+        "correct_text": "倾城王妃在线预约"
+    },
+    {
+        "original_text": "枕芯专区",
+        "correct_text": "枕芯专区"
+    },
+    {
+        "original_text": "中央公园北路餐厅外送点单",
+        "correct_text": "中央公园北路餐厅外送点单"
+    },
+    {
+        "original_text": "进口牛排",
+        "correct_text": "进口牛排"
+    },
+    {
+        "original_text": "友好公园景点游玩",
+        "correct_text": "友好公园景点游玩"
+    },
+    {
+        "original_text": "杨浦旭辉二店门店自取",
+        "correct_text": "杨浦旭辉二店门店自取"
+    },
+    {
+        "original_text": "同乘人员自查服务",
+        "correct_text": "同乘人员自查服务"
+    },
+    {
+        "original_text": "话费卡转让",
+        "correct_text": "话费卡转让"
+    },
+    {
+        "original_text": "永和豆浆",
+        "correct_text": "永和豆浆"
+    },
+    {
+        "original_text": "中邮消费金融信用评估助手",
+        "correct_text": "中邮消费金融信用评估助手"
+    },
+    {
+        "original_text": "挖掘机交易",
+        "correct_text": "挖掘机交易"
+    },
+    {
+        "original_text": "亳州限行查询",
+        "correct_text": "亳州限行查询"
+    },
+    {
+        "original_text": "重庆千叶店外送点单",
+        "correct_text": "重庆千叶店外送点单"
+    },
+    {
+        "original_text": "东莞大岭山永义花园店",
+        "correct_text": "东莞大岭山永义花园店"
+    },
+    {
+        "original_text": "叁木美工坊在线预约",
+        "correct_text": "叁木美工坊在线预约"
+    },
+    {
+        "original_text": "特别制作",
+        "correct_text": "特别制作"
+    },
+    {
+        "original_text": "糕点系列",
+        "correct_text": "糕点系列"
+    },
+    {
+        "original_text": "扶沟扶西石油城加油站不下车加油",
+        "correct_text": "扶沟扶西石油城加油站不下车加油"
+    },
+    {
+        "original_text": "城阳市民运动公园送车点",
+        "correct_text": "城阳市民运动公园送车点"
+    },
+    {
+        "original_text": "中国石油宁海岔路白溪加油站不下车加油",
+        "correct_text": "中国石油宁海岔路白溪加油站不下车加油"
+    },
+    {
+        "original_text": "十三香小龙虾",
+        "correct_text": "十三香小龙虾"
+    },
+    {
+        "original_text": "模拟炒股",
+        "correct_text": "模拟炒股"
+    },
+    {
+        "original_text": "中国石油丰华加油站不下车加油",
+        "correct_text": "中国石油丰华加油站不下车加油"
+    },
+    {
+        "original_text": "芙蓉镇素云特色温馨标准间酒店预订",
+        "correct_text": "芙蓉镇素云特色温馨标准间酒店预订"
+    },
+    {
+        "original_text": "昌黎黄金海岸临海温馨家庭房酒店预订",
+        "correct_text": "昌黎黄金海岸临海温馨家庭房酒店预订"
+    },
+    {
+        "original_text": "医保账户查询",
+        "correct_text": "医保账户查询"
+    },
+    {
+        "original_text": "华联香百河西务店自提服务",
+        "correct_text": "华联香百河西务店自提服务"
+    },
+    {
+        "original_text": "车辆违章",
+        "correct_text": "车辆违章"
+    },
+    {
+        "original_text": "新时沏舥艚育才街店门店自取",
+        "correct_text": "新时沏舥艚育才街店门店自取"
+    },
+    {
+        "original_text": "卓雅名剪美甲美睫在线预约",
+        "correct_text": "卓雅名剪美甲美睫在线预约"
+    },
+    {
+        "original_text": "嘉兴中港加油站快捷加油",
+        "correct_text": "嘉兴中港加油站快捷加油"
+    },
+    {
+        "original_text": "交通罚款",
+        "correct_text": "交通罚款"
+    },
+    {
+        "original_text": "近桑科湿地公园藏式小木屋大窗房酒店预订",
+        "correct_text": "近桑科湿地公园藏式小木屋大窗房酒店预订"
+    },
+    {
+        "original_text": "杨曼超市同城配送",
+        "correct_text": "杨曼超市同城配送"
+    },
+    {
+        "original_text": "企业信用查询",
+        "correct_text": "企业信用查询"
+    },
+    {
+        "original_text": "超优汇率",
+        "correct_text": "超优汇率"
+    },
+    {
+        "original_text": "重庆市南岸二师校内店门店自取",
+        "correct_text": "重庆市南岸二师校内店门店自取"
+    },
+    {
+        "original_text": "学车流程",
+        "correct_text": "学车流程"
+    },
+    {
+        "original_text": "泸州餐厅门店自取",
+        "correct_text": "泸州餐厅门店自取"
+    },
+    {
+        "original_text": "兴城留恋发社预约到店",
+        "correct_text": "兴城留恋发社预约到店"
+    },
+    {
+        "original_text": "每日积分",
+        "correct_text": "每日积分"
+    },
+    {
+        "original_text": "志愿浙江",
+        "correct_text": "志愿浙江"
+    },
+    {
+        "original_text": "石家庄人社",
+        "correct_text": "石家庄人社"
+    },
+    {
+        "original_text": "管理平台",
+        "correct_text": "管理平台"
+    },
+    {
+        "original_text": "购书在线下单",
+        "correct_text": "购书在线下单"
+    },
+    {
+        "original_text": "设计师出品公寓酒店预订",
+        "correct_text": "设计师出品公寓酒店预订"
+    },
+    {
+        "original_text": "上海注册公司",
+        "correct_text": "上海注册公司"
+    },
+    {
+        "original_text": "成都新城市广场驿家人格调单间酒店预订",
+        "correct_text": "成都新城市广场驿家人格调单间酒店预订"
+    },
+    {
+        "original_text": "马上借钱",
+        "correct_text": "马上借钱"
+    },
+    {
+        "original_text": "失业金领取",
+        "correct_text": "失业金领取"
+    },
+    {
+        "original_text": "西安公积金",
+        "correct_text": "西安公积金"
+    },
+    {
+        "original_text": "艺之卉博物馆预约购票",
+        "correct_text": "艺之卉博物馆预约购票"
+    },
+    {
+        "original_text": "合肥幸福坝地铁站店外送点单",
+        "correct_text": "合肥幸福坝地铁站店外送点单"
+    },
+    {
+        "original_text": "星星充电",
+        "correct_text": "星星充电"
+    },
+    {
+        "original_text": "玉泉商业中心店门店自取",
+        "correct_text": "玉泉商业中心店门店自取"
+    },
+    {
+        "original_text": "阳光校园",
+        "correct_text": "阳光校园"
+    },
+    {
+        "original_text": "石佛寺鑫玛特自提",
+        "correct_text": "石佛寺鑫玛特自提"
+    },
+    {
+        "original_text": "大冶实验中学店外送点单",
+        "correct_text": "大冶实验中学店外送点单"
+    },
+    {
+        "original_text": "诺诺网络",
+        "correct_text": "诺诺网络"
+    },
+    {
+        "original_text": "汉庭北京花乡天坛医院酒店酒店预订",
+        "correct_text": "汉庭北京花乡天坛医院酒店酒店预订"
+    },
+    {
+        "original_text": "高德红外",
+        "correct_text": "高德红外"
+    },
+    {
+        "original_text": "中国石油无锡宜兴东升加油站不下车加油",
+        "correct_text": "中国石油无锡宜兴东升加油站不下车加油"
+    },
+    {
+        "original_text": "银华基金财富号",
+        "correct_text": "银华基金财富号"
+    },
+    {
+        "original_text": "汇金大厦送车点",
+        "correct_text": "汇金大厦送车点"
+    },
+    {
+        "original_text": "威海初村威高新城厂区店外送点单",
+        "correct_text": "威海初村威高新城厂区店外送点单"
+    },
+    {
+        "original_text": "格林豪泰嘉峪关新华南路快捷酒店酒店预订",
+        "correct_text": "格林豪泰嘉峪关新华南路快捷酒店酒店预订"
+    },
+    {
+        "original_text": "天元三居室日租房酒店预订",
+        "correct_text": "天元三居室日租房酒店预订"
+    },
+    {
+        "original_text": "福建税务",
+        "correct_text": "福建税务"
+    },
+    {
+        "original_text": "中国石油黄土加油站不下车加油",
+        "correct_text": "中国石油黄土加油站不下车加油"
+    },
+    {
+        "original_text": "众安保险服务",
+        "correct_text": "众安保险服务"
+    },
+    {
+        "original_text": "全屋吊顶",
+        "correct_text": "全屋吊顶"
+    },
+    {
+        "original_text": "九华神龙谷语音讲解",
+        "correct_text": "九华神龙谷语音讲解"
+    },
+    {
+        "original_text": "火炬大道餐厅门店自取",
+        "correct_text": "火炬大道餐厅门店自取"
+    },
+    {
+        "original_text": "中石化龙岩连城朋口顺达站不下车加油",
+        "correct_text": "中石化龙岩连城朋口顺达站不下车加油"
+    },
+    {
+        "original_text": "无偿献血",
+        "correct_text": "无偿献血"
+    },
+    {
+        "original_text": "百万医疗",
+        "correct_text": "百万医疗"
+    },
+    {
+        "original_text": "宿迁沭阳中央商场店外送点单",
+        "correct_text": "宿迁沭阳中央商场店外送点单"
+    },
+    {
+        "original_text": "中国燃料那马加油站快捷加油",
+        "correct_text": "中国燃料那马加油站快捷加油"
+    },
+    {
+        "original_text": "汉庭秦皇岛河北大街燕山大学酒店酒店预订",
+        "correct_text": "汉庭秦皇岛河北大街燕山大学酒店酒店预订"
+    },
+    {
+        "original_text": "苹果生鲜",
+        "correct_text": "苹果生鲜"
+    },
+    {
+        "original_text": "仁寿漏洞河加油站不下车加油",
+        "correct_text": "仁寿漏洞河加油站不下车加油"
+    },
+    {
+        "original_text": "车险服务",
+        "correct_text": "车险服务"
+    },
+    {
+        "original_text": "犍为中亚能源加油站不下车加油",
+        "correct_text": "犍为中亚能源加油站不下车加油"
+    },
+    {
+        "original_text": "信用租车",
+        "correct_text": "信用租车"
+    },
+    {
+        "original_text": "上海长征医院",
+        "correct_text": "上海长征医院"
+    },
+    {
+        "original_text": "羊城通充值",
+        "correct_text": "羊城通充值"
+    },
+    {
+        "original_text": "冷链金融",
+        "correct_text": "冷链金融"
+    },
+    {
+        "original_text": "合肥不动产登记",
+        "correct_text": "合肥不动产登记"
+    },
+    {
+        "original_text": "银行基金",
+        "correct_text": "银行基金"
+    },
+    {
+        "original_text": "玉龙沙湖地图导览",
+        "correct_text": "玉龙沙湖地图导览"
+    },
+    {
+        "original_text": "我的发票",
+        "correct_text": "我的发票"
+    },
+    {
+        "original_text": "贵州医科大学第三附属医院在线问诊",
+        "correct_text": "贵州医科大学第三附属医院在线问诊"
+    },
+    {
+        "original_text": "崇明区万达广场送车点",
+        "correct_text": "崇明区万达广场送车点"
+    },
+    {
+        "original_text": "我的快递",
+        "correct_text": "我的快递"
+    },
+    {
+        "original_text": "下午茶蛋糕",
+        "correct_text": "下午茶蛋糕"
+    },
+    {
+        "original_text": "无忧保综合意外险",
+        "correct_text": "无忧保综合意外险"
+    },
+    {
+        "original_text": "熹乐谷温馨私享观景一房一厅公寓酒店预订",
+        "correct_text": "熹乐谷温馨私享观景一房一厅公寓酒店预订"
+    },
+    {
+        "original_text": "南宁邕江郡侧门店",
+        "correct_text": "南宁邕江郡侧门店"
+    },
+    {
+        "original_text": "杜甫草堂门票预订",
+        "correct_text": "杜甫草堂门票预订"
+    },
+    {
+        "original_text": "忠县红星店自提",
+        "correct_text": "忠县红星店自提"
+    },
+    {
+        "original_text": "中国石油大埔仙基桥加油站不下车加油",
+        "correct_text": "中国石油大埔仙基桥加油站不下车加油"
+    },
+    {
+        "original_text": "浙江健康码(金华)",
+        "correct_text": "浙江健康码(金华)"
+    },
+    {
+        "original_text": "利海购物中心餐厅门店自取",
+        "correct_text": "利海购物中心餐厅门店自取"
+    },
+    {
+        "original_text": "伊媛抗衰老中心在线预约",
+        "correct_text": "伊媛抗衰老中心在线预约"
+    },
+    {
+        "original_text": "三金账单",
+        "correct_text": "三金账单"
+    },
+    {
+        "original_text": "萤火虫水洞门票预约",
+        "correct_text": "萤火虫水洞门票预约"
+    },
+    {
+        "original_text": "道达尔黄家湖大学加油站不下车加油",
+        "correct_text": "道达尔黄家湖大学加油站不下车加油"
+    },
+    {
+        "original_text": "安阳万达金街店外送点单",
+        "correct_text": "安阳万达金街店外送点单"
+    },
+    {
+        "original_text": "广东石化水产加油站快捷加油",
+        "correct_text": "广东石化水产加油站快捷加油"
+    },
+    {
+        "original_text": "阆中古城亲友客栈标间酒店预订",
+        "correct_text": "阆中古城亲友客栈标间酒店预订"
+    },
+    {
+        "original_text": "青岛羽家行政双卧套房酒店预订",
+        "correct_text": "青岛羽家行政双卧套房酒店预订"
+    },
+    {
+        "original_text": "中石化漳州龙海上房站不下车加油",
+        "correct_text": "中石化漳州龙海上房站不下车加油"
+    },
+    {
+        "original_text": "福州罗源岐头店外送点单",
+        "correct_text": "福州罗源岐头店外送点单"
+    },
+    {
+        "original_text": "减脂塑形",
+        "correct_text": "减脂塑形"
+    },
+    {
+        "original_text": "西昌马道店自提",
+        "correct_text": "西昌马道店自提"
+    },
+    {
+        "original_text": "中国联通",
+        "correct_text": "中国联通"
+    },
+    {
+        "original_text": "开心之旅机场店酒店预订",
+        "correct_text": "开心之旅机场店酒店预订"
+    },
+    {
+        "original_text": "中国石油海原李旺加油站不下车加油",
+        "correct_text": "中国石油海原李旺加油站不下车加油"
+    },
+    {
+        "original_text": "中山大学附属第二医院在线问诊",
+        "correct_text": "中山大学附属第二医院在线问诊"
+    },
+    {
+        "original_text": "茶百道贵阳大学城思雅店门店自取",
+        "correct_text": "茶百道贵阳大学城思雅店门店自取"
+    },
+    {
+        "original_text": "世会餐馆预定自提",
+        "correct_text": "世会餐馆预定自提"
+    },
+    {
+        "original_text": "电子学生卡",
+        "correct_text": "电子学生卡"
+    },
+    {
+        "original_text": "临时额度",
+        "correct_text": "临时额度"
+    },
+    {
+        "original_text": "天府国际机场便捷点",
+        "correct_text": "天府国际机场便捷点"
+    },
+    {
+        "original_text": "中国石化宁波高投柴桥服务区下不下车加油",
+        "correct_text": "中国石化宁波高投柴桥服务区下不下车加油"
+    },
+    {
+        "original_text": "千户苗寨东升迎山民宿休闲套房酒店预订",
+        "correct_text": "千户苗寨东升迎山民宿休闲套房酒店预订"
+    },
+    {
+        "original_text": "贵阳公积金",
+        "correct_text": "贵阳公积金"
+    },
+    {
+        "original_text": "南宁琅东客运站送车点",
+        "correct_text": "南宁琅东客运站送车点"
+    },
+    {
+        "original_text": "戴河欧式豪华大三室酒店预订",
+        "correct_text": "戴河欧式豪华大三室酒店预订"
+    },
+    {
+        "original_text": "舟山人社",
+        "correct_text": "舟山人社"
+    },
+    {
+        "original_text": "沈阳站太原街简约影院大床房酒店预订",
+        "correct_text": "沈阳站太原街简约影院大床房酒店预订"
+    },
+    {
+        "original_text": "壳牌安丘东郊加油站不下车加油",
+        "correct_text": "壳牌安丘东郊加油站不下车加油"
+    },
+    {
+        "original_text": "免费电子证件照",
+        "correct_text": "免费电子证件照"
+    },
+    {
+        "original_text": "烟台医保",
+        "correct_text": "烟台医保"
+    },
+    {
+        "original_text": "茶百道连云港通灌北路店门店自取",
+        "correct_text": "茶百道连云港通灌北路店门店自取"
+    },
+    {
+        "original_text": "民畅园店",
+        "correct_text": "民畅园店"
+    },
+    {
+        "original_text": "济南东站法式轻奢大床房酒店预订",
+        "correct_text": "济南东站法式轻奢大床房酒店预订"
+    },
+    {
+        "original_text": "睢宁县人民医院",
+        "correct_text": "睢宁县人民医院"
+    },
+    {
+        "original_text": "盒马邻里武汉洪山金地西岸店",
+        "correct_text": "盒马邻里武汉洪山金地西岸店"
+    },
+    {
+        "original_text": "宝宝起名",
+        "correct_text": "宝宝起名"
+    },
+    {
+        "original_text": "苏州渭塘街店门店自取",
+        "correct_text": "苏州渭塘街店门店自取"
+    },
+    {
+        "original_text": "千岛湖饭店送车点",
+        "correct_text": "千岛湖饭店送车点"
+    },
+    {
+        "original_text": "中博石化蜀桥加油站不下车加油",
+        "correct_text": "中博石化蜀桥加油站不下车加油"
+    },
+    {
+        "original_text": "萍乡润达国际悦公馆公寓酒店预订",
+        "correct_text": "萍乡润达国际悦公馆公寓酒店预订"
+    },
+    {
+        "original_text": "我的额度",
+        "correct_text": "我的额度"
+    },
+    {
+        "original_text": "中国石油哈吐气加油站不下车加油",
+        "correct_text": "中国石油哈吐气加油站不下车加油"
+    },
+    {
+        "original_text": "随手拍举报",
+        "correct_text": "随手拍举报"
+    },
+    {
+        "original_text": "美菱空调",
+        "correct_text": "美菱空调"
+    },
+    {
+        "original_text": "云南分公司总店到店自提服务",
+        "correct_text": "云南分公司总店到店自提服务"
+    },
+    {
+        "original_text": "万德福超市矿区店自提服务",
+        "correct_text": "万德福超市矿区店自提服务"
+    },
+    {
+        "original_text": "特价酒店",
+        "correct_text": "特价酒店"
+    },
+    {
+        "original_text": "释尼召旅游景区预约购票",
+        "correct_text": "释尼召旅游景区预约购票"
+    },
+    {
+        "original_text": "自助烤肉",
+        "correct_text": "自助烤肉"
+    },
+    {
+        "original_text": "成绩查询",
+        "correct_text": "成绩查询"
+    },
+    {
+        "original_text": "步行街温馨大三房酒店预订",
+        "correct_text": "步行街温馨大三房酒店预订"
+    },
+    {
+        "original_text": "西安公积金查询",
+        "correct_text": "西安公积金查询"
+    },
+    {
+        "original_text": "福建电力学院",
+        "correct_text": "福建电力学院"
+    },
+    {
+        "original_text": "浙里家连心桥",
+        "correct_text": "浙里家连心桥"
+    },
+    {
+        "original_text": "豪华景观套房酒店预订",
+        "correct_text": "豪华景观套房酒店预订"
+    },
+    {
+        "original_text": "千岛湖六居室大湖景别墅酒店预订",
+        "correct_text": "千岛湖六居室大湖景别墅酒店预订"
+    },
+    {
+        "original_text": "袁家岗重医一院旁外窗独卫单间酒店预订",
+        "correct_text": "袁家岗重医一院旁外窗独卫单间酒店预订"
+    },
+    {
+        "original_text": "深圳燃气",
+        "correct_text": "深圳燃气"
+    },
+    {
+        "original_text": "中国石油金厂加油站不下车加油",
+        "correct_text": "中国石油金厂加油站不下车加油"
+    },
+    {
+        "original_text": "延长壳牌德阳市广汉德广加油站不下车加油",
+        "correct_text": "延长壳牌德阳市广汉德广加油站不下车加油"
+    },
+    {
+        "original_text": "中油好客e站",
+        "correct_text": "中油好客e站"
+    },
+    {
+        "original_text": "中国石油新泾加油站不下车加油",
+        "correct_text": "中国石油新泾加油站不下车加油"
+    },
+    {
+        "original_text": "南京银行",
+        "correct_text": "南京银行"
+    },
+    {
+        "original_text": "爱尔丝发型连预约到店",
+        "correct_text": "爱尔丝发型连预约到店"
+    },
+    {
+        "original_text": "蚂蚁车险",
+        "correct_text": "蚂蚁车险"
+    },
+    {
+        "original_text": "阳台海景两室一厅套房酒店预订",
+        "correct_text": "阳台海景两室一厅套房酒店预订"
+    },
+    {
+        "original_text": "济宁曲阜曲师大北门店外送点单",
+        "correct_text": "济宁曲阜曲师大北门店外送点单"
+    },
+    {
+        "original_text": "中国石油幸福渠加油站不下车加油",
+        "correct_text": "中国石油幸福渠加油站不下车加油"
+    },
+    {
+        "original_text": "鑫考云校园",
+        "correct_text": "鑫考云校园"
+    },
+    {
+        "original_text": "潍坊四平路店门店自取",
+        "correct_text": "潍坊四平路店门店自取"
+    },
+    {
+        "original_text": "电子身份证",
+        "correct_text": "电子身份证"
+    },
+    {
+        "original_text": "电子证件照片",
+        "correct_text": "电子证件照片"
+    },
+    {
+        "original_text": "租还记录",
+        "correct_text": "租还记录"
+    },
+    {
+        "original_text": "乐山竹园店门店自取",
+        "correct_text": "乐山竹园店门店自取"
+    },
+    {
+        "original_text": "面面粥道外卖服务",
+        "correct_text": "面面粥道外卖服务"
+    },
+    {
+        "original_text": "东戴河乔老大临海一居公寓酒店预订",
+        "correct_text": "东戴河乔老大临海一居公寓酒店预订"
+    },
+    {
+        "original_text": "鑫佳源别墅酒店预订",
+        "correct_text": "鑫佳源别墅酒店预订"
+    },
+    {
+        "original_text": "信马由缰野奢帐篷营地露营套餐预订",
+        "correct_text": "信马由缰野奢帐篷营地露营套餐预订"
+    },
+    {
+        "original_text": "中邮借钱花",
+        "correct_text": "中邮借钱花"
+    },
+    {
+        "original_text": "亲子套餐",
+        "correct_text": "亲子套餐"
+    },
+    {
+        "original_text": "鑫家园超市大川店",
+        "correct_text": "鑫家园超市大川店"
+    },
+    {
+        "original_text": "汉庭青岛李沧金水路酒店酒店预订",
+        "correct_text": "汉庭青岛李沧金水路酒店酒店预订"
+    },
+    {
+        "original_text": "查居民医保缴费",
+        "correct_text": "查居民医保缴费"
+    },
+    {
+        "original_text": "北站附近理工学院旁墨和小院酒店预订",
+        "correct_text": "北站附近理工学院旁墨和小院酒店预订"
+    },
+    {
+        "original_text": "红木大板",
+        "correct_text": "红木大板"
+    },
+    {
+        "original_text": "实况足球",
+        "correct_text": "实况足球"
+    },
+    {
+        "original_text": "汕尾市人民医院+",
+        "correct_text": "汕尾市人民医院+"
+    },
+    {
+        "original_text": "电信宽带充值",
+        "correct_text": "电信宽带充值"
+    },
+    {
+        "original_text": "磐石市莲花山滑雪场景区预约购票",
+        "correct_text": "磐石市莲花山滑雪场景区预约购票"
+    },
+    {
+        "original_text": "中国石油唐县东环加油站不下车加油",
+        "correct_text": "中国石油唐县东环加油站不下车加油"
+    },
+    {
+        "original_text": "佛山公积金",
+        "correct_text": "佛山公积金"
+    },
+    {
+        "original_text": "汉庭平遥古城北门酒店酒店预订",
+        "correct_text": "汉庭平遥古城北门酒店酒店预订"
+    },
+    {
+        "original_text": "惠州博罗园洲店门店自取",
+        "correct_text": "惠州博罗园洲店门店自取"
+    },
+    {
+        "original_text": "城市服务随手",
+        "correct_text": "城市服务随手"
+    },
+    {
+        "original_text": "浦东置汇旭辉二店门店自取",
+        "correct_text": "浦东置汇旭辉二店门店自取"
+    },
+    {
+        "original_text": "中国石油西丰平岗加油站不下车加油",
+        "correct_text": "中国石油西丰平岗加油站不下车加油"
+    },
+    {
+        "original_text": "索美丽娅美肤预约到店",
+        "correct_text": "索美丽娅美肤预约到店"
+    },
+    {
+        "original_text": "我的电子社保卡",
+        "correct_text": "我的电子社保卡"
+    },
+    {
+        "original_text": "合肥高新心血管病医院",
+        "correct_text": "合肥高新心血管病医院"
+    },
+    {
+        "original_text": "系统维护工程",
+        "correct_text": "系统维护工程"
+    },
+    {
+        "original_text": "厨房家居",
+        "correct_text": "厨房家居"
+    },
+    {
+        "original_text": "神经系统",
+        "correct_text": "神经系统"
+    },
+    {
+        "original_text": "阜阳黄金时代城店门店自取",
+        "correct_text": "阜阳黄金时代城店门店自取"
+    }
+]

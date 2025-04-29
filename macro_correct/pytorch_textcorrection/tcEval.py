@@ -565,9 +565,8 @@ if __name__ == '__main__':
     # path_model_dir = "E:/DATA/bert-model/00_pytorch/MacBERT-chinese_finetuned_correction/csc.config"
     # path_model_dir = "../output/text_correction/macbert4csc_v1/csc.config"  # own-correct
     # path_model_dir = "../output/text_correction/macbert4csc_v2/csc.config"  # own-correct
-    # path_model_dir = "../output/text_correction/macbert4mdcspell_v1/csc.config"  # own-correct
+    path_model_dir = "../output/text_correction/macbert4mdcspell_v1/csc.config"  # own-correct
     # path_model_dir = "../output/text_correction/bert4csc_v1/csc.config"  # own-correct
-    path_model_dir = "../output/text_correction/macbert4mdcspell_extend/csc.config"  # own-correct
     threshold = 0.75
     # threshold = 0.0
 
@@ -591,11 +590,13 @@ if __name__ == '__main__':
     path_tet14 = os.path.join(path_corpus_dir, "public/sighan2015.dev.json")
     path_tet15 = os.path.join(path_corpus_dir, "public/mcsc_tet.json")
 
+    path_tet16 = os.path.join(path_corpus_dir, "alipayseq/alipayseq.tet.json")
 
 
     path_tet_list = [path_tet1, path_tet2, path_tet3, path_tet4, path_tet5,
                      path_tet6, path_tet7, path_tet8, path_tet9, path_tet10,
                      path_tet11, path_tet12, path_tet13, path_tet14,  # path_tet15,
+                     path_tet16,
                      ]
 
     for path in path_tet_list:

@@ -76,9 +76,9 @@ class CscPredict:
             return resp_merge_s
         return resp_model_s
 
-    def predict_batch(self, texts, flag_confusion=True, flag_prob=False, **kwargs):
+    def predict_batch(self, texts, flag_confusion=True, flag_prob=False, flag_cut=False, **kwargs):
         """   批量预测, macbert预测, 混淆集预测   """
-        resp_model_s = self.model.predict_batch(texts, flag_prob=flag_prob, **kwargs)
+        resp_model_s = self.model.predict_batch(texts, flag_prob=flag_prob, flag_cut=flag_cut, **kwargs)
         if flag_confusion:
             resp_confusion_s = self.model_confusion.predict_batch(texts, flag_prob=flag_prob, **kwargs)
             resp_merge_s = []
@@ -90,9 +90,9 @@ class CscPredict:
             return resp_merge_s
         return resp_model_s
 
-    def predict_score(self, text, flag_confusion=True, flag_prob=True, **kwargs):
+    def predict_score(self, text, flag_confusion=True, flag_prob=True, flag_cut=False, **kwargs):
         """   预测, macbert预测, 混淆集预测   """
-        resp_model = self.model.predict(text, flag_prob=flag_prob, **kwargs)
+        resp_model = self.model.predict(text, flag_prob=flag_prob, flag_cut=flag_cut, **kwargs)
         if flag_confusion:
             resp_confusion = self.model_confusion.predict(text, flag_prob=flag_prob, **kwargs)
             errors_confusion = resp_confusion.get("errors", [])
@@ -101,9 +101,9 @@ class CscPredict:
             return res_dict
         return resp_model
 
-    def predict(self, text, flag_confusion=True, flag_prob=False, **kwargs):
+    def predict(self, text, flag_confusion=True, flag_prob=False, flag_cut=False, **kwargs):
         """   预测, macbert预测, 混淆集预测   """
-        resp_model = self.model.predict(text, flag_prob=flag_prob, **kwargs)
+        resp_model = self.model.predict(text, flag_prob=flag_prob, flag_cut=flag_cut, **kwargs)
         if flag_confusion:
             resp_confusion = self.model_confusion.predict(text, flag_prob=flag_prob, **kwargs)
             errors_confusion = resp_confusion.get("errors", [])

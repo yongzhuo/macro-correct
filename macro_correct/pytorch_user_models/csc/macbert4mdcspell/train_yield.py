@@ -377,9 +377,12 @@ def train_csc():
                 thr_mft = random.random()
                 # thr_std = 0.5  # 随机概率/50%
                 # if args.flag_mft and thr_mft <= thr_std and idx_num < int(args.num_train_epochs-1):
-                if args.flag_mft and thr_mft <= 0.5:
+                if args.flag_mft and thr_mft <= 0.7:
                     src_ids = dynamic_mask_token(src_ids, trg_ref_ids, tokenizer,
                                                  device, args.mask_mode, args.mask_rate)
+                ### 原句子预测占比15%, 防止过度纠错
+                elif thr_mft <= 0.85:
+                    src_ids = copy.deepcopy(trg_ids)
                 # ### 训练4/5以后再采用 focal-loss + cpo_loss
                 # if args.flag_loss_period and global_step < args.num_train_epochs * 4 / 5:
                 #     model.loss_type = "BCE_MULTI"

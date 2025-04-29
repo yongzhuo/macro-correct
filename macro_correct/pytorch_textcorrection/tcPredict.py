@@ -45,11 +45,13 @@ class TextCorrectPredict:
         """ 加载超参数  """
         model_save_path_real = os.path.split(path_config)[0]
         ### csc.json如果没有, 则取得本地macro-correct的, 这样可以跑其他训练的bert类模型
-        if os.path.exists(model_save_path_real) and not os.path.exists(path_config):
-            path_config_local = os.path.join(path_root, "macro_correct/output/csc.config")
-            config = load_json(path_config_local)
-        else:
-            config = load_json(path_config)
+        path_config_local = os.path.join(path_root, "macro_correct/output/csc.config")
+        config = load_json(path_config_local)
+        ### 真实config
+        config_custom = {}
+        if os.path.exists(model_save_path_real) and os.path.exists(path_config):
+            config_custom = load_json(path_config)
+        config.update(config_custom)
         self.config = Namespace(**config)
         # 将模型目录替换为实际目录, 方便移动的时候不影响; bert_tokenizer/bert_config等都从模型里边读取
         self.config.CUDA_VISIBLE_DEVICES = self.CUDA_VISIBLE_DEVICES
@@ -127,7 +129,8 @@ class TextCorrectPredict:
         return outputs[0] if outputs else []
 
     def predict_single(self, texts, threshold=0.6, batch_size=32, max_len=128, rounded=4,
-                      flag_prob=True, flag_logits=False, flag_print=False, **kwargs):
+                      flag_prob=True, flag_logits=False, flag_print=False, flag_cut=False,
+                       **kwargs):
         """  分类模型预测
         config:
             texts      : list<dict>, inputs of text, eg. ["你是谁"], [{"source":"你是谁"}], [{"original_text":"你是谁"}]
@@ -136,6 +139,7 @@ class TextCorrectPredict:
             rounded    : int, rounded of float, eg. 3, 4, 6
             flag_logits: bool, reture logits or softmax, eg. True
             flag_print : bool, print sentence(org/tgt/prd) or not, eg. False
+            flag_cut   : bool, cut by symbol and maxlen or not, eg. False
         Returns:
             res        : list<dict>, output of label-score, eg. [{}]
         """
@@ -158,38 +162,43 @@ class TextCorrectPredict:
                 texts_new.append(data_i_dict)
             texts = texts_new
 
-        ### 先按标点符号切分, 如果还是长了就按照max_len切分
-        sent_inputs = []
-        sent_map = []
-        for idx, text_dict in enumerate(texts):
-            text = text_dict.get(self.config.xy_keys_predict[0], "")
-            text_cut, text_length_s = cut_sent_by_stay_and_maxlen(
-                text=text, max_len=126, return_length=True)
-            sent_inputs_idx = [{self.config.xy_keys_predict[0]: t} for t in text_cut]
-            sent_map.extend([idx] * len(sent_inputs_idx))
-            sent_inputs.extend(sent_inputs_idx)
+        if flag_cut:
+            ### 先按标点符号切分, 如果还是长了就按照max_len切分
+            sent_inputs = []
+            sent_map = []
+            for idx, text_dict in enumerate(texts):
+                text = text_dict.get(self.config.xy_keys_predict[0], "")
+                text_cut, text_length_s = cut_sent_by_stay_and_maxlen(
+                    text=text, max_len=126, return_length=True)
+                sent_inputs_idx = [{self.config.xy_keys_predict[0]: t} for t in text_cut]
+                sent_map.extend([idx] * len(sent_inputs_idx))
+                sent_inputs.extend(sent_inputs_idx)
 
-        ### 推理-预测
-        dataset = self.process(sent_inputs, max_len=max_len, batch_size=batch_size)
-        ys_pred_id_cut, probs_pred_id_cut = self.office.predict(dataset, flag_logits=flag_logits, **kwargs)
+            ### 推理-预测
+            dataset = self.process(sent_inputs, max_len=max_len, batch_size=batch_size)
+            ys_pred_id_cut, probs_pred_id_cut = self.office.predict(dataset, flag_logits=flag_logits, **kwargs)
 
-        ### 还原为原来的句子
-        probs_pred_id_dict = {}
-        ys_pred_id_dict = {}
-        for idx, (sm, ypi, ppi) in enumerate(zip(sent_map, ys_pred_id_cut, probs_pred_id_cut)):
-            ppi_cut = ppi[1:len(sent_inputs[idx].get("original_text", "")) + 1]
-            ypi_cut = ypi[1:len(sent_inputs[idx].get("original_text", "")) + 1]
-            sm_str = str(sm)
-            if sm_str not in probs_pred_id_dict:
-                probs_pred_id_dict[sm_str] = [0] + ppi_cut
-            else:
-                probs_pred_id_dict[sm_str] += ppi_cut
-            if sm_str not in ys_pred_id_dict:
-                ys_pred_id_dict[sm_str] = [0] + ypi_cut
-            else:
-                ys_pred_id_dict[sm_str] += ypi_cut
-        probs_pred_id = [probs_pred_id_dict.get(str(idx)) for idx in range(len(probs_pred_id_dict))]
-        ys_pred_id = [ys_pred_id_dict.get(str(idx)) for idx in range(len(ys_pred_id_dict))]
+            ### 还原为原来的句子
+            probs_pred_id_dict = {}
+            ys_pred_id_dict = {}
+            for idx, (sm, ypi, ppi) in enumerate(zip(sent_map, ys_pred_id_cut, probs_pred_id_cut)):
+                ppi_cut = ppi[1:len(sent_inputs[idx].get("original_text", "")) + 1]
+                ypi_cut = ypi[1:len(sent_inputs[idx].get("original_text", "")) + 1]
+                sm_str = str(sm)
+                if sm_str not in probs_pred_id_dict:
+                    probs_pred_id_dict[sm_str] = [0] + ppi_cut
+                else:
+                    probs_pred_id_dict[sm_str] += ppi_cut
+                if sm_str not in ys_pred_id_dict:
+                    ys_pred_id_dict[sm_str] = [0] + ypi_cut
+                else:
+                    ys_pred_id_dict[sm_str] += ypi_cut
+            probs_pred_id = [probs_pred_id_dict.get(str(idx)) for idx in range(len(probs_pred_id_dict))]
+            ys_pred_id = [ys_pred_id_dict.get(str(idx)) for idx in range(len(ys_pred_id_dict))]
+        else:
+            ### 不做处理, 大于126长度的就只处理前面的文本
+            dataset = self.process(texts, max_len=max_len, batch_size=batch_size)
+            ys_pred_id, probs_pred_id = self.office.predict(dataset, flag_logits=flag_logits, **kwargs)
 
         ### 后处理
         new_corrected_sentences = []
@@ -198,10 +207,10 @@ class TextCorrectPredict:
             # y_orginal = list(texts[idx].get(self.config.xy_keys_predict[0], ""))
             y_orginal = texts[idx].get(self.config.xy_keys_predict[0], "")
             y_decode = self.tc_collator.tokenizer.convert_ids_to_tokens(y, skip_special_tokens=False)
-            # y_decode = y_decode[1: len(y_orginal)]
-            # y_prob = probs_pred_id[idx][1: len(y_orginal)]
-            y_decode = y_decode[1: -1]
-            y_prob = probs_pred_id[idx][1: -1]
+            y_decode = y_decode[1: len(y_orginal)+1]
+            y_prob = probs_pred_id[idx][1: len(y_orginal)+1]
+            # y_decode = y_decode[1: -1]
+            # y_prob = probs_pred_id[idx][1: -1]
             y_new = ""
             for yo, yd, yp in zip(y_orginal, y_decode, y_prob):
                 if yd in self.tc_collator.special_tokens:
@@ -210,7 +219,8 @@ class TextCorrectPredict:
                     y_new += yd
                 else:
                     y_new += yo
-            new_corrected_sent, sub_details = get_errors_for_same_length(y_new, y_orginal)
+            new_corrected_sent, sub_details = get_errors_for_same_length(
+                corrected_text=y_new, origin_text=y_orginal, know_tokens=self.tc_collator.tokenizer.vocab)
             # new_corrected_sent, sub_details = get_errors_for_difflib(y_new, y_orginal)
             if flag_prob and sub_details:
                 sub_details = [s+[round(y_prob[s[-1]], rounded)] for s in sub_details if s[-1] < len(y_prob)]

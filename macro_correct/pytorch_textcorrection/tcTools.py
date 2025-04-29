@@ -1131,7 +1131,7 @@ def get_errors_for_diff_length(corrected_text, origin_text):
     return new_corrected_text, errors
 
 
-def get_errors_for_same_length(corrected_text, origin_text, unk_tokens=[]):
+def get_errors_for_same_length(corrected_text, origin_text, unk_tokens=[], know_tokens=[]):
     """Get new corrected text and errors between corrected text and origin text
     code from:  https://github.com/shibing624/pycorrector
     """
@@ -1141,7 +1141,7 @@ def get_errors_for_same_length(corrected_text, origin_text, unk_tokens=[]):
     for i, ori_char in enumerate(origin_text):
         if i >= len(corrected_text):
             continue
-        if ori_char in unk_tokens:
+        if ori_char in unk_tokens or ori_char not in know_tokens:
             # deal with unk word
             corrected_text = corrected_text[:i] + ori_char + corrected_text[i + 1:]
             continue

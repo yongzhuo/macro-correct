@@ -143,6 +143,27 @@ Sentence Level correction: acc:0.7927, precision:0.8274, recall:0.7330, f1:0.777
 flag_eval: strict
 Sentence Level detection: acc:0.8118, precision:0.7102, recall:0.7716, f1:0.7396
 Sentence Level correction: acc:0.7927, precision:0.6746, recall:0.7330, f1:0.7026
+
+graph=mdcspell; prompt=0; weights=macbert; corpus=wang271k_handle; lr=3e-5; bs=32*4; epoch=3; loss=focal_loss; scheduler=cosine; mask_mode=noerror; mask_rate=0.15; det_rate=0.15; random_thr<0.7就mask---不相关---random_thr<0.3就target_ids;
+################################################################################################################################
+dev.json
+flag_eval: common
+Sentence Level detection: acc:0.8734, precision:0.9995, recall:0.8718, f1:0.9313
+Sentence Level correction: acc:0.8065, precision:0.9994, recall:0.8039, f1:0.8911
+flag_eval: strict
+Sentence Level detection: acc:0.8734, precision:0.9244, recall:0.8718, f1:0.8973
+Sentence Level correction: acc:0.8065, precision:0.8524, recall:0.8039, f1:0.8275
+################################################################################################################################
+
+graph=mdcspell; prompt=0; weights=macbert; corpus=wang271k_handle; lr=3e-5; bs=32*4; epoch=3; loss=focal_loss; scheduler=cosine; mask_mode=noerror; mask_rate=0.15; det_rate=0.15; random_thr<0.7就mask---不相关---random_thr<0.85就target_ids;
+################################################################################################################################
+dev.json
+flag_eval: common
+Sentence Level detection: acc:0.8785, precision:0.9995, recall:0.8770, f1:0.9343
+Sentence Level correction: acc:0.8124, precision:0.9994, recall:0.8099, f1:0.8948
+flag_eval: strict
+Sentence Level detection: acc:0.8785, precision:0.9238, recall:0.8770, f1:0.8998
+Sentence Level correction: acc:0.8124, precision:0.8531, recall:0.8099, f1:0.8310
 ```
 
 

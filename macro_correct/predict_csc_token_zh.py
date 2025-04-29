@@ -110,7 +110,8 @@ class MacroCSC4Token:
         self.model_csc = CscPredict(path_config)
 
     def func_csc_token_long(self, content, threshold=0.6, max_len=128, batch_size=16, rounded=4,
-                            num_rethink=0, flag_confusion=True, flag_prob=True, **kwargs):
+                            num_rethink=0, limit_nums_errors=32, limit_length_char=3, threshold_zh=0.5,
+                            flag_confusion=True, flag_prob=True, flag_cut=False, **kwargs):
         """   对句子进行文本纠错, 字词级别   """
         # time_start = time.time()
         params = {
@@ -122,9 +123,9 @@ class MacroCSC4Token:
             "max_len": max_len,  # 自定义的长度, 如果截断了, 则截断部分不参与纠错, 后续直接一模一样的补回来
             "rounded": rounded,  # 保存4位小数
         }
-        limit_nums_errors = 10  # 一句话最多的错别字, 多的就剔除
-        limit_length_char = 3  # 一句话的最小字符数, 不大于就不选中
-        threshold_zh = 0.5  # 中文字符占比的最低值, 不大于就不选中
+        limit_nums_errors = limit_nums_errors  # 一句话最多的错别字, 多的就剔除
+        limit_length_char = limit_length_char  # 一句话的最小字符数, 不大于就不选中
+        threshold_zh = threshold_zh  # 中文字符占比的最低值, 不大于就不选中
         output = []
         try:
             texts, texts_length = cut_sent_by_stay(content, return_length=True)
@@ -182,12 +183,14 @@ class MacroCSC4Token:
         return output
 
     def func_csc_token_batch(self, texts, threshold=0.6, max_len=128, batch_size=16, rounded=4,
-                            num_rethink=0, flag_confusion=True, flag_prob=True, **kwargs):
+                            num_rethink=0, flag_confusion=True, flag_prob=True, flag_cut=False,
+                            **kwargs):
         """   对句子进行文本纠错, 字词级别   """
         # time_start = time.time()
         params = {
             "flag_confusion": flag_confusion,  # 是否使用默认的混淆词典
             "flag_prob": flag_prob,  # 是否返回纠错token处的概率
+            "flag_cut": flag_cut,  # 是否切分句子, 长句, False会只处理前max_len长度的文本; True会按照标点切分(在超出就按照maxlen切分)
             "num_rethink": num_rethink,  # 多次预测, think-twice
             "batch_size": batch_size,  # 批大小
             "threshold": threshold,  # token阈值过滤
