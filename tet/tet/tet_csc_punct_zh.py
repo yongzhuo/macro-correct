@@ -18,7 +18,9 @@ from macro_correct import correct_punct
 text_list = ["山不在高有仙则名。",
              "水不在深，有龙则灵",
              "斯是陋室惟吾德馨",
-             "苔痕上阶绿草,色入帘青。"
+             "苔痕上阶绿草,色入帘青。",
+             "你不要这样子小明说",
+             "你算老几小红不屑地说我长这么大的时候早就有过长江了"
              ]
 text_csc = correct_punct(text_list)
 print("默认标点纠错(list输入):")
@@ -29,7 +31,7 @@ print("#" * 128)
 
 ### 2.默认标点纠错(list输入, 参数配置详情)
 params = {
-        "limit_num_errors": 4,  # 一句话最多的错别字, 多的就剔除
+        "limit_num_errors": 10,  # 一句话最多的错别字, 多的就剔除
         "limit_len_char": 4,   # 一句话的最小字符数
         "threshold_zh": 0.5,  # 句子阈值, 中文字符占比的最低值
         "threshold": 0.55,  # token阈值过滤

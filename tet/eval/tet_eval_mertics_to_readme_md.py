@@ -108,12 +108,12 @@ def tet_std_common_cor_acc():
     # files_filter = [file for file in files if "eval_result_mertics_total.json" in file
     #                 and "v1_eval_result_mertics_total.json" not in file]
     # files_filter = [file for file in files if "v0.75_eval_std.pred_mertics.json" in file]
-    # files_filter = [file for file in files if "v1_eval_std.pred_mertics.json" in file]
+    files_filter = [file for file in files if "v1_eval_std.pred_mertics.json" in file]
     # files_filter = [file for file in files if "v1_eval_result_mertics_total.json" in file]
     # files_filter = [file for file in files if "v0.75_eval_result_mertics_total.json" in file]
     # files_filter = [file for file in files if "v1_eval_std.pred_mertics.json" in file]
-    files_filter = [file for file in files if "eval_std.pred_mertics.json" in file and "acc_" in file]
-
+    # files_filter = [file for file in files if "v1_eval_std.pred_mertics.json" in file]
+    files_filter.sort()
     data_dict_filter = load_json(files_filter[0])
     k1k2_list = []
     for k, v in data_dict_filter.items():
@@ -138,7 +138,7 @@ def tet_std_common_cor_acc():
             data_line = []
             for jdx, (k, v) in enumerate(data_dict.items()):
                 ### 测试过度纠错的不计数
-                if k in ["mcsc_tet.json", "acc_rmrb.tet.json", "acc_xxqg.tet.json"]:
+                if k in ["mcsc_tet.json", "acc_rmrb.tet.json", "acc_xxqg.tet.json", "alipayseq.tet.json"]:
                     continue
                 sent_mertics = v.get(k1k2[0], "")
                 common_det_acc = sent_mertics.get(k1k2[1], 0)
@@ -146,6 +146,9 @@ def tet_std_common_cor_acc():
                 data_line.append(common_det_acc_round)
                 print(common_det_acc_round)
                 print(k.replace(".json", ""))
+            # if "macbert4mdcspell_acc_by_add_true_thr7_thr85" in file:
+            #     data_line = data_line[:11]
+            print(len(data_line))
             data_line_all = [task_name, round(sum(data_line) / len(data_line), 2)] + data_line
             data_line_all = [str(d) for d in data_line_all]
             text_line = "| " + "| ".join(data_line_all) + " |"
@@ -181,7 +184,8 @@ def tet_std_common_cor_acc():
             # data_line.append(common_det_acc_round)
             # print(common_det_acc_round)
             # print(k.replace(".json", ""))
-        data_line_all = [task_name, round(sum(data_line) / len(data_line), 2)] + data_line
+        score = round(sum(data_line) / len(data_line), 2)
+        data_line_all = [task_name, score] + data_line
         data_line_all = [str(d) for d in data_line_all]
         text_line = "| " + "| ".join(data_line_all) + " |"
         text += "\n" + text_line
@@ -202,8 +206,8 @@ def tet_std_correct_acc():
     # files_filter = [file for file in files if "v1_eval_result_mertics_total.json" in file]
     # files_filter = [file for file in files if "v0.75_eval_result_mertics_total.json" in file]
     # files_filter = [file for file in files if "v1_eval_std.pred_mertics.json" in file]
-    files_filter = [file for file in files if "eval_std.pred_mertics.json" in file and "acc_" in file]
-
+    files_filter = [file for file in files if "eval_std.pred_mertics.json" in file and "acc_" in file and "v1_" not in file and "v0.75_" not in file]
+    files_filter.sort()
     data_dict_filter = load_json(files_filter[0])
     k1k2_list = []
     for k, v in data_dict_filter.items():
@@ -219,17 +223,21 @@ def tet_std_correct_acc():
         print(text_2)
         text = f"""\n### {k1k2[-1]}\n{text_1}\n{text_2}"""
         for file in files_filter:
+            print(file)
             path_dir = os.path.split(file)[0]
             task_name = os.path.split(path_dir)[-1]
             data_dict = load_json(file)
             data_line = []
             for jdx, (k, v) in enumerate(data_dict.items()):
                 ### 测试过度纠错的不计数
-                common_cor_acc = v.get("common_cor_acc", "")
+                print(k.replace(".json", ""))
+                if "sent" in v:
+                    common_cor_acc = v.get("sent", {}).get("common_cor_acc", "")
+                else:
+                    common_cor_acc = v.get("common_cor_acc", "")
                 common_cor_acc_round = round(common_cor_acc*100, 2)
                 data_line.append(common_cor_acc_round)
                 print(common_cor_acc_round)
-                print(k.replace(".json", ""))
             data_line_all = [task_name, round(sum(data_line) / len(data_line), 2)] + data_line
             data_line_all = [str(d) for d in data_line_all]
             text_line = "| " + "| ".join(data_line_all) + " |"
@@ -248,8 +256,8 @@ if __name__ == '__main__':
     tet_std_common_cor_acc()
 
 
-    ### 过度纠错的测试
-    tet_std_correct_acc()
+    # ### 过度纠错的测试
+    # tet_std_correct_acc()
 
 """
 将eval-mertics结果转化为readme.md

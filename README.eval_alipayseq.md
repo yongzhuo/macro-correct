@@ -21,13 +21,15 @@
 
 ## 二、重要指标
 ### 2.1 F1(common_cor_f1)
-| model/common_cor_f1| alipayseq |
-|:-----------------|:----------|
-| macbert4csc_pycorrector| 15.36     |
-| bert4csc_v1| 42.23     | 
-| macbert4csc_v1| 48.45     |
-| macbert4csc_v2| 45.60     | 
-| macbert4mdcspell_v1| 48.97     | 
+| model/common_cor_f1     | alipayseq |
+|:------------------------|:----------|
+| macbert4csc_pycorrector | 15.36     |
+| bert4csc_v1             | 42.23     | 
+| macbert4csc_v1          | 48.45     |
+| macbert4csc_v2          | 45.60     | 
+| macbert4mdcspell_v1     | 48.97     | 
+| macbert4mdcspell_v2     | 50.41     | 
+
 
 ### 2.2 acc(common_cor_acc)
 | model/common_cor_acc    | alipayseq |
@@ -37,4 +39,5 @@
 | macbert4csc_v1          | 48.51     |
 | macbert4csc_v2          | 46.70     | 
 | macbert4mdcspell_v1     | 51.90     | 
+| macbert4mdcspell_v2     | 63.60     | 
 

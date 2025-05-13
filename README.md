@@ -107,7 +107,8 @@ from transformers import BertConfig, BertTokenizer, BertForMaskedLM
 import torch
 
 # pretrained_model_name_or_path = "shibing624/macbert4csc-base-chinese"
-pretrained_model_name_or_path = "Macropodus/macbert4mdcspell_v1"
+pretrained_model_name_or_path = "Macropodus/macbert4mdcspell_v2"
+# pretrained_model_name_or_path = "Macropodus/macbert4mdcspell_v1"
 # pretrained_model_name_or_path = "Macropodus/macbert4csc_v1"
 # pretrained_model_name_or_path = "Macropodus/macbert4csc_v2"
 # pretrained_model_name_or_path = "Macropodus/bert4csc_v1"
@@ -429,6 +430,40 @@ python eval_std.py
 python predict.py
 ```
 
+## PUNCT任务
+### 目录地址
+* PUNCT: macro_correct/pytorch_sequencelabeling/slRun.py
+### 数据准备
+* SPAN格式: NER任务, 默认用span格式(jsonl), 参考macro_correct/corpus/sequence_labeling/chinese_symbol的chinese_symbol.dev.span文件
+```
+{'label': [{'type': '0', 'ent': '下', 'pos': [7, 7]}, {'type': '1', 'ent': '林', 'pos': [14, 14]}], 'text': '#桂林山水甲天下阳朔山水甲桂林'}
+{'label': [{'type': '11', 'ent': 'o', 'pos': [5, 5]}, {'type': '0', 'ent': 't', 'pos': [12, 12]}, {'type': '1', 'ent': '包', 'pos': [19, 19]}], 'text': '#macrocorrect文本纠错工具包'}
+```
+* CONLL格式: 生成SPAN格式后, 用macro_correct/tet/corpus/pos_to_conll.py转换一下就好
+```
+神 O
+秘 O
+宝 O
+藏 B-1
+在 O
+旅 O
+途 O
+中 B-0
+他 O
+```
+### 配置-训练-验证-预测
+#### 配置
+配置好数据地址和超参, 参考macro_correct/pytorch_user_models/csc/macbert4mdcspell/config.py
+#### 训练-验证-预测
+```
+训练
+nohup python train_yield.py > tc.train_yield.py.log 2>&1 &
+tail -n 1000  -f tc.train_yield.py.log
+验证
+python eval_std.py
+预测
+python predict.py
+```
 
 
 # 测评
@@ -440,6 +475,7 @@ python predict.py
 * qwen25_1-5b_pycorrector权重地址在[shibing624/chinese-text-correction-1.5b](https://huggingface.co/shibing624/chinese-text-correction-1.5b)
 * macbert4csc_pycorrector权重地址在[shibing624/macbert4csc-base-chinese](https://huggingface.co/shibing624/macbert4csc-base-chinese);
 * macbert4mdcspell_v1权重地址在[Macropodus/macbert4mdcspell_v1](https://huggingface.co/Macropodus/macbert4mdcspell_v1);
+* macbert4mdcspell_v2权重地址在[Macropodus/macbert4mdcspell_v2](https://huggingface.co/Macropodus/macbert4mdcspell_v2);
 * macbert4csc_v2权重地址在[Macropodus/macbert4csc_v2](https://huggingface.co/Macropodus/macbert4csc_v2);
 * macbert4csc_v1权重地址在[Macropodus/macbert4csc_v1](https://huggingface.co/Macropodus/macbert4csc_v1);
 * bert4csc_v1权重地址在[Macropodus/bert4csc_v1](https://huggingface.co/Macropodus/bert4csc_v1);
@@ -467,41 +503,45 @@ python predict.py
 1.数据预处理, 测评数据都经过 全角转半角,繁简转化,标点符号标准化等操作;
 2.指标带common的极为宽松指标, 同开源项目pycorrector的评估指标;
 3.指标带strict的极为严格指标, 同开源项目[wangwang110/CSC](https://github.com/wangwang110/CSC);
-4.macbert4mdcspell_v1模型为训练使用mdcspell架构+bert的mlm-loss, 但是推理的时候只用bert-mlm;
+4.macbert4mdcspell_v1/v2模型为训练使用mdcspell架构+bert的mlm-loss, 但是推理的时候只用bert-mlm;
 5.acc_rmrb/acc_xxqg数据集没有错误, 用于评估模型的误纠率(过度纠错);
 6.qwen25_1-5b_pycorrector的模型为shibing624/chinese-text-correction-1.5b, 其训练数据包括了lemon_v2/mcsc_tet/ecspell的验证集和测试集, 其他的bert类模型的训练不包括验证集和测试集;
 ```
 
 ## 3.3 测评结果
 ### 3.3.1 F1(common_cor_f1)
-| model/common_cor_f1| avg| gen_de3| lemon_v2| gen_passage| text_proof| gen_xxqg| faspell| lomo_tet| mcsc_tet| ecspell| sighan2013| sighan2014| sighan2015 |
-|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|
-| macbert4csc_pycorrector| 45.8| 42.44| 42.89| 31.49| 46.31| 26.06| 32.7| 44.83| 27.93| 55.51| 70.89| 61.72| 66.81 |
-| bert4csc_v1| 62.28| 93.73| 61.99| 44.79| 68.0| 35.03| 48.28| 61.8| 64.41| 79.11| 77.66| 51.01| 61.54 |
-| macbert4csc_v1| 68.55| 96.67| 65.63| 48.4| 75.65| 38.43| 51.76| 70.11| 80.63| 85.55| 81.38| 57.63| 70.7 |
-| macbert4csc_v2| 68.6| 96.74| 66.02| 48.26| 75.78| 38.84| 51.91| 70.17| 80.71| 85.61| 80.97| 58.22| 69.95 |
-| macbert4mdcspell_v1| 71.1| 96.42| 70.06| 52.55| 79.61| 43.37| 53.85| 70.9| 82.38| 87.46| 84.2| 61.08| 71.32 |
-| qwen25_1-5b_pycorrector| 45.11| 27.29| 89.48| 14.61| 83.9| 13.84| 18.2| 36.71| 96.29| 88.2| 36.41| 15.64| 20.73 |
+| model/common_cor_f1     | avg| gen_de3| lemon_v2| gen_passage| text_proof| gen_xxqg| faspell| lomo_tet| mcsc_tet| ecspell| sighan2013| sighan2014| sighan2015 |
+|:------------------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|
+| macbert4csc_pycorrector | 45.8| 42.44| 42.89| 31.49| 46.31| 26.06| 32.7| 44.83| 27.93| 55.51| 70.89| 61.72| 66.81 |
+| qwen25_1-5b_pycorrector | 45.11| 27.29| 89.48| 14.61| 83.9| 13.84| 18.2| 36.71| 96.29| 88.2| 36.41| 15.64| 20.73 |
+| bert4csc_v1             | 62.28| 93.73| 61.99| 44.79| 68.0| 35.03| 48.28| 61.8| 64.41| 79.11| 77.66| 51.01| 61.54 |
+| macbert4csc_v1          | 68.55| 96.67| 65.63| 48.4| 75.65| 38.43| 51.76| 70.11| 80.63| 85.55| 81.38| 57.63| 70.7 |
+| macbert4csc_v2          | 68.6| 96.74| 66.02| 48.26| 75.78| 38.84| 51.91| 70.17| 80.71| 85.61| 80.97| 58.22| 69.95 |
+| macbert4mdcspell_v1     | 71.1| 96.42| 70.06| 52.55| 79.61| 43.37| 53.85| 70.9| 82.38| 87.46| 84.2| 61.08| 71.32 |
+| macbert4mdcspell_v2     | 71.23| 96.42| 65.8| 52.35| 75.94| 43.5| 53.82| 72.66| 82.28| 88.69| 82.51| 65.59| 75.26 |
 
 ### 3.3.2 acc(common_cor_acc)
 | model/common_cor_acc| avg| gen_de3| lemon_v2| gen_passage| text_proof| gen_xxqg| faspell| lomo_tet| mcsc_tet| ecspell| sighan2013| sighan2014| sighan2015 |
 |:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|
 | macbert4csc_pycorrector| 48.26| 26.96| 28.68| 34.16| 55.29| 28.38| 22.2| 60.96| 57.16| 67.73| 55.9| 68.93| 72.73 |
+| qwen25_1-5b_pycorrector| 46.09| 15.82| 81.29| 22.96| 82.17| 19.04| 12.8| 50.2| 96.4| 89.13| 22.8| 27.87| 32.55 |
 | bert4csc_v1| 60.76| 88.21| 45.96| 43.13| 68.97| 35.0| 34.0| 65.86| 73.26| 81.8| 64.5| 61.11| 67.27 |
 | macbert4csc_v1| 65.34| 93.56| 49.76| 44.98| 74.64| 36.1| 37.0| 73.0| 83.6| 86.87| 69.2| 62.62| 72.73 |
 | macbert4csc_v2| 65.22| 93.69| 50.14| 44.92| 74.64| 36.26| 37.0| 72.72| 83.66| 86.93| 68.5| 62.43| 71.73 |
 | macbert4mdcspell_v1| 67.15| 93.09| 54.8| 47.71| 78.09| 39.52| 38.8| 71.92| 84.78| 88.27| 73.2| 63.28| 72.36 |
-| qwen25_1-5b_pycorrector| 46.09| 15.82| 81.29| 22.96| 82.17| 19.04| 12.8| 50.2| 96.4| 89.13| 22.8| 27.87| 32.55 |
+| macbert4mdcspell_v2     | 68.31| 93.09| 50.05| 48.72| 75.74| 40.52| 38.9| 76.9| 84.8| 89.73| 71.0| 71.94| 78.36 |
 
 ### 3.3.3 acc(acc_true, thr=0.75)
-| model/acc                | avg| acc_rmrb| acc_xxqg |
-|:-------------------------|:-----------------|:-----------------|:-----------------|
-| macbert4csc_pycorrector  | 99.24| 99.22| 99.26 |
-| bert4csc_v1          | 98.71| 98.36| 99.06 |
-| macbert4csc_v1           | 97.72| 96.72| 98.72 |
-| macbert4csc_v2           | 97.89| 96.98| 98.8 |
-| macbert4mdcspell_v1      | 97.75| 96.51| 98.98 |
-| qwen25_1-5b_pycorrector  | 82.0| 77.14| 86.86 |
+| model/acc               | avg| acc_rmrb| acc_xxqg |
+|:------------------------|:-----------------|:-----------------|:-----------------|
+| macbert4csc_pycorrector | 99.24| 99.22| 99.26 |
+| qwen25_1-5b_pycorrector | 82.0| 77.14| 86.86 |
+| bert4csc_v1             | 98.71| 98.36| 99.06 |
+| macbert4csc_v1          | 97.72| 96.72| 98.72 |
+| macbert4csc_v2          | 97.89| 96.98| 98.8 |
+| macbert4mdcspell_v1     | 97.75| 96.51| 98.98 |
+| macbert4mdcspell_v2     | 99.54| 99.22| 99.86 |
+
 
 ### 3.3.4 结论(Conclusion)
 ```
@@ -510,6 +550,7 @@ python predict.py
 3.MFT(Mask-Correct)依旧有效, 不过对于数据量足够的情形提升不明显, 可能也是误纠率升高的一个重要原因;
 4.训练数据中也存在文言文数据, 训练好的模型也支持文言文纠错;
 5.训练好的模型对"地得的"等高频错误具有较高的识别率和纠错率;
+6.macbert4mdcspell_v2的MFT只70%的时间no-error-mask(0.15), 15%的时间target-to-target, 15%的时间不mask;
 ```
 
 
@@ -518,6 +559,7 @@ python predict.py
 1. v20240129, 完成csc_punct模块;
 2. v20241001, 完成csc_token模块;
 3. v20250117, 完成csc_eval模块；
+4. v20250501, 完成macbert4mdcspell_v2
 ```
 
 

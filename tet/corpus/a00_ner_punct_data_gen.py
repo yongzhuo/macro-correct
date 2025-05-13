@@ -310,7 +310,7 @@ def tradition_to_simple(text):
 
 
 PUN_EN2ZH_DICT = {",": "，", ";": "；", "!": "！", "?": "？", ":": "：",
-                  "(": "（", ")": "）", "_": "—"}
+                  "(": "（", ")": "）", "_": "—", "-": "—"}
 def transfor_english_symbol_to_chinese(text, kv_dict=PUN_EN2ZH_DICT):
     """   将英文标点符号转化为中文标点符号, 位数不能变防止pos_id变化   """
     for k, v in kv_dict.items():  # 英文替换
@@ -2835,6 +2835,7 @@ def collect_punct_label_123(text):
         ents = []
         flag = True
         for idx, t in enumerate(d):
+            print(t)
             if is_other(t):
                 if t in pun_string:
                     symbol_str += t
@@ -2873,13 +2874,15 @@ def collect_punct_label_123(text):
 
         d_new = stringQ2B(d_new)  # 半角
         line_dict = {"label": ents, "text": d_new}
-        print(line_dict)
+        # print(line_dict)
         return line_dict
 
 
 if __name__ == '__main__':
     yz = 0
-    text = "（《五四（《五四（《五四"
+    text = "桂林山水甲天下，阳朔山水甲桂林。"
+    text = "macro-correct，文本纠错工具包。"
+    text = "小明说"
     # text_punct = collect_punct_label(text)
     text_punct = collect_punct_label_123(text)
     print(text_punct)

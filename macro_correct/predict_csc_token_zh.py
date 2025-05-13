@@ -26,7 +26,7 @@ from macro_correct.pytorch_textcorrection.tcTools import string_q2b, get_logger
 from macro_correct.task.correct.predict_mlm_csc import CscPredict
 
 
-def download_model_from_huggface_with_url(repo_id="Macropodus/macbert4mdcspell_v1",
+def download_model_from_huggface_with_url(repo_id="Macropodus/macbert4mdcspell_v2",
                                           hf_endpoint="https://hf-mirror.com",
                                           logger=logger):
     """
@@ -54,7 +54,7 @@ def download_model_from_huggface_with_url(repo_id="Macropodus/macbert4mdcspell_v
     logger.info("download " + repo_id + " from huggface, end!")
 
 
-def download_model_from_huggface(repo_id="Macropodus/macbert4mdcspell_v1", logger=logger):
+def download_model_from_huggface(repo_id="Macropodus/macbert4mdcspell_v2", logger=logger):
     """
         下载模型等数据文件, 从huggface
     """
@@ -68,7 +68,7 @@ def download_model_from_huggface(repo_id="Macropodus/macbert4mdcspell_v1", logge
 class MacroCSC4Token:
     def __init__(self, path_config=None, logger=logger):
         self.logger = logger
-        self.path_config = path_config or os.path.join(path_root, "macro_correct/output/text_correction/macbert4mdcspell_v1/csc.config")
+        self.path_config = path_config or os.path.join(path_root, "macro_correct/output/text_correction/macbert4mdcspell_v2/csc.config")
         self.check_or_download_hf_model(path_config=path_config)
         self.load_trained_model()
 
@@ -91,14 +91,14 @@ class MacroCSC4Token:
             self.model_csc.model.office.config.model_save_path = os.path.split(path_model_select)[0]
             self.path_config = path_config_select
         else:
-            ### 默认加载Macropodus/macbert4mdcspell_v1
+            ### 默认加载Macropodus/macbert4mdcspell_v2
             path_config = path_config or self.path_config
             path_model = os.path.join(os.path.split(path_config)[0], "pytorch_model.bin")
             if os.path.exists(path_config) and os.path.exists(path_model):
                 pass
             else:
                 # dowload model from hf
-                repo_id = "Macropodus/macbert4mdcspell_v1"
+                repo_id = "Macropodus/macbert4mdcspell_v2"
                 self.logger.info("download_model_from_huggface " + repo_id + " start!")
                 download_model_from_huggface(repo_id=repo_id, logger=self.logger)
                 self.logger.info("download_model_from_huggface " + repo_id + " success!")
@@ -111,12 +111,13 @@ class MacroCSC4Token:
 
     def func_csc_token_long(self, content, threshold=0.6, max_len=128, batch_size=16, rounded=4,
                             num_rethink=0, limit_nums_errors=32, limit_length_char=3, threshold_zh=0.5,
-                            flag_confusion=True, flag_prob=True, flag_cut=False, **kwargs):
+                            flag_confusion=False, flag_prob=True, flag_cut=False, **kwargs):
         """   对句子进行文本纠错, 字词级别   """
         # time_start = time.time()
         params = {
             "flag_confusion": flag_confusion,  # 是否使用默认的混淆词典
             "flag_prob": flag_prob,  # 是否返回纠错token处的概率
+            "flag_cut": flag_cut,  # 是否切分句子, 长句, False会只处理前max_len长度的文本; True会按照标点切分(在超出就按照maxlen切分)
             "num_rethink": num_rethink,  # 多次预测, think-twice
             "batch_size": batch_size,  # 批大小
             "threshold": threshold,  # token阈值过滤
@@ -183,7 +184,8 @@ class MacroCSC4Token:
         return output
 
     def func_csc_token_batch(self, texts, threshold=0.6, max_len=128, batch_size=16, rounded=4,
-                            num_rethink=0, flag_confusion=True, flag_prob=True, flag_cut=False,
+                            limit_nums_errors=8, num_rethink=0, flag_confusion=False,
+                            flag_prob=True, flag_cut=False,
                             **kwargs):
         """   对句子进行文本纠错, 字词级别   """
         # time_start = time.time()
@@ -191,13 +193,14 @@ class MacroCSC4Token:
             "flag_confusion": flag_confusion,  # 是否使用默认的混淆词典
             "flag_prob": flag_prob,  # 是否返回纠错token处的概率
             "flag_cut": flag_cut,  # 是否切分句子, 长句, False会只处理前max_len长度的文本; True会按照标点切分(在超出就按照maxlen切分)
+            "limit_nums_errors": limit_nums_errors,  # 一句话最多的错别字, 多的就剔除(全不纠错)
             "num_rethink": num_rethink,  # 多次预测, think-twice
             "batch_size": batch_size,  # 批大小
             "threshold": threshold,  # token阈值过滤
             "max_len": max_len,  # 自定义的长度, 如果截断了, 则截断部分不参与纠错, 后续直接一模一样的补回来
             "rounded": rounded,  # 保存4位小数
         }
-        limit_nums_errors = 5  # 一句话最多的错别字, 多的就剔除
+        # limit_nums_errors = 5  # 一句话最多的错别字, 多的就剔除
         output = []
         try:
             ### 字词错误纠正

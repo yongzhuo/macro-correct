@@ -89,7 +89,7 @@ class MacroCSC4Punct:
     def func_csc_punct_long(self, content, threshold=0.55, max_len=128, batch_size=16, rounded=4,
                             limit_num_errors=4, limit_len_char=3, threshold_zh=0.5,
                             threshold_pun_freq=threshold_pun_freq,
-                            flag_cut=True, flag_prob=True,
+                            flag_cut=False, flag_prob=True,
                             **kwargs):
         """   对句子进行文本纠错, 标点符号
         args:
@@ -219,9 +219,9 @@ class MacroCSC4Punct:
         return output
 
     def func_csc_punct_batch(self, texts, threshold=0.55, max_len=128, batch_size=16, rounded=4,
-                            limit_num_errors=4, limit_len_char=3, threshold_zh=0.5,
+                            limit_num_errors=32, limit_len_char=3, threshold_zh=0.5,
                             threshold_pun_freq=threshold_pun_freq,
-                            flag_cut=True, flag_prob=True,
+                            flag_cut=False, flag_prob=True,
                             **kwargs):
         """   对句子进行文本纠错, 标点符号
         args:
@@ -233,6 +233,7 @@ class MacroCSC4Punct:
             # "flag_prob": flag_prob,  # 是否返回纠错token处的概率
             # "threshold": threshold,  # token阈值过滤
             "batch_size": batch_size,  # 批大小
+            # "flag_cut": flag_cut,  # 是否切分
             "max_len": max_len,  # 自定义的长度, 如果截断了, 则截断部分不参与纠错, 后续直接一模一样的补回来
             "rounded": rounded,  # 保存4位小数
         }

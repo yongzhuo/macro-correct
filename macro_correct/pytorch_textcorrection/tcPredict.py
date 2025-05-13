@@ -57,6 +57,7 @@ class TextCorrectPredict:
         self.config.CUDA_VISIBLE_DEVICES = self.CUDA_VISIBLE_DEVICES
         self.config.pretrained_model_name_or_path = model_save_path_real
         self.config.model_save_path = model_save_path_real
+        self.config.num_workers = 0   ### 适配CPU
         # path_log_dir = os.path.join(model_save_path_real, "log")
         # self.logger = get_logger(path_log_dir)
         # self.l2i, self.i2l = self.config.l2i, self.config.i2l
@@ -250,7 +251,7 @@ class TextCorrectPredict:
         return outputs
 
     def predict_rethink(self, texts, threshold=0.6, batch_size=32, max_len=128, rounded=4, num_rethink=3,
-                        flag_prob=True, flag_logits=False, flag_print=False, **kwargs):
+                        flag_prob=True, flag_logits=False, flag_print=False, flag_cut=False, **kwargs):
         """  分类模型预测
         config:
             texts      : list<dict>, inputs of text, eg. ["你是谁"], [{"source":"你是谁"}], [{"original_text":"你是谁"}]
@@ -294,8 +295,9 @@ class TextCorrectPredict:
         ### 推理
         outputs_std_list = []
         outputs_std = self.predict_single(texts=texts, threshold=threshold, batch_size=batch_size, max_len=max_len,
-                                        rounded=rounded, num_rethink=num_rethink, flag_prob=flag_prob,
-                                        flag_logits=flag_logits, flag_print=flag_print, **kwargs)
+                                          rounded=rounded, num_rethink=num_rethink, flag_prob=flag_prob,
+                                          flag_logits=flag_logits, flag_print=flag_print,
+                                          flag_cut=flag_cut, **kwargs)
         outputs_std_list.append(copy.deepcopy(outputs_std))
         num_rethink = max(num_rethink, 0)
         for nk in range(num_rethink):
@@ -307,8 +309,9 @@ class TextCorrectPredict:
                     outputs_std[odx]["target"] = ""
                     outputs_std[odx]["errors"] = []
                 outputs_std = self.predict_single(texts=outputs_std, threshold=threshold, batch_size=batch_size, max_len=max_len,
-                                                rounded=rounded, num_rethink=num_rethink, flag_prob=flag_prob,
-                                                flag_logits=flag_logits, flag_print=flag_print, **kwargs)
+                                                  rounded=rounded, num_rethink=num_rethink, flag_prob=flag_prob,
+                                                  flag_logits=flag_logits, flag_print=flag_print,
+                                                  flag_cut=flag_cut, **kwargs)
                 outputs_std_list.append(copy.deepcopy(outputs_std))
                 # print(outputs_std)
                 # print("#" * 128)
@@ -358,22 +361,24 @@ class TextCorrectPredict:
         return outputs_rethink
 
     def predict_batch(self, texts, threshold=0.6, batch_size=32, max_len=128, rounded=4, num_rethink=0,
-                      flag_prob=True, flag_logits=False, flag_print=False, **kwargs):
+                      flag_prob=True, flag_logits=False, flag_print=False, flag_cut=False, **kwargs):
         if num_rethink and num_rethink > 0:
             output = self.predict_rethink(texts=texts, threshold=threshold, batch_size=batch_size, max_len=max_len,
                                           rounded=rounded, num_rethink=num_rethink, flag_prob=flag_prob,
-                                          flag_logits=flag_logits, flag_print=flag_print, **kwargs)
+                                          flag_logits=flag_logits, flag_print=flag_print,
+                                          flag_cut=flag_cut, **kwargs)
         else:
             output = self.predict_single(texts=texts, threshold=threshold, batch_size=batch_size, max_len=max_len,
                                          rounded=rounded, flag_prob=flag_prob, flag_logits=flag_logits,
-                                         flag_print=flag_print, **kwargs)
+                                         flag_print=flag_print, flag_cut=flag_cut, **kwargs)
         return output
 
 
 if __name__ == "__main__":
     # BERT-base = 8109M
     # path_config = "../output/text_correction/BERT4csc_csc_sighanall_det3_nomft_lr-3e-05_bs-16_epoch-50/csc.config"
-    path_config = "../output/text_correction/macbert4mdcspell_v1/csc.config"
+    path_config = "../output/text_correction/macbert4mdcspell_v2/csc.config"
+    # path_config = "../output/text_correction/macbert4mdcspell_v1/csc.config"
     # path_config = "../output/text_correction/macbert4csc_v1/csc.config"
     # path_config = "../output/text_correction/macbert4csc_v2/csc.config"
     # path_config = "../output/text_correction/bert4csc_v1/csc.config"
@@ -389,9 +394,13 @@ if __name__ == "__main__":
              {"original_text": "机七学习是人工智能领遇最能体现智能的一个分知"},
              {"original_text": "一只小鱼船浮在平净的河面上"},
              {"original_text": "我的家乡是有明的渔米之乡"},
+             {"original_text": "真麻烦你了。希望你们好好的跳舞"},
+             {"original_text": "真麻烦你了。希望你们好好的跳舞。"},
+             {"original_text": "真麻烦你了。希望你们好好的跳无。"},
+
              ]
 
-    res = tcp.predict_single(texts, flag_logits=False, threshold=0.01, max_len=128)
+    res = tcp.predict_single(texts, flag_logits=False, threshold=0.00, max_len=128)
     for r in res:
         print(r)
     # tcp.office.config.model_save_path = tcp.office.config.model_save_path + "_state"
