@@ -521,7 +521,7 @@ class CRF(nn.Module):
     .. _Viterbi algorithm: https://en.wikipedia.org/wiki/Viterbi_algorithm
     """
 
-    def __init__(self, num_tags: int, batch_first: bool = False) -> None:
+    def __init__(self, num_tags, batch_first=False):
         if num_tags <= 0:
             raise ValueError('invalid number of tags: {}'.format(num_tags))
         super().__init__()
@@ -545,7 +545,7 @@ class CRF(nn.Module):
     def __repr__(self) -> str:
         return '{}(num_tags={})'.format(self.__class__.__name__, self.num_tags)
 
-    def forward(self, emissions: torch.Tensor, tags: torch.LongTensor, mask = None, reduction = 'mean'):
+    def forward(self, emissions, tags, mask = None, reduction = 'mean'):
         """Compute the conditional log likelihood of a sequence of tags given emission scores.
         Args:
             emissions (`~torch.Tensor`): Emission score tensor of size
@@ -592,7 +592,7 @@ class CRF(nn.Module):
             return llh.mean()
         return llh.sum() / mask.float().sum()
 
-    def decode(self, emissions: torch.Tensor, mask = None, nbest = None, pad_tag = None):
+    def decode(self, emissions, mask = None, nbest = None, pad_tag = None):
         """Find the most likely tag sequence using Viterbi algorithm.
         Args:
             emissions (`~torch.Tensor`): Emission score tensor of size
@@ -625,7 +625,7 @@ class CRF(nn.Module):
             return self._viterbi_decode(emissions, mask, pad_tag).unsqueeze(0)
         return self._viterbi_decode_nbest(emissions, mask, nbest, pad_tag)
 
-    def _validate(self, emissions: torch.Tensor, tags = None, mask = None):
+    def _validate(self, emissions, tags = None, mask = None):
         if emissions.dim() != 3:
             raise ValueError('emissions must have dimension of 3, got {}'.format(emissions.dim()))
         if emissions.size(2) != self.num_tags:
@@ -649,7 +649,7 @@ class CRF(nn.Module):
             if not no_empty_seq and not no_empty_seq_bf:
                 raise ValueError('mask of the first timestep must all be on')
 
-    def _compute_score(self, emissions: torch.Tensor, tags: torch.LongTensor, mask: torch.ByteTensor):
+    def _compute_score(self, emissions, tags, mask):
         # emissions: (seq_length, batch_size, num_tags)
         # tags: (seq_length, batch_size)
         # mask: (seq_length, batch_size)
@@ -680,7 +680,7 @@ class CRF(nn.Module):
 
         return score
 
-    def _compute_normalizer(self, emissions: torch.Tensor, mask: torch.ByteTensor):
+    def _compute_normalizer(self, emissions, mask):
         # emissions: (seq_length, batch_size, num_tags)
         # mask: (seq_length, batch_size)
         seq_length = emissions.size(0)
@@ -725,7 +725,7 @@ class CRF(nn.Module):
         # shape: (batch_size,)
         return torch.logsumexp(score, dim=1)
 
-    def _viterbi_decode(self, emissions: torch.FloatTensor, mask: torch.ByteTensor, pad_tag = None):
+    def _viterbi_decode(self, emissions, mask, pad_tag = None):
         # emissions: (seq_length, batch_size, num_tags)
         # mask: (seq_length, batch_size)
         # return: (batch_size, seq_length)
@@ -805,7 +805,7 @@ class CRF(nn.Module):
 
         return torch.where(mask.bool(), best_tags_arr, oor_tag).transpose(0, 1)
 
-    def _viterbi_decode_nbest(self, emissions: torch.FloatTensor, mask: torch.ByteTensor, nbest: int, pad_tag = None):
+    def _viterbi_decode_nbest(self, emissions, mask, nbest: int, pad_tag = None):
         # emissions: (seq_length, batch_size, num_tags)
         # mask: (seq_length, batch_size)
         # return: (nbest, batch_size, seq_length)

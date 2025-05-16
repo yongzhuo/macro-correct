@@ -129,7 +129,7 @@ class TextCorrectPredict:
         outputs = self.predict_batch([text], **kwargs)
         return outputs[0] if outputs else []
 
-    def predict_single(self, texts, threshold=0.6, batch_size=32, max_len=128, rounded=4,
+    def predict_single(self, texts, threshold=0.5, batch_size=32, max_len=128, rounded=4,
                       flag_prob=True, flag_logits=False, flag_print=False, flag_cut=False,
                        **kwargs):
         """  分类模型预测
@@ -250,7 +250,7 @@ class TextCorrectPredict:
             outputs.append(line_dict)
         return outputs
 
-    def predict_rethink(self, texts, threshold=0.6, batch_size=32, max_len=128, rounded=4, num_rethink=3,
+    def predict_rethink(self, texts, threshold=0.5, batch_size=32, max_len=128, rounded=4, num_rethink=3,
                         flag_prob=True, flag_logits=False, flag_print=False, flag_cut=False, **kwargs):
         """  分类模型预测
         config:
@@ -360,7 +360,7 @@ class TextCorrectPredict:
             outputs_rethink.append(line_dict)
         return outputs_rethink
 
-    def predict_batch(self, texts, threshold=0.6, batch_size=32, max_len=128, rounded=4, num_rethink=0,
+    def predict_batch(self, texts, threshold=0.5, batch_size=32, max_len=128, rounded=4, num_rethink=0,
                       flag_prob=True, flag_logits=False, flag_print=False, flag_cut=False, **kwargs):
         if num_rethink and num_rethink > 0:
             output = self.predict_rethink(texts=texts, threshold=threshold, batch_size=batch_size, max_len=max_len,

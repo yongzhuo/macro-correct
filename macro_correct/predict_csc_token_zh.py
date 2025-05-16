@@ -109,7 +109,7 @@ class MacroCSC4Token:
         path_config = path_config or self.path_config
         self.model_csc = CscPredict(path_config)
 
-    def func_csc_token_long(self, content, threshold=0.6, max_len=128, batch_size=16, rounded=4,
+    def func_csc_token_long(self, content, threshold=0.5, max_len=128, batch_size=16, rounded=4,
                             num_rethink=0, limit_nums_errors=32, limit_length_char=3, threshold_zh=0.5,
                             flag_confusion=False, flag_prob=True, flag_cut=False, **kwargs):
         """   对句子进行文本纠错, 字词级别   """
@@ -183,7 +183,7 @@ class MacroCSC4Token:
         # self.logger.info(time_cost)
         return output
 
-    def func_csc_token_batch(self, texts, threshold=0.6, max_len=128, batch_size=16, rounded=4,
+    def func_csc_token_batch(self, texts, threshold=0.5, max_len=128, batch_size=16, rounded=4,
                             limit_nums_errors=8, num_rethink=0, flag_confusion=False,
                             flag_prob=True, flag_cut=False,
                             **kwargs):

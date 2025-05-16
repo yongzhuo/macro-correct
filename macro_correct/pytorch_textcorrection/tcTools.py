@@ -7,7 +7,7 @@
 
 from logging.handlers import RotatingFileHandler
 from collections import Counter, OrderedDict
-from typing import Union, Dict, List, Any
+# from typing import Union, Dict, List, Any
 import traceback
 import operator
 import difflib
@@ -82,7 +82,7 @@ PUN_ZH2EN_DICT = {'，': ',', '；': ';', '！': '!', '？': '?', '：': ':', '�
 PUN_BERT_DICT = {"“":'"', "”":'"', "‘":'"', "’":'"', "—": "_", "——": "__"}
 
 
-def mertics_report_v1(y_true: List, y_pred: List, digits: int=4, eps: float=1e-9, use_acc: bool=True, use_draw: bool=True):
+def mertics_report_v1(y_true, y_pred, digits=4, eps=1e-9, use_acc=True, use_draw=True):
     """ 老版本模型评估指标, 只支持list<str>格式输入的y_true/y_pred
     mertics report, 打印评估指标, 不支持onehot的形式
     Args:
@@ -211,7 +211,7 @@ def mertics_report_v1(y_true: List, y_pred: List, digits: int=4, eps: float=1e-9
     return label_metrics, report, label_error_dict
 
 
-def mertics_report_v2(y_true: Any, y_pred: Any, rounded: int=4, beta: float=1.0, target_names=None):
+def mertics_report_v2(y_true, y_pred, rounded=4, beta=1.0, target_names=None):
     """ sklearn版本模型评估指标, 只支持np.array格式输入的y_true/y_pred, 输入必须为onehot
     mertics report, 打印评估指标, 不支持onehot的形式
     Args:
@@ -273,7 +273,7 @@ def mertics_report_v2(y_true: Any, y_pred: Any, rounded: int=4, beta: float=1.0,
     return report_dict, report_hmt
 
 
-def mertics_report(y_true: Any, y_pred: Any, rounded: int=4, beta: float=1.0, target_names=None):
+def mertics_report(y_true, y_pred, rounded=4, beta=1.0, target_names=None):
     """
     mertics report, 打印评估指标, 不支持string, onehot的形式
     Args:
@@ -297,7 +297,7 @@ def mertics_report(y_true: Any, y_pred: Any, rounded: int=4, beta: float=1.0, ta
     return report_dict, report_hmt
 
 
-def mertics_precision_recall_fscore_support(mcm: Any, beta=1.0, rounded=2, target_names=None):
+def mertics_precision_recall_fscore_support(mcm, beta=1.0, rounded=2, target_names=None):
     """ precision-recall-fscore-support
     计算每个类的精度、召回率、F度量值和支持度。   
     精度是比率``tp/（tp+fp）`，其中``tp``是真阳性和``fp``假阳性的数量。精度是直观地说，分类器不将样本标记为阳性的能力。
@@ -401,7 +401,7 @@ def mertics_precision_recall_fscore_support(mcm: Any, beta=1.0, rounded=2, targe
     return result_t, report_dict, report_hmt
 
 
-def mertics_multilabel_confusion_matrix(y_true: Any, y_pred: Any):
+def mertics_multilabel_confusion_matrix(y_true, y_pred):
     """ multilabel-confusion-matrix
     计算每个类或样本的混淆矩阵，按类计算（默认）多标签，
     用于评估分类准确性的混淆矩阵，以及输出每个类别或样本的混淆矩阵。        
@@ -428,7 +428,7 @@ def mertics_multilabel_confusion_matrix(y_true: Any, y_pred: Any):
     return np.array([tn, fp, fn, tp]).T.reshape(-1, 2, 2)
 
 
-def sklearn_confusion_matrix(y_true: List, y_pred: List):
+def sklearn_confusion_matrix(y_true, y_pred):
     """ sklearn, 先multi-class, 然后multi-label
     calculate confusion_matrix, 计算混淆矩阵
     Args:
@@ -446,7 +446,7 @@ def sklearn_confusion_matrix(y_true: List, y_pred: List):
     return confusion
 
 
-def sklearn_kfold(xys: np.array, n_splits: int=5, shuffle: bool=False, random_state: int=None):
+def sklearn_kfold(xys, n_splits=5, shuffle=False, random_state=None):
     """
     StratifiedKFold of sklearn, 留一K折交叉验证数据获取
     Args:
@@ -672,7 +672,7 @@ def char_mertic_det_cor(all_srcs, all_pres, all_trgs, logger=None):
            correction_precision, correction_recall, correction_f1
 
 
-def save_json(lines: Union[List, Dict], path: str, encoding: str = "utf-8", indent: int = 4):
+def save_json(lines, path, encoding = "utf-8", indent = 4):
     """
     Write Line of List<json> to file
     Args:
@@ -686,7 +686,7 @@ def save_json(lines: Union[List, Dict], path: str, encoding: str = "utf-8", inde
     fj.close()
 
 
-def txt_write(lines: List[str], path: str, model: str = "w", encoding: str = "utf-8"):
+def txt_write(lines, path, model = "w", encoding = "utf-8"):
     """
     Write Line of list to file
     Args:
@@ -736,7 +736,7 @@ def get_logger(log_dir, back_count=32, logger_name="macro_correct_csc_token"):
     return logger
 
 
-def load_json(path: str, encoding: str="utf-8") -> Union[List, Any]:
+def load_json(path, encoding="utf-8"):
     """
     Read Line of List<json> form file
     Args:
@@ -751,7 +751,7 @@ def load_json(path: str, encoding: str="utf-8") -> Union[List, Any]:
     return model_json
 
 
-def txt_read(path: str, encoding: str = "utf-8") -> List[str]:
+def txt_read(path, encoding = "utf-8"):
     """
     Read Line of list form file
     Args:
@@ -785,7 +785,7 @@ def load_pickle(path):
     return data
 
 
-def get_current_time(time_form: str="%Y%m%d%H%M%S"):
+def get_current_time(time_form="%Y%m%d%H%M%S"):
     """
     get_current_time from time
     Args:
@@ -799,7 +799,7 @@ def get_current_time(time_form: str="%Y%m%d%H%M%S"):
     return time_current
 
 
-def chinese_extract_extend(text: str) -> str:
+def chinese_extract_extend(text):
     """
       只提取出中文、字母和数字
     :param text: str, input of sentence
@@ -809,7 +809,7 @@ def chinese_extract_extend(text: str) -> str:
     return chinese_extract
 
 
-def flag_total_chinese(text: str) -> bool:
+def flag_total_chinese(text):
     """
     judge is total chinese or not, 判断是不是全是中文
     Args:
@@ -823,7 +823,7 @@ def flag_total_chinese(text: str) -> bool:
     return True
 
 
-def flag_total_number(text: str) -> bool:
+def flag_total_number(text):
     """
     judge is total chinese or not, 判断是不是全是数字
     Args:
@@ -837,7 +837,7 @@ def flag_total_number(text: str) -> bool:
     return True
 
 
-def dic_sort(dic: dict)-> OrderedDict:
+def dic_sort(dic):
     """
     sort dict by values, 给字典排序(依据值大小)
     Args:
@@ -849,7 +849,7 @@ def dic_sort(dic: dict)-> OrderedDict:
     return OrderedDict(in_dict_sort)
 
 
-def del_dir(path_dir: str):
+def del_dir(path_dir):
     """
     Delete model files in the directory, eg. h5/json/pb 
     Args:

@@ -165,7 +165,8 @@ class Macbert4CSCPredict:
         self.model = Graph(config=self.csc_config)
         state_dict = torch.load(os.path.join(self.path_trained_model_dir, "pytorch_model.bin"))
         # self.model.load_state_dict(state_dict)
-        if "pretrain_model.bert." in state_dict:
+        state_dict_keys_0 = list(state_dict.keys())[0]
+        if "pretrain_model.bert." in state_dict_keys_0:
             state_dict = {k.replace("pretrain_model.", "bert."): v for k, v in state_dict.items()}
         elif "bert.bert." not in state_dict:
             state_dict = {"bert." + k: v for k, v in state_dict.items()}

@@ -7,7 +7,7 @@
 
 from collections import OrderedDict, defaultdict
 from logging.handlers import RotatingFileHandler
-from typing import Union, Dict, List, Any
+# from typing import Union, Dict, List, Any
 import traceback
 import logging
 import copy
@@ -62,8 +62,8 @@ converter = opencc.OpenCC('t2s.json')
 context = converter.convert('汉字')  # 漢字
 
 
-def mertics_report_sequence_labeling(y_true_dict: List, y_pred_dict: List, idx2label:Dict=None, rounded: int=4, flag_draw:bool=True,
-                                     xy_keys: List=["text", "label"], label_keys: List=["type", "ent", "pos"]):
+def mertics_report_sequence_labeling(y_true_dict, y_pred_dict, idx2label=None, rounded=4, flag_draw=True,
+                                     xy_keys=["text", "label"], label_keys=["type", "ent", "pos"]):
     """ 序列标注-评估指标, 只支持list<json>格式输入的y_true_dict/y_pred_dict, position格式
     支持例如实体识别NER、中文分词CWS、槽位识别SF
     mertics report sequence labeling, 打印评估指标, 不支持CONLL的形式
@@ -263,7 +263,7 @@ def mertics_report_sequence_labeling(y_true_dict: List, y_pred_dict: List, idx2l
         return {}, "", "", []
 
 
-def yongzhuo_confusion_matrix(y_true: List, y_pred: List, labels=None, normalize=None):
+def yongzhuo_confusion_matrix(y_true, y_pred, labels=None, normalize=None):
     """Compute confusion matrix to evaluate the accuracy of a classification.
     args:
         y_true : array-like of shape (n_samples,)， Ground truth (correct) target values.
@@ -348,7 +348,7 @@ def yongzhuo_confusion_matrix(y_true: List, y_pred: List, labels=None, normalize
     return cm, label_to_ind
 
 
-def save_json(lines: Union[List, Dict], path: str, encoding: str = "utf-8", indent: int = 4):
+def save_json(lines, path, encoding="utf-8", indent=4):
     """
     Write Line of List<json> to file
     Args:
@@ -362,7 +362,7 @@ def save_json(lines: Union[List, Dict], path: str, encoding: str = "utf-8", inde
     fj.close()
 
 
-def txt_write(lines: List[str], path: str, model: str = "w", encoding: str = "utf-8"):
+def txt_write(lines, path, model="w", encoding="utf-8"):
     """
     Write Line of list to file
     Args:
@@ -380,7 +380,7 @@ def txt_write(lines: List[str], path: str, model: str = "w", encoding: str = "ut
         logging.info(str(e))
 
 
-def load_json(path: str, encoding: str = "utf-8") -> Union[List, Any]:
+def load_json(path, encoding = "utf-8"):
     """
     Read Line of List<json> form file
     Args:
@@ -395,7 +395,7 @@ def load_json(path: str, encoding: str = "utf-8") -> Union[List, Any]:
     return model_json
 
 
-def txt_read(path: str, encoding: str = "utf-8") -> List[str]:
+def txt_read(path, encoding="utf-8"):
     """
     Read Line of list form file
     Args:
@@ -416,7 +416,7 @@ def txt_read(path: str, encoding: str = "utf-8") -> List[str]:
         return lines
 
 
-def padding_1d_2d_3d_4d_dim(data_arr: np.array, pad_len: int, pad_side="RIGHT", mode="constant", value=0) -> np.array:
+def padding_1d_2d_3d_4d_dim(data_arr, pad_len, pad_side="RIGHT", mode="constant", value=0):
     """   padding填充numpy数组   """
     if pad_side.upper() == "RIGHT":
         padding_width = ((0, pad_len),)
@@ -435,7 +435,7 @@ def padding_1d_2d_3d_4d_dim(data_arr: np.array, pad_len: int, pad_side="RIGHT", 
     return data_arr
 
 
-def get_pos_from_span(logits_start: List, logits_end: List, i2l: Dict, flag_index=False) -> List:
+def get_pos_from_span(logits_start, logits_end, i2l, flag_index=False):
     """从span模型的输出中重构标注, 即获取未知信息---position
     span analysis for sequence-labeling
     Args:
@@ -521,7 +521,7 @@ def transform_span_to_conll(y, label_id, l2i_conll, sl_ctype, flag_to_id=True):
         return label_str
 
 
-def get_pos_from_common(words0: str, tag1: list, sep="-") -> List:
+def get_pos_from_common(words0, tag1, sep="-"):
     """从common模型的输出中重构标注, 即获取未知信息---position
     common analysis for sequence-labeling
     Args:
@@ -677,7 +677,7 @@ def get_logger(log_dir, back_count=32, logger_name="macro_correct_csc_punct"):
     return logger
 
 
-def get_current_time(time_form: str = "%Y%m%d%H%M%S"):
+def get_current_time(time_form="%Y%m%d%H%M%S"):
     """获取当前时间戳
     get_current_time from time
     Args:
@@ -691,7 +691,7 @@ def get_current_time(time_form: str = "%Y%m%d%H%M%S"):
     return time_current
 
 
-def chinese_extract_extend(text: str) -> str:
+def chinese_extract_extend(text):
     """
     只提取出中文、字母和数字，这里用于tensorboardX的label带顿号、空格等特殊字的时候，因为这些不支持
     Args:
@@ -703,7 +703,7 @@ def chinese_extract_extend(text: str) -> str:
     return chinese_extract
 
 
-def flag_total_chinese(text: str) -> bool:
+def flag_total_chinese(text):
     """
     judge is total chinese or not, 判断是不是全是中文
     Args:
@@ -717,7 +717,7 @@ def flag_total_chinese(text: str) -> bool:
     return True
 
 
-def flag_total_number(text: str) -> bool:
+def flag_total_number(text):
     """
     judge is total chinese or not, 判断是不是全是数字
     Args:
@@ -731,7 +731,7 @@ def flag_total_number(text: str) -> bool:
     return True
 
 
-def dic_sort(dic: dict) -> OrderedDict:
+def dic_sort(dic):
     """
     sort dict by values, 给字典排序(依据值大小)
     Args:
@@ -743,7 +743,7 @@ def dic_sort(dic: dict) -> OrderedDict:
     return OrderedDict(in_dict_sort)
 
 
-def del_dir(path_dir: str):
+def del_dir(path_dir):
     """
     Delete model files in the directory, eg. h5/json/pb 
     Args:

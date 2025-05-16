@@ -154,7 +154,7 @@ class MdcspellPredict:
         self.tokenizer = AutoTokenizer.from_pretrained(
             pretrained_model_name_or_path=self.csc_config.pretrained_model_name_or_path,
             do_lower_case=self.csc_config.do_lower_case,
-            use_fast=self.csc_config.flag_fast_tokenizer)
+            use_fast=True)
         # self.model = BertForMaskedLM.from_pretrained(pretrained_model_name_or_path=self.path_pretrain_model_dir, return_dict=True)
         # state_dict = torch.load(os.path.join(self.path_trained_model_dir, "pytorch_model.bin"))
         # state_dict = {k.replace("bert.", ""): v for k, v in state_dict.items()}
@@ -162,11 +162,12 @@ class MdcspellPredict:
         self.model = Graph(config=self.csc_config)
         state_dict = torch.load(os.path.join(self.path_trained_model_dir, "pytorch_model.bin"))
         # self.model.load_state_dict(state_dict)
-        if "pretrain_model.bert." in state_dict:
+        state_dict_keys_0 = list(state_dict.keys())[0]
+        if "pretrain_model.bert." in state_dict_keys_0:
             state_dict = {k.replace("pretrain_model.", "bert."): v for k, v in state_dict.items()}
         elif "bert.bert." not in state_dict:
             state_dict = {"bert." + k: v for k, v in state_dict.items()}
-        self.model.model.load_state_dict(state_dict, strict=False)
+        self.model.bert.load_state_dict(state_dict, strict=False)
         self.model.to(self.device)
         self.model.eval()
 
@@ -486,8 +487,9 @@ if __name__ == "__main__":
     yz = 0
 
     ### 测试全量验证集
-    path_model_dir = "../../../output/text_correction/espell_law_of_macbert4mdcspell"
+    # path_model_dir = "../../../output/text_correction/espell_law_of_macbert4mdcspell"
     # path_model_dir = "../../../output/text_correction/macbert4mdcspell_v1"
+    path_model_dir = "D:/workspace/pythonMyCode/text-correct/text_correct/output/text_correction/outputcsc_merge_9_public_of_macbert4mdcspell_acc_by_add_true_thr7_thr85_4epoch"
     tet_test_dataset(path_model_dir=path_model_dir)
 
 

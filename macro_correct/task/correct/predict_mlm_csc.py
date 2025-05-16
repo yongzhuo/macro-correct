@@ -116,7 +116,8 @@ class CscPredict:
 if __name__ == '__main__':
     yz = 0
 
-    path_config = "../../output/text_correction/macbert4mdcspell_v1/csc.config"
+    # path_config = "../../output/text_correction/macbert4mdcspell_v1/csc.config"
+    path_config = "../../output/text_correction/macbert4mdcspell_v2/csc.config"
     # path_config = "../../output/text_correction/macbert4csc_v1/csc.config"
     # path_config = "../../output/text_correction/macbert4csc_v2/csc.config"
     # path_config = "../../output/text_correction/bert4csc_v1/csc.config"
@@ -143,6 +144,7 @@ if __name__ == '__main__':
         "rounded": 4,            # 保存4位小数
         "flag_confusion": True,  # 是否使用默认的混淆词典
         "flag_prob": True,       # 是否返回纠错token处的概率
+        "flag_cut": False,  # 是否切分句子, 长句, False会只处理前max_len长度的文本; True会按照标点切分(在超出就按照maxlen切分)
     }
     texts_predict = model.predict_batch_score(texts, **params)
     print(texts_predict)
