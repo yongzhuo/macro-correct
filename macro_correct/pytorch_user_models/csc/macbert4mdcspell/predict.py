@@ -17,6 +17,9 @@ import math
 import sys
 import os
 
+path_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.."))
+sys.path.append(path_root)
+
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler, TensorDataset
 from transformers import SchedulerType, get_scheduler
 from transformers import BertForMaskedLM
@@ -138,10 +141,15 @@ class MDCSpellPredict:
         self.processor = DataSetProcessor()
         self.model = Graph(config=self.csc_config)
         state_dict = torch.load(os.path.join(self.path_trained_model_dir, "pytorch_model.bin"))
-        self.model.load_state_dict(state_dict)
+        state_dict_keys_0 = list(state_dict.keys())[0]
+        if "pretrain_model.bert." in state_dict_keys_0:
+            state_dict = {k.replace("pretrain_model.", "bert."): v for k, v in state_dict.items()}
+        elif "bert.bert." not in state_dict:
+            state_dict = {"bert." + k: v for k, v in state_dict.items()}
+        self.model.model.load_state_dict(state_dict, strict=False)
+        # self.model.load_state_dict(state_dict)
         self.model.to(self.device)
         self.model.eval()
-
 
     def preprocess(self, texts):
         """   数据预处理   """

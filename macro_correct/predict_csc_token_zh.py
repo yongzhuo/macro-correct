@@ -19,10 +19,12 @@ sys.path.append(path_root)
 if platform.system().lower() == "windows":
     print(path_root)
 
-from macro_correct.pytorch_textcorrection.tcTools import transfor_bert_unk_pun_to_know, tradition_to_simple
 from macro_correct.pytorch_textcorrection.tcTools import transfor_english_symbol_to_chinese, string_q2b
+from macro_correct.pytorch_textcorrection.tcTools import simple_to_tradition, tradition_to_simple
 from macro_correct.pytorch_textcorrection.tcTools import cut_sent_by_stay, count_flag_zh
+from macro_correct.pytorch_textcorrection.tcTools import preprocess_same_with_training
 from macro_correct.pytorch_textcorrection.tcTools import string_q2b, get_logger
+from macro_correct.pytorch_textcorrection.tcTools import flag_total_chinese
 from macro_correct.task.correct.predict_mlm_csc import CscPredict
 
 
@@ -109,12 +111,152 @@ class MacroCSC4Token:
         path_config = path_config or self.path_config
         self.model_csc = CscPredict(path_config)
 
-    def func_csc_token_long(self, content, threshold=0.5, max_len=128, batch_size=16, rounded=4,
-                            num_rethink=0, limit_nums_errors=32, limit_length_char=3, threshold_zh=0.5,
-                            flag_confusion=False, flag_prob=True, flag_cut=False, **kwargs):
+    def func_csc_token_batch_tradition(
+            self, texts, threshold=0.5, max_len=128, batch_size=16, rounded=4,
+            limit_nums_errors=8, num_rethink=0, flag_confusion=False,
+            flag_prob=True, flag_cut=False, flag_preprocess=True,
+            **kwargs):
         """   对句子进行文本纠错, 字词级别   """
         # time_start = time.time()
         params = {
+            "flag_preprocess": True,  # 必须转为简体
+            "flag_confusion": flag_confusion,  # 是否使用默认的混淆词典
+            "flag_prob": flag_prob,  # 是否返回纠错token处的概率
+            "flag_cut": flag_cut,  # 是否切分句子, 长句, False会只处理前max_len长度的文本; True会按照标点切分(在超出就按照maxlen切分)
+            "limit_nums_errors": limit_nums_errors,  # 一句话最多的错别字, 多的就剔除(全不纠错)
+            "num_rethink": num_rethink,  # 多次预测, think-twice
+            "batch_size": batch_size,  # 批大小
+            "threshold": threshold,  # token阈值过滤
+            "max_len": max_len,  # 自定义的长度, 如果截断了, 则截断部分不参与纠错, 后续直接一模一样的补回来
+            "rounded": rounded,  # 保存4位小数
+        }
+        # limit_nums_errors = 5  # 一句话最多的错别字, 多的就剔除
+        output = []
+        try:
+            texts_pre = [preprocess_same_with_training(t) for t in texts]
+            ### 字词错误纠正
+            texts_filter_csc = self.model_csc.predict_batch_score(texts_pre, **params)
+            for jdx, texts_filter_csc_j in enumerate(texts_filter_csc):
+                errors = texts_filter_csc_j.get("errors", {})
+                target = texts_filter_csc_j.get("target", "")
+                ### 繁体转为简再纠错
+                target_t = simple_to_tradition(target)
+                line_correct = {"index": jdx, "source": texts[jdx], "target": target_t, "errors": []}
+                ### 繁简转换自带的, 不相等+是中文
+                errors_pos_dict = [e[2] for e in errors]
+                for kdx, (s, t) in enumerate(zip(texts[jdx], target_t)):
+                    if s != t and kdx not in errors_pos_dict \
+                            and flag_total_chinese(s) and flag_total_chinese(t):
+                        errors.append([s, t, kdx, 1])
+                ### 错误字词
+                if errors and len(errors) <= limit_nums_errors:
+                    errors.sort(key=lambda x: x[2])
+                    for k, errors_i in enumerate(errors):
+                        pos_start = errors_i[2]
+                        # token_wrong = errors_i[0]
+                        # token_true = errors_i[1]
+                        score = errors_i[-1]
+                        if score < params.get("threshold", 0.0):
+                            continue
+                        token_wrong_t = texts[jdx][pos_start]
+                        token_true_t = target_t[pos_start]
+                        if token_wrong_t != token_true_t:
+                            line_error = [token_wrong_t, token_true_t, pos_start, score]
+                            ### 单字, 连续不拼接
+                            line_correct["errors"].append(line_error)
+                            # ### 如果是连续的错误就拼接在一起(待确认)
+                            # if k > 0 and errors[k][2] - errors[k-1][2] == 1:
+                            #     if line_correct["errors"]:
+                            #         score_avg = (line_correct["errors"][-1][-1] + score) / 2
+                            #         line_correct["errors"][-1][-1] = round(score_avg, rounded)
+                            #         line_correct["errors"][-1][1] += token_true
+                            #         line_correct["errors"][-1][0] += token_wrong
+                            #     else:
+                            #         line_correct["errors"].append(line_error)
+                            # else:
+                            #     line_correct["errors"].append(line_error)
+                output.append(line_correct)
+        except Exception as e:
+            output = []
+            self.logger.info("fail of func_csc_token_batch")
+            self.logger.info(traceback.format_exc())
+        # 再次校验不饿能超过threshold
+        # time_end = time.time()
+        # time_cost = round(time_end - time_start, rounded)
+        # self.logger.info(time_cost)
+        return output
+
+    def func_csc_token_batch(
+            self, texts, threshold=0.5, max_len=128, batch_size=16, rounded=4,
+            limit_nums_errors=8, num_rethink=0, flag_confusion=False,
+            flag_prob=True, flag_cut=False, flag_preprocess=True,
+            **kwargs):
+        """   对句子进行文本纠错, 字词级别   """
+        # time_start = time.time()
+        params = {
+            "flag_preprocess": flag_preprocess,  # 是否使用预处理, 同训练时候
+            "flag_confusion": flag_confusion,  # 是否使用默认的混淆词典
+            "flag_prob": flag_prob,  # 是否返回纠错token处的概率
+            "flag_cut": flag_cut,  # 是否切分句子, 长句, False会只处理前max_len长度的文本; True会按照标点切分(在超出就按照maxlen切分)
+            "limit_nums_errors": limit_nums_errors,  # 一句话最多的错别字, 多的就剔除(全不纠错)
+            "num_rethink": num_rethink,  # 多次预测, think-twice
+            "batch_size": batch_size,  # 批大小
+            "threshold": threshold,  # token阈值过滤
+            "max_len": max_len,  # 自定义的长度, 如果截断了, 则截断部分不参与纠错, 后续直接一模一样的补回来
+            "rounded": rounded,  # 保存4位小数
+        }
+        # limit_nums_errors = 5  # 一句话最多的错别字, 多的就剔除
+        output = []
+        try:
+            ### 字词错误纠正
+            texts_filter_csc = self.model_csc.predict_batch_score(texts, **params)
+            for jdx, texts_filter_csc_j in enumerate(texts_filter_csc):
+                errors = texts_filter_csc_j.get("errors", {})
+                target = texts_filter_csc_j.get("target", "")
+                line_correct = {"index": jdx, "source": texts[jdx], "target": target, "errors": []}
+                ### 错误字词
+                if errors and len(errors) <= limit_nums_errors:
+                    for k, errors_i in enumerate(errors):
+                        pos_start = errors_i[2]
+                        token_wrong = errors_i[0]
+                        token_true = errors_i[1]
+                        score = errors_i[-1]
+                        if score < params.get("threshold", 0.0):
+                            continue
+                        line_error = [token_wrong, token_true, pos_start, score]
+                        ### 单字, 连续不拼接
+                        line_correct["errors"].append(line_error)
+                        # ### 如果是连续的错误就拼接在一起(待确认)
+                        # if k > 0 and errors[k][2] - errors[k-1][2] == 1:
+                        #     if line_correct["errors"]:
+                        #         score_avg = (line_correct["errors"][-1][-1] + score) / 2
+                        #         line_correct["errors"][-1][-1] = round(score_avg, rounded)
+                        #         line_correct["errors"][-1][1] += token_true
+                        #         line_correct["errors"][-1][0] += token_wrong
+                        #     else:
+                        #         line_correct["errors"].append(line_error)
+                        # else:
+                        #     line_correct["errors"].append(line_error)
+                output.append(line_correct)
+        except Exception as e:
+            output = []
+            self.logger.info("fail of func_csc_token_batch")
+            self.logger.info(traceback.format_exc())
+        # 再次校验不饿能超过threshold
+        # time_end = time.time()
+        # time_cost = round(time_end - time_start, rounded)
+        # self.logger.info(time_cost)
+        return output
+
+    def func_csc_token_long(
+            self, content, threshold=0.5, max_len=128, batch_size=16, rounded=4,
+            num_rethink=0, limit_nums_errors=32, limit_length_char=3, threshold_zh=0.5,
+            flag_confusion=False, flag_prob=True, flag_cut=False, flag_preprocess=True,
+            **kwargs):
+        """   对句子进行文本纠错, 字词级别   """
+        # time_start = time.time()
+        params = {
+            "flag_preprocess": flag_preprocess,  # 是否使用预处理, 同训练时候
             "flag_confusion": flag_confusion,  # 是否使用默认的混淆词典
             "flag_prob": flag_prob,  # 是否返回纠错token处的概率
             "flag_cut": flag_cut,  # 是否切分句子, 长句, False会只处理前max_len长度的文本; True会按照标点切分(在超出就按照maxlen切分)
@@ -129,7 +271,7 @@ class MacroCSC4Token:
         threshold_zh = threshold_zh  # 中文字符占比的最低值, 不大于就不选中
         output = []
         try:
-            texts, texts_length = cut_sent_by_stay(content, return_length=True)
+            texts, texts_length = cut_sent_by_stay(content, return_length=True, add_semicolon=True)
             texts_filter = []
             texts_map_org = []
             for idx, text in enumerate(texts):
@@ -160,80 +302,24 @@ class MacroCSC4Token:
                             if score < params.get("threshold", threshold):
                                 continue
                             line_error = [token_wrong, token_true, pos_start, score]
-                            ### 如果是连续的错误就拼接在一起(待确认)
-                            if k > 0 and errors[k][2] - errors[k-1][2] == 1:
-                                if line_correct["errors"]:
-                                    score_avg = (line_correct["errors"][-1][-1] + score) / 2
-                                    line_correct["errors"][-1][-1] = round(score_avg, rounded)
-                                    line_correct["errors"][-1][1] += token_true
-                                    line_correct["errors"][-1][0] += token_wrong
-                                else:
-                                    line_correct["errors"].append(line_error)
-                            else:
-                                line_correct["errors"].append(line_error)
+                            ### 单字, 连续不拼接
+                            line_correct["errors"].append(line_error)
+                            # ### 如果是连续的错误就拼接在一起(待确认)
+                            # if k > 0 and errors[k][2] - errors[k-1][2] == 1:
+                            #     if line_correct["errors"]:
+                            #         score_avg = (line_correct["errors"][-1][-1] + score) / 2
+                            #         line_correct["errors"][-1][-1] = round(score_avg, rounded)
+                            #         line_correct["errors"][-1][1] += token_true
+                            #         line_correct["errors"][-1][0] += token_wrong
+                            #     else:
+                            #         line_correct["errors"].append(line_error)
+                            # else:
+                            #     line_correct["errors"].append(line_error)
                         if line_correct.get("errors", []):
                             output.append(line_correct)
         except Exception as e:
             output = []
             self.logger.info("fail of func_csc_token_long")
-            self.logger.info(traceback.format_exc())
-        # 再次校验不饿能超过threshold
-        # time_end = time.time()
-        # time_cost = round(time_end - time_start, rounded)
-        # self.logger.info(time_cost)
-        return output
-
-    def func_csc_token_batch(self, texts, threshold=0.5, max_len=128, batch_size=16, rounded=4,
-                            limit_nums_errors=8, num_rethink=0, flag_confusion=False,
-                            flag_prob=True, flag_cut=False,
-                            **kwargs):
-        """   对句子进行文本纠错, 字词级别   """
-        # time_start = time.time()
-        params = {
-            "flag_confusion": flag_confusion,  # 是否使用默认的混淆词典
-            "flag_prob": flag_prob,  # 是否返回纠错token处的概率
-            "flag_cut": flag_cut,  # 是否切分句子, 长句, False会只处理前max_len长度的文本; True会按照标点切分(在超出就按照maxlen切分)
-            "limit_nums_errors": limit_nums_errors,  # 一句话最多的错别字, 多的就剔除(全不纠错)
-            "num_rethink": num_rethink,  # 多次预测, think-twice
-            "batch_size": batch_size,  # 批大小
-            "threshold": threshold,  # token阈值过滤
-            "max_len": max_len,  # 自定义的长度, 如果截断了, 则截断部分不参与纠错, 后续直接一模一样的补回来
-            "rounded": rounded,  # 保存4位小数
-        }
-        # limit_nums_errors = 5  # 一句话最多的错别字, 多的就剔除
-        output = []
-        try:
-            ### 字词错误纠正
-            texts_filter_csc = self.model_csc.predict_batch_score(texts, **params)
-            for jdx, texts_filter_csc_j in enumerate(texts_filter_csc):
-                errors = texts_filter_csc_j.get("errors", {})
-                target = texts_filter_csc_j.get("target", "")
-                line_correct = {"index": jdx, "source": texts[jdx], "target": target, "errors": []}
-                ### 错误字词
-                if errors and len(errors) <= limit_nums_errors:
-                    for k, errors_i in enumerate(errors):
-                        pos_start = errors_i[2]
-                        token_wrong = errors_i[0]
-                        token_true = errors_i[1]
-                        score = errors_i[-1]
-                        if score < params.get("threshold", 0.0):
-                            continue
-                        line_error = [token_wrong, token_true, pos_start, score]
-                        ### 如果是连续的错误就拼接在一起(待确认)
-                        if k > 0 and errors[k][2] - errors[k-1][2] == 1:
-                            if line_correct["errors"]:
-                                score_avg = (line_correct["errors"][-1][-1] + score) / 2
-                                line_correct["errors"][-1][-1] = round(score_avg, rounded)
-                                line_correct["errors"][-1][1] += token_true
-                                line_correct["errors"][-1][0] += token_wrong
-                            else:
-                                line_correct["errors"].append(line_error)
-                        else:
-                            line_correct["errors"].append(line_error)
-                output.append(line_correct)
-        except Exception as e:
-            output = []
-            self.logger.info("fail of func_csc_token_batch")
             self.logger.info(traceback.format_exc())
         # 再次校验不饿能超过threshold
         # time_end = time.time()

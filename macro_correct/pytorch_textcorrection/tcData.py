@@ -14,6 +14,7 @@ import random
 import json
 import os
 
+from macro_correct.pytorch_textcorrection.tcTools import preprocess_same_with_training
 from macro_correct.pytorch_textcorrection.tcConfig import PRETRAINED_MODEL_CLASSES
 from macro_correct.pytorch_textcorrection.tcTools import load_json
 from macro_correct.pytorch_textcorrection.tcTqdm import tqdm
@@ -149,10 +150,13 @@ class TextCorrectionDataset(Dataset):
             raise ValueError("error, function read_corpus_from_json error! " + "file type is not right!(must be json)")
         return data
 
-    def read_dict(self, data):
+    def read_dict(self, data, flag_preprocess=True):
         """   推理时候传入List<dict>, 如[{"ids": [], "text_1": "你是谁", "text_2": "你是谁"}]   """
         data_new = []
         for data_i in data:
+            if flag_preprocess:
+                data_i[self.config.xy_keys_predict[0]] = preprocess_same_with_training(
+                    data_i[self.config.xy_keys_predict[0]])
             data_i[self.config.xy_keys_predict[1]] = ""
             data_i[self.config.xy_keys_predict[2]] = []
             data_new.append(data_i)

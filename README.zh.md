@@ -50,7 +50,8 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple macro-correct --no-depen
   - 训练代码详见/tet/train目录, 可配置本地预训练模型地址和各种参数等;
 
 # 体验
-  [HF---Space---Macropodus/macbert4csc_v2](https://huggingface.co/spaces/Macropodus/macbert4csc_v2)
+ - [HF---Space---Macropodus/macbert4mdcspell_v2](https://huggingface.co/spaces/Macropodus/macbert4mdcspell_v2)
+ - [HF---Space---Macropodus/macbert4csc_v2](https://huggingface.co/spaces/Macropodus/macbert4csc_v2)
 
 <img src="tet/images/csc_demo.png" width="1024">
 
@@ -336,6 +337,7 @@ params = {
     "rounded": 4,  # 保存4位小数
     "flag_confusion": True,  # 是否使用默认的混淆词典
     "flag_prob": True,  # 是否返回纠错token处的概率
+    "flag_cut": False,  # 是否切分句子, 长句, False会只处理前max_len长度的文本; True会按照标点切分(在超出就按照maxlen切分)
 }
 text_csc = correct(text_list, **params)
 print("默认纠错(list输入, 参数配置):")
@@ -390,7 +392,57 @@ print("#" * 128)
 {'index': 3, 'source': '苔痕上阶绿草,色入帘青。', 'target': '苔痕上阶绿，草色入帘青。', 'score': 0.9998, 'errors': [['', '，', 5, 0.9998]]}
 """
 ```
+## CSC调用繁体
+```python
+import os
+os.environ["MACRO_CORRECT_FLAG_CSC_TOKEN"] = "1"
 
+from macro_correct import correct_tradition
+
+
+### 默认纠错(list输入)
+text_list = ["一個分知,陌光回聚,莪受打去,禰愛帶餘",
+            "余額還有100w",
+            "放在陌光下",
+            "真麻煩你了。希望你們好好的跳舞",
+            "少先隊員因該爲老人讓坐",
+            "機七學習是人工智能領遇最能體現智能的一個分知",
+            "一只小魚船浮在平淨的河面上",
+            "這一條次,我選擇了一條與往常不同的路線。",
+            "春節發貨部"
+             ]
+### 默认纠错(list输入, 参数配置)
+params = {
+    "flag_confusion": True,  # 是否使用默认的混淆词典
+    "flag_prob": True,  # 是否返回纠错token处的概率
+    "flag_cut": True,  # 是否切分句子, 长句, False会只处理前max_len长度的文本; True会按照标点切分(在超出就按照maxlen切分)
+    "limit_nums_errors": 8,  # 一句话最多的错别字, 多的就剔除(全不纠错)
+    "num_rethink": 0,  # 多次预测, think-twice
+    "batch_size": 32,  # 批大小
+    "threshold": 0.01,  # token阈值过滤
+    "max_len": 128,  # 自定义的长度, 如果截断了, 则截断部分不参与纠错, 后续直接一模一样的补回来
+    "rounded": 4,  # 保存4位小数
+}
+text_csc = correct_tradition(text_list, **params)
+print("默认纠错(list输入, 参数配置):")
+for res_i in text_csc:
+    print(res_i)
+print("#" * 128)
+
+"""
+默认纠错(list输入, 参数配置):
+{'index': 0, 'source': '一個分知,陌光回聚,莪受打去,禰愛帶餘', 'target': '一個分支，陽光回聚，莪受打擊，禰愛帶餘', 'errors': [['知', '支', 3, 1.0], ['陌', '陽', 5, 1.0], ['去', '擊', 13, 1.0]]}
+{'index': 1, 'source': '余額還有100w', 'target': '餘額還有100w', 'errors': [['余', '餘', 0, 1]]}
+{'index': 2, 'source': '放在陌光下', 'target': '放在陽光下', 'errors': [['陌', '陽', 2, 1.0]]}
+{'index': 3, 'source': '真麻煩你了。希望你們好好的跳舞', 'target': '真麻煩你了。希望你們好好地跳舞', 'errors': [['的', '地', 12, 0.8873]]}
+{'index': 4, 'source': '少先隊員因該爲老人讓坐', 'target': '少先隊員應該爲老人讓坐', 'errors': [['因', '應', 4, 0.9933]]}
+{'index': 5, 'source': '機七學習是人工智能領遇最能體現智能的一個分知', 'target': '機器學習是人工智能領域最能體現智能的一個分支', 'errors': [['七', '器', 1, 0.9999], ['遇', '域', 10, 1.0], ['知', '支', 21, 1.0]]}
+{'index': 6, 'source': '一只小魚船浮在平淨的河面上', 'target': '一隻小魚船浮在平靜的河面上', 'errors': [['只', '隻', 1, 1], ['淨', '靜', 8, 0.9849]]}
+{'index': 7, 'source': '這一條次,我選擇了一條與往常不同的路線。', 'target': '這一條次，我選擇了一條與往常不同的路線。', 'errors': []}
+{'index': 8, 'source': '春節發貨部', 'target': '春節發貨不', 'errors': [['部', '不', 4, 0.3544]]}
+################################################################################################################################
+"""
+```
 # 训练
 ## CSC任务
 ### 目录地址
@@ -506,6 +558,7 @@ python predict.py
 4.macbert4mdcspell_v1/v2模型为训练使用mdcspell架构+bert的mlm-loss, 但是推理的时候只用bert-mlm;
 5.acc_rmrb/acc_xxqg数据集没有错误, 用于评估模型的误纠率(过度纠错);
 6.qwen25_1-5b_pycorrector的模型为shibing624/chinese-text-correction-1.5b, 其训练数据包括了lemon_v2/mcsc_tet/ecspell的验证集和测试集, 其他的bert类模型的训练不包括验证集和测试集;
+7.xxx_rethink1是指再多预测1次, xxx_thr30表示阈值为0.3;
 ```
 
 ## 3.3 测评结果
@@ -520,6 +573,17 @@ python predict.py
 | macbert4csc_v2          | 68.6| 96.74| 66.02| 48.26| 75.78| 38.84| 51.91| 70.17| 80.71| 85.61| 80.97| 58.22| 69.95 |
 | macbert4mdcspell_v1     | 71.1| 96.42| 70.06| 52.55| 79.61| 43.37| 53.85| 70.9| 82.38| 87.46| 84.2| 61.08| 71.32 |
 | macbert4mdcspell_v2     | 71.23| 96.42| 65.8| 52.35| 75.94| 43.5| 53.82| 72.66| 82.28| 88.69| 82.51| 65.59| 75.26 |
+| macbert4mdcspell_v1_rethink1| 69.56| 91.99| 67.99| 57.39| 77.49| 49.48| 54.11| 69.37| 84.6| 88.1| 71.04| 56.17| 66.93 |
+| macbert4mdcspell_v1_rethink2| 69.64| 92.4| 67.99| 57.69| 77.49| 50.38| 53.96| 69.35| 84.65| 88.26| 70.96| 56.05| 66.54 |
+| macbert4mdcspell_v1_rethink3| 69.62| 91.94| 67.99| 57.69| 77.41| 50.63| 54.0| 69.37| 84.65| 88.26| 70.96| 55.87| 66.67 |
+| macbert4mdcspell_v2_rethink1| 72.44| 95.55| 65.54| 57.54| 75.86| 49.15| 55.46| 72.78| 84.6| 90.62| 80.93| 65.9| 75.39 |
+| macbert4mdcspell_v2_rethink2| 72.54| 95.59| 65.54| 58.01| 75.86| 49.67| 55.56| 72.78| 84.65| 90.78| 80.93| 65.74| 75.39 |
+| macbert4mdcspell_v2_rethink3| 72.54| 95.55| 65.54| 58.07| 75.86| 49.67| 55.56| 72.78| 84.65| 90.78| 80.93| 65.74| 75.39 |
+| macbert4mdcspell_v2_thr30| 71.18| 96.43| 66.15| 52.03| 75.94| 43.37| 53.26| 72.88| 82.32| 88.53| 82.51| 65.59| 75.13 |
+| macbert4mdcspell_v2_thr40| 71.02| 96.42| 65.71| 51.57| 75.86| 42.86| 52.18| 73.34| 82.29| 88.53| 82.58| 65.74| 75.16 |
+| macbert4mdcspell_v2_thr50| 70.51| 96.32| 65.54| 50.34| 75.86| 41.69| 50.58| 73.57| 82.02| 87.95| 82.44| 65.11| 74.74 |
+| macbert4mdcspell_v2_thr60| 69.08| 95.75| 63.53| 48.14| 74.18| 40.1| 47.55| 72.68| 81.06| 87.2| 81.25| 63.77| 73.75 |
+| macbert4mdcspell_v2_thr75| 66.11| 94.5| 58.48| 44.16| 71.87| 37.32| 43.85| 69.04| 79.01| 85.13| 78.98| 59.03| 71.89 |
 
 ### 3.3.2 acc(common_cor_acc)
 | model/common_cor_acc| avg| gen_de3| lemon_v2| gen_passage| text_proof| gen_xxqg| faspell| lomo_tet| mcsc_tet| ecspell| sighan2013| sighan2014| sighan2015 |
@@ -531,19 +595,42 @@ python predict.py
 | macbert4csc_v1| 65.34| 93.56| 49.76| 44.98| 74.64| 36.1| 37.0| 73.0| 83.6| 86.87| 69.2| 62.62| 72.73 |
 | macbert4csc_v2| 65.22| 93.69| 50.14| 44.92| 74.64| 36.26| 37.0| 72.72| 83.66| 86.93| 68.5| 62.43| 71.73 |
 | macbert4mdcspell_v1| 67.15| 93.09| 54.8| 47.71| 78.09| 39.52| 38.8| 71.92| 84.78| 88.27| 73.2| 63.28| 72.36 |
-| macbert4mdcspell_v2     | 68.31| 93.09| 50.05| 48.72| 75.74| 40.52| 38.9| 76.9| 84.8| 89.73| 71.0| 71.94| 78.36 |
+| macbert4mdcspell_v2| 68.31| 93.09| 50.05| 48.72| 75.74| 40.52| 38.9| 76.9| 84.8| 89.73| 71.0| 71.94| 78.36 |
+| macbert4mdcspell_v1_rethink1| 64.98| 85.18| 52.42| 51.57| 76.23| 43.88| 39.1| 70.8| 86.44| 88.8| 55.9| 60.17| 69.27 |
+| macbert4mdcspell_v1_rethink2| 65.04| 85.88| 52.42| 51.69| 76.23| 44.52| 38.9| 70.78| 86.48| 88.93| 55.8| 59.98| 68.91 |
+| macbert4mdcspell_v1_rethink3| 65.03| 85.09| 52.42| 51.81| 76.16| 44.74| 39.0| 70.8| 86.48| 88.93| 55.8| 59.98| 69.09 |
+| macbert4mdcspell_v2_rethink1| 69.05| 91.49| 49.76| 52.64| 75.67| 44.46| 40.4| 76.98| 86.52| 91.33| 68.8| 72.13| 78.45 |
+| macbert4mdcspell_v2_rethink2| 69.14| 91.56| 49.76| 53.01| 75.67| 44.84| 40.5| 76.98| 86.56| 91.47| 68.8| 72.03| 78.45 |
+| macbert4mdcspell_v2_rethink3| 69.13| 91.49| 49.76| 53.06| 75.67| 44.84| 40.5| 76.98| 86.56| 91.47| 68.8| 72.03| 78.45 |
+| macbert4mdcspell_v2_thr30| 68.29| 93.11| 50.43| 48.49| 75.74| 40.46| 38.4| 77.18| 84.84| 89.6| 71.0| 71.94| 78.27 |
+| macbert4mdcspell_v2_thr40| 68.19| 93.09| 49.95| 48.17| 75.67| 40.16| 37.5| 77.7| 84.84| 89.6| 71.1| 72.13| 78.36 |
+| macbert4mdcspell_v2_thr50| 67.84| 92.89| 49.76| 47.33| 75.67| 39.46| 36.1| 78.1| 84.66| 89.13| 70.9| 71.94| 78.18 |
+| macbert4mdcspell_v2_thr60| 66.79| 91.85| 47.67| 45.87| 74.36| 38.58| 33.6| 78.02| 84.0| 88.53| 69.3| 71.75| 78.0 |
+| macbert4mdcspell_v2_thr75| 64.56| 89.58| 42.55| 43.32| 72.63| 36.92| 30.6| 76.3| 82.6| 87.0| 66.3| 69.68| 77.18 |
 
 ### 3.3.3 acc(acc_true, thr=0.75)
-| model/acc               | avg| acc_rmrb| acc_xxqg |
-|:------------------------|:-----------------|:-----------------|:-----------------|
-| macbert4csc_pycorrector | 99.24| 99.22| 99.26 |
-| qwen25_1-5b_pycorrector | 82.0| 77.14| 86.86 |
-| relm_v1                 | 93.47| 90.21| 96.74 |
-| bert4csc_v1             | 98.71| 98.36| 99.06 |
-| macbert4csc_v1          | 97.72| 96.72| 98.72 |
-| macbert4csc_v2          | 97.89| 96.98| 98.8 |
-| macbert4mdcspell_v1     | 97.75| 96.51| 98.98 |
-| macbert4mdcspell_v2     | 99.54| 99.22| 99.86 |
+| model/acc                    | avg   | acc_rmrb| acc_xxqg |
+|:-----------------------------|:------|:-----------------|:---------|
+| macbert4csc_pycorrector      | 99.24 | 99.22| 99.26    |
+| qwen25_1-5b_pycorrector      | 82.0  | 77.14| 86.86    |
+| relm_v1                      | 93.47 | 90.21| 96.74    |
+| bert4csc_v1                  | 98.71 | 98.36| 99.06    |
+| macbert4csc_v1               | 97.72 | 96.72| 98.72    |
+| macbert4csc_v2               | 97.89 | 96.98| 98.8     |
+| macbert4mdcspell_v1          | 97.75 | 96.51| 98.98    |
+| macbert4mdcspell_v2          | 99.54 | 99.22| 99.86    |
+| macbert4mdcspell_v2_thr00    | 98.15 | 96.72| 99.58    |
+| macbert4mdcspell_v2_thr30    | 98.32 | 97.02| 99.62    |
+| macbert4mdcspell_v2_thr40    | 98.4  | 97.15| 99.64    |
+| macbert4mdcspell_v2_thr50    | 98.68 | 97.67| 99.68    |
+| macbert4mdcspell_v2_thr60    | 99.11 | 98.49| 99.74    |
+| macbert4mdcspell_v2_thr75    | 99.54 | 99.22| 99.86    |
+| macbert4mdcspell_v1_rethink1 | 92.79 | 88.35| 97.24    |
+| macbert4mdcspell_v1_rethink2 | 92.78 | 88.31| 97.24    |
+| macbert4mdcspell_v1_rethink3 | 92.79 | 88.35| 97.24    |
+| macbert4mdcspell_v2_rethink1 | 98.15 | 96.72| 99.58    |
+| macbert4mdcspell_v2_rethink2 | 98.15 | 96.72| 99.58    |
+| macbert4mdcspell_v2_rethink3 | 98.15 | 96.72| 99.58    |
 
 
 ### 3.3.4 结论(Conclusion)
@@ -554,6 +641,8 @@ python predict.py
 4.训练数据中也存在文言文数据, 训练好的模型也支持文言文纠错;
 5.训练好的模型对"地得的"等高频错误具有较高的识别率和纠错率;
 6.macbert4mdcspell_v2的MFT只70%的时间no-error-mask(0.15), 15%的时间target-to-target, 15%的时间不mask;
+7.对于macbert4mdcspell, rethink能更好处理存在多个错误的句子(适合错误多的情况gen_passage/gen_xxqg这些错误数多的数据集都提升了4%, 多预测3次效果最佳, 考虑性能问题可以多预测1次), 同时rethink对过度纠错的影响不大;
+8.对于macbert4mdcspell, thr阈值设置能更好地避免过度纠错, 除非是特别需要精确率的情况, 否则不建议超过0.5(0.5往后对效果的影响就比较大了); 
 ```
 
 

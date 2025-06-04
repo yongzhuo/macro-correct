@@ -124,7 +124,8 @@ def convert_examples_to_prompts(src, trg, prompt_length, max_seq_length, tokeniz
     return prompt_src, prompt_trg, block_flag, trg_ref
 
 
-def dynamic_mask_token(inputs, targets, tokenizer, device, mask_mode="noerror", noise_probability=0.2):
+def dynamic_mask_token(inputs, targets, tokenizer, device, mask_mode="noerror",
+                       replace_mode="mask", noise_probability=0.2):
     '''
     the masked-FT proposed in 'Rethinking Masked Language Model for Chinese Spelling Correction'
     '''
@@ -149,7 +150,22 @@ def dynamic_mask_token(inputs, targets, tokenizer, device, mask_mode="noerror", 
         assert mask_mode == "all"
     masked_indices = torch.bernoulli(probability_matrix).bool()
     inputs[masked_indices] = tokenizer.convert_tokens_to_ids(tokenizer.mask_token)
-
+    # if replace_mode == "mask":
+    #     inputs[masked_indices] = tokenizer.convert_tokens_to_ids(tokenizer.mask_token)
+    # elif replace_mode == "random":
+    #     random_words = torch.randint(low=0, high=vocab_size, size=inputs.size()).to(device)
+    #     random_words.masked_fill_(~masked_indices, value=0)  # only change the masked positions
+    #     inputs = torch.where(masked_indices, random_words, inputs)
+    # elif replace_mode == "id_map":
+    #     if id_map is None:
+    #         raise ValueError("id_map must be provided when replace_mode is 'id_map'")
+    #
+    #     # Create a tensor of mapped ids based on the id_map dictionary
+    #     mapped_ids = torch.tensor([id_map.get(idx.item(), idx.item()) for row in inputs for idx in row]).view(
+    #         inputs.size()).to(device)
+    #     inputs = torch.where(masked_indices, mapped_ids, inputs)
+    # else:
+    #     raise ValueError(f"Unsupported replace_mode: {replace_mode}")
     return inputs
 
 

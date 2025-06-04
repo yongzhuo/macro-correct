@@ -5,6 +5,8 @@
 # @function: tet csc of token, 简体中文拼写纠错(支持各领域纠错, 泛化性强, 包括古文)
 
 
+import traceback
+import time
 import os
 os.environ["MACRO_CORRECT_FLAG_CSC_TOKEN"] = "1"
 
@@ -111,7 +113,21 @@ for res_i in text_csc:
 print("#" * 128)
 
 
+# while 1:
+#     try:
+#         print("请输入：")
+#         text = input()
+#         time_start = time.time()
+#         res = correct_long(text)
+#         time_end = time.time()
+#         print(res)
+#         print(time_end - time_start)
+#     except Exception as e:
+#         print(traceback.print_exc())
+
+
 """
+
 默认纠错(list输入):
 {'index': 1, 'source': '馀额还有100w', 'target': '余额还有100w', 'errors': [['馀', '余', 0, 1.0]]}
 {'index': 2, 'source': '放在陌光下', 'target': '放在阳光下', 'errors': [['陌', '阳', 2, 1.0]]}
@@ -141,4 +157,12 @@ print("#" * 128)
 {'index': 4, 'source': '一只小鱼船浮在平净的河面上。', 'target': '一只小鱼船浮在平静的河面上。', 'errors': [['净', '静', 59, 0.9981]]}
 ################################################################################################################################
 """
+
+while 1:
+    try:
+        print("请输入：")
+        text = input()
+        print(correct([text]))
+    except Exception as e:
+        print(str(e))
 

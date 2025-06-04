@@ -17,7 +17,7 @@ sys.path.append(path_root)
 if platform.system().lower() == "windows":
     print(path_root)
 # os.environ["CUDA_VISIBLE_DEVICES"] = model_config.get("CUDA_VISIBLE_DEVICES", "0")
-from macro_correct.pytorch_textcorrection.tcTools import get_errors_for_same_length, get_errors_for_difflib
+from macro_correct.pytorch_textcorrection.tcTools import get_errors_from_same_length, get_errors_from_diff_length
 from macro_correct.pytorch_textcorrection.tcTools import cut_sent_by_stay_and_maxlen
 from macro_correct.pytorch_textcorrection.tcData import TextCorrectionDataCollator
 from macro_correct.pytorch_textcorrection.tcData import TextCorrectionDataset
@@ -96,10 +96,10 @@ class TextCorrectPredict:
             self.logger.info("****** load_model Success! ******")
         return 1
 
-    def process(self, texts, max_len=None, batch_size=None):
+    def process(self, texts, max_len=None, batch_size=None, flag_preprocess=True):
         """ 数据预处理, process """
         # token 转 idx, 训练集/验证集
-        self.tc_dataset.read_dict(texts)
+        self.tc_dataset.read_dict(copy.deepcopy(texts), flag_preprocess)
         if max_len:  # 动态变化max_len
             self.tc_collator.max_len = min(max_len, self.tc_collator.config.max_len)
         else:
@@ -130,17 +130,19 @@ class TextCorrectPredict:
         return outputs[0] if outputs else []
 
     def predict_single(self, texts, threshold=0.5, batch_size=32, max_len=128, rounded=4,
-                      flag_prob=True, flag_logits=False, flag_print=False, flag_cut=False,
-                       **kwargs):
+                       flag_prob=True, flag_logits=False, flag_print=False, flag_cut=False,
+                       flag_preprocess=True, **kwargs):
         """  分类模型预测
         config:
             texts      : list<dict>, inputs of text, eg. ["你是谁"], [{"source":"你是谁"}], [{"original_text":"你是谁"}]
             threshold  : float, threshold of token prob, eg. 0.75, 0.6
             flag_prob  : bool, output prob or not, eg. True, False
             rounded    : int, rounded of float, eg. 3, 4, 6
+            flag_preprocess: bool, clean text by using preprocess of same-traing
             flag_logits: bool, reture logits or softmax, eg. True
             flag_print : bool, print sentence(org/tgt/prd) or not, eg. False
             flag_cut   : bool, cut by symbol and maxlen or not, eg. False
+            flag_print : bool, print original_text/correct_text
         Returns:
             res        : list<dict>, output of label-score, eg. [{}]
         """
@@ -176,7 +178,7 @@ class TextCorrectPredict:
                 sent_inputs.extend(sent_inputs_idx)
 
             ### 推理-预测
-            dataset = self.process(sent_inputs, max_len=max_len, batch_size=batch_size)
+            dataset = self.process(sent_inputs, max_len=max_len, batch_size=batch_size, flag_preprocess=flag_preprocess)
             ys_pred_id_cut, probs_pred_id_cut = self.office.predict(dataset, flag_logits=flag_logits, **kwargs)
 
             ### 还原为原来的句子
@@ -198,33 +200,39 @@ class TextCorrectPredict:
             ys_pred_id = [ys_pred_id_dict.get(str(idx)) for idx in range(len(ys_pred_id_dict))]
         else:
             ### 不做处理, 大于126长度的就只处理前面的文本
-            dataset = self.process(texts, max_len=max_len, batch_size=batch_size)
+            dataset = self.process(texts, max_len=max_len, batch_size=batch_size, flag_preprocess=flag_preprocess)
             ys_pred_id, probs_pred_id = self.office.predict(dataset, flag_logits=flag_logits, **kwargs)
 
         ### 后处理
         new_corrected_sentences = []
         corrected_details = []
         for idx, y in enumerate(ys_pred_id):
-            # y_orginal = list(texts[idx].get(self.config.xy_keys_predict[0], ""))
+            ### 后处理-vocab_id转token
             y_orginal = texts[idx].get(self.config.xy_keys_predict[0], "")
             y_decode = self.tc_collator.tokenizer.convert_ids_to_tokens(y, skip_special_tokens=False)
             y_decode = y_decode[1: len(y_orginal)+1]
             y_prob = probs_pred_id[idx][1: len(y_orginal)+1]
-            # y_decode = y_decode[1: -1]
-            # y_prob = probs_pred_id[idx][1: -1]
-            y_new = ""
+            ### 后处理-阈值过滤
+            y_new = []
             for yo, yd, yp in zip(y_orginal, y_decode, y_prob):
                 if yd in self.tc_collator.special_tokens:
-                    y_new += yo
+                    y_new.append(yo)
                 elif yp >= threshold:
-                    y_new += yd
+                    y_new.append(yd)
                 else:
-                    y_new += yo
-            new_corrected_sent, sub_details = get_errors_for_same_length(
-                corrected_text=y_new, origin_text=y_orginal, know_tokens=self.tc_collator.tokenizer.vocab)
-            # new_corrected_sent, sub_details = get_errors_for_difflib(y_new, y_orginal)
+                    y_new.append(yo)
+            ### 后处理-等长与不等长
+            if len(y_new) == len(y_orginal):
+                new_corrected_sent, sub_details = get_errors_from_same_length(
+                    corrected_text=y_new, origin_text=y_orginal, know_tokens=self.tc_collator.tokenizer.vocab)
+            else:
+                new_corrected_sent, sub_details = get_errors_from_diff_length(
+                    corrected_text=y_new, origin_text=y_orginal, know_tokens=self.tc_collator.tokenizer.vocab)
+            ### 后处理-error加上概率
             if flag_prob and sub_details:
-                sub_details = [s+[round(y_prob[s[-1]], rounded)] for s in sub_details if s[-1] < len(y_prob)]
+                print(sub_details)
+                sub_details = [s+[round(y_prob[s[-1]], rounded)] if s[-1] < len(y_prob)
+                               else s+[round(0.5, rounded)] for s in sub_details]
             new_corrected_sentences.append(new_corrected_sent)
             corrected_details.append(sub_details)
 
@@ -296,8 +304,8 @@ class TextCorrectPredict:
         outputs_std_list = []
         outputs_std = self.predict_single(texts=texts, threshold=threshold, batch_size=batch_size, max_len=max_len,
                                           rounded=rounded, num_rethink=num_rethink, flag_prob=flag_prob,
-                                          flag_logits=flag_logits, flag_print=flag_print,
-                                          flag_cut=flag_cut, **kwargs)
+                                          flag_logits=flag_logits, flag_print=flag_print, flag_cut=flag_cut,
+                                          **kwargs)
         outputs_std_list.append(copy.deepcopy(outputs_std))
         num_rethink = max(num_rethink, 0)
         for nk in range(num_rethink):
@@ -310,8 +318,8 @@ class TextCorrectPredict:
                     outputs_std[odx]["errors"] = []
                 outputs_std = self.predict_single(texts=outputs_std, threshold=threshold, batch_size=batch_size, max_len=max_len,
                                                   rounded=rounded, num_rethink=num_rethink, flag_prob=flag_prob,
-                                                  flag_logits=flag_logits, flag_print=flag_print,
-                                                  flag_cut=flag_cut, **kwargs)
+                                                  flag_logits=flag_logits, flag_print=flag_print, flag_cut=flag_cut,
+                                                  **kwargs)
                 outputs_std_list.append(copy.deepcopy(outputs_std))
                 # print(outputs_std)
                 # print("#" * 128)
@@ -365,12 +373,13 @@ class TextCorrectPredict:
         if num_rethink and num_rethink > 0:
             output = self.predict_rethink(texts=texts, threshold=threshold, batch_size=batch_size, max_len=max_len,
                                           rounded=rounded, num_rethink=num_rethink, flag_prob=flag_prob,
-                                          flag_logits=flag_logits, flag_print=flag_print,
-                                          flag_cut=flag_cut, **kwargs)
+                                          flag_logits=flag_logits, flag_print=flag_print, flag_cut=flag_cut,
+                                          **kwargs)
         else:
             output = self.predict_single(texts=texts, threshold=threshold, batch_size=batch_size, max_len=max_len,
                                          rounded=rounded, flag_prob=flag_prob, flag_logits=flag_logits,
-                                         flag_print=flag_print, flag_cut=flag_cut, **kwargs)
+                                         flag_print=flag_print, flag_cut=flag_cut,
+                                         **kwargs)
         return output
 
 

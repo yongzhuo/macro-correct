@@ -21,6 +21,7 @@ default_logger.addHandler(log_console)
 if os.environ.get("MACRO_CORRECT_FLAG_CSC_TOKEN", "0") == "1":
     from macro_correct.predict_csc_token_zh import MacroCSC4Token
     MODEL_CSC_TOKEN = MacroCSC4Token(logger=default_logger)
+    correct_tradition = MODEL_CSC_TOKEN.func_csc_token_batch_tradition  # 繁体字字词纠错(csc)
     correct_basic = MODEL_CSC_TOKEN.model_csc.predict_batch   # 基础方法预测, 没有后处理
     correct_long = MODEL_CSC_TOKEN.func_csc_token_long        # 处理单一篇的文本
     correct = MODEL_CSC_TOKEN.func_csc_token_batch            # 批处理小于max_len的句子

@@ -65,20 +65,24 @@ __all_ = ["mertics_precision_recall_fscore_support",
           "flag_number",
           "flag_alphabet_string",
           "flag_chinese_string",
+          "get_errors_from_diff_length",
+          "get_errors_from_same_length",
+          "preprocess_same_with_training",
           ]
 
 
-converter = opencc.OpenCC("t2s.json")
+converter_s2t = opencc.OpenCC("s2t.json")
+converter_t2s = opencc.OpenCC("t2s.json")
 # converter = opencc.OpenCC("tw2sp.json")
 # converter = opencc.OpenCC("tw2s.json")
-context = converter.convert("汉字")  # 漢字
+context = converter_t2s.convert("汉字")  # 漢字
 # print(context)
 PUN_EN2ZH_DICT = {",": "，", ";": "；", "!": "！", "?": "？", ":": "：",
                   "(": "（", ")": "）", "_": "—"}
 PUN_ZH2EN_DICT = {'，': ',', '；': ';', '！': '!', '？': '?', '：': ':', '（': '(', '）': ')',
-                      '—': '-', '～': '~', '＜': '<', '＞': '>',
-                      "‘": "'", "’": "'", '”': '"', '“': '"',
-                      }
+                  '—': '-', '～': '~', '＜': '<', '＞': '>',
+                  "‘": "'", "’": "'", '”': '"', '“': '"',
+                  }
 PUN_BERT_DICT = {"“":'"', "”":'"', "‘":'"', "’":'"', "—": "_", "——": "__"}
 
 
@@ -951,10 +955,14 @@ def cut_sent_by_maxlen(text, max_len=126, return_length=True):
     if return_length:
         return text_cut, text_length_s
     return text_cut
-def cut_sent_by_stay(text, return_length=True):
+def cut_sent_by_stay(text, return_length=True, add_semicolon=False):
     """  分句但是保存原标点符号  """
-    text_sp = re.split(r"！”|？”|。”|……”|”！|”？|”。|”……|》。|）。|！|？|。|…|\!|\?", text)
-    conn_symbol = "！？。…”!?》）\n"
+    if add_semicolon:
+        text_sp = re.split(r"！”|？”|。”|……”|”！|”？|”。|”……|》。|）。|；|！|？|。|…|\!|\?", text)
+        conn_symbol = "；！？。…”;!?》）\n"
+    else:
+        text_sp = re.split(r"！”|？”|。”|……”|”！|”？|”。|”……|》。|）。|！|？|。|…|\!|\?", text)
+        conn_symbol = "！？。…”!?》）\n"
     text_length_s = []
     text_cut = []
     len_text = len(text) - 1
@@ -1053,8 +1061,11 @@ def transfor_bert_unk_pun_to_know(text, kv_dict=PUN_BERT_DICT):
         text = text.replace(k, v)
     return text
 def tradition_to_simple(text):
-    """  台湾繁体到大陆简体  """
-    return converter.convert(text)
+    """  繁体到简体  """
+    return converter_t2s.convert(text)
+def simple_to_tradition(text):
+    """  简体到繁体  """
+    return converter_s2t.convert(text)
 def string_q2b(ustring):
     """把字符串全角转半角"""
     return "".join([q2b(uchar) for uchar in ustring])
@@ -1081,112 +1092,6 @@ def b2q(uchar):
     else:
         inside_code += 0xfee0
     return chr(inside_code)
-
-
-def get_errors_for_diff_length(corrected_text, origin_text):
-    """Get errors between corrected text and origin text
-    code from:  https://github.com/shibing624/pycorrector
-    """
-    new_corrected_text = ""
-    errors = []
-    i, j = 0, 0
-    unk_tokens = [' ', '“', '”', '‘', '’', '琊', '\n', '…', '擤', '\t', '玕', '']
-
-    while i < len(origin_text) and j < len(corrected_text):
-        if origin_text[i] in unk_tokens:
-            new_corrected_text += origin_text[i]
-            i += 1
-        elif corrected_text[j] in unk_tokens:
-            new_corrected_text += corrected_text[j]
-            j += 1
-        # Deal with Chinese characters
-        elif flag_total_chinese(origin_text[i]) and flag_total_chinese(corrected_text[j]):
-            # If the two characters are the same, then the two pointers move forward together
-            if origin_text[i] == corrected_text[j]:
-                new_corrected_text += corrected_text[j]
-                i += 1
-                j += 1
-            else:
-                # Check for insertion errors
-                if j + 1 < len(corrected_text) and origin_text[i] == corrected_text[j + 1]:
-                    errors.append(('', corrected_text[j], j))
-                    new_corrected_text += corrected_text[j]
-                    j += 1
-                # Check for deletion errors
-                elif i + 1 < len(origin_text) and origin_text[i + 1] == corrected_text[j]:
-                    errors.append((origin_text[i], '', i))
-                    i += 1
-                # Check for replacement errors
-                else:
-                    errors.append((origin_text[i], corrected_text[j], i))
-                    new_corrected_text += corrected_text[j]
-                    i += 1
-                    j += 1
-        else:
-            new_corrected_text += origin_text[i]
-            if origin_text[i] == corrected_text[j]:
-                j += 1
-            i += 1
-    errors = sorted(errors, key=operator.itemgetter(2))
-    return new_corrected_text, errors
-
-
-def get_errors_for_same_length(corrected_text, origin_text, unk_tokens=[], know_tokens=[]):
-    """Get new corrected text and errors between corrected text and origin text
-    code from:  https://github.com/shibing624/pycorrector
-    """
-    errors = []
-    unk_tokens = unk_tokens or [' ', '“', '”', '‘', '’', '琊', '\n', '…', '擤', '\t', '玕', '', '，']
-
-    for i, ori_char in enumerate(origin_text):
-        if i >= len(corrected_text):
-            continue
-        if ori_char in unk_tokens or ori_char not in know_tokens:
-            # deal with unk word
-            corrected_text = corrected_text[:i] + ori_char + corrected_text[i + 1:]
-            continue
-        if ori_char != corrected_text[i]:
-            if not flag_total_chinese(ori_char):
-                # pass not chinese char
-                corrected_text = corrected_text[:i] + ori_char + corrected_text[i + 1:]
-                continue
-            if not flag_total_chinese(corrected_text[i]):
-                corrected_text = corrected_text[:i] + corrected_text[i + 1:]
-                continue
-            errors.append([ori_char, corrected_text[i], i])
-    errors = sorted(errors, key=operator.itemgetter(2))
-    return corrected_text, errors
-
-
-def get_errors_for_difflib_offical(corrected_text, origin_text):
-    """官方版本; Get errors between corrected text and origin text"""
-    errors = []
-    unk_tokens = [' ', '“', '”', '‘', '’', '琊', '\n', '…', '擤', '\t', '玕', '']
-
-    s = difflib.SequenceMatcher(None, origin_text, corrected_text)
-    new_corrected_text = ""
-    for tag, i1, i2, j1, j2 in s.get_opcodes():
-        print(tag, i1, i2, j1, j2)
-        if tag == 'replace':
-            for i, j in zip(range(i1, i2), range(j1, j2)):
-                if origin_text[i] not in unk_tokens and corrected_text[j] not in unk_tokens:
-                    errors.append([origin_text[i], corrected_text[j], i])
-                new_corrected_text += corrected_text[j]
-        elif tag == 'delete':
-            for i in range(i1, i2):
-                if origin_text[i] not in unk_tokens:
-                    errors.append([origin_text[i], '', i])
-            # 不拼接被删除的字符
-        elif tag == 'insert':
-            for j in range(j1, j2):
-                if corrected_text[j] not in unk_tokens:
-                    errors.append(['', corrected_text[j], j])
-                new_corrected_text += corrected_text[j]
-        elif tag == 'equal':
-            new_corrected_text += origin_text[i1:i2]
-
-    errors = sorted(errors, key=lambda x: x[2])
-    return new_corrected_text, errors
 
 
 def get_errors_for_difflib(corrected_text, origin_text, flag_same=True):
@@ -1236,36 +1141,114 @@ def get_errors_for_difflib(corrected_text, origin_text, flag_same=True):
     return new_corrected_text, errors
 
 
-def get_errors(corrected_text, origin_text):
-    """Get errors between corrected text and origin text
-    code from: https://github.com/shibing624/pycorrector
+def get_errors_from_diff_length(corrected_text, origin_text, unk_tokens=[], know_tokens=[]):
     """
+    Get errors between corrected text and origin text, by not same length sentence
+    code from:  https://github.com/shibing624/pycorrector
+    modfix: add know_tokens/unk_tokens; decode with skip_special=False
+    Args:
+        corrected_text: list, model output sentence
+        origin_text: str, input sentence
+        unk_tokens: list, own token
+        know_tokens: list, bert vocab, 2w+ token
+    Returns:
+        corrected_text: str, output sentence by correct
+        errors: list, error detail, like [喔, 我, 1]
+    """
+    new_corrected_text = []
     errors = []
-    unk_tokens = [' ', '“', '”', '‘', '’', '琊', '\n', '…', '擤', '\t', '玕', '']
-
-    s = difflib.SequenceMatcher(None, origin_text, corrected_text)
-    new_corrected_text = ""
-    for tag, i1, i2, j1, j2 in s.get_opcodes():
-        if tag == 'replace':
-            for i, j in zip(range(i1, i2), range(j1, j2)):
-                if origin_text[i] not in unk_tokens and corrected_text[j] not in unk_tokens:
+    i, j = 0, 0
+    unk_tokens = unk_tokens or [' ', '“', '”', '‘', '’', '琊', '\n', '…', '擤', '\t', '玕', '']
+    while i < len(origin_text) and j < len(corrected_text):
+        if origin_text[i] in unk_tokens or origin_text[i] not in know_tokens:
+            new_corrected_text.append(origin_text[i])
+            i += 1
+        elif corrected_text[j] in unk_tokens:
+            new_corrected_text.append(corrected_text[j])
+            j += 1
+        # Deal with Chinese characters
+        elif flag_total_chinese(origin_text[i]) and flag_total_chinese(corrected_text[j]):
+            # If the two characters are the same, then the two pointers move forward together
+            if origin_text[i] == corrected_text[j]:
+                new_corrected_text.append(corrected_text[j])
+                i += 1
+                j += 1
+            else:
+                # Check for insertion errors
+                if j + 1 < len(corrected_text) and origin_text[i] == corrected_text[j + 1]:
+                    errors.append(["", corrected_text[j], j])
+                    new_corrected_text.append(corrected_text[j])
+                    j += 1
+                # Check for deletion errors
+                elif i + 1 < len(origin_text) and origin_text[i + 1] == corrected_text[j]:
+                    errors.append([origin_text[i], "", i])
+                    i += 1
+                # Check for replacement errors
+                else:
                     errors.append([origin_text[i], corrected_text[j], i])
-                new_corrected_text += corrected_text[j]
-        elif tag == 'delete':
-            for i in range(i1, i2):
-                if origin_text[i] not in unk_tokens:
-                    errors.append([origin_text[i], '', i])
-            # 不拼接被删除的字符
-        elif tag == 'insert':
-            for j in range(j1, j2):
-                if corrected_text[j] not in unk_tokens:
-                    errors.append(['', corrected_text[j], j])
-                new_corrected_text += corrected_text[j]
-        elif tag == 'equal':
-            new_corrected_text += origin_text[i1:i2]
+                    new_corrected_text.append(corrected_text[j])
+                    i += 1
+                    j += 1
+        else:
+            new_corrected_text.append(origin_text[i])
+            if origin_text[i] == corrected_text[j]:
+                j += 1
+            i += 1
+    errors = sorted(errors, key=operator.itemgetter(2))
+    return "".join(new_corrected_text), errors
 
-    errors = sorted(errors, key=lambda x: x[2])
-    return new_corrected_text, errors
+
+def get_errors_from_same_length(corrected_text, origin_text, unk_tokens=[], know_tokens=[]):
+    """
+    Get errors between corrected text and origin text, by same length sentence
+    code from:  https://github.com/shibing624/pycorrector
+    modfix: add know_tokens/unk_tokens; decode with skip_special=False
+    Args:
+        corrected_text: list, model output sentence
+        origin_text: str, input sentence
+        unk_tokens: list, own token
+        know_tokens: list, bert vocab, 2w+ token
+    Returns:
+        corrected_text: str, output sentence by correct
+        errors: list, error detail, like [喔, 我, 1]
+    """
+
+    errors = []
+    unk_tokens = unk_tokens or [' ', '“', '”', '‘', '’', '琊', '\n', '…', '擤', '\t', '玕', '', '，']
+
+    for i, ori_char in enumerate(origin_text):
+        if i >= len(corrected_text):
+            continue
+        if ori_char in unk_tokens or ori_char not in know_tokens:
+            # deal with unk word
+            corrected_text = corrected_text[:i] + [ori_char] + corrected_text[i + 1:]
+            continue
+        if ori_char != corrected_text[i]:
+            if not flag_total_chinese(ori_char):
+                # pass not chinese char
+                corrected_text = corrected_text[:i] + [ori_char] + corrected_text[i + 1:]
+                continue
+            if not flag_total_chinese(corrected_text[i]):
+                corrected_text = corrected_text[:i] + corrected_text[i + 1:]
+                continue
+            errors.append([ori_char, corrected_text[i], i])
+    errors = sorted(errors, key=operator.itemgetter(2))
+    return "".join(corrected_text), errors
+
+
+def preprocess_same_with_training(text):
+    """
+    前处理, 与训练时候的输入一致.
+    Args:
+        text: str, input sentence
+    Returns:
+        text: str, output sentence
+    """
+    text = string_q2b(text)
+    text = tradition_to_simple(text)
+    text = transfor_english_symbol_to_chinese(text)
+    text = transfor_bert_unk_pun_to_know(text)
+    return text
 
 
 if __name__ == '__main__':

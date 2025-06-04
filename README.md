@@ -100,6 +100,7 @@ print("#" * 128)
 
 
 import traceback
+import operator
 import time
 import sys
 import os
@@ -107,9 +108,14 @@ os.environ["USE_TORCH"] = "1"
 from transformers import BertConfig, BertTokenizer, BertForMaskedLM
 import torch
 
+
+# pretrained_model_name_or_path = "../../macro_correct/output/text_correction/macbert4mdcspell_v1"
+# pretrained_model_name_or_path = "../../macro_correct/output/text_correction/macbert4csc_v1"
+# pretrained_model_name_or_path = "../../macro_correct/output/text_correction/macbert4csc_v2"
+# pretrained_model_name_or_path = "../../macro_correct/output/text_correction/bert4csc_v1"
 # pretrained_model_name_or_path = "shibing624/macbert4csc-base-chinese"
-pretrained_model_name_or_path = "Macropodus/macbert4mdcspell_v2"
 # pretrained_model_name_or_path = "Macropodus/macbert4mdcspell_v1"
+pretrained_model_name_or_path = "Macropodus/macbert4mdcspell_v2"
 # pretrained_model_name_or_path = "Macropodus/macbert4csc_v1"
 # pretrained_model_name_or_path = "Macropodus/macbert4csc_v2"
 # pretrained_model_name_or_path = "Macropodus/bert4csc_v1"
@@ -121,6 +127,7 @@ tokenizer = BertTokenizer.from_pretrained(pretrained_model_name_or_path)
 bert_config = BertConfig.from_pretrained(pretrained_model_name_or_path)
 model = BertForMaskedLM.from_pretrained(pretrained_model_name_or_path)
 model.to(device)
+vocab = tokenizer.vocab
 print("load model success!")
 
 texts = [
@@ -137,25 +144,107 @@ with torch.no_grad():
     outputs = model(**tokenizer(texts, padding=True, max_length=len_mid,
                                 return_tensors="pt").to(device))
 
-def get_errors(source, target):
-    """   极简方法获取 errors   """
-    len_min = min(len(source), len(target))
-    errors = []
-    for idx in range(len_min):
-        if source[idx] != target[idx]:
-            errors.append([source[idx], target[idx], idx])
-    return errors
 
-result = []
+def flag_total_chinese(text):
+    """
+    judge is total chinese or not, 判断是不是全是中文
+    Args:
+        text: str, eg. "macadam, 碎石路"
+    Returns:
+        bool, True or False
+    """
+    for word in text:
+        if not "\u4e00" <= word <= "\u9fa5":
+            return False
+    return True
+
+def get_errors_from_diff_length(corrected_text, origin_text, unk_tokens=[], know_tokens=[]):
+    """Get errors between corrected text and origin text
+    code from:  https://github.com/shibing624/pycorrector
+    """
+    new_corrected_text = ""
+    errors = []
+    i, j = 0, 0
+    unk_tokens = unk_tokens or [' ', '“', '”', '‘', '’', '琊', '\n', '…', '擤', '\t', '玕', '']
+    while i < len(origin_text) and j < len(corrected_text):
+        if origin_text[i] in unk_tokens or origin_text[i] not in know_tokens:
+            new_corrected_text += origin_text[i]
+            i += 1
+        elif corrected_text[j] in unk_tokens:
+            new_corrected_text += corrected_text[j]
+            j += 1
+        # Deal with Chinese characters
+        elif flag_total_chinese(origin_text[i]) and flag_total_chinese(corrected_text[j]):
+            # If the two characters are the same, then the two pointers move forward together
+            if origin_text[i] == corrected_text[j]:
+                new_corrected_text += corrected_text[j]
+                i += 1
+                j += 1
+            else:
+                # Check for insertion errors
+                if j + 1 < len(corrected_text) and origin_text[i] == corrected_text[j + 1]:
+                    errors.append(('', corrected_text[j], j))
+                    new_corrected_text += corrected_text[j]
+                    j += 1
+                # Check for deletion errors
+                elif i + 1 < len(origin_text) and origin_text[i + 1] == corrected_text[j]:
+                    errors.append((origin_text[i], '', i))
+                    i += 1
+                # Check for replacement errors
+                else:
+                    errors.append((origin_text[i], corrected_text[j], i))
+                    new_corrected_text += corrected_text[j]
+                    i += 1
+                    j += 1
+        else:
+            new_corrected_text += origin_text[i]
+            if origin_text[i] == corrected_text[j]:
+                j += 1
+            i += 1
+    errors = sorted(errors, key=operator.itemgetter(2))
+    return new_corrected_text, errors
+
+def get_errors_from_same_length(corrected_text, origin_text, unk_tokens=[], know_tokens=[]):
+        """Get new corrected text and errors between corrected text and origin text
+        code from:  https://github.com/shibing624/pycorrector
+        """
+        errors = []
+        unk_tokens = unk_tokens or [' ', '“', '”', '‘', '’', '琊', '\n', '…', '擤', '\t', '玕', '', '，']
+
+        for i, ori_char in enumerate(origin_text):
+            if i >= len(corrected_text):
+                continue
+            if ori_char in unk_tokens or ori_char not in know_tokens:
+                # deal with unk word
+                corrected_text = corrected_text[:i] + ori_char + corrected_text[i + 1:]
+                continue
+            if ori_char != corrected_text[i]:
+                if not flag_total_chinese(ori_char):
+                    # pass not chinese char
+                    corrected_text = corrected_text[:i] + ori_char + corrected_text[i + 1:]
+                    continue
+                if not flag_total_chinese(corrected_text[i]):
+                    corrected_text = corrected_text[:i] + corrected_text[i + 1:]
+                    continue
+                errors.append([ori_char, corrected_text[i], i])
+        errors = sorted(errors, key=operator.itemgetter(2))
+        return corrected_text, errors
+
+def get_errors(text, probs):
+    """   获取错误信息   """
+    _text = tokenizer.decode(torch.argmax(probs, dim=-1), skip_special_tokens=True).replace(' ', '')
+    corrected_text = _text[:len(text)]
+    if len(corrected_text) == len(text):
+        corrected_text, details = get_errors_from_same_length(corrected_text, text, know_tokens=vocab)
+    else:
+        corrected_text, details = get_errors_from_diff_length(corrected_text, text, know_tokens=vocab)
+    print(text, ' => ', corrected_text, details)
+    return details
+
+
 for probs, source in zip(outputs.logits, texts):
-    ids = torch.argmax(probs, dim=-1)
-    tokens_space = tokenizer.decode(ids[1:-1], skip_special_tokens=False)
-    text_new = tokens_space.replace(" ", "")
-    target = text_new[:len(source)]
-    errors = get_errors(source, target)
-    print(source, " => ", target, errors)
-    result.append([target, errors])
-print(result)
+    errors = get_errors(source, probs)
+
 """
 机七学习是人工智能领遇最能体现智能的一个分知  =>  机器学习是人工智能领域最能体现智能的一个分支 [['七', '器', 1], ['遇', '域', 10], ['知', '支', 21]]
 我是练习时长两念半的鸽仁练习生蔡徐坤  =>  我是练习时长两年半的个人练习生蔡徐坤 [['念', '年', 7], ['鸽', '个', 10], ['仁', '人', 11]]
@@ -392,7 +481,57 @@ print("#" * 128)
 {'index': 3, 'source': '苔痕上阶绿草,色入帘青。', 'target': '苔痕上阶绿，草色入帘青。', 'score': 0.9998, 'errors': [['', '，', 5, 0.9998]]}
 """
 ```
+## CSC调用繁体
+```python
+import os
+os.environ["MACRO_CORRECT_FLAG_CSC_TOKEN"] = "1"
 
+from macro_correct import correct_tradition
+
+
+### 默认纠错(list输入)
+text_list = ["一個分知,陌光回聚,莪受打去,禰愛帶餘",
+            "余額還有100w",
+            "放在陌光下",
+            "真麻煩你了。希望你們好好的跳舞",
+            "少先隊員因該爲老人讓坐",
+            "機七學習是人工智能領遇最能體現智能的一個分知",
+            "一只小魚船浮在平淨的河面上",
+            "這一條次,我選擇了一條與往常不同的路線。",
+            "春節發貨部"
+             ]
+### 默认纠错(list输入, 参数配置)
+params = {
+    "flag_confusion": True,  # 是否使用默认的混淆词典
+    "flag_prob": True,  # 是否返回纠错token处的概率
+    "flag_cut": True,  # 是否切分句子, 长句, False会只处理前max_len长度的文本; True会按照标点切分(在超出就按照maxlen切分)
+    "limit_nums_errors": 8,  # 一句话最多的错别字, 多的就剔除(全不纠错)
+    "num_rethink": 0,  # 多次预测, think-twice
+    "batch_size": 32,  # 批大小
+    "threshold": 0.01,  # token阈值过滤
+    "max_len": 128,  # 自定义的长度, 如果截断了, 则截断部分不参与纠错, 后续直接一模一样的补回来
+    "rounded": 4,  # 保存4位小数
+}
+text_csc = correct_tradition(text_list, **params)
+print("默认纠错(list输入, 参数配置):")
+for res_i in text_csc:
+    print(res_i)
+print("#" * 128)
+
+"""
+默认纠错(list输入, 参数配置):
+{'index': 0, 'source': '一個分知,陌光回聚,莪受打去,禰愛帶餘', 'target': '一個分支，陽光回聚，莪受打擊，禰愛帶餘', 'errors': [['知', '支', 3, 1.0], ['陌', '陽', 5, 1.0], ['去', '擊', 13, 1.0]]}
+{'index': 1, 'source': '余額還有100w', 'target': '餘額還有100w', 'errors': [['余', '餘', 0, 1]]}
+{'index': 2, 'source': '放在陌光下', 'target': '放在陽光下', 'errors': [['陌', '陽', 2, 1.0]]}
+{'index': 3, 'source': '真麻煩你了。希望你們好好的跳舞', 'target': '真麻煩你了。希望你們好好地跳舞', 'errors': [['的', '地', 12, 0.8873]]}
+{'index': 4, 'source': '少先隊員因該爲老人讓坐', 'target': '少先隊員應該爲老人讓坐', 'errors': [['因', '應', 4, 0.9933]]}
+{'index': 5, 'source': '機七學習是人工智能領遇最能體現智能的一個分知', 'target': '機器學習是人工智能領域最能體現智能的一個分支', 'errors': [['七', '器', 1, 0.9999], ['遇', '域', 10, 1.0], ['知', '支', 21, 1.0]]}
+{'index': 6, 'source': '一只小魚船浮在平淨的河面上', 'target': '一隻小魚船浮在平靜的河面上', 'errors': [['只', '隻', 1, 1], ['淨', '靜', 8, 0.9849]]}
+{'index': 7, 'source': '這一條次,我選擇了一條與往常不同的路線。', 'target': '這一條次，我選擇了一條與往常不同的路線。', 'errors': []}
+{'index': 8, 'source': '春節發貨部', 'target': '春節發貨不', 'errors': [['部', '不', 4, 0.3544]]}
+################################################################################################################################
+"""
+```
 # 训练
 ## CSC任务
 ### 目录地址
@@ -523,17 +662,8 @@ python predict.py
 | macbert4csc_v2          | 68.6| 96.74| 66.02| 48.26| 75.78| 38.84| 51.91| 70.17| 80.71| 85.61| 80.97| 58.22| 69.95 |
 | macbert4mdcspell_v1     | 71.1| 96.42| 70.06| 52.55| 79.61| 43.37| 53.85| 70.9| 82.38| 87.46| 84.2| 61.08| 71.32 |
 | macbert4mdcspell_v2     | 71.23| 96.42| 65.8| 52.35| 75.94| 43.5| 53.82| 72.66| 82.28| 88.69| 82.51| 65.59| 75.26 |
-| macbert4mdcspell_v1_rethink1| 69.56| 91.99| 67.99| 57.39| 77.49| 49.48| 54.11| 69.37| 84.6| 88.1| 71.04| 56.17| 66.93 |
 | macbert4mdcspell_v1_rethink2| 69.64| 92.4| 67.99| 57.69| 77.49| 50.38| 53.96| 69.35| 84.65| 88.26| 70.96| 56.05| 66.54 |
-| macbert4mdcspell_v1_rethink3| 69.62| 91.94| 67.99| 57.69| 77.41| 50.63| 54.0| 69.37| 84.65| 88.26| 70.96| 55.87| 66.67 |
-| macbert4mdcspell_v2_rethink1| 72.44| 95.55| 65.54| 57.54| 75.86| 49.15| 55.46| 72.78| 84.6| 90.62| 80.93| 65.9| 75.39 |
 | macbert4mdcspell_v2_rethink2| 72.54| 95.59| 65.54| 58.01| 75.86| 49.67| 55.56| 72.78| 84.65| 90.78| 80.93| 65.74| 75.39 |
-| macbert4mdcspell_v2_rethink3| 72.54| 95.55| 65.54| 58.07| 75.86| 49.67| 55.56| 72.78| 84.65| 90.78| 80.93| 65.74| 75.39 |
-| macbert4mdcspell_v2_thr30| 71.18| 96.43| 66.15| 52.03| 75.94| 43.37| 53.26| 72.88| 82.32| 88.53| 82.51| 65.59| 75.13 |
-| macbert4mdcspell_v2_thr40| 71.02| 96.42| 65.71| 51.57| 75.86| 42.86| 52.18| 73.34| 82.29| 88.53| 82.58| 65.74| 75.16 |
-| macbert4mdcspell_v2_thr50| 70.51| 96.32| 65.54| 50.34| 75.86| 41.69| 50.58| 73.57| 82.02| 87.95| 82.44| 65.11| 74.74 |
-| macbert4mdcspell_v2_thr60| 69.08| 95.75| 63.53| 48.14| 74.18| 40.1| 47.55| 72.68| 81.06| 87.2| 81.25| 63.77| 73.75 |
-| macbert4mdcspell_v2_thr75| 66.11| 94.5| 58.48| 44.16| 71.87| 37.32| 43.85| 69.04| 79.01| 85.13| 78.98| 59.03| 71.89 |
 
 ### 3.3.2 acc(common_cor_acc)
 | model/common_cor_acc| avg| gen_de3| lemon_v2| gen_passage| text_proof| gen_xxqg| faspell| lomo_tet| mcsc_tet| ecspell| sighan2013| sighan2014| sighan2015 |
@@ -546,17 +676,8 @@ python predict.py
 | macbert4csc_v2| 65.22| 93.69| 50.14| 44.92| 74.64| 36.26| 37.0| 72.72| 83.66| 86.93| 68.5| 62.43| 71.73 |
 | macbert4mdcspell_v1| 67.15| 93.09| 54.8| 47.71| 78.09| 39.52| 38.8| 71.92| 84.78| 88.27| 73.2| 63.28| 72.36 |
 | macbert4mdcspell_v2| 68.31| 93.09| 50.05| 48.72| 75.74| 40.52| 38.9| 76.9| 84.8| 89.73| 71.0| 71.94| 78.36 |
-| macbert4mdcspell_v1_rethink1| 64.98| 85.18| 52.42| 51.57| 76.23| 43.88| 39.1| 70.8| 86.44| 88.8| 55.9| 60.17| 69.27 |
 | macbert4mdcspell_v1_rethink2| 65.04| 85.88| 52.42| 51.69| 76.23| 44.52| 38.9| 70.78| 86.48| 88.93| 55.8| 59.98| 68.91 |
-| macbert4mdcspell_v1_rethink3| 65.03| 85.09| 52.42| 51.81| 76.16| 44.74| 39.0| 70.8| 86.48| 88.93| 55.8| 59.98| 69.09 |
-| macbert4mdcspell_v2_rethink1| 69.05| 91.49| 49.76| 52.64| 75.67| 44.46| 40.4| 76.98| 86.52| 91.33| 68.8| 72.13| 78.45 |
 | macbert4mdcspell_v2_rethink2| 69.14| 91.56| 49.76| 53.01| 75.67| 44.84| 40.5| 76.98| 86.56| 91.47| 68.8| 72.03| 78.45 |
-| macbert4mdcspell_v2_rethink3| 69.13| 91.49| 49.76| 53.06| 75.67| 44.84| 40.5| 76.98| 86.56| 91.47| 68.8| 72.03| 78.45 |
-| macbert4mdcspell_v2_thr30| 68.29| 93.11| 50.43| 48.49| 75.74| 40.46| 38.4| 77.18| 84.84| 89.6| 71.0| 71.94| 78.27 |
-| macbert4mdcspell_v2_thr40| 68.19| 93.09| 49.95| 48.17| 75.67| 40.16| 37.5| 77.7| 84.84| 89.6| 71.1| 72.13| 78.36 |
-| macbert4mdcspell_v2_thr50| 67.84| 92.89| 49.76| 47.33| 75.67| 39.46| 36.1| 78.1| 84.66| 89.13| 70.9| 71.94| 78.18 |
-| macbert4mdcspell_v2_thr60| 66.79| 91.85| 47.67| 45.87| 74.36| 38.58| 33.6| 78.02| 84.0| 88.53| 69.3| 71.75| 78.0 |
-| macbert4mdcspell_v2_thr75| 64.56| 89.58| 42.55| 43.32| 72.63| 36.92| 30.6| 76.3| 82.6| 87.0| 66.3| 69.68| 77.18 |
 
 ### 3.3.3 acc(acc_true, thr=0.75)
 | model/acc                    | avg   | acc_rmrb| acc_xxqg |
@@ -569,18 +690,8 @@ python predict.py
 | macbert4csc_v2               | 97.89 | 96.98| 98.8     |
 | macbert4mdcspell_v1          | 97.75 | 96.51| 98.98    |
 | macbert4mdcspell_v2          | 99.54 | 99.22| 99.86    |
-| macbert4mdcspell_v2_thr00    | 98.15 | 96.72| 99.58    |
-| macbert4mdcspell_v2_thr30    | 98.32 | 97.02| 99.62    |
-| macbert4mdcspell_v2_thr40    | 98.4  | 97.15| 99.64    |
-| macbert4mdcspell_v2_thr50    | 98.68 | 97.67| 99.68    |
-| macbert4mdcspell_v2_thr60    | 99.11 | 98.49| 99.74    |
-| macbert4mdcspell_v2_thr75    | 99.54 | 99.22| 99.86    |
-| macbert4mdcspell_v1_rethink1 | 92.79 | 88.35| 97.24    |
 | macbert4mdcspell_v1_rethink2 | 92.78 | 88.31| 97.24    |
-| macbert4mdcspell_v1_rethink3 | 92.79 | 88.35| 97.24    |
-| macbert4mdcspell_v2_rethink1 | 98.15 | 96.72| 99.58    |
 | macbert4mdcspell_v2_rethink2 | 98.15 | 96.72| 99.58    |
-| macbert4mdcspell_v2_rethink3 | 98.15 | 96.72| 99.58    |
 
 
 ### 3.3.4 结论(Conclusion)
