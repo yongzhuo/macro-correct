@@ -654,8 +654,9 @@ python predict.py
 ### 3.3.1 F1(common_cor_f1)
 | model/common_cor_f1     | avg| gen_de3| lemon_v2| gen_passage| text_proof| gen_xxqg| faspell| lomo_tet| mcsc_tet| ecspell| sighan2013| sighan2014| sighan2015 |
 |:------------------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|
-| macbert4csc_pycorrector | 45.8| 42.44| 42.89| 31.49| 46.31| 26.06| 32.7| 44.83| 27.93| 55.51| 70.89| 61.72| 66.81 |
-| qwen25_1-5b_pycorrector | 45.11| 27.29| 89.48| 14.61| 83.9| 13.84| 18.2| 36.71| 96.29| 88.2| 36.41| 15.64| 20.73 |
+| shibing624/macbert4csc-base-chinese | 45.8| 42.44| 42.89| 31.49| 46.31| 26.06| 32.7| 44.83| 27.93| 55.51| 70.89| 61.72| 66.81 |
+| shibing624/chinese-text-correction-1.5b | 45.11| 27.29| 89.48| 14.61| 83.9| 13.84| 18.2| 36.71| 96.29| 88.2| 36.41| 15.64| 20.73 |
+| twnlp/ChineseErrorCorrector3-4B| 53.59| 30.28| 89.43| 22.94| 39.9| 16.89| 30.53| 71.0| 99.92| 72.43| 65.02| 47.81| 56.88 |
 | relm_v1| 54.12| 89.86| 51.79| 38.4| 63.74| 30.6| 31.95| 49.82| 64.7| 73.57| 66.4| 39.87| 48.8 |
 | bert4csc_v1             | 62.28| 93.73| 61.99| 44.79| 68.0| 35.03| 48.28| 61.8| 64.41| 79.11| 77.66| 51.01| 61.54 |
 | macbert4csc_v1          | 68.55| 96.67| 65.63| 48.4| 75.65| 38.43| 51.76| 70.11| 80.63| 85.55| 81.38| 57.63| 70.7 |
@@ -668,8 +669,9 @@ python predict.py
 ### 3.3.2 acc(common_cor_acc)
 | model/common_cor_acc| avg| gen_de3| lemon_v2| gen_passage| text_proof| gen_xxqg| faspell| lomo_tet| mcsc_tet| ecspell| sighan2013| sighan2014| sighan2015 |
 |:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|
-| macbert4csc_pycorrector| 48.26| 26.96| 28.68| 34.16| 55.29| 28.38| 22.2| 60.96| 57.16| 67.73| 55.9| 68.93| 72.73 |
-| qwen25_1-5b_pycorrector| 46.09| 15.82| 81.29| 22.96| 82.17| 19.04| 12.8| 50.2| 96.4| 89.13| 22.8| 27.87| 32.55 |
+| shibing624/macbert4csc-base-chinese| 48.26| 26.96| 28.68| 34.16| 55.29| 28.38| 22.2| 60.96| 57.16| 67.73| 55.9| 68.93| 72.73 |
+| shibing624/chinese-text-correction-1.5b| 46.09| 15.82| 81.29| 22.96| 82.17| 19.04| 12.8| 50.2| 96.4| 89.13| 22.8| 27.87| 32.55 |
+| twnlp/ChineseErrorCorrector3-4B| 51.85| 17.87| 81.2| 27.32| 48.17| 23.44| 20.8| 77.16| 99.92| 76.6| 49.0| 47.18| 53.55 |
 | relm_v1| 51.9| 81.71| 36.18| 37.04| 63.99| 29.34| 22.9| 51.98| 74.1| 76.0| 50.3| 45.76| 53.45 |
 | bert4csc_v1| 60.76| 88.21| 45.96| 43.13| 68.97| 35.0| 34.0| 65.86| 73.26| 81.8| 64.5| 61.11| 67.27 |
 | macbert4csc_v1| 65.34| 93.56| 49.76| 44.98| 74.64| 36.1| 37.0| 73.0| 83.6| 86.87| 69.2| 62.62| 72.73 |
@@ -679,32 +681,61 @@ python predict.py
 | macbert4mdcspell_v1_rethink2| 65.04| 85.88| 52.42| 51.69| 76.23| 44.52| 38.9| 70.78| 86.48| 88.93| 55.8| 59.98| 68.91 |
 | macbert4mdcspell_v2_rethink2| 69.14| 91.56| 49.76| 53.01| 75.67| 44.84| 40.5| 76.98| 86.56| 91.47| 68.8| 72.03| 78.45 |
 
-### 3.3.3 acc(acc_true, thr=0.75)
-| model/acc                    | avg   | acc_rmrb| acc_xxqg |
-|:-----------------------------|:------|:-----------------|:---------|
-| macbert4csc_pycorrector      | 99.24 | 99.22| 99.26    |
-| qwen25_1-5b_pycorrector      | 82.0  | 77.14| 86.86    |
-| relm_v1                      | 93.47 | 90.21| 96.74    |
-| bert4csc_v1                  | 98.71 | 98.36| 99.06    |
-| macbert4csc_v1               | 97.72 | 96.72| 98.72    |
-| macbert4csc_v2               | 97.89 | 96.98| 98.8     |
-| macbert4mdcspell_v1          | 97.75 | 96.51| 98.98    |
-| macbert4mdcspell_v2          | 99.54 | 99.22| 99.86    |
-| macbert4mdcspell_v1_rethink2 | 92.78 | 88.31| 97.24    |
-| macbert4mdcspell_v2_rethink2 | 98.15 | 96.72| 99.58    |
+### 3.3.3 acc(acc_true, thr=0.75, 测评过度修改)
+| model/acc                                    | avg    | acc_rmrb| acc_xxqg |
+|:---------------------------------------------|:-------|:-----------------|:---------|
+| shibing624/macbert4csc-base-chinese          | 99.24  | 99.22| 99.26    |
+| shibing624/chinese-text-correction-1.5b      | 82.0   | 77.14| 86.86    |
+| twnlp/ChineseErrorCorrector3-4B              | 77.03  | 76.96| 77.1     |
+| relm_v1                                      | 93.47  | 90.21| 96.74    |
+| bert4csc_v1                                  | 98.71  | 98.36| 99.06    |
+| macbert4csc_v1                               | 97.72  | 96.72| 98.72    |
+| macbert4csc_v2                               | 97.89  | 96.98| 98.8     |
+| macbert4mdcspell_v1                          | 97.75  | 96.51| 98.98    |
+| macbert4mdcspell_v2                          | 99.54  | 99.22| 99.86    |
+| macbert4mdcspell_v1_rethink2                 | 92.78  | 88.31| 97.24    |
+| macbert4mdcspell_v2_rethink2                 | 98.15  | 96.72| 99.58    |
 
 
 ### 3.3.4 结论(Conclusion)
 ```
 1.macbert4csc_v1/macbert4csc_v2/macbert4mdcspell_v1等模型使用多种领域数据训练, 比较均衡, 也适合作为第一步的预训练模型, 可用于专有领域数据的继续微调;
-2.比较macbert4csc_pycorrector/bertbase4csc_v1/macbert4csc_v2/macbert4mdcspell_v1, 观察表2.3, 可以发现训练数据越多, 准确率提升的同时, 误纠率也会稍微高一些;
+2.比较shibing624_macbert4csc-base-chinese/bertbase4csc_v1/macbert4csc_v2/macbert4mdcspell_v1, 观察表2.3, 可以发现训练数据越多, 准确率提升的同时, 误纠率也会稍微高一些;
 3.MFT(Mask-Correct)依旧有效, 不过对于数据量足够的情形提升不明显, 可能也是误纠率升高的一个重要原因;
 4.训练数据中也存在文言文数据, 训练好的模型也支持文言文纠错;
 5.训练好的模型对"地得的"等高频错误具有较高的识别率和纠错率;
 6.macbert4mdcspell_v2的MFT只70%的时间no-error-mask(0.15), 15%的时间target-to-target, 15%的时间不mask;
 7.对于macbert4mdcspell, rethink能更好处理存在多个错误的句子(适合错误多的情况gen_passage/gen_xxqg这些错误数多的数据集都提升了4%, 多预测3次效果最佳, 考虑性能问题可以多预测1次), 同时rethink对过度纠错的影响不大;
 8.对于macbert4mdcspell, thr阈值设置能更好地避免过度纠错, 除非是特别需要精确率的情况, 否则不建议超过0.5(0.5往后对效果的影响就比较大了); 
+9.shibing624/chinese-text-correction-1.5b和twnlp/ChineseErrorCorrector3-4B都用了部分数据集的测试集参与训练，比较明显的有mcsc_tet(快100%了, shibing624/chinese-text-correction-1.5b是明确说了有放测试集的, 可能是twnlp/ChineseErrorCorrector3-4B也用了同样的数据), 用了测试数据的可能还有lemon_v2/text_proof/lomo_tet/ecspell;
+10.对于CSC任务, 大模型过拟合更加严重, 特别容易吧正确的句子修改润色(查看表3.3.3), decode-only模型不容易控制阈值;
 ```
+
+## 3.4 测评新数据集(alipayseq)
+ - alipayseq.tet.json: 阿里搜索真实数据, 论文:《Towards Better Chinese Spelling Check for Search Engines: A New Dataset and Strong Baseline》;
+ - WSDM-24的论文, macbert4xxx系列模型都没有训练过该数据集
+
+### 3.4.1   F1(common_cor_f1)
+| model/common_cor_f1             | alipayseq |
+|:--------------------------------|:----------|
+| shibing624/macbert4csc          | 15.36     |
+| twnlp/ChineseErrorCorrector3-4B | 42.84     |
+| bert4csc_v1                     | 42.23     | 
+| macbert4csc_v1                  | 48.45     |
+| macbert4csc_v2                  | 45.60     | 
+| macbert4mdcspell_v1             | 48.97     | 
+| macbert4mdcspell_v2             | 50.41     |
+
+### 3.4.2   acc(common_cor_acc)
+| model/common_cor_acc            | alipayseq |
+|:--------------------------------|:----------|
+| shibing624/macbert4csc          | 13.74     |
+| twnlp/ChineseErrorCorrector3-4B | 62.90     |
+| bert4csc_v1                     | 41.61     | 
+| macbert4csc_v1                  | 48.51     |
+| macbert4csc_v2                  | 46.70     | 
+| macbert4mdcspell_v1             | 51.90     | 
+| macbert4mdcspell_v2             | 63.60     | 
 
 
 # 日志
