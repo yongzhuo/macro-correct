@@ -28,13 +28,13 @@ from macro_correct.pytorch_textcorrection.tcTools import flag_total_chinese
 from macro_correct.task.correct.predict_mlm_csc import CscPredict
 
 
-def download_model_from_huggface_with_url(repo_id="Macropodus/macbert4mdcspell_v2",
+def download_model_from_huggface_with_url(repo_id="Macropodus/macbert4mdcspell_v3",
                                           hf_endpoint="https://hf-mirror.com",
                                           logger=logger):
     """
         下载模型等数据文件, 从huggface下载, 可指定repo_id/url
     """
-    os.environ["HF_ENDPOINT"] = hf_endpoint or os.environ.get("HF_ENDPOINT", hf_endpoint)
+    os.environ["HF_ENDPOINT"] = os.environ.get("HF_ENDPOINT", hf_endpoint) or hf_endpoint
     from huggingface_hub import snapshot_download
     # logger.basicConfig(level=logger.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
     os.environ["PATH_MACRO_CORRECT_MODEL"] = os.environ.get("PATH_MACRO_CORRECT_MODEL",
@@ -56,7 +56,7 @@ def download_model_from_huggface_with_url(repo_id="Macropodus/macbert4mdcspell_v
     logger.info("download " + repo_id + " from huggface, end!")
 
 
-def download_model_from_huggface(repo_id="Macropodus/macbert4mdcspell_v2", logger=logger):
+def download_model_from_huggface(repo_id="Macropodus/macbert4mdcspell_v3", logger=logger):
     """
         下载模型等数据文件, 从huggface
     """
@@ -64,13 +64,16 @@ def download_model_from_huggface(repo_id="Macropodus/macbert4mdcspell_v2", logge
         download_model_from_huggface_with_url(hf_endpoint="https://hf-mirror.com", repo_id=repo_id, logger=logger)
     except Exception as e:
         logger.info(traceback.print_exc())
-        download_model_from_huggface_with_url(hf_endpoint="https://huggingface.co/models", repo_id=repo_id, logger=logger)
+        try:
+            download_model_from_huggface_with_url(hf_endpoint="https://huggingface.co/models", repo_id=repo_id, logger=logger)
+        except Exception as e:
+            logger.info(traceback.print_exc())
 
 
 class MacroCSC4Token:
     def __init__(self, path_config=None, logger=logger):
         self.logger = logger
-        self.path_config = path_config or os.path.join(path_root, "macro_correct/output/text_correction/macbert4mdcspell_v2/csc.config")
+        self.path_config = path_config or os.path.join(path_root, "macro_correct/output/text_correction/macbert4mdcspell_v3/csc.config")
         self.check_or_download_hf_model(path_config=path_config)
         self.load_trained_model()
 
@@ -93,14 +96,14 @@ class MacroCSC4Token:
             self.model_csc.model.office.config.model_save_path = os.path.split(path_model_select)[0]
             self.path_config = path_config_select
         else:
-            ### 默认加载Macropodus/macbert4mdcspell_v2
+            ### 默认加载Macropodus/macbert4mdcspell_v3
             path_config = path_config or self.path_config
             path_model = os.path.join(os.path.split(path_config)[0], "pytorch_model.bin")
             if os.path.exists(path_config) and os.path.exists(path_model):
                 pass
             else:
                 # dowload model from hf
-                repo_id = "Macropodus/macbert4mdcspell_v2"
+                repo_id = "Macropodus/macbert4mdcspell_v3"
                 self.logger.info("download_model_from_huggface " + repo_id + " start!")
                 download_model_from_huggface(repo_id=repo_id, logger=self.logger)
                 self.logger.info("download_model_from_huggface " + repo_id + " success!")
@@ -108,8 +111,13 @@ class MacroCSC4Token:
 
     def load_trained_model(self, path_config=None):
         """   模型初始化加载权重   """
-        path_config = path_config or self.path_config
-        self.model_csc = CscPredict(path_config)
+        try:
+            path_config = path_config or self.path_config
+            self.model_csc = CscPredict(path_config)
+        except Exception as e:
+            self.logger.info(
+                "load_trained_model fail! please load from your local model_dir, like ```from macro_correct import MODEL_CSC_TOKEN \n MODEL_CSC_TOKEN.load_trained_model(path_config)```")
+            self.logger.info(traceback.print_exc())
 
     def func_csc_token_batch_tradition(
             self, texts, threshold=0.5, max_len=128, batch_size=16, rounded=4,
@@ -336,7 +344,7 @@ if __name__ == '__main__':
     import os
     os.environ["MACRO_CORRECT_FLAG_CSC_TOKEN"] = "1"
     from macro_correct import MODEL_CSC_TOKEN
-    repo_id = "Macropodus/macbert4csc_v2"
+    repo_id = "Macropodus/macbert4csc_v3"
     MODEL_CSC_TOKEN.__init__(path_config=repo_id)
     res = MODEL_CSC_TOKEN.func_csc_token_batch(texts, threshold=0.0)
     print("#####   " + repo_id)

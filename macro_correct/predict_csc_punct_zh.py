@@ -31,9 +31,9 @@ threshold_pun_freq = {
 }  # 可以每个标点给个阈值
 
 
-def download_model_from_huggface_with_url(repo_id="Macropodus/bert4sl_punct_zh_public", hf_endpoint="https://hf-mirror.com"):
+def download_model_from_huggface_with_url(repo_id="Macropodus/bert4sl_punct_zh_public", hf_endpoint="https://hf-mirror.com", logger=logger):
     """   下载模型等数据文件, 从huggface下载, 可指定repo_id/url   """
-    os.environ["HF_ENDPOINT"] = hf_endpoint or os.environ.get("HF_ENDPOINT", hf_endpoint)
+    os.environ["HF_ENDPOINT"] = os.environ.get("HF_ENDPOINT", hf_endpoint) or hf_endpoint
     from huggingface_hub import snapshot_download
     # logger.basicConfig(level=logger.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
     os.environ["PATH_MACRO_CORRECT_MODEL"] = os.environ.get("PATH_MACRO_CORRECT_MODEL",
@@ -58,10 +58,13 @@ def download_model_from_huggface_with_url(repo_id="Macropodus/bert4sl_punct_zh_p
 def download_model_from_huggface(repo_id="Macropodus/bert4sl_punct_zh_public"):
     """   下载模型等数据文件, 从huggface   """
     try:
-        download_model_from_huggface_with_url(hf_endpoint="https://hf-mirror.com", repo_id=repo_id)
+        download_model_from_huggface_with_url(hf_endpoint="https://hf-mirror.com", repo_id=repo_id, logger=logger)
     except Exception as e:
         logger.info(traceback.print_exc())
-        download_model_from_huggface_with_url(hf_endpoint="https://huggingface.co/models", repo_id=repo_id)
+        try:
+            download_model_from_huggface_with_url(hf_endpoint="https://huggingface.co/models", repo_id=repo_id, logger=logger)
+        except Exception as e:
+            logger.info(traceback.print_exc())
 
 
 class MacroCSC4Punct:
@@ -83,8 +86,13 @@ class MacroCSC4Punct:
 
     def load_trained_model(self, path_config=None):
         """   模型初始化加载权重   """
-        path_config = path_config or self.path_config
-        self.model_csc = PunctPredict(path_config)
+        try:
+            path_config = path_config or self.path_config
+            self.model_csc = PunctPredict(path_config)
+        except Exception as e:
+            self.logger.info(
+                "load_trained_model fail! please load from your local model_dir, like ```from macro_correct import MODEL_CSC_TOKEN \n MacroCSC4Punct.load_trained_model(path_config)```")
+            self.logger.info(traceback.print_exc())
 
     def func_csc_punct_long(self, content, threshold=0.55, max_len=128, batch_size=16, rounded=4,
                             limit_num_errors=4, limit_len_char=3, threshold_zh=0.5,

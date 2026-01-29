@@ -100,6 +100,7 @@ print("#" * 128)
 
 
 import traceback
+import operator
 import time
 import sys
 import os
@@ -107,9 +108,15 @@ os.environ["USE_TORCH"] = "1"
 from transformers import BertConfig, BertTokenizer, BertForMaskedLM
 import torch
 
+
+# pretrained_model_name_or_path = "../../macro_correct/output/text_correction/macbert4mdcspell_v1"
+# pretrained_model_name_or_path = "../../macro_correct/output/text_correction/macbert4csc_v1"
+# pretrained_model_name_or_path = "../../macro_correct/output/text_correction/macbert4csc_v2"
+# pretrained_model_name_or_path = "../../macro_correct/output/text_correction/bert4csc_v1"
 # pretrained_model_name_or_path = "shibing624/macbert4csc-base-chinese"
-pretrained_model_name_or_path = "Macropodus/macbert4mdcspell_v2"
 # pretrained_model_name_or_path = "Macropodus/macbert4mdcspell_v1"
+# pretrained_model_name_or_path = "Macropodus/macbert4mdcspell_v2"
+pretrained_model_name_or_path = "Macropodus/macbert4mdcspell_v3"
 # pretrained_model_name_or_path = "Macropodus/macbert4csc_v1"
 # pretrained_model_name_or_path = "Macropodus/macbert4csc_v2"
 # pretrained_model_name_or_path = "Macropodus/bert4csc_v1"
@@ -121,6 +128,7 @@ tokenizer = BertTokenizer.from_pretrained(pretrained_model_name_or_path)
 bert_config = BertConfig.from_pretrained(pretrained_model_name_or_path)
 model = BertForMaskedLM.from_pretrained(pretrained_model_name_or_path)
 model.to(device)
+vocab = tokenizer.vocab
 print("load model success!")
 
 texts = [
@@ -137,25 +145,107 @@ with torch.no_grad():
     outputs = model(**tokenizer(texts, padding=True, max_length=len_mid,
                                 return_tensors="pt").to(device))
 
-def get_errors(source, target):
-    """   极简方法获取 errors   """
-    len_min = min(len(source), len(target))
-    errors = []
-    for idx in range(len_min):
-        if source[idx] != target[idx]:
-            errors.append([source[idx], target[idx], idx])
-    return errors
 
-result = []
+def flag_total_chinese(text):
+    """
+    judge is total chinese or not, 判断是不是全是中文
+    Args:
+        text: str, eg. "macadam, 碎石路"
+    Returns:
+        bool, True or False
+    """
+    for word in text:
+        if not "\u4e00" <= word <= "\u9fa5":
+            return False
+    return True
+
+def get_errors_from_diff_length(corrected_text, origin_text, unk_tokens=[], know_tokens=[]):
+    """Get errors between corrected text and origin text
+    code from:  https://github.com/shibing624/pycorrector
+    """
+    new_corrected_text = ""
+    errors = []
+    i, j = 0, 0
+    unk_tokens = unk_tokens or [' ', '“', '”', '‘', '’', '琊', '\n', '…', '擤', '\t', '玕', '']
+    while i < len(origin_text) and j < len(corrected_text):
+        if origin_text[i] in unk_tokens or origin_text[i] not in know_tokens:
+            new_corrected_text += origin_text[i]
+            i += 1
+        elif corrected_text[j] in unk_tokens:
+            new_corrected_text += corrected_text[j]
+            j += 1
+        # Deal with Chinese characters
+        elif flag_total_chinese(origin_text[i]) and flag_total_chinese(corrected_text[j]):
+            # If the two characters are the same, then the two pointers move forward together
+            if origin_text[i] == corrected_text[j]:
+                new_corrected_text += corrected_text[j]
+                i += 1
+                j += 1
+            else:
+                # Check for insertion errors
+                if j + 1 < len(corrected_text) and origin_text[i] == corrected_text[j + 1]:
+                    errors.append(('', corrected_text[j], j))
+                    new_corrected_text += corrected_text[j]
+                    j += 1
+                # Check for deletion errors
+                elif i + 1 < len(origin_text) and origin_text[i + 1] == corrected_text[j]:
+                    errors.append((origin_text[i], '', i))
+                    i += 1
+                # Check for replacement errors
+                else:
+                    errors.append((origin_text[i], corrected_text[j], i))
+                    new_corrected_text += corrected_text[j]
+                    i += 1
+                    j += 1
+        else:
+            new_corrected_text += origin_text[i]
+            if origin_text[i] == corrected_text[j]:
+                j += 1
+            i += 1
+    errors = sorted(errors, key=operator.itemgetter(2))
+    return new_corrected_text, errors
+
+def get_errors_from_same_length(corrected_text, origin_text, unk_tokens=[], know_tokens=[]):
+        """Get new corrected text and errors between corrected text and origin text
+        code from:  https://github.com/shibing624/pycorrector
+        """
+        errors = []
+        unk_tokens = unk_tokens or [' ', '“', '”', '‘', '’', '琊', '\n', '…', '擤', '\t', '玕', '', '，']
+
+        for i, ori_char in enumerate(origin_text):
+            if i >= len(corrected_text):
+                continue
+            if ori_char in unk_tokens or ori_char not in know_tokens:
+                # deal with unk word
+                corrected_text = corrected_text[:i] + ori_char + corrected_text[i + 1:]
+                continue
+            if ori_char != corrected_text[i]:
+                if not flag_total_chinese(ori_char):
+                    # pass not chinese char
+                    corrected_text = corrected_text[:i] + ori_char + corrected_text[i + 1:]
+                    continue
+                if not flag_total_chinese(corrected_text[i]):
+                    corrected_text = corrected_text[:i] + corrected_text[i + 1:]
+                    continue
+                errors.append([ori_char, corrected_text[i], i])
+        errors = sorted(errors, key=operator.itemgetter(2))
+        return corrected_text, errors
+
+def get_errors(text, probs):
+    """   获取错误信息   """
+    _text = tokenizer.decode(torch.argmax(probs, dim=-1), skip_special_tokens=True).replace(' ', '')
+    corrected_text = _text[:len(text)]
+    if len(corrected_text) == len(text):
+        corrected_text, details = get_errors_from_same_length(corrected_text, text, know_tokens=vocab)
+    else:
+        corrected_text, details = get_errors_from_diff_length(corrected_text, text, know_tokens=vocab)
+    print(text, ' => ', corrected_text, details)
+    return details
+
+
 for probs, source in zip(outputs.logits, texts):
-    ids = torch.argmax(probs, dim=-1)
-    tokens_space = tokenizer.decode(ids[1:-1], skip_special_tokens=False)
-    text_new = tokens_space.replace(" ", "")
-    target = text_new[:len(source)]
-    errors = get_errors(source, target)
-    print(source, " => ", target, errors)
-    result.append([target, errors])
-print(result)
+    errors = get_errors(source, probs)
+
 """
 机七学习是人工智能领遇最能体现智能的一个分知  =>  机器学习是人工智能领域最能体现智能的一个分支 [['七', '器', 1], ['遇', '域', 10], ['知', '支', 21]]
 我是练习时长两念半的鸽仁练习生蔡徐坤  =>  我是练习时长两年半的个人练习生蔡徐坤 [['念', '年', 7], ['鸽', '个', 10], ['仁', '人', 11]]
@@ -528,6 +618,7 @@ python predict.py
 * macbert4csc_pycorrector权重地址在[shibing624/macbert4csc-base-chinese](https://huggingface.co/shibing624/macbert4csc-base-chinese);
 * macbert4mdcspell_v1权重地址在[Macropodus/macbert4mdcspell_v1](https://huggingface.co/Macropodus/macbert4mdcspell_v1);
 * macbert4mdcspell_v2权重地址在[Macropodus/macbert4mdcspell_v2](https://huggingface.co/Macropodus/macbert4mdcspell_v2);
+* macbert4mdcspell_v3权重地址在[Macropodus/macbert4mdcspell_v3](https://huggingface.co/Macropodus/macbert4mdcspell_v3);
 * macbert4csc_v2权重地址在[Macropodus/macbert4csc_v2](https://huggingface.co/Macropodus/macbert4csc_v2);
 * macbert4csc_v1权重地址在[Macropodus/macbert4csc_v1](https://huggingface.co/Macropodus/macbert4csc_v1);
 * bert4csc_v1权重地址在[Macropodus/bert4csc_v1](https://huggingface.co/Macropodus/bert4csc_v1);
@@ -548,6 +639,7 @@ python predict.py
 12.sighan2013.dev.json(1000): 来自sighan13会议;
 13.sighan2014.dev.json(1062): 来自sighan14会议;
 14.sighan2015.dev.json(1100): 来自sighan15会议;
+15.wenyanwen_and_poetry.tet.json(5000), 来自课本古诗和通用文言文;
 ```
 
 ## 3.2 测评再说明
@@ -563,95 +655,116 @@ python predict.py
 
 ## 3.3 测评结果
 ### 3.3.1 F1(common_cor_f1)
-| model/common_cor_f1     | avg| gen_de3| lemon_v2| gen_passage| text_proof| gen_xxqg| faspell| lomo_tet| mcsc_tet| ecspell| sighan2013| sighan2014| sighan2015 |
-|:------------------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|
-| macbert4csc_pycorrector | 45.8| 42.44| 42.89| 31.49| 46.31| 26.06| 32.7| 44.83| 27.93| 55.51| 70.89| 61.72| 66.81 |
-| qwen25_1-5b_pycorrector | 45.11| 27.29| 89.48| 14.61| 83.9| 13.84| 18.2| 36.71| 96.29| 88.2| 36.41| 15.64| 20.73 |
-| relm_v1| 54.12| 89.86| 51.79| 38.4| 63.74| 30.6| 31.95| 49.82| 64.7| 73.57| 66.4| 39.87| 48.8 |
-| bert4csc_v1             | 62.28| 93.73| 61.99| 44.79| 68.0| 35.03| 48.28| 61.8| 64.41| 79.11| 77.66| 51.01| 61.54 |
-| macbert4csc_v1          | 68.55| 96.67| 65.63| 48.4| 75.65| 38.43| 51.76| 70.11| 80.63| 85.55| 81.38| 57.63| 70.7 |
-| macbert4csc_v2          | 68.6| 96.74| 66.02| 48.26| 75.78| 38.84| 51.91| 70.17| 80.71| 85.61| 80.97| 58.22| 69.95 |
-| macbert4mdcspell_v1     | 71.1| 96.42| 70.06| 52.55| 79.61| 43.37| 53.85| 70.9| 82.38| 87.46| 84.2| 61.08| 71.32 |
-| macbert4mdcspell_v2     | 71.23| 96.42| 65.8| 52.35| 75.94| 43.5| 53.82| 72.66| 82.28| 88.69| 82.51| 65.59| 75.26 |
-| macbert4mdcspell_v1_rethink1| 69.56| 91.99| 67.99| 57.39| 77.49| 49.48| 54.11| 69.37| 84.6| 88.1| 71.04| 56.17| 66.93 |
-| macbert4mdcspell_v1_rethink2| 69.64| 92.4| 67.99| 57.69| 77.49| 50.38| 53.96| 69.35| 84.65| 88.26| 70.96| 56.05| 66.54 |
-| macbert4mdcspell_v1_rethink3| 69.62| 91.94| 67.99| 57.69| 77.41| 50.63| 54.0| 69.37| 84.65| 88.26| 70.96| 55.87| 66.67 |
-| macbert4mdcspell_v2_rethink1| 72.44| 95.55| 65.54| 57.54| 75.86| 49.15| 55.46| 72.78| 84.6| 90.62| 80.93| 65.9| 75.39 |
-| macbert4mdcspell_v2_rethink2| 72.54| 95.59| 65.54| 58.01| 75.86| 49.67| 55.56| 72.78| 84.65| 90.78| 80.93| 65.74| 75.39 |
-| macbert4mdcspell_v2_rethink3| 72.54| 95.55| 65.54| 58.07| 75.86| 49.67| 55.56| 72.78| 84.65| 90.78| 80.93| 65.74| 75.39 |
-| macbert4mdcspell_v2_thr30| 71.18| 96.43| 66.15| 52.03| 75.94| 43.37| 53.26| 72.88| 82.32| 88.53| 82.51| 65.59| 75.13 |
-| macbert4mdcspell_v2_thr40| 71.02| 96.42| 65.71| 51.57| 75.86| 42.86| 52.18| 73.34| 82.29| 88.53| 82.58| 65.74| 75.16 |
-| macbert4mdcspell_v2_thr50| 70.51| 96.32| 65.54| 50.34| 75.86| 41.69| 50.58| 73.57| 82.02| 87.95| 82.44| 65.11| 74.74 |
-| macbert4mdcspell_v2_thr60| 69.08| 95.75| 63.53| 48.14| 74.18| 40.1| 47.55| 72.68| 81.06| 87.2| 81.25| 63.77| 73.75 |
-| macbert4mdcspell_v2_thr75| 66.11| 94.5| 58.48| 44.16| 71.87| 37.32| 43.85| 69.04| 79.01| 85.13| 78.98| 59.03| 71.89 |
+| model/common_cor_f1                     | avg| gen_de3| lemon_v2| gen_passage| text_proof| gen_xxqg| faspell| lomo_tet| mcsc_tet| ecspell| sighan2013| sighan2014| sighan2015 |
+|:----------------------------------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|
+| shibing624/macbert4csc-base-chinese     | 45.8| 42.44| 42.89| 31.49| 46.31| 26.06| 32.7| 44.83| 27.93| 55.51| 70.89| 61.72| 66.81 |
+| shibing624/chinese-text-correction-1.5b | 45.11| 27.29| 89.48| 14.61| 83.9| 13.84| 18.2| 36.71| 96.29| 88.2| 36.41| 15.64| 20.73 |
+| twnlp/ChineseErrorCorrector3-4B         | 53.59| 30.28| 89.43| 22.94| 39.9| 16.89| 30.53| 71.0| 99.92| 72.43| 65.02| 47.81| 56.88 |
+| relm_v1                                 | 54.12| 89.86| 51.79| 38.4| 63.74| 30.6| 31.95| 49.82| 64.7| 73.57| 66.4| 39.87| 48.8 |
+| bert4csc_v1                             | 62.28| 93.73| 61.99| 44.79| 68.0| 35.03| 48.28| 61.8| 64.41| 79.11| 77.66| 51.01| 61.54 |
+| macbert4csc_v1                          | 68.55| 96.67| 65.63| 48.4| 75.65| 38.43| 51.76| 70.11| 80.63| 85.55| 81.38| 57.63| 70.7 |
+| macbert4csc_v2                          | 68.6| 96.74| 66.02| 48.26| 75.78| 38.84| 51.91| 70.17| 80.71| 85.61| 80.97| 58.22| 69.95 |
+| macbert4mdcspell_v1                     | 71.1| 96.42| 70.06| 52.55| 79.61| 43.37| 53.85| 70.9| 82.38| 87.46| 84.2| 61.08| 71.32 |
+| macbert4mdcspell_v2                     | 71.23| 96.42| 65.8| 52.35| 75.94| 43.5| 53.82| 72.66| 82.28| 88.69| 82.51| 65.59| 75.26 |
+| macbert4mdcspell_v3                     | 71.71| 96.43| 68.07| 59.36| 78.81| 50.07| 48.67| 74.51| 79.03| 87.16| 81.31| 64.29| 72.76 |
+| macbert4mdcspell_v1_rethink2            | 69.64| 92.4| 67.99| 57.69| 77.49| 50.38| 53.96| 69.35| 84.65| 88.26| 70.96| 56.05| 66.54 |
+| macbert4mdcspell_v2_rethink2            | 72.54| 95.59| 65.54| 58.01| 75.86| 49.67| 55.56| 72.78| 84.65| 90.78| 80.93| 65.74| 75.39 |
+| macbert4mdcspell_v3_rethink2            | 71.82| 95.05| 67.48| 62.19| 78.0| 55.2| 49.5| 74.26| 81.72| 87.56| 76.75| 62.96| 71.12 |
 
 ### 3.3.2 acc(common_cor_acc)
-| model/common_cor_acc| avg| gen_de3| lemon_v2| gen_passage| text_proof| gen_xxqg| faspell| lomo_tet| mcsc_tet| ecspell| sighan2013| sighan2014| sighan2015 |
-|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|
-| macbert4csc_pycorrector| 48.26| 26.96| 28.68| 34.16| 55.29| 28.38| 22.2| 60.96| 57.16| 67.73| 55.9| 68.93| 72.73 |
-| qwen25_1-5b_pycorrector| 46.09| 15.82| 81.29| 22.96| 82.17| 19.04| 12.8| 50.2| 96.4| 89.13| 22.8| 27.87| 32.55 |
-| relm_v1| 51.9| 81.71| 36.18| 37.04| 63.99| 29.34| 22.9| 51.98| 74.1| 76.0| 50.3| 45.76| 53.45 |
-| bert4csc_v1| 60.76| 88.21| 45.96| 43.13| 68.97| 35.0| 34.0| 65.86| 73.26| 81.8| 64.5| 61.11| 67.27 |
-| macbert4csc_v1| 65.34| 93.56| 49.76| 44.98| 74.64| 36.1| 37.0| 73.0| 83.6| 86.87| 69.2| 62.62| 72.73 |
-| macbert4csc_v2| 65.22| 93.69| 50.14| 44.92| 74.64| 36.26| 37.0| 72.72| 83.66| 86.93| 68.5| 62.43| 71.73 |
-| macbert4mdcspell_v1| 67.15| 93.09| 54.8| 47.71| 78.09| 39.52| 38.8| 71.92| 84.78| 88.27| 73.2| 63.28| 72.36 |
-| macbert4mdcspell_v2| 68.31| 93.09| 50.05| 48.72| 75.74| 40.52| 38.9| 76.9| 84.8| 89.73| 71.0| 71.94| 78.36 |
-| macbert4mdcspell_v1_rethink1| 64.98| 85.18| 52.42| 51.57| 76.23| 43.88| 39.1| 70.8| 86.44| 88.8| 55.9| 60.17| 69.27 |
-| macbert4mdcspell_v1_rethink2| 65.04| 85.88| 52.42| 51.69| 76.23| 44.52| 38.9| 70.78| 86.48| 88.93| 55.8| 59.98| 68.91 |
-| macbert4mdcspell_v1_rethink3| 65.03| 85.09| 52.42| 51.81| 76.16| 44.74| 39.0| 70.8| 86.48| 88.93| 55.8| 59.98| 69.09 |
-| macbert4mdcspell_v2_rethink1| 69.05| 91.49| 49.76| 52.64| 75.67| 44.46| 40.4| 76.98| 86.52| 91.33| 68.8| 72.13| 78.45 |
-| macbert4mdcspell_v2_rethink2| 69.14| 91.56| 49.76| 53.01| 75.67| 44.84| 40.5| 76.98| 86.56| 91.47| 68.8| 72.03| 78.45 |
-| macbert4mdcspell_v2_rethink3| 69.13| 91.49| 49.76| 53.06| 75.67| 44.84| 40.5| 76.98| 86.56| 91.47| 68.8| 72.03| 78.45 |
-| macbert4mdcspell_v2_thr30| 68.29| 93.11| 50.43| 48.49| 75.74| 40.46| 38.4| 77.18| 84.84| 89.6| 71.0| 71.94| 78.27 |
-| macbert4mdcspell_v2_thr40| 68.19| 93.09| 49.95| 48.17| 75.67| 40.16| 37.5| 77.7| 84.84| 89.6| 71.1| 72.13| 78.36 |
-| macbert4mdcspell_v2_thr50| 67.84| 92.89| 49.76| 47.33| 75.67| 39.46| 36.1| 78.1| 84.66| 89.13| 70.9| 71.94| 78.18 |
-| macbert4mdcspell_v2_thr60| 66.79| 91.85| 47.67| 45.87| 74.36| 38.58| 33.6| 78.02| 84.0| 88.53| 69.3| 71.75| 78.0 |
-| macbert4mdcspell_v2_thr75| 64.56| 89.58| 42.55| 43.32| 72.63| 36.92| 30.6| 76.3| 82.6| 87.0| 66.3| 69.68| 77.18 |
+| model/common_cor_acc                    | avg   | gen_de3| lemon_v2| gen_passage| text_proof| gen_xxqg| faspell| lomo_tet| mcsc_tet| ecspell| sighan2013| sighan2014| sighan2015 |
+|:----------------------------------------|:------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|:-----------------|
+| shibing624/macbert4csc-base-chinese     | 48.26 | 26.96| 28.68| 34.16| 55.29| 28.38| 22.2| 60.96| 57.16| 67.73| 55.9| 68.93| 72.73 |
+| shibing624/chinese-text-correction-1.5b | 46.09 | 15.82| 81.29| 22.96| 82.17| 19.04| 12.8| 50.2| 96.4| 89.13| 22.8| 27.87| 32.55 |
+| twnlp/ChineseErrorCorrector3-4B         | 51.85 | 17.87| 81.2| 27.32| 48.17| 23.44| 20.8| 77.16| 99.92| 76.6| 49.0| 47.18| 53.55 |
+| relm_v1                                 | 51.9  | 81.71| 36.18| 37.04| 63.99| 29.34| 22.9| 51.98| 74.1| 76.0| 50.3| 45.76| 53.45 |
+| bert4csc_v1                             | 60.76 | 88.21| 45.96| 43.13| 68.97| 35.0| 34.0| 65.86| 73.26| 81.8| 64.5| 61.11| 67.27 |
+| macbert4csc_v1                          | 65.34 | 93.56| 49.76| 44.98| 74.64| 36.1| 37.0| 73.0| 83.6| 86.87| 69.2| 62.62| 72.73 |
+| macbert4csc_v2                          | 65.22 | 93.69| 50.14| 44.92| 74.64| 36.26| 37.0| 72.72| 83.66| 86.93| 68.5| 62.43| 71.73 |
+| macbert4mdcspell_v1                     | 67.15 | 93.09| 54.8| 47.71| 78.09| 39.52| 38.8| 71.92| 84.78| 88.27| 73.2| 63.28| 72.36 |
+| macbert4mdcspell_v2                     | 68.31 | 93.09| 50.05| 48.72| 75.74| 40.52| 38.9| 76.9| 84.8| 89.73| 71.0| 71.94| 78.36 |
+| macbert4mdcspell_v3                     | 68.09 | 93.11| 52.42| 53.91| 77.89| 45.28| 34.2| 76.82| 82.5| 88.13| 69.2| 68.83| 74.82 |
+| macbert4mdcspell_v1_rethink2            | 65.04 | 85.88| 52.42| 51.69| 76.23| 44.52| 38.9| 70.78| 86.48| 88.93| 55.8| 59.98| 68.91 |
+| macbert4mdcspell_v2_rethink2            | 69.14 | 91.56| 49.76| 53.01| 75.67| 44.84| 40.5| 76.98| 86.56| 91.47| 68.8| 72.03| 78.45 |
+| macbert4mdcspell_v3_rethink2            | 67.84 | 90.57| 51.76| 56.24| 77.19| 49.16| 34.9| 76.64| 84.4| 88.47| 63.1| 67.98| 73.64 |
 
-### 3.3.3 acc(acc_true, thr=0.75)
-| model/acc                    | avg   | acc_rmrb| acc_xxqg |
-|:-----------------------------|:------|:-----------------|:---------|
-| macbert4csc_pycorrector      | 99.24 | 99.22| 99.26    |
-| qwen25_1-5b_pycorrector      | 82.0  | 77.14| 86.86    |
-| relm_v1                      | 93.47 | 90.21| 96.74    |
-| bert4csc_v1                  | 98.71 | 98.36| 99.06    |
-| macbert4csc_v1               | 97.72 | 96.72| 98.72    |
-| macbert4csc_v2               | 97.89 | 96.98| 98.8     |
-| macbert4mdcspell_v1          | 97.75 | 96.51| 98.98    |
-| macbert4mdcspell_v2          | 99.54 | 99.22| 99.86    |
-| macbert4mdcspell_v2_thr00    | 98.15 | 96.72| 99.58    |
-| macbert4mdcspell_v2_thr30    | 98.32 | 97.02| 99.62    |
-| macbert4mdcspell_v2_thr40    | 98.4  | 97.15| 99.64    |
-| macbert4mdcspell_v2_thr50    | 98.68 | 97.67| 99.68    |
-| macbert4mdcspell_v2_thr60    | 99.11 | 98.49| 99.74    |
-| macbert4mdcspell_v2_thr75    | 99.54 | 99.22| 99.86    |
-| macbert4mdcspell_v1_rethink1 | 92.79 | 88.35| 97.24    |
-| macbert4mdcspell_v1_rethink2 | 92.78 | 88.31| 97.24    |
-| macbert4mdcspell_v1_rethink3 | 92.79 | 88.35| 97.24    |
-| macbert4mdcspell_v2_rethink1 | 98.15 | 96.72| 99.58    |
-| macbert4mdcspell_v2_rethink2 | 98.15 | 96.72| 99.58    |
-| macbert4mdcspell_v2_rethink3 | 98.15 | 96.72| 99.58    |
+
+### 3.3.3 acc(acc_true, thr=0.75, 测评过度修改)
+| model/acc                               | avg    | acc_rmrb | acc_xxqg |
+|:----------------------------------------|:-------|:---------|:---------|
+| shibing624/macbert4csc-base-chinese     | 99.24  | 99.22    | 99.26    |
+| shibing624/chinese-text-correction-1.5b | 82.0   | 77.14    | 86.86    |
+| twnlp/ChineseErrorCorrector3-4B         | 77.03  | 76.96    | 77.1     |
+| relm_v1                                 | 93.47  | 90.21    | 96.74    |
+| bert4csc_v1                             | 98.71  | 98.36    | 99.06    |
+| macbert4csc_v1                          | 97.72  | 96.72    | 98.72    |
+| macbert4csc_v2                          | 97.89  | 96.98    | 98.8     |
+| macbert4mdcspell_v1                     | 97.75  | 96.51    | 98.98    |
+| macbert4mdcspell_v2                     | 99.54  | 99.22    | 99.86    |
+| macbert4mdcspell_v3                     | 98.85  | 98.32    | 99.38    |
+| macbert4mdcspell_v1_rethink2            | 92.78  | 88.31    | 97.24    |
+| macbert4mdcspell_v2_rethink2            | 98.15  | 96.72    | 99.58    |
+| macbert4mdcspell_v3_rethink2            | 98.85  | 98.32    | 99.38    |
 
 
 ### 3.3.4 结论(Conclusion)
 ```
 1.macbert4csc_v1/macbert4csc_v2/macbert4mdcspell_v1等模型使用多种领域数据训练, 比较均衡, 也适合作为第一步的预训练模型, 可用于专有领域数据的继续微调;
-2.比较macbert4csc_pycorrector/bertbase4csc_v1/macbert4csc_v2/macbert4mdcspell_v1, 观察表2.3, 可以发现训练数据越多, 准确率提升的同时, 误纠率也会稍微高一些;
+2.比较shibing624_macbert4csc-base-chinese/bertbase4csc_v1/macbert4csc_v2/macbert4mdcspell_v1, 观察表2.3, 可以发现训练数据越多, 准确率提升的同时, 误纠率也会稍微高一些;
 3.MFT(Mask-Correct)依旧有效, 不过对于数据量足够的情形提升不明显, 可能也是误纠率升高的一个重要原因;
 4.训练数据中也存在文言文数据, 训练好的模型也支持文言文纠错;
 5.训练好的模型对"地得的"等高频错误具有较高的识别率和纠错率;
 6.macbert4mdcspell_v2的MFT只70%的时间no-error-mask(0.15), 15%的时间target-to-target, 15%的时间不mask;
 7.对于macbert4mdcspell, rethink能更好处理存在多个错误的句子(适合错误多的情况gen_passage/gen_xxqg这些错误数多的数据集都提升了4%, 多预测3次效果最佳, 考虑性能问题可以多预测1次), 同时rethink对过度纠错的影响不大;
 8.对于macbert4mdcspell, thr阈值设置能更好地避免过度纠错, 除非是特别需要精确率的情况, 否则不建议超过0.5(0.5往后对效果的影响就比较大了); 
+9.shibing624/chinese-text-correction-1.5b和twnlp/ChineseErrorCorrector3-4B都用了部分数据集的测试集参与训练，比较明显的有mcsc_tet(快100%了, shibing624/chinese-text-correction-1.5b是明确说了有放测试集的, 可能是twnlp/ChineseErrorCorrector3-4B也用了同样的数据), 用了测试数据的可能还有lemon_v2/text_proof/lomo_tet/ecspell;
+10.对于CSC任务, 大模型过拟合更加严重, 特别容易吧正确的句子修改润色(查看表3.3.3), decode-only模型不容易控制阈值;
+11.macbert4mdcspell_v3的MFT只85%的时间no-error-mask(0.15), 5%的时间target-to-target, 10%的时间不mask;(强化古文/现代文, 但降target-to-target比例太多使其比v2过纠多一点点)
 ```
 
+## 3.4 测评新数据集(alipayseq)
+ - alipayseq.tet.json: 阿里搜索真实数据, 论文:《Towards Better Chinese Spelling Check for Search Engines: A New Dataset and Strong Baseline》;
+ - WSDM-24的论文, macbert4xxx系列模型都没有训练过该数据集
+
+### 3.4.1   F1(common_cor_f1)
+| model/common_cor_f1             | alipayseq |
+|:--------------------------------|:----------|
+| shibing624/macbert4csc          | 15.36     |
+| twnlp/ChineseErrorCorrector3-4B | 42.84     |
+| bert4csc_v1                     | 42.23     | 
+| macbert4csc_v1                  | 48.45     |
+| macbert4csc_v2                  | 45.60     | 
+| macbert4mdcspell_v1             | 48.97     | 
+| macbert4mdcspell_v2             | 50.41     |
+| macbert4mdcspell_v3             | 50.14     |
+
+### 3.4.2   acc(common_cor_acc)
+| model/common_cor_acc            | alipayseq |
+|:--------------------------------|:----------|
+| shibing624/macbert4csc          | 13.74     |
+| twnlp/ChineseErrorCorrector3-4B | 62.90     |
+| bert4csc_v1                     | 41.61     | 
+| macbert4csc_v1                  | 48.51     |
+| macbert4csc_v2                  | 46.70     | 
+| macbert4mdcspell_v1             | 51.90     | 
+| macbert4mdcspell_v2             | 63.60     | 
+
+
+## 3.5 F1(古诗-文言文数据集测评, det-cor)
+| model/common_cor_f1                         | det   | cor   |
+|:------------------------------------|:------|:------|
+| shibing624/macbert4csc-base-chinese | 44.12 | 7.48  |
+| macbert4mdcspell_v1                 | 58.98 | 12.43 |
+| macbert4mdcspell_v2                 | 50.61 | 10.40 |
+| macbert4mdcspell_v3                 | 73.24 | 47.41 |
 
 # 日志
 ```
 1. v20240129, 完成csc_punct模块;
 2. v20241001, 完成csc_token模块;
-3. v20250117, 完成csc_eval模块；
-4. v20250501, 完成macbert4mdcspell_v2
+3. v20250117, 完成csc_eval模块;
+4. v20250501, 完成macbert4mdcspell_v2;
+5. v20251003, 完成macbert4mdcspell_v3;
 ```
 
 

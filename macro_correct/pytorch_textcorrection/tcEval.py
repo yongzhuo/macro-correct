@@ -563,10 +563,12 @@ if __name__ == '__main__':
     ### 全量测试
     ### 模型权重
     # path_model_dir = "E:/DATA/bert-model/00_pytorch/MacBERT-chinese_finetuned_correction/csc.config"
+    # path_model_dir = "../output/text_correction/bert4csc_v1/csc.config"  # own-correct
     # path_model_dir = "../output/text_correction/macbert4csc_v1/csc.config"  # own-correct
     # path_model_dir = "../output/text_correction/macbert4csc_v2/csc.config"  # own-correct
-    path_model_dir = "../output/text_correction/macbert4mdcspell_v1/csc.config"  # own-correct
-    # path_model_dir = "../output/text_correction/bert4csc_v1/csc.config"  # own-correct
+    # path_model_dir = "../output/text_correction/macbert4mdcspell_v1/csc.config"  # own-correct
+    # path_model_dir = "../output/text_correction/macbert4mdcspell_v2/csc.config"  # own-correct
+    path_model_dir = "../output/text_correction/macbert4mdcspell_v3/csc.config"  # own-correct
     threshold = 0.75
     # threshold = 0.0
 
