@@ -50,6 +50,8 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple macro-correct --no-depen
   - 训练代码详见/tet/train目录, 可配置本地预训练模型地址和各种参数等;
 
 # 体验
+ - [MOdelScope---Space---Macropodus/macbert4mdcspell_v3](https://www.modelscope.cn/studios/Macadam/macbert4mdcspell_v3)
+ - [MOdelScope---Space---Macropodus/macbert4mdcspell_v2](https://www.modelscope.cn/studios/Macadam/macbert4mdcspell_v2)
  - [HF---Space---Macropodus/macbert4mdcspell_v2](https://huggingface.co/spaces/Macropodus/macbert4mdcspell_v2)
  - [HF---Space---Macropodus/macbert4csc_v2](https://huggingface.co/spaces/Macropodus/macbert4csc_v2)
 
